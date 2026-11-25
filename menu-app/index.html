@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Tuzla Balık Soyak | Dijital Gastronomi Menüsü</title>
+  <meta name="description" content="Tuzla Balık Soyak dijital gastronomi menü uygulaması. Taze Ege mezeleri, kömür ateşinde günlük balıklar ve zengin rakı kavı seçkisi.">
+  <meta name="theme-color" content="#2b324c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Tuzla Balık">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../Assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=20261106_21">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- APP HEADER STICKY ANCHOR -->
+    <div class="app-header-wrapper" id="appHeaderWrapper">
+      <header class="app-header" id="appHeader">
+        <div class="header-inner">
+          <a href="#hero" class="brand-section" title="Tuzla Balık">
+            <img src="images/tuzlabalikyazilogo.png" alt="Tuzla Balık" class="brand-logo-wide" onerror="this.onerror=null; this.src='../img/tuzlabalikyazilogo.png';">
+          </a>
+
+          <div class="header-actions">
+            <a href="tel:+902164468686" class="btn-header-contact" title="Rezervasyon & İletişim">
+              <i class="fa-solid fa-phone"></i>
+              <span class="header-contact-label">Rezervasyon</span>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <!-- HERO / SEARCH BAR STRIP -->
+    <section class="app-hero-strip" id="hero">
+      <div class="hero-strip-content">
+        <div class="hero-heading">
+          <h2>Ege'nin Tuzunda, <em>Lezzetin Doruğunda.</em></h2>
+          <p>Günlük sabah mezatından taze balıklar, 150 çeşit Ege mezesi ve seçkin rakı kavımızla sofranız için özel olarak hazırlandı.</p>
+        </div>
+
+        <div class="search-filter-bar">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input 
+              type="text" 
+              class="search-input" 
+              id="searchInput" 
+              placeholder="Menüde lezzet veya içecek arayın..." 
+              autocomplete="off"
+            >
+            <button class="search-clear-btn" id="searchClearBtn" title="Temizle">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <button class="btn-filter-trigger" id="filterTriggerBtn" title="Sadece Şefin İmzalarını Göster">
+            <i class="fa-solid fa-crown" style="color:var(--accent-gold);"></i>
+            <span>İmzalar</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STICKY CATEGORY NAV STRIP -->
+    <nav class="category-nav-wrapper">
+      <div class="category-nav-scroll" id="categoryScroll">
+        <!-- Rendered by app.js -->
+      </div>
+    </nav>
+
+    <!-- MAIN DISHES VIEWPORT -->
+    <main class="app-main">
+      <div class="category-chapter-header">
+        <div class="chapter-left">
+          <h2 class="chapter-title" id="chapterTitle">
+            <i class="fa-solid fa-utensils"></i> Tuzla Balık Seçkisi
+          </h2>
+          <span class="chapter-count-label" id="chapterCount">390 Lezzet</span>
+        </div>
+
+        <!-- Mobile & Desktop View Mode Switcher -->
+        <div class="view-mode-toggle" id="viewModeToggle">
+          <div class="segmented-spring-pill" id="segmentedSpringPill"></div>
+          <button class="btn-view-toggle active" data-view="list" id="btnViewList" title="Liste Görünümü">
+            <i class="fa-solid fa-list-ul"></i>
+            <span class="view-toggle-text">Liste</span>
+          </button>
+          <button class="btn-view-toggle" data-view="grid" id="btnViewGrid" title="Kart Görünümü">
+            <i class="fa-solid fa-table-cells"></i>
+            <span class="view-toggle-text">Kart</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- DISHES GRID / LIST -->
+      <div class="dishes-grid view-list" id="dishesGrid">
+        <!-- Rendered by app.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- DISH DETAIL POPUP MODAL (DESKTOP & MOBILE CARD) -->
+  <div class="modal-backdrop" id="dishModalBackdrop"></div>
+  <div class="dish-modal-sheet" id="dishModalSheet" role="dialog" aria-modal="true" aria-label="Lezzet Detayı">
+    <!-- Drag Handle Bar -->
+    <div class="sheet-drag-handle-bar">
+      <span class="sheet-drag-pill"></span>
+    </div>
+
+    <!-- Close Button -->
+    <button class="modal-close-btn" id="modalCloseBtn" title="Kapat">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Hero Visual -->
+    <div class="modal-hero-visual" id="modalHeroVisual">
+      <img src="" alt="" class="modal-hero-img" id="modalHeroImg">
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <div class="modal-meta-top">
+        <span class="modal-cat-tag" id="modalCatTag">Kategori</span>
+        <div class="modal-price" id="modalPrice">0 ₺</div>
+      </div>
+      <h2 class="modal-title" id="modalTitle">Lezzet Başlığı</h2>
+      <p class="modal-description" id="modalDescription">Açıklama</p>
+
+      <div class="modal-sommelier-card" id="modalSommelierCard">
+        <div class="sommelier-header">
+          <i class="fa-solid fa-wine-glass"></i>
+          <span>Usta Şef & Sommelier Önerisi</span>
+        </div>
+        <p class="sommelier-text" id="modalSommelierText">Eşlikçi bilgisi</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="menu-data.js?v=20261106_22"></script>
+  <script src="app.js?v=20261106_22"></script>
+</body>
+</html>

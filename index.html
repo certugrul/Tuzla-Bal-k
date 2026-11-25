@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tuzla Balık Soyak | Fine Dining Ege Balık Restoranı & Çilingir Sofrası</title>
+  <meta name="description" content="Tuzla Balık Soyak - İzmir Karşıyaka'da fine dining balık deneyimi, taze Ege mezeleri ve seçkin rakı kavıyla modern deniz mahsulleri mutfağı.">
+  <meta name="keywords" content="Tuzla Balık, Tuzla Balık Soyak, Karşıyaka balık restoranı, fine dining İzmir, rakı balık Karşıyaka, Ege mezeleri, lüks balıkçı">
+  <meta name="author" content="Tuzla Balık Soyak">
+  <meta name="theme-color" content="#2b324c">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="Assets/logo.png">
+
+  <!-- Google Fonts: Cormorant Garamond & Playfair Display + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Fine Dining Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=20261105_01">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-notice-bar">
+    <div class="container">
+      <div class="top-notice-left">
+        <a href="https://maps.google.com/?q=Tuzla+Bal%C4%B1k+Soyak+%C4%B0n%C3%B6n%C3%BC+Mah.+6718.+Sk.+No:66+Kar%C5%9F%C4%B1yaka+%C4%B0zmir" target="_blank" rel="noopener" class="js-setting-maps-link" title="Haritada Aç & Yol Tarifi Al" style="display:inline-flex; align-items:center; gap:0.4rem;">
+          <i class="fa-solid fa-location-dot" style="color:var(--accent-gold);"></i> 
+          <span class="js-setting-address">İnönü Mah., 6718. Sk. No:66, Karşıyaka / İzmir</span>
+        </a>
+        <span><i class="fa-solid fa-clock"></i> <span class="js-setting-hours">Her Gün: 12:00 - 01:00</span></span>
+      </div>
+      <div class="top-notice-right">
+        <span><i class="fa-solid fa-phone"></i> Rezervasyon: <a href="tel:05306063517" class="js-setting-phone-link js-setting-phone" style="font-weight:600;">0530 606 35 17</a></span>
+        <a href="https://www.instagram.com/tuzlabaliksoyaktr/" target="_blank" rel="noopener" class="js-setting-insta-link" title="Instagram">
+          <i class="fa-brands fa-instagram"></i> <span class="js-setting-insta-handle">@tuzlabaliksoyaktr</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Navigation Header -->
+  <header class="site-nav-header">
+    <div class="container">
+      <div class="nav-container">
+        <!-- Brand Logo (Night: Black background / Day: Natural) -->
+        <a href="#hero" class="brand-identity" aria-label="Tuzla Balık Soyak">
+          <img src="Assets/SiyahLogo.png" alt="Tuzla Balık Soyak" class="brand-logo-img logo-night">
+          <img src="Assets/logo.png" alt="Tuzla Balık Soyak" class="brand-logo-img logo-day">
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#hero" class="nav-link active">Ana Sayfa</a></li>
+          <li><a href="#story" class="nav-link">Hikayemiz</a></li>
+          <li><a href="#menu" class="nav-link">Gastronomi Menüsü</a></li>
+          <li><a href="#cellar" class="nav-link">Rakı & Kav</a></li>
+          <li><a href="#gallery" class="nav-link">Atmosfer</a></li>
+          <li><a href="#reservation" class="nav-link">Rezervasyon</a></li>
+          <li><a href="https://maps.google.com/?q=Tuzla+Bal%C4%B1k+Soyak+%C4%B0n%C3%B6n%C3%BC+Mah.+6718.+Sk.+No:66+Kar%C5%9F%C4%B1yaka+%C4%B0zmir" target="_blank" rel="noopener" class="nav-link js-setting-maps-link" style="color:var(--accent-gold); display:inline-flex; align-items:center; gap:0.4rem;" title="Haritada Aç & Yol Tarifi"><i class="fa-solid fa-location-dot"></i> Konum</a></li>
+          <li class="nav-sliding-indicator" id="navSlidingIndicator" aria-hidden="true"></li>
+        </ul>
+
+        <!-- Action Controls -->
+        <div class="nav-controls">
+          <!-- DAY / NIGHT SWITCHER BUTTON -->
+          <button class="theme-switch-btn" id="themeToggleBtn" title="Gece / Gündüz Modu Değiştir" aria-label="Tema Değiştir">
+            <i class="fa-solid fa-sun icon-sun" title="Gündüz Moduna Geç"></i>
+            <i class="fa-solid fa-moon icon-moon" title="Gece Moduna Geç"></i>
+          </button>
+
+          <!-- Table Order / Tray Toggle -->
+          <button class="btn-table-tray js-open-tray" title="Masam / Hesap Planlayıcı" aria-label="Masam">
+            <i class="fa-solid fa-utensils"></i>
+            <span class="tray-counter-badge js-tray-badge" style="display:none;">0</span>
+          </button>
+
+          <!-- Reserve Button -->
+          <a href="#reservation" class="btn-luxury-reserve">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Masa Ayırt</span>
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Menü">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Editorial Hero Section -->
+  <section class="fine-hero-section" id="hero">
+    <div class="hero-visual-bg"></div>
+    <div class="container">
+      <div class="hero-inner-content">
+        <div class="hero-curation-badge">
+          Ege'nin En Taze Lezzetleri • Karşıyaka
+        </div>
+        
+        <h1 class="hero-main-title">
+          Ege'nin Tuzunda, <br>
+          <span class="gold-gradient-text serif-italic">Muhabbetin Tadında.</span>
+        </h1>
+
+        <p class="hero-sub-text">
+          Sabah mezatından seçilen taptaze mevsim balıkları, usta ellerden çıkan 150 çeşit Ege mezesi ve zengin rakı kavımızla İzmir Karşıyaka'da çilingir sofrası zarafetini yaşatıyoruz.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#menu" class="btn-fine-primary">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Menüyü İnceleyin</span>
+          </a>
+          <a href="#reservation" class="btn-fine-outline">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Masa Rezervasyonu</span>
+          </a>
+          <button class="btn-fine-outline js-open-tray">
+            <i class="fa-solid fa-calculator"></i>
+            <span>Hesap Planlayıcı</span>
+          </button>
+        </div>
+
+        <div class="hero-metric-strip">
+          <div class="metric-box">
+            <strong>150+</strong>
+            <span>Soğuk Ege Mezesi</span>
+          </div>
+          <div class="metric-box">
+            <strong>45+</strong>
+            <span>Taze Deniz Balığı</span>
+          </div>
+          <div class="metric-box">
+            <strong>120+</strong>
+            <span>Seçkin Rakı Kavı</span>
+          </div>
+          <div class="metric-box">
+            <strong>%100</strong>
+            <span>Doğal Sızma Zeytinyağı</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story & Philosophy Section (Erdem Şef & Atmosfer) -->
+  <section class="fine-story-section" id="story">
+    <div class="container">
+      <div class="story-editorial-grid">
+        <div class="story-photo-wrapper">
+          <img src="img/hakkimizda.jpg" alt="Erdem Şef - Tuzla Balık Soyak" class="story-photo-main">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        
+          <img src="img/img6.jpg" alt="Tuzla Balık Salon & Atmosfer" class="story-photo-inset">
+        </div>
+
+        <div class="story-text-wrapper">
+          <span class="chapter-subtitle" style="text-align:left;">ŞEFİN MUTFAĞI • ERDEM ŞEF</span>
+          <h2 class="chapter-title" style="text-align:left; margin-bottom:1.5rem;">
+            Erdem Şef'in Ustalığı, <br>
+            <span class="gold-gradient-text serif-italic">Ege'nin En Zarif Sofrası.</span>
+          </h2>
+
+          <div class="story-lead-quote">
+            "Her sabah denizin en tazesini seçmek bizim için bir meslek değil; konuklarımızın damağında silinmez bir iz bırakacak mutfak tutkusudur." — <strong>Erdem Şef</strong>
+          </div>
+
+          <p class="story-paragraph">
+            Tuzla Balık Soyak'ın ruhunda, deniz mahsullerine ömrünü ve tutkusunu adamış <strong>Erdem Şef</strong>'in benzersiz ustalığı yatar. Ege'nin kadim çilingir ve balıkçılık kültürünü modern fine dining zarafetiyle taçlandıran Erdem Şef; sabahın ilk ışıklarında mezattan bizzat seçtiği deniz balıklarını, Ayvalık sızma zeytinyağı ve taptaze ada otlarıyla buluşturuyor.
+          </p>
+          <p class="story-paragraph">
+            Fırınlanmış enginardan aşk acısına, tereyağlı güveç karideslerden kömür ateşinde marine edilen mevsim balıklarına kadar masanıza gelen her tabak Erdem Şef'in titiz ellerinden çıkar. Soyak Siesta'nın ferah ve huzurlu atmosferinde, dost kahkahalarının kadeh seslerine karıştığı bu özel sofrada her an seçkin bir lezzet şölenine dönüşür.
+          </p>
+
+          <div class="story-pillars">
+            <div class="pillar-item">
+              <h4><i class="fa-solid fa-utensils"></i> Erdem Şef'in İmzası</h4>
+              <p>Geleneksel deniz lezzetlerine şef dokunuşu, özel baharat dengesi ve gurme marinasyonlar.</p>
+            </div>
+            <div class="pillar-item">
+              <h4><i class="fa-solid fa-fish"></i> Günlük Taze Balık Mezatı</h4>
+              <p>Dondurulmuş ürün kullanılmadan, her gün doğrudan yerel kıyılardan seçilen taze mevsim balıkları.</p>
+            </div>
+            <div class="pillar-item">
+              <h4><i class="fa-solid fa-champagne-glasses"></i> Büyüleyici Atmosfer</h4>
+              <p>Soyak Siesta'da bembeyaz örtülü masalar, zarif mum ışıkları ve huzurlu teras keyfi.</p>
+            </div>
+            <div class="pillar-item">
+              <h4><i class="fa-solid fa-wine-glass"></i> Zengin Çilingir Kavı</h4>
+              <p>Göbek rakılarından meşe fıçı rezervlerine Türkiye'nin en seçkin rakı ve butik şarap seçkisi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINE DINING GASTRONOMY MENU (CLEAN & INTUITIVE) -->
+  <section class="fine-menu-section" id="menu">
+    <div class="container">
+      <div class="menu-chapter-header">
+        <span class="chapter-subtitle">À LA CARTE SEÇKİSİ</span>
+        <h2 class="chapter-title">Gastronomi Menüsü</h2>
+        <p class="chapter-desc">
+          Tüm lezzetlerimiz günlük ve taze hazırlanır.
+        </p>
+      </div>
+
+      <!-- Clean Category Navigation Tabs -->
+      <div class="menu-nav-tabs-wrapper" id="fineTabsWrapper">
+        <!-- Rendered dynamically via script.js -->
+      </div>
+
+      <!-- Minimalist Search -->
+      <div class="menu-search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="fineSearchInput" placeholder="Menüde lezzet veya içecek arayın... (Örn: Lakerda, Karides, Levrek, Beylerbeyi)">
+        <i class="fa-solid fa-xmark menu-search-clear" id="fineSearchClear" title="Temizle"></i>
+      </div>
+
+      <!-- Two-Column Editorial Fine Dining Menu Grid -->
+      <div class="fine-menu-grid" id="fineMenuGrid">
+        <!-- Rendered dynamically via script.js -->
+      </div>
+
+      <!-- Load More Action -->
+      <div class="menu-load-more-wrap" id="fineLoadMoreWrap">
+        <button class="btn-show-more-dishes" id="fineLoadMoreBtn">
+          <span>Daha Fazla Lezzet Göster</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rakı Cellar & Ritual Section -->
+  <section class="fine-raki-section" id="cellar">
+    <div class="container">
+      <div class="menu-chapter-header">
+        <span class="chapter-subtitle">ÇİLİNGİR RİTÜELİ</span>
+        <h2 class="chapter-title">Seçkin Rakı & Şarap Kavı</h2>
+        <p class="chapter-desc">
+          20 cl, 35 cl, 50 cl, 70 cl ve 100 cl seçenekleriyle Türkiye'nin en zengin göbek ve meşe distilasyonları.
+        </p>
+      </div>
+
+      <div class="cellar-bottle-grid">
+        <div class="cellar-card">
+          <i class="fa-solid fa-wine-bottle cellar-card-icon"></i>
+          <h4>Beylerbeyi Göbek</h4>
+          <p>%100 yaş üzüm ve bakır imbiklerin yalnızca orta saf akımından damıtılmış şekersiz saf lezzet.</p>
+        </div>
+
+        <div class="cellar-card">
+          <i class="fa-solid fa-trophy cellar-card-icon"></i>
+          <h4>Yeni Rakı Giz & Pus</h4>
+          <p>Meşe fıçılarda yıllandırılmış, kehribar rengi ve kadifemsi aromasıyla ultra-premium başyapıt.</p>
+        </div>
+
+        <div class="cellar-card">
+          <i class="fa-solid fa-award cellar-card-icon"></i>
+          <h4>Tekirdağ Altın Seri</h4>
+          <p>Meşe fıçıda olgunlaşmış, dengeli anason kokusuyla balık sofralarının vazgeçilmez klasiği.</p>
+        </div>
+
+        <div class="cellar-card">
+          <i class="fa-solid fa-gem cellar-card-icon"></i>
+          <h4>Sarı Zeybek 3 Meşe</h4>
+          <p>Üç farklı meşe fıçısında bekletilerek vanilya ve ahşap dokunuşları kazandırılmış özel seri.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ambience & Photography Gallery -->
+  <section class="fine-gallery-section" id="gallery">
+    <div class="container">
+      <div class="menu-chapter-header">
+        <span class="chapter-subtitle">ATMOSFER</span>
+        <h2 class="chapter-title">Mekan & Sofralarımız</h2>
+        <p class="chapter-desc">
+          Karşıyaka Soyak'ın sakin ve ferah atmosferinde kurulan zarif çilingir sofraları.
+        </p>
+      </div>
+
+      <div class="editorial-gallery-grid">
+        <div class="gallery-card wide-col">
+          <img src="img/atmosfer.jpg" alt="Tuzla Balık Salon ve Masa Atmosferi">
+          <div class="gallery-card-caption">Tuzla Balık Salon & Teras Atmosferi</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="img/img7.jpg" alt="Ege Rakı Kadehleri ve Taze Balık">
+          <div class="gallery-card-caption">Kadehler Ege'nin Zarafetine Kalkar</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="img/img4.jpg" alt="Güveçte Karides ve Ahtapot">
+          <div class="gallery-card-caption">Toprak Güveçte Karides & Ahtapot</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="img/img2.jpg" alt="Somon Izgara ve Risotto">
+          <div class="gallery-card-caption">Somon Izgara & Taze Otlu Risotto</div>
+        </div>
+
+        <div class="gallery-card">
+          <img src="img/img8.jpg" alt="Deniz Mahsulleri Çilingir Masası">
+          <div class="gallery-card-caption">Kabuklu Deniz Mahsulleri & Çilingir Sofrası</div>
+        </div>
+
+        <div class="gallery-card wide-col">
+          <img src="img/img5.jpg" alt="Erdem Şef İmzası Somon Gravlax">
+          <div class="gallery-card-caption">Erdem Şef İmzası: Somon Gravlax & Izgara Ananas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fine Dining Reservation Section -->
+  <section class="fine-booking-section" id="reservation">
+    <div class="container">
+      <div class="booking-card-wrapper">
+        <div class="booking-side-media">
+          <div>
+            <span class="chapter-subtitle" style="text-align:left; color:var(--accent-gold);">REZERVASYON</span>
+            <h3 class="serif-italic">Masanızı Ayırtın</h3>
+            <p>
+              Hafta sonu akşamlarında dost meclisleriniz ve özel kutlamalarınız için önceden masa ayırtmanızı öneririz.
+            </p>
+          </div>
+
+          <div class="booking-hotline-box">
+            <span class="hotline-label">DOĞRUDAN TELEFON HATTI</span>
+            <a href="tel:05306063517" class="hotline-tel js-setting-phone-link">
+              <i class="fa-solid fa-phone"></i>
+              <span class="js-setting-phone">0530 606 35 17</span>
+            </a>
+          </div>
+
+          <div class="booking-hotline-box" style="margin-top:1rem;">
+            <span class="hotline-label">RESTORAN KONUMU & HARİTA</span>
+            <a href="https://maps.google.com/?q=Tuzla+Bal%C4%B1k+Soyak+%C4%B0n%C3%B6n%C3%BC+Mah.+6718.+Sk.+No:66+Kar%C5%9F%C4%B1yaka+%C4%B0zmir" target="_blank" rel="noopener" class="hotline-tel js-setting-maps-link" style="font-size:1.02rem; font-family:var(--font-sans); font-weight:600; display:flex; align-items:center; gap:0.6rem;" title="Google Haritalar'da Aç & Yol Tarifi Al">
+              <i class="fa-solid fa-location-dot" style="color:#ea4335;"></i>
+              <span>Haritada Aç / Yol Tarifi</span>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem; color:var(--text-muted); margin-left:auto;"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="booking-form-side">
+          <form id="bookingForm" class="clean-form-grid">
+            <div class="form-unit">
+              <label for="bookName">Misafir Adı *</label>
+              <input type="text" id="bookName" placeholder="Adınız ve Soyadınız" required>
+            </div>
+
+            <div class="form-unit">
+              <label for="bookPhone">İletişim Numarası *</label>
+              <input type="tel" id="bookPhone" placeholder="05XX XXX XX XX" required>
+            </div>
+
+            <div class="form-unit">
+              <label for="bookGuests">Kişi Sayısı *</label>
+              <select id="bookGuests">
+                <option value="2">2 Kişi</option>
+                <option value="3">3 Kişi</option>
+                <option value="4" selected>4 Kişi (Standart)</option>
+                <option value="5">5 Kişi</option>
+                <option value="6">6 Kişi</option>
+                <option value="8">8 Kişi (Dost Masası)</option>
+                <option value="10">10+ Kişi (Grup)</option>
+              </select>
+            </div>
+
+            <div class="form-unit">
+              <label for="bookArea">Masa Alanı Tercihi</label>
+              <select id="bookArea">
+                <option value="Açık Bahçe / Teras">Ferah Açık Bahçe</option>
+                <option value="İç Salon">Nezih İç Salon</option>
+                <option value="Fark etmez">Fark Etmez</option>
+              </select>
+            </div>
+
+            <div class="form-unit">
+              <label for="bookDate">Tarih *</label>
+              <input type="date" id="bookDate" required>
+            </div>
+
+            <div class="form-unit">
+              <label for="bookTime">Saat *</label>
+              <select id="bookTime" required>
+                <option value="13:00">13:00 (Öğle)</option>
+                <option value="18:30">18:30</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00" selected>20:00 (Ana Saat)</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+              </select>
+            </div>
+
+            <div class="form-unit full-span">
+              <label for="bookNotes">Özel Not / Kutlama</label>
+              <textarea id="bookNotes" placeholder="Doğum günü, yıldönümü veya özel isteklerinizi belirtebilirsiniz..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-confirm-booking">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Rezervasyonu WhatsApp ile İlet</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Site Footer -->
+  <footer class="fine-site-footer">
+    <div class="container">
+      <div class="footer-editorial-grid">
+        <div>
+          <!-- Brand Logo in Footer -->
+          <a href="#hero" class="brand-identity" style="margin-bottom:1.5rem; display:inline-block;" aria-label="Tuzla Balık Soyak">
+            <img src="Assets/SiyahLogo.png" alt="Tuzla Balık Soyak" class="brand-logo-img footer-logo logo-night">
+            <img src="Assets/logo.png" alt="Tuzla Balık Soyak" class="brand-logo-img footer-logo logo-day">
+          </a>
+          <p style="max-width:320px; line-height:1.7;">
+            Taze Ege mezeleri, kömür ateşinde günlük mevsim balıkları ve seçkin rakı kavıyla Karşıyaka'nın zarif deniz sofrası.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-header">Gezinme</h4>
+          <ul class="footer-link-list">
+            <li><a href="#hero">Ana Sayfa</a></li>
+            <li><a href="#story">Hikayemiz</a></li>
+            <li><a href="#menu">Gastronomi Menüsü</a></li>
+            <li><a href="#cellar">Rakı Kavı</a></li>
+            <li><a href="#gallery">Atmosfer</a></li>
+            <li><a href="#reservation">Rezervasyon</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-header">İmza Lezzetler</h4>
+          <ul class="footer-link-list">
+            <li><a href="#menu">Torik Lakerda</a></li>
+            <li><a href="#menu">Levrek Marin</a></li>
+            <li><a href="#menu">Ahtapot Izgara</a></li>
+            <li><a href="#menu">Balık Kokoreç</a></li>
+            <li><a href="#menu">Beylerbeyi Göbek</a></li>
+            <li><a href="#menu">Dondurmalı Fırın Helva</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-header">Çalışma Saatleri & Konum</h4>
+          <p style="margin-bottom:0.4rem; font-size:0.86rem;">Pazartesi - Cuma: <strong style="color:var(--text-main);">12:00 - 01:00</strong></p>
+          <p style="margin-bottom:0.85rem; font-size:0.86rem;">Cumartesi - Pazar: <strong style="color:var(--text-main);">12:00 - 01:30</strong></p>
+          <a href="https://maps.google.com/?q=Tuzla+Bal%C4%B1k+Soyak+%C4%B0n%C3%B6n%C3%BC+Mah.+6718.+Sk.+No:66+Kar%C5%9F%C4%B1yaka+%C4%B0zmir" target="_blank" rel="noopener" class="js-setting-maps-link footer-location-pill" title="Haritada Aç & Yol Tarifi Al">
+            <i class="fa-solid fa-location-dot" style="color:var(--accent-gold); font-size:0.85rem;"></i>
+            <span class="js-setting-address-short">İnönü Mah., Karşıyaka</span>
+            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.68rem; color:var(--text-muted); margin-left:0.15rem;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 Tuzla Balık Soyak. Tüm hakları saklıdır.</div>
+        <div style="color:var(--text-muted); font-size:0.75rem;">
+          <i class="fa-solid fa-triangle-exclamation"></i> 18 yaşından küçüklere alkollü içecek servisi yapılmamaktadır.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Table Order & Calculator Tray Drawer Modal -->
+  <div class="tray-backdrop" id="trayBackdrop"></div>
+  <aside class="table-tray-drawer" id="tableTrayDrawer">
+    <div class="tray-top-bar">
+      <div style="display:flex; align-items:center; gap:0.6rem;">
+        <i class="fa-solid fa-utensils" style="color:var(--accent-gold);"></i>
+        <h3 class="serif-italic">Masa Sipariş & Hesap Planı</h3>
+      </div>
+      <i class="fa-solid fa-xmark tray-close-icon" id="trayCloseBtn"></i>
+    </div>
+
+    <div class="tray-scroll-body" id="trayScrollBody">
+      <!-- Populated dynamically via script.js -->
+    </div>
+
+    <div class="tray-calc-box">
+      <div class="tray-calc-row">
+        <span><i class="fa-solid fa-users"></i> Kişi Sayısı</span>
+        <div class="tray-people-stepper">
+          <button class="stepper-btn" id="peopleMinus"><i class="fa-solid fa-minus"></i></button>
+          <span class="stepper-num" id="peopleCount">4</span>
+          <button class="stepper-btn" id="peoplePlus"><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </div>
+      <div class="tray-calc-result">
+        <span>Kişi Başı Tahmini:</span>
+        <strong id="perPersonAmount">0 ₺</strong>
+      </div>
+    </div>
+
+    <div class="tray-bottom-actions">
+      <div class="tray-total-display">
+        <span>Masa Toplamı</span>
+        <strong id="trayTotalAmount">0 ₺</strong>
+      </div>
+
+      <button class="btn-send-whatsapp-tray" id="btnSendWhatsappTray">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Bu Menüyle WhatsApp'tan Masa Ayırt</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Floating Quick Connect Hub -->
+  <div class="floating-quick-hub">
+    <a href="https://maps.google.com/?q=Tuzla+Bal%C4%B1k+Soyak+%C4%B0n%C3%B6n%C3%BC+Mah.+6718.+Sk.+No:66+Kar%C5%9F%C4%B1yaka+%C4%B0zmir" target="_blank" rel="noopener" class="quick-hub-btn map js-setting-maps-link" title="Haritada Aç & Yol Tarifi Al">
+      <i class="fa-solid fa-location-dot"></i>
+    </a>
+    <a href="https://wa.me/905306063517" target="_blank" rel="noopener" class="quick-hub-btn wa js-setting-wa-link" title="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="tel:05306063517" class="quick-hub-btn call js-setting-phone-link" title="Ara">
+      <i class="fa-solid fa-phone"></i>
+    </a>
+  </div>
+
+  <!-- Scripts -->
+  <script src="menu-data.js?v=20261105_01"></script>
+  <script src="script.js?v=20261105_01"></script>
+</body>
+</html>

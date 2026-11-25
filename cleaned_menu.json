@@ -1,0 +1,3950 @@
+[
+  {
+    "code": "ST00108",
+    "name": "ROKA SÖĞÜŞ",
+    "price": 100,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00111",
+    "name": "SADECE SÖĞÜŞ",
+    "price": 100,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00112",
+    "name": "SARIMSAK IZGARA",
+    "price": 100,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00075",
+    "name": "KARPUZ",
+    "price": 150,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00077",
+    "name": "KAVUN",
+    "price": 150,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00105",
+    "name": "PEYNİR",
+    "price": 150,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00033",
+    "name": "AZ MEZE",
+    "price": 175,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00046",
+    "name": "ÇANAK ENGİNAR ADET",
+    "price": 175,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00034",
+    "name": "AZ MİDYE SALATASI",
+    "price": 200,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00022",
+    "name": "ANTEP EZME",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00036",
+    "name": "AZ ŞEVKET BOSTAN",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00045",
+    "name": "CİBEZ",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00058",
+    "name": "FAVA SADE",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00065",
+    "name": "HAVUÇ TARATOR",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00066",
+    "name": "HAYDARİ",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00068",
+    "name": "HUMUSLU PANCAR",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00069",
+    "name": "ISPANAK BORANİ",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00764",
+    "name": "KESTİRMELİ BÖRÜLCE",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00081",
+    "name": "KÖPEOĞLU",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00085",
+    "name": "KURU BÖRÜLCE",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00086",
+    "name": "KURU CACIK",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00093",
+    "name": "MANTAR SALATASI",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00104",
+    "name": "PEMBE SULTAN",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00106",
+    "name": "PİYAZ",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00119",
+    "name": "SÜZME YOĞURT",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00125",
+    "name": "TEK LAKERDA",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00126",
+    "name": "TURP OTU",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00127",
+    "name": "TURŞU",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00131",
+    "name": "YOĞURTLU KABAK",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00134",
+    "name": "YOĞURTLU PATLICAN",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00136",
+    "name": "YOĞURTLU SEMİZ",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00137",
+    "name": "ZEYTİN",
+    "price": 225,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00786",
+    "name": "AŞK YAKAR",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00782",
+    "name": "ATA MEZE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00024",
+    "name": "ATOM",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00025",
+    "name": "ATOM Y.P.Ü",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00035",
+    "name": "AZ SOSLU HAMSİ",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00037",
+    "name": "BABAGANUŞ",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00038",
+    "name": "BALLI SÜZME YOĞURT",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00039",
+    "name": "BARBUNYA PİLAKİ",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00040",
+    "name": "BİBER BORANİ",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00678",
+    "name": "BİBER TARATOR SOĞUK",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00043",
+    "name": "BROKOLİ",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00765",
+    "name": "BROKOLİ SALATASI",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00044",
+    "name": "BRÜKSEL LAHANASI",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00784",
+    "name": "CUNDA",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00048",
+    "name": "ÇITIR",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00049",
+    "name": "ÇİĞKÖFTE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00768",
+    "name": "EKŞİLİ PATLICAN",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00767",
+    "name": "EKŞİLİ PTLICAN",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00059",
+    "name": "FAVA TEKMİL",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00060",
+    "name": "FELLAH KÖFTE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00781",
+    "name": "GELİNCİK",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00061",
+    "name": "GİRİT EZME",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00067",
+    "name": "HUMUS",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00070",
+    "name": "IZGARA ZEYTİN",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00761",
+    "name": "KABAK ŞAHAN",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00076",
+    "name": "KARPUZ - PEYNİR",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00079",
+    "name": "KAYA KORUĞU",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00080",
+    "name": "KOMPLE SÖĞÜŞ",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00082",
+    "name": "KÖZ BİBER",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00083",
+    "name": "KÖZ BİBER DOLMA",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00084",
+    "name": "KÖZ PATLICAN",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00087",
+    "name": "KURU CACIK ÜZERİ ATOM",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00088",
+    "name": "KURU CACIK ÜZERİ BİBER TARATOR",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00089",
+    "name": "KURU DOMATES",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00094",
+    "name": "MASTABE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00097",
+    "name": "MİDYE SARMA",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00098",
+    "name": "NURANİYE GİRİT MEZE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00100",
+    "name": "PANCAR",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00805",
+    "name": "PAŞA MEZE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00101",
+    "name": "PATLICAN DOLMA",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00102",
+    "name": "PATLICAN DÖVME",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00110",
+    "name": "RUS SALATASI",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00672",
+    "name": "SEMİZOTU",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00760",
+    "name": "SULTAN MEZE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00117",
+    "name": "SULU CACIK",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00120",
+    "name": "ŞAKŞUKA",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00121",
+    "name": "ŞAKŞUKA - YOĞURT",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00123",
+    "name": "ŞIMARIK",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00124",
+    "name": "TARLA BÖRÜLCE",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00128",
+    "name": "TUZLA BALIK SPECİAL",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00780",
+    "name": "YELA",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00132",
+    "name": "YOĞURTLU KÖZ BİBER",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00133",
+    "name": "YOĞURTLU MANTAR",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00135",
+    "name": "YOĞURTLU PATLICAN ÜZERİ ŞAKŞUKA",
+    "price": 250,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00027",
+    "name": "AZ BİBER TARATOR SICAK",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00028",
+    "name": "AZ ÇİROZ",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00030",
+    "name": "AZ ENGİNAR KALBİ",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00762",
+    "name": "BADEMLİK",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00042",
+    "name": "BİBER TARATOR YOĞURT",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00748",
+    "name": "FESLEĞENLİ GİRİT",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00062",
+    "name": "GİRİT GÜZELİ",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00063",
+    "name": "GİRİT PEYNİRLİ",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00783",
+    "name": "HARDALLI PATLICAN",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00875",
+    "name": "HEYECANLI",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00758",
+    "name": "İSLİ PANCAR",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00092",
+    "name": "LORLU BİBER",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00857",
+    "name": "SİCİLYANO",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00122",
+    "name": "ŞEVKETİ BOSTAN",
+    "price": 275,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00856",
+    "name": "ANTİBİYOTİK",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00029",
+    "name": "AZ DENİZ MAH. SALATASI",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00031",
+    "name": "AZ KARİDES SÖĞÜŞ",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00032",
+    "name": "AZ LEVREK MARİN",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00051",
+    "name": "DENİZ BÖRÜLCELİ SICAK DOMATES",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00054",
+    "name": "DENİZ BÖRÜLCESİ",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00744",
+    "name": "EGE KARMASI",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00071",
+    "name": "KABAK ÇİÇEĞİ DOLMASI",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00078",
+    "name": "KAVUN - PEYNİR",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00769",
+    "name": "LÜBNAN MEZE",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00095",
+    "name": "MİDYE DOLMA",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00103",
+    "name": "PATLICAN ÜZERİ YOĞURTLU SICAK ATOM",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00109",
+    "name": "RUM MEZE",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00113",
+    "name": "SICAK DOMATES ATOMLU",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00114",
+    "name": "SOĞUK KALAMAR DOLMA",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00115",
+    "name": "SOĞUK OT TABAĞI",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00129",
+    "name": "YOĞURTLU BAMYA",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00130",
+    "name": "YOĞURTLU DENİZ BÖRÜLCESİ",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00138",
+    "name": "ZEYTİN SALATASI",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00139",
+    "name": "ZEYTİN YAĞLI ENGİNAR",
+    "price": 300,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00107",
+    "name": "PORTAKALLI KEREVİZ",
+    "price": 325,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00026",
+    "name": "AZ AHTAPOT SALATA",
+    "price": 350,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00047",
+    "name": "ÇANAK ENGİNAR PORSİYON",
+    "price": 350,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00055",
+    "name": "ENGİNAR KALBİ",
+    "price": 350,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00057",
+    "name": "ENGİNAR SALATASI",
+    "price": 350,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00785",
+    "name": "FIRIN ENGİNAR",
+    "price": 350,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00023",
+    "name": "ARNAVUT CİĞER",
+    "price": 375,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00116",
+    "name": "SOSLU HAMSİ",
+    "price": 375,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00741",
+    "name": "BEYİN SÖĞÜŞ",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00050",
+    "name": "ÇİROZ",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00072",
+    "name": "KARIŞIK KIZARTMA",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00096",
+    "name": "MİDYE SALATASI",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00797",
+    "name": "PEJMURGE",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00771",
+    "name": "SOĞUK BEYİN SÖĞÜŞ",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00770",
+    "name": "SOĞUK DİL SÖĞÜŞ",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00794",
+    "name": "SOMON GRAVLAX",
+    "price": 400,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00020",
+    "name": "AHTAPOT CARPACİO",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00749",
+    "name": "AVOKADOLU KARİDES",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00766",
+    "name": "BADEMLİ LEVREK",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00053",
+    "name": "DENİZ MAH. SALATASI",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00056",
+    "name": "ENGİNAR KALBİ 1.5",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00798",
+    "name": "FESLEĞENLİ LEVREK",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00759",
+    "name": "İSLİ MİDYE",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00073",
+    "name": "KARİDES AVAKADO",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00074",
+    "name": "KARİDES SÖĞÜŞ",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00091",
+    "name": "LEVREK MARİN",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00099",
+    "name": "ORDÖV",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00118",
+    "name": "SÜBYE SALATASI",
+    "price": 450,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00021",
+    "name": "AHTAPOT SALATA",
+    "price": 650,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00090",
+    "name": "LAKERDA",
+    "price": 650,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00052",
+    "name": "DENİZ MAH. SALATA 1.5",
+    "price": 775,
+    "group": "MEZELER"
+  },
+  {
+    "code": "ST00140",
+    "name": "AHTAPOT IZGARA BACAK",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00730",
+    "name": "AHTAPOT KREMALI GÜVEÇ MANTAR",
+    "price": 800,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00731",
+    "name": "AHTAPOT SÖĞÜŞ",
+    "price": 650,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00729",
+    "name": "AHTAPOT TEREYAĞLI",
+    "price": 500,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00141",
+    "name": "AZ D.M.G",
+    "price": 650,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00142",
+    "name": "AZ EV PATATESİ YOĞURTLU",
+    "price": 275,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00143",
+    "name": "AZ KALAMAR",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00144",
+    "name": "AZ LEVREK - ŞEVKET",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00145",
+    "name": "AZ MANTAR GÜVEÇ KREMALI KAŞARLI",
+    "price": 275,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00146",
+    "name": "AZ PATATES",
+    "price": 250,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00147",
+    "name": "AZ SICAK OT",
+    "price": 250,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00148",
+    "name": "AZ T. KARİDES",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00149",
+    "name": "AZ YAPRAK CİĞER",
+    "price": 350,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00859",
+    "name": "BALIK BEYTİ",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00150",
+    "name": "BALIK ÇORBASI",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00438",
+    "name": "BALIK KAVURMA",
+    "price": 800,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00855",
+    "name": "BALIK KOKOREÇ",
+    "price": 700,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00151",
+    "name": "BALIK KÖFTE",
+    "price": 175,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00880",
+    "name": "BALIK KÜNEFE",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00885",
+    "name": "BALIK PASTIRMA",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00152",
+    "name": "BALIKÇI BÖREĞİ",
+    "price": 225,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00153",
+    "name": "BEĞENDİ",
+    "price": 350,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00154",
+    "name": "BEĞENDİLİ AHTAPOT",
+    "price": 800,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00156",
+    "name": "BEĞENDİLİ LEVREK SARMA",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00157",
+    "name": "BEĞENDİLİ T. KARİDES",
+    "price": 800,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00155",
+    "name": "BEYBİ KALAMAR DOLMA ŞİŞ",
+    "price": 375,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00881",
+    "name": "BIYIK",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00679",
+    "name": "BİBER TARATOR SICAK",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00883",
+    "name": "ÇERKEZ TAVUĞU",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00882",
+    "name": "ÇITIR KABAK",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00159",
+    "name": "ÇITIR SEPET",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00160",
+    "name": "ÇORBA",
+    "price": 250,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00161",
+    "name": "D.M. BÖREK MUSKA",
+    "price": 225,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00162",
+    "name": "D.M. GÜVEÇ KREMALI",
+    "price": 850,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00163",
+    "name": "D.M. GÜVEÇ KREMASIZ",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00165",
+    "name": "DENİZ MAH. MAKARNA",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00164",
+    "name": "DENİZ MAH. ŞEVKET B. KREMALI",
+    "price": 850,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00743",
+    "name": "DİL SÖĞÜŞ SICAK",
+    "price": 550,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00473",
+    "name": "DİL ŞİŞ",
+    "price": 700,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00166",
+    "name": "HELLİMLİ LEVREK ŞİŞ ADET",
+    "price": 550,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00167",
+    "name": "HELLİMLİ LEVREK ŞİŞ PORSİYON",
+    "price": 550,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00168",
+    "name": "HELLİMLİ LTAVUK ŞİŞ KALEM",
+    "price": 350,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00169",
+    "name": "IZGARA PEYNİR",
+    "price": 175,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00170",
+    "name": "IZGARA PEYNİR GÜVEÇ KURU DOMATESLİ",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00474",
+    "name": "IZGARA YILAN BALIĞI",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00171",
+    "name": "İSTİRİDYE MANTAR IZGARA",
+    "price": 350,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00670",
+    "name": "İSTİRİDYE MANTAR KREMALI KAŞARLI",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00671",
+    "name": "İSTİRİDYE MANTAR TEREYAĞLI",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00807",
+    "name": "JUMBO KARİDES ADET",
+    "price": 250,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00863",
+    "name": "JUMBO KARİDES KG",
+    "price": null,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00172",
+    "name": "JUMBO KARİDES SHOT",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00173",
+    "name": "KALAMAR BEYTİ ŞİŞ ADET",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00174",
+    "name": "KALAMAR DOLMA",
+    "price": 1250,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00175",
+    "name": "KALAMAR ŞİŞ",
+    "price": 350,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00176",
+    "name": "KALAMAR TAVA",
+    "price": 700,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00177",
+    "name": "KALAMAR TAVA 1.5",
+    "price": 950,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00860",
+    "name": "KARİDES CARPACİO",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00178",
+    "name": "KARİDES GÜVEÇ KAŞARLI",
+    "price": 700,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00179",
+    "name": "KARİDES MANTI",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00180",
+    "name": "KARİDES ŞİŞ KALEM",
+    "price": 325,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00181",
+    "name": "KARİDESLİ LEVREK ŞEVKET",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00182",
+    "name": "KAŞARLI MANTAR ADET",
+    "price": 125,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00184",
+    "name": "KREMALI KAŞARLI ŞEVKETİ BOSTAN",
+    "price": 475,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00854",
+    "name": "LEVREK SİMİT",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00186",
+    "name": "LEVREK ŞEVKET",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00185",
+    "name": "LEVREK ŞEVKET 1.5",
+    "price": 950,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00874",
+    "name": "MAVİ KUYRUK",
+    "price": 3500,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00188",
+    "name": "MİDYE GÜVEÇ",
+    "price": 500,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00189",
+    "name": "MİDYE TAVA KALEM",
+    "price": 175,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00190",
+    "name": "MİDYE TAVA PORSİYON",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00886",
+    "name": "ORKİNOS FÜME",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00191",
+    "name": "ORKİNOS GÜVEÇ",
+    "price": 550,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00192",
+    "name": "PAÇANGA BÖREĞİ",
+    "price": 225,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00193",
+    "name": "PATATES KIZARTMASI",
+    "price": 350,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00873",
+    "name": "POSEDION TABAĞI 2 KİŞİLİK",
+    "price": 1300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00872",
+    "name": "POSEDİON TABAĞI 4 KİŞİLİK",
+    "price": 2250,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00858",
+    "name": "SAGANAKİ",
+    "price": 225,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00194",
+    "name": "SICAK ATOM",
+    "price": 275,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00195",
+    "name": "SICAK DOMATES",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00775",
+    "name": "SICAK HUMUS",
+    "price": 350,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00779",
+    "name": "SICAK HUMUS SUCUKLU",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00196",
+    "name": "SICAK KÖZ PATLICAN",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00197",
+    "name": "SICAK KÖZ PATLICAN KAŞARLI",
+    "price": 425,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00198",
+    "name": "SICAK OT",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00199",
+    "name": "SICAK SÜBYE",
+    "price": 600,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00876",
+    "name": "SOMON CEHİCHE",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00887",
+    "name": "SOMON FÜME",
+    "price": 400,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00201",
+    "name": "ŞEVKET KARİDES KREMALI",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00202",
+    "name": "TEK PATATES",
+    "price": 250,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00668",
+    "name": "TEREYAĞLI KARİDES",
+    "price": 700,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00203",
+    "name": "TEREYAĞLI KARİDES KAŞARLI",
+    "price": 700,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00205",
+    "name": "TEREYAĞLI KARİDES MANTARSIZ",
+    "price": 700,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00206",
+    "name": "Y.P.Ü.SICAK DOMATES",
+    "price": 300,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00207",
+    "name": "YAPRAK CİĞER",
+    "price": 600,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00208",
+    "name": "YAPRAK CİĞER 1.5",
+    "price": 750,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00209",
+    "name": "YOĞURTLU EV PATATES",
+    "price": 450,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00888",
+    "name": "ZİNNUR",
+    "price": 650,
+    "group": "ARA SICAKLAR"
+  },
+  {
+    "code": "ST00685",
+    "name": "ADABEYİ",
+    "price": 2000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00848",
+    "name": "ADABEYİ LOKUM",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00803",
+    "name": "AKYA",
+    "price": 2000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00738",
+    "name": "AKYA BÜTÜN",
+    "price": 2000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00412",
+    "name": "BALIK",
+    "price": null,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00413",
+    "name": "BALIK PİŞİRME",
+    "price": 400,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00853",
+    "name": "BALIK ŞAŞLIK",
+    "price": 750,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00659",
+    "name": "BARBUN",
+    "price": 3000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00658",
+    "name": "ÇUPRA",
+    "price": 1750,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00667",
+    "name": "DİL",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00665",
+    "name": "DÜLGER",
+    "price": 2000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00664",
+    "name": "FENER",
+    "price": 1700,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00845",
+    "name": "FENER LOKUM",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00666",
+    "name": "GRANYÖZ",
+    "price": 1800,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00844",
+    "name": "GRANYÖZ LOKUM",
+    "price": 2750,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00735",
+    "name": "GRANYÖZ PARÇA",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00414",
+    "name": "HAMSİ PORSİYON DERİN YAĞDA",
+    "price": 600,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00877",
+    "name": "ISTAKOZ",
+    "price": 3500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00789",
+    "name": "KALKAN",
+    "price": 3000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00790",
+    "name": "KALKAN PARÇA",
+    "price": 3250,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00570",
+    "name": "KARADENİZ USULÜ HAMSİ TAVA",
+    "price": 600,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00867",
+    "name": "KILIÇ",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00683",
+    "name": "KIRLANGIÇ",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00850",
+    "name": "KIRLANGIÇ LOKUM",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00787",
+    "name": "KOFANA",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00851",
+    "name": "KOFANA LOKUM",
+    "price": 3000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00788",
+    "name": "KOFANA PARÇA",
+    "price": 2750,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00682",
+    "name": "LAHOS",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00849",
+    "name": "LAHOS LOKUM",
+    "price": 3000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00740",
+    "name": "LAHOS PARÇA",
+    "price": 3000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00657",
+    "name": "LEVREK",
+    "price": 1850,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00846",
+    "name": "LEVREK LOKUM",
+    "price": 2750,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00847",
+    "name": "LEVREK TAKOZ",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00660",
+    "name": "LÜFER",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00662",
+    "name": "MERCAN",
+    "price": 2750,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00852",
+    "name": "MERCAN LOKUM",
+    "price": 3250,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00661",
+    "name": "MIRIMIR",
+    "price": 1700,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00806",
+    "name": "ORKİNOS",
+    "price": 2700,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00684",
+    "name": "PİSİ",
+    "price": 2000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00415",
+    "name": "SARDALYA PORSİYON",
+    "price": 600,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00663",
+    "name": "SARI KANAT",
+    "price": 1700,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00866",
+    "name": "SİNARİT",
+    "price": 2750,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00793",
+    "name": "SOMON",
+    "price": 600,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00804",
+    "name": "TEKİR",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00472",
+    "name": "USKUMRU",
+    "price": 1800,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00791",
+    "name": "YILAN BALIĞI",
+    "price": 2000,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00792",
+    "name": "YILAN BALIĞI PARÇA",
+    "price": 2500,
+    "group": "BALIK ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00317",
+    "name": "AMSTERDAM",
+    "price": 400,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00318",
+    "name": "BECKS",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00319",
+    "name": "BLANC",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00320",
+    "name": "BOMONTİ",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00321",
+    "name": "CARLSBERG 50 CL",
+    "price": 250,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00322",
+    "name": "CARLSBERG LUNA 50 CL",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00323",
+    "name": "CORONA",
+    "price": 400,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00324",
+    "name": "DESPERADOS",
+    "price": 350,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00325",
+    "name": "EFES MALT 50 CL",
+    "price": 250,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00326",
+    "name": "EFES ÖZEL SERİ 50 CL",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00327",
+    "name": "EFES ŞİŞE 50 CL",
+    "price": 250,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00328",
+    "name": "GUINNESS",
+    "price": 400,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00329",
+    "name": "HEİNEKEN",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00331",
+    "name": "MİLLER",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00332",
+    "name": "MİLLER KÜÇÜK",
+    "price": 250,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00333",
+    "name": "SOL",
+    "price": 350,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00334",
+    "name": "TUBORG",
+    "price": 250,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00335",
+    "name": "TUBORG AMBER 50 CL",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00336",
+    "name": "TUBORG FİLTRESİZ",
+    "price": 300,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00799",
+    "name": "TUBORG ICE",
+    "price": 250,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00337",
+    "name": "WEİHENSTEPHANNER 33CL",
+    "price": 350,
+    "group": "BİRALAR"
+  },
+  {
+    "code": "ST00407",
+    "name": "ANTEP FISTIĞI",
+    "price": 300,
+    "group": "ÇEREZLER"
+  },
+  {
+    "code": "ST00408",
+    "name": "BADEM",
+    "price": 300,
+    "group": "ÇEREZLER"
+  },
+  {
+    "code": "ST00686",
+    "name": "BEYAZ LEBLEBİ",
+    "price": 225,
+    "group": "ÇEREZLER"
+  },
+  {
+    "code": "ST00681",
+    "name": "ÇEREZ",
+    "price": 250,
+    "group": "ÇEREZLER"
+  },
+  {
+    "code": "ST00409",
+    "name": "SICAK ANTEP FISTIĞI",
+    "price": 350,
+    "group": "ÇEREZLER"
+  },
+  {
+    "code": "ST00410",
+    "name": "TUZLU FISTIK",
+    "price": 225,
+    "group": "ÇEREZLER"
+  },
+  {
+    "code": "ST00211",
+    "name": "ANTRİKOT KALEM",
+    "price": 800,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00210",
+    "name": "ANTRİKOT PORSİYON",
+    "price": 800,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00212",
+    "name": "ÇOBAN KAVURMA",
+    "price": 850,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00213",
+    "name": "DANA BONFİLE KALEM",
+    "price": 800,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00214",
+    "name": "DANA BONFİLE LOKUM TEREYAĞLI",
+    "price": 850,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00217",
+    "name": "DANA BONFİLE MANTARLI",
+    "price": 850,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00215",
+    "name": "DANA BONFİLE PORSİYON",
+    "price": 800,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00216",
+    "name": "DANA BONFİLE TEREYAĞLI KALEM",
+    "price": 850,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00218",
+    "name": "EKMEK ARASI KÖFTE",
+    "price": 350,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00219",
+    "name": "ET SOTE",
+    "price": 850,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00220",
+    "name": "KABURGA PRS",
+    "price": 425,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00221",
+    "name": "KABURGA PRS 1.5",
+    "price": 600,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00223",
+    "name": "KASAP KÖFTE KALEM",
+    "price": 100,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00225",
+    "name": "KASAP SUCUK ŞİŞ",
+    "price": 350,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00746",
+    "name": "KAŞARLI KÖFTE ADET",
+    "price": 300,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00745",
+    "name": "KAŞARLI KÖFTE PORSİYON",
+    "price": 300,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00226",
+    "name": "KÖFTE PATATES",
+    "price": 475,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00227",
+    "name": "KUZU BEYTİ KALEM",
+    "price": 450,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00228",
+    "name": "KUZU KOKOREÇ KALEM",
+    "price": 350,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00229",
+    "name": "KUZU KÜŞLEME KALEM",
+    "price": 600,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00230",
+    "name": "KUZU PİRZOLA KALEM",
+    "price": 275,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00231",
+    "name": "KUZU PİRZOLA PRS",
+    "price": 800,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00232",
+    "name": "KUZU ŞİŞ KALEM",
+    "price": 375,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00233",
+    "name": "LAHMACUN",
+    "price": 325,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00234",
+    "name": "OSMANLI SUCUK KALEM",
+    "price": 350,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00674",
+    "name": "PORSİYON KASAP KÖFTE",
+    "price": 450,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00235",
+    "name": "ŞAŞLIK",
+    "price": 800,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00236",
+    "name": "TAVUK BONFİLE",
+    "price": 325,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00237",
+    "name": "TAVUK İNCİK KALEM",
+    "price": 325,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00238",
+    "name": "TAVUK İNCİK PRS",
+    "price": 325,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00239",
+    "name": "TAVUK KANAT",
+    "price": 300,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00242",
+    "name": "TAVUK ŞİŞ",
+    "price": 275,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00241",
+    "name": "TAVUK ŞİŞ KALEM",
+    "price": 275,
+    "group": "ET ÇEŞİTLERİ"
+  },
+  {
+    "code": "ST00384",
+    "name": "ABSOLUT",
+    "price": 800,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00386",
+    "name": "ADİYOS NIGHT",
+    "price": 150,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00822",
+    "name": "APEROL 7O CL",
+    "price": 1800,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00878",
+    "name": "BAİLEYS 70 CL",
+    "price": 2750,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00879",
+    "name": "BAİLEYS KADEH",
+    "price": 550,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00385",
+    "name": "BALANTİNES",
+    "price": 550,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00865",
+    "name": "BEEFEATER GİN 35 CL",
+    "price": 1300,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00864",
+    "name": "BEEFEATER GİN 70 CL",
+    "price": 2400,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00698",
+    "name": "BLACK LABEL 100 CL",
+    "price": 2900,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00387",
+    "name": "BLACK LABEL 35 CL",
+    "price": 1500,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00696",
+    "name": "BLACK LABEL 50 CL",
+    "price": 1850,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00697",
+    "name": "BLACK LABEL 70 CL",
+    "price": 2500,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00388",
+    "name": "CHİVAS REGAL 12 YEAR 100 CL",
+    "price": 3200,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00690",
+    "name": "CHİVAS REGAL 12 YEAR 35 CL",
+    "price": 1650,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00691",
+    "name": "CHİVAS REGAL 12 YEAR 50 CL",
+    "price": 1950,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00689",
+    "name": "CHİVAS REGAL 12 YEAR 70 CL",
+    "price": 2700,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00389",
+    "name": "CHİVAS REGAL 13 YEAR 70 CL",
+    "price": 2850,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00390",
+    "name": "CHİVAS REGAL 18 YEAR 70 CL",
+    "price": 3850,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00391",
+    "name": "CİN",
+    "price": 600,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00392",
+    "name": "CİN TONİK",
+    "price": 350,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00821",
+    "name": "FINLANDIA 70 CL",
+    "price": 2400,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00394",
+    "name": "GORDON CİN",
+    "price": 550,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00395",
+    "name": "İSTANBLUE VODKA",
+    "price": 350,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00396",
+    "name": "JACK DANİELS",
+    "price": 2700,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00398",
+    "name": "LYNCHBURH LEMONADE",
+    "price": 400,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00695",
+    "name": "OLMECA 100 CL",
+    "price": 2800,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00692",
+    "name": "OLMECA 35 CL",
+    "price": 1450,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00693",
+    "name": "OLMECA 50 CL",
+    "price": 1800,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00694",
+    "name": "OLMECA 70 CL",
+    "price": 2450,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00702",
+    "name": "RED LABEL 100 CL",
+    "price": 2600,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00699",
+    "name": "RED LABEL 35 CL",
+    "price": 1350,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00700",
+    "name": "RED LABEL 50 CL",
+    "price": 1700,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00701",
+    "name": "RED LABEL 70 CL",
+    "price": 2300,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00820",
+    "name": "SMİRNOFF 1 LT",
+    "price": 2600,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00401",
+    "name": "SMİRNOFF 35 CL",
+    "price": 1350,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00687",
+    "name": "SMİRNOFF 50 CL",
+    "price": 1700,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00688",
+    "name": "SMİRNOFF 70 CL",
+    "price": 2300,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00402",
+    "name": "TEKİLA SHOT",
+    "price": 300,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00403",
+    "name": "VİSKİ DUBLE",
+    "price": 400,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00404",
+    "name": "VİSKİ TEK",
+    "price": 250,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00406",
+    "name": "VODKA DUBLE",
+    "price": 350,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00405",
+    "name": "VODKA ENERJİ",
+    "price": 400,
+    "group": "İMPORT"
+  },
+  {
+    "code": "ST00243",
+    "name": "AYRAN",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00244",
+    "name": "B. ŞALGAM ACILI",
+    "price": 250,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00733",
+    "name": "B. ŞALGAM ACISIZ",
+    "price": 250,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00245",
+    "name": "BÜYÜK ELMA SUYU",
+    "price": 300,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00246",
+    "name": "BÜYÜK ENERJİ İÇECEĞİ",
+    "price": 300,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00247",
+    "name": "BÜYÜK M. SUYU",
+    "price": 300,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00248",
+    "name": "CAPPY M. SUYU",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00249",
+    "name": "CHURCİLL",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00250",
+    "name": "FANTA",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00251",
+    "name": "ICE TEA",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00252",
+    "name": "K. ŞALGAM ACILI",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00734",
+    "name": "K. ŞALGAM ACISIZ",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00253",
+    "name": "KARAF LİMON",
+    "price": 200,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00254",
+    "name": "KOLA",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00255",
+    "name": "KOLA ZERO",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00256",
+    "name": "LİMONATA",
+    "price": 150,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00257",
+    "name": "NESCAFE",
+    "price": 100,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00258",
+    "name": "RED BULL",
+    "price": 250,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00260",
+    "name": "SCHWEPPES 1 LT",
+    "price": 200,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00261",
+    "name": "SODA",
+    "price": 75,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00262",
+    "name": "SODA - LİMON",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00263",
+    "name": "SPRİTE",
+    "price": 125,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00264",
+    "name": "SU",
+    "price": 50,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00265",
+    "name": "TÜRK KAHVESİ",
+    "price": 100,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00266",
+    "name": "ULUDAĞ TONİK 33CL",
+    "price": 150,
+    "group": "MEŞRUBAT"
+  },
+  {
+    "code": "ST00338",
+    "name": "ANANAS",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00339",
+    "name": "AYVA TATLISI KAYMAKLI - CEVİZLİ",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00340",
+    "name": "BAKLAVA KALEM",
+    "price": 275,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00342",
+    "name": "BAL - MUZ",
+    "price": 225,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00341",
+    "name": "BAL BADEM",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00343",
+    "name": "BALLI CEVİZLİ MUZ",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00344",
+    "name": "ÇİKOLATA SERPME",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00669",
+    "name": "DİLİM KARPUZ",
+    "price": 150,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00345",
+    "name": "DONDURMA",
+    "price": 100,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00346",
+    "name": "DONDURMALI FIRIN HELVA",
+    "price": 325,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00347",
+    "name": "DONDURMALI İRMİK",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00348",
+    "name": "DONDURMALI KATMER",
+    "price": 325,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00349",
+    "name": "DONDURMALI KAZANDİBİ",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00350",
+    "name": "DONDURMALI PEYNİR TATLISI",
+    "price": 175,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00861",
+    "name": "EKMEK KADAYIFI",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00351",
+    "name": "ERİK",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00352",
+    "name": "FIRIN HELVA",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00353",
+    "name": "FIRIN HELVA CEVİZLİ",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00354",
+    "name": "FIRIN SÜTLAÇ",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00355",
+    "name": "FIRIN SÜTLAÇ DONDURMALI",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00356",
+    "name": "HASIR KADAYIF",
+    "price": 275,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00357",
+    "name": "HELVA",
+    "price": 150,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00656",
+    "name": "HÖŞMERİM",
+    "price": 200,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00774",
+    "name": "İNCİR TATLISI KALEM",
+    "price": 150,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00358",
+    "name": "KABAK TATLISI",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00359",
+    "name": "KABAK TATLISI KAYMAKLI",
+    "price": 325,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00360",
+    "name": "KABAK TATLISI TEK",
+    "price": 175,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00361",
+    "name": "KARIŞIK TATLI",
+    "price": 350,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00362",
+    "name": "KAŞIK AYVA",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00363",
+    "name": "KAZANDİBİ",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00364",
+    "name": "KAZANDİBİ DONDURMALI",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00365",
+    "name": "KİRAZ",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00367",
+    "name": "MEYVE TABAĞI",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00369",
+    "name": "NAR",
+    "price": 200,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00370",
+    "name": "PASTA",
+    "price": 750,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00371",
+    "name": "PEYNİR TATLISI KALEM",
+    "price": 125,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00372",
+    "name": "SAKIZLI MUHALLEBİ",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00373",
+    "name": "SERPME MEYVE",
+    "price": 250,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00862",
+    "name": "SÜTLÜ İNCİR",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00376",
+    "name": "TATLI TABAĞI",
+    "price": 300,
+    "group": "MEYVE TATLI"
+  },
+  {
+    "code": "ST00480",
+    "name": "ALA RAKI 20 CL",
+    "price": 1000,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00481",
+    "name": "ALA RAKI 35 CL",
+    "price": 1550,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00703",
+    "name": "ALA RAKI 50 CL",
+    "price": 1850,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00482",
+    "name": "ALA RAKI 70 CL",
+    "price": 2600,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00269",
+    "name": "ALTINBAŞ 24 AYAR 70 CL",
+    "price": 2650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00270",
+    "name": "ALTINBAŞ 70CL SİYAH",
+    "price": 2650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00487",
+    "name": "BEYLERBEYİ GÖBEK RAKI 100 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00483",
+    "name": "BEYLERBEYİ GÖBEK RAKI 20 CL",
+    "price": 950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00484",
+    "name": "BEYLERBEYİ GÖBEK RAKI 35 CL",
+    "price": 1450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00485",
+    "name": "BEYLERBEYİ GÖBEK RAKI 50 CL",
+    "price": 1750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00486",
+    "name": "BEYLERBEYİ GÖBEK RAKI 70 CL",
+    "price": 2450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00868",
+    "name": "BEYLERBEYİ İNCİRDEN 70 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00274",
+    "name": "BEYLERBEYİ KALECİK KARASI 70 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00753",
+    "name": "BEYLERBEYİ MARGAZ 20 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00756",
+    "name": "BEYLERBEYİ MARGAZ 70 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00707",
+    "name": "BEYLERBEYİ MAVİ 100 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00272",
+    "name": "BEYLERBEYİ MAVİ 20 CL",
+    "price": 950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00704",
+    "name": "BEYLERBEYİ MAVİ 35 CL",
+    "price": 1450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00705",
+    "name": "BEYLERBEYİ MAVİ 50 CL",
+    "price": 1700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00706",
+    "name": "BEYLERBEYİ MAVİ 70 CL",
+    "price": 2300,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00497",
+    "name": "BEYLERBEYİ TERRA GOLD 100 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00493",
+    "name": "BEYLERBEYİ TERRA GOLD 20 CL",
+    "price": 950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00494",
+    "name": "BEYLERBEYİ TERRA GOLD 35 CL",
+    "price": 1450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00495",
+    "name": "BEYLERBEYİ TERRA GOLD 50 CL",
+    "price": 1750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00496",
+    "name": "BEYLERBEYİ TERRA GOLD 75 CL",
+    "price": 2300,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00277",
+    "name": "DUBLE RAKI",
+    "price": 400,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00817",
+    "name": "EFE 5 YILLIK 70 CL",
+    "price": 8000,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00502",
+    "name": "EFE GOLD RAKI 100 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00498",
+    "name": "EFE GOLD RAKI 20 CL",
+    "price": 950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00499",
+    "name": "EFE GOLD RAKI 35 CL",
+    "price": 1400,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00500",
+    "name": "EFE GOLD RAKI 50 CL",
+    "price": 1700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00501",
+    "name": "EFE GOLD RAKI 70 CL",
+    "price": 2350,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00507",
+    "name": "EFE GÖBEK RAKI 100 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00503",
+    "name": "EFE GÖBEK RAKI 20 CL",
+    "price": 1000,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00504",
+    "name": "EFE GÖBEK RAKI 35 CL",
+    "price": 1500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00505",
+    "name": "EFE GÖBEK RAKI 50 CL",
+    "price": 1850,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00506",
+    "name": "EFE GÖBEK RAKI 70 CL",
+    "price": 2500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00512",
+    "name": "EFE TEK İMBİK 100 CL",
+    "price": 2800,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00508",
+    "name": "EFE TEK İMBİK 20 CL",
+    "price": 1050,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00509",
+    "name": "EFE TEK İMBİK 35 CL",
+    "price": 1500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00510",
+    "name": "EFE TEK İMBİK 50 CL",
+    "price": 1850,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00511",
+    "name": "EFE TEK İMBİK 70 CL",
+    "price": 2500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00517",
+    "name": "EFE YEŞİL RAKI 100 CL",
+    "price": 2650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00513",
+    "name": "EFE YEŞİL RAKI 20 CL",
+    "price": 950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00514",
+    "name": "EFE YEŞİL RAKI 35 CL",
+    "price": 1400,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00515",
+    "name": "EFE YEŞİL RAKI 50 CL",
+    "price": 1700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00516",
+    "name": "EFE YEŞİL RAKI 70 CL",
+    "price": 2300,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00282",
+    "name": "KARAR RAKI",
+    "price": 350,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00708",
+    "name": "KULÜP RAKI 35 CL",
+    "price": 1650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00283",
+    "name": "KULÜP RAKI 70 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00709",
+    "name": "KULÜP RAKI DELUXE 35 CL",
+    "price": 1650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00710",
+    "name": "KULÜP RAKI DELUXE 70 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00520",
+    "name": "MERCAN GÖBEK RAKISI 100 CL",
+    "price": 2950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00711",
+    "name": "MERCAN GÖBEK RAKISI 20 CL",
+    "price": 1100,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00712",
+    "name": "MERCAN GÖBEK RAKISI 35 CL",
+    "price": 1650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00518",
+    "name": "MERCAN GÖBEK RAKISI 50 CL",
+    "price": 1950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00519",
+    "name": "MERCAN GÖBEK RAKISI 70 CL",
+    "price": 2650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00757",
+    "name": "MTAILAT ARAK 20 CL",
+    "price": 1400,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00752",
+    "name": "MTAILAT ARAK RAKI 70 CL",
+    "price": 3250,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00521",
+    "name": "NO:10 35 CL",
+    "price": 1800,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00522",
+    "name": "NO:10 70 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00751",
+    "name": "PROTOTİP RAKI 70 CL",
+    "price": 3250,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00527",
+    "name": "SAKİ GOLD RAKI 100 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00523",
+    "name": "SAKİ GOLD RAKI 20 CL",
+    "price": 1000,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00524",
+    "name": "SAKİ GOLD RAKI 35 CL",
+    "price": 1450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00525",
+    "name": "SAKİ GOLD RAKI 50 CL",
+    "price": 1800,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00526",
+    "name": "SAKİ GOLD RAKI 70 CL",
+    "price": 2500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00750",
+    "name": "SAKİ RAKI DELÜX 35 CL",
+    "price": 1600,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00531",
+    "name": "SAKİ SİYAH ÜZÜM 18 AY 100 CL",
+    "price": 2800,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00680",
+    "name": "SAKİ SİYAH ÜZÜM 18 AY 20 CL",
+    "price": 975,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00528",
+    "name": "SAKİ SİYAH ÜZÜM 18 AY 35 CL",
+    "price": 1450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00529",
+    "name": "SAKİ SİYAH ÜZÜM 18 AY 50 CL",
+    "price": 1850,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00530",
+    "name": "SAKİ SİYAH ÜZÜM 18 AY 70 CL",
+    "price": 2450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00715",
+    "name": "SARI ZEYBEK 3 MEŞE 100 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00532",
+    "name": "SARI ZEYBEK 3 MEŞE 20 CL",
+    "price": 975,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00533",
+    "name": "SARI ZEYBEK 3 MEŞE 35 CL",
+    "price": 1500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00676",
+    "name": "SARI ZEYBEK 3 MEŞE 50 CL",
+    "price": 1750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00288",
+    "name": "SARI ZEYBEK 3 MEŞE 70 CL",
+    "price": 2450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00714",
+    "name": "SARI ZEYBEK YAŞ ÜZÜM 100 CL",
+    "price": 2750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00713",
+    "name": "SARI ZEYBEK YAŞ ÜZÜM 20 CL",
+    "price": 1000,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00534",
+    "name": "SARI ZEYBEK YAŞ ÜZÜM 35 CL",
+    "price": 1500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00675",
+    "name": "SARI ZEYBEK YAŞ ÜZÜM 50 CL",
+    "price": 1750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00535",
+    "name": "SARI ZEYBEK YAŞ ÜZÜM 70 CL",
+    "price": 2450,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00290",
+    "name": "TEK RAKI",
+    "price": 300,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00540",
+    "name": "TEKİRDAĞ 100 CL",
+    "price": 2650,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00536",
+    "name": "TEKİRDAĞ 20 CL",
+    "price": 900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00537",
+    "name": "TEKİRDAĞ 35 CL",
+    "price": 1400,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00538",
+    "name": "TEKİRDAĞ 50 CL",
+    "price": 1700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00539",
+    "name": "TEKİRDAĞ 70 CL",
+    "price": 2300,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00545",
+    "name": "TEKİRDAĞ ALTIN SERİ 100 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00541",
+    "name": "TEKİRDAĞ ALTIN SERİ 20 CL",
+    "price": 950,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00542",
+    "name": "TEKİRDAĞ ALTIN SERİ 35 CL",
+    "price": 1400,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00543",
+    "name": "TEKİRDAĞ ALTIN SERİ 50 CL",
+    "price": 1750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00544",
+    "name": "TEKİRDAĞ ALTIN SERİ 70 CL",
+    "price": 2350,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00755",
+    "name": "TEKİRDAĞ GÖBEK 100 CL",
+    "price": 2900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00754",
+    "name": "TEKİRDAĞ GÖBEK 70 CL",
+    "price": 2500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00869",
+    "name": "TEKİRDAĞ GÖBEK RAKI 20 CL",
+    "price": 1050,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00870",
+    "name": "TEKİRDAĞ GÖBEK RAKI 35 CL",
+    "price": 1600,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00871",
+    "name": "TEKİRDAĞ GÖBEK RAKI 50 CL",
+    "price": 1900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00718",
+    "name": "TEKİRDAĞ ÖKÜZ GÖZÜ REZERV 100 CL",
+    "price": 2900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00716",
+    "name": "TEKİRDAĞ ÖKÜZ GÖZÜ REZERV 20 CL",
+    "price": 1050,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00546",
+    "name": "TEKİRDAĞ ÖKÜZ GÖZÜ REZERV 35 CL",
+    "price": 1550,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00717",
+    "name": "TEKİRDAĞ ÖKÜZ GÖZÜ REZERV 50 CL",
+    "price": 1850,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00547",
+    "name": "TEKİRDAĞ ÖKÜZ GÖZÜ REZERV 70 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00548",
+    "name": "TEKİRDAĞ TRAKYA SERİSİ 35 CL",
+    "price": 1500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00549",
+    "name": "TEKİRDAĞ TRAKYA SERİSİ 70 CL",
+    "price": 2550,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00720",
+    "name": "USTALARIN KARIŞIMI 100 CL",
+    "price": 2900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00719",
+    "name": "USTALARIN KARIŞIMI 20 CL",
+    "price": 1050,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00550",
+    "name": "USTALARIN KARIŞIMI 35 CL",
+    "price": 1550,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00551",
+    "name": "USTALARIN KARIŞIMI 50 CL",
+    "price": 1850,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00552",
+    "name": "USTALARIN KARIŞIMI 70 CL",
+    "price": 2600,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00479",
+    "name": "YENİ RAKI 100 CL",
+    "price": 2600,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00475",
+    "name": "YENİ RAKI 20 CL",
+    "price": 900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00477",
+    "name": "YENİ RAKI 35 CL",
+    "price": 1350,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00476",
+    "name": "YENİ RAKI 50 CL",
+    "price": 1700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00478",
+    "name": "YENİ RAKI 70 CL",
+    "price": 2150,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00818",
+    "name": "YENİ RAKI GİZ 50 CL",
+    "price": 3750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00819",
+    "name": "YENİ RAKI PUS 50 CL",
+    "price": 3750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00557",
+    "name": "YENİ RAKI UZUN DEMLEME 100 CL",
+    "price": 2900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00553",
+    "name": "YENİ RAKI UZUN DEMLEME 20 CL",
+    "price": 1000,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00554",
+    "name": "YENİ RAKI UZUN DEMLEME 35 CL",
+    "price": 1500,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00555",
+    "name": "YENİ RAKI UZUN DEMLEME 50 CL",
+    "price": 1850,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00556",
+    "name": "YENİ RAKI UZUN DEMLEME 70 CL",
+    "price": 2600,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00562",
+    "name": "YENİ RAKI YENİ SERİ 100 CL",
+    "price": 2700,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00558",
+    "name": "YENİ RAKI YENİ SERİ 20 CL",
+    "price": 900,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00559",
+    "name": "YENİ RAKI YENİ SERİ 35CL",
+    "price": 1400,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00560",
+    "name": "YENİ RAKI YENİ SERİ 50 CL",
+    "price": 1750,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00561",
+    "name": "YENİ RAKI YENİ SERİ 70 CL",
+    "price": 2300,
+    "group": "RAKILAR"
+  },
+  {
+    "code": "ST00001",
+    "name": "ÇOBAN SALATA",
+    "price": 300,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00002",
+    "name": "ÇOBAN SALATA PEYNİRLİ",
+    "price": 325,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00003",
+    "name": "GAVURDAĞ",
+    "price": 350,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00004",
+    "name": "GAVURDAĞ TEK",
+    "price": 250,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00005",
+    "name": "İSTANBUL SALATA",
+    "price": 300,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00006",
+    "name": "KAŞIK SALATA",
+    "price": 300,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00007",
+    "name": "KAŞIK SALATA PEYNİRLİ",
+    "price": 325,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00008",
+    "name": "MEVSİM SALATA",
+    "price": 250,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00009",
+    "name": "MEVSİM SALATA PEYNİRLİ",
+    "price": 300,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00778",
+    "name": "R.D.P",
+    "price": 300,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00011",
+    "name": "R.D.S",
+    "price": 250,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00010",
+    "name": "R.D.S.P",
+    "price": 300,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00012",
+    "name": "SALATALIK SÖĞÜŞ",
+    "price": 100,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00013",
+    "name": "TEK ÇOBAN SALATA",
+    "price": 200,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00014",
+    "name": "TEK KAŞIK SALATA",
+    "price": 200,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00772",
+    "name": "TEK R.D.S.P",
+    "price": 200,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00015",
+    "name": "TEK YEŞİL SALATA",
+    "price": 175,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00016",
+    "name": "TEK YEŞİL SALATA PEYNİRLİ",
+    "price": 200,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00017",
+    "name": "TON BALIKLI SALATA",
+    "price": 400,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00018",
+    "name": "YEŞİL SALATA",
+    "price": 250,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00019",
+    "name": "YEŞİL SALATA PEYNİRLİ",
+    "price": 300,
+    "group": "SALATALAR"
+  },
+  {
+    "code": "ST00808",
+    "name": "CIELO CHARDONNAY BEYAZ 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00809",
+    "name": "CIELO PINOT BEYAZ 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00300",
+    "name": "ALLURE ŞİŞE GRUBU 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00301",
+    "name": "AMATORE ROSE ŞİŞE GRUBU 75 CL",
+    "price": 2500,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00836",
+    "name": "ANTİK KIRMIZI ŞARAP 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00721",
+    "name": "BUZBAĞ ŞİŞE GRUBU 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00831",
+    "name": "CIELO CABERNET KIRMIZI 75 CL",
+    "price": 2100,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00826",
+    "name": "CIELO MERLOT KIRMIZI 75 CL",
+    "price": 2100,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00841",
+    "name": "CIELO PINOT GRIGIO ROSE 75 CL",
+    "price": 2100,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00802",
+    "name": "CIELO PRIMASOLE 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00304",
+    "name": "CIELO ŞİŞE GRUBU 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00305",
+    "name": "CONSENSUS ŞİŞE GRUBU 75 CL",
+    "price": 3500,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00723",
+    "name": "DLC ŞİŞE GRUBU 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00839",
+    "name": "DOLUCA MERLOT KIRMIZI 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00827",
+    "name": "DOLUCA ÖKÜZGÖZÜ KIRMIZI 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00722",
+    "name": "DOLUCA ŞİŞE GRUBU 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00306",
+    "name": "İDOL ŞİŞE GRUBU 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00307",
+    "name": "KADEH BEYAZ ŞARAP",
+    "price": 400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00308",
+    "name": "KADEH KIRMIZI ŞARAP",
+    "price": 400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00728",
+    "name": "KADEH ROSE ŞARAP",
+    "price": 400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00813",
+    "name": "KAYRA ALLURE SAUVIGNON BEYAZ 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00838",
+    "name": "KAV ÖKÜZGÖZÜ KIRMIZI 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00725",
+    "name": "KAV ŞİŞE GRUBU 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00801",
+    "name": "KAVAKLIDERE EMİR 75 CL",
+    "price": 2400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00812",
+    "name": "KAYRA ALLURE CHARDONNAY BEYAZ 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00828",
+    "name": "KAYRA ALLURE KIRMIZI 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00832",
+    "name": "KAYRA MERLOT KIRMIZI 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00840",
+    "name": "KAYRA VINTAGE ÖKÜZGÖZÜ ROSE 75 CL",
+    "price": 2400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00829",
+    "name": "KAYRA VINTAGE CABERNET KIRMIZI 75 CL",
+    "price": 2400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00810",
+    "name": "KAYRA VINTAGE CHARDONNAY BEYAZ 75 CL",
+    "price": 2400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00811",
+    "name": "KAYRA VINTAGE NARİNCE BEYAZ 75 CL",
+    "price": 2400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00309",
+    "name": "KAYRA VINTAGE ŞİŞE GRUBU 75 CL",
+    "price": 2400,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00310",
+    "name": "LEONA BLUSH 75 CL",
+    "price": 2100,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00727",
+    "name": "MON REVE 75 CL",
+    "price": 2200,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00311",
+    "name": "PREMATURE SOLE 75 CL",
+    "price": 2500,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00800",
+    "name": "PRINZ HESSEN 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00833",
+    "name": "SARAFIN CABERNET KIRMIZI 75 CL",
+    "price": 2900,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00834",
+    "name": "SARAFIN MERLOT KIRMIZI 75 CL",
+    "price": 2900,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00724",
+    "name": "SARAFIN ŞİŞE GRUBU 75 CL",
+    "price": 2900,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00313",
+    "name": "SMYRNA BLUSH 75 CL",
+    "price": 2100,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00843",
+    "name": "TERRA CABERNET KIRMIZI 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00816",
+    "name": "TERRA NARİNCE BEYAZ 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00824",
+    "name": "TERRA ÖKÜZGÖZÜ KIRMIZI 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00314",
+    "name": "TERRA ŞİŞE GRUBU 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00726",
+    "name": "VİLLA DOLUCA 75 CL",
+    "price": 2000,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00315",
+    "name": "YAKUT 75 CL",
+    "price": 2300,
+    "group": "ŞARAPLAR"
+  },
+  {
+    "code": "ST00316",
+    "name": "YANIK ÜLKE 75 CL",
+    "price": 3250,
+    "group": "ŞARAPLAR"
+  }
+]

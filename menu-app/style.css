@@ -1,0 +1,1383 @@
+/* ==========================================================================
+   TUZLA BALIK SOYAK - NATIVE DİJİTAL MENÜ UYGULAMASI (MENU APP)
+   Fluid Native App UI, Mobile Gesture Bottom Sheets & Touch Physics
+   ========================================================================== */
+
+:root {
+  --bg-body: #2b324c;
+  --bg-surface: #242a3f;
+  --bg-card: rgba(36, 42, 63, 0.92);
+  --bg-card-hover: rgba(43, 50, 76, 0.98);
+  --bg-glass: rgba(43, 50, 76, 0.92);
+  --bg-input: #1d2233;
+  --bg-elevated: #323a54;
+
+  --accent-gold: #c5a059;
+  --accent-gold-light: #f5df9e;
+  --accent-gold-dark: #a68032;
+  --gold-gradient: linear-gradient(135deg, #d4af37 0%, #edd68a 50%, #b38b22 100%);
+  --gold-glow: rgba(212, 175, 55, 0.22);
+
+  --border-hairline: rgba(212, 175, 55, 0.16);
+  --border-focus: #c5a059;
+  --border-muted: rgba(255, 255, 255, 0.08);
+
+  --text-main: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-gold: #d4af37;
+
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-card: 0 8px 24px rgba(15, 18, 30, 0.35);
+  --shadow-elevated: 0 18px 45px rgba(12, 15, 25, 0.65);
+  --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.25);
+
+  --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --apple-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --apple-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --trans-native: 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+  --trans-spring: 0.44s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset & Native App Touch Mechanics */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #171b29; /* Deep canvas backdrop for Apple sheet scaling */
+  color: var(--text-main);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* App Container - With Apple Stacked Card Physics */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  background-color: var(--bg-body);
+  transform-origin: top center;
+  transition: transform 0.38s var(--apple-spring), border-radius 0.38s var(--apple-spring), opacity 0.3s ease;
+}
+
+body.detail-sheet-open {
+  overflow: hidden;
+}
+
+body.detail-sheet-open .app-container {
+  transform: scale(0.96) translateY(-4px);
+  border-radius: 20px;
+  overflow: hidden;
+  opacity: 0.82;
+  pointer-events: none;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+}
+
+/* ==========================================================================
+   APP HEADER & TELEGRAM-STYLE DYNAMIC ISLAND SCROLL COLLAPSE
+   ========================================================================== */
+.app-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  pointer-events: none;
+  transition: padding 0.35s var(--apple-spring);
+}
+
+.app-header {
+  pointer-events: auto;
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+  margin: 0 auto;
+  transition: width 0.4s var(--apple-spring), 
+              margin-top 0.4s var(--apple-spring), 
+              border-radius 0.4s var(--apple-spring), 
+              padding 0.35s var(--apple-spring), 
+              box-shadow 0.4s var(--apple-spring),
+              background 0.35s ease,
+              border 0.35s ease;
+}
+
+/* Header Scrolled State:
+   - On standard phones & PC (no Dynamic Island hardware): Stays full-width, sleek, compact frosted glass.
+   - ONLY on genuine Dynamic Island hardware (iPhone 14 Pro/15/16 with top safe inset): Morphs into floating capsule pill.
+*/
+.app-header.header-scrolled {
+  padding: 0.55rem 1.5rem;
+  background: rgba(23, 27, 41, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.app-header.header-scrolled .brand-logo {
+  height: 34px;
+  width: 34px;
+}
+
+.app-header.header-scrolled .brand-logo-wide {
+  height: 28px;
+  max-width: 175px;
+}
+
+.app-header.header-scrolled .brand-text h1 {
+  font-size: 1.05rem;
+}
+
+.app-header.header-scrolled .brand-text p {
+  display: none;
+}
+
+/* Dynamic Island Capsule State ONLY when genuine Dynamic Island hardware is detected */
+body.has-dynamic-island .app-header.header-scrolled {
+  margin-top: 10px;
+  width: min(calc(100% - 24px), 360px);
+  border-radius: var(--radius-full);
+  padding: 0.45rem 1rem;
+  background: rgba(36, 42, 63, 0.94);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 12px 35px rgba(10, 13, 24, 0.7), 0 0 20px rgba(212, 175, 55, 0.22);
+}
+
+body.has-dynamic-island .app-header.header-scrolled .brand-logo {
+  height: 32px;
+  width: 32px;
+}
+
+body.has-dynamic-island .app-header.header-scrolled .brand-logo-wide {
+  height: 24px;
+  max-width: 145px;
+}
+
+body.has-dynamic-island .app-header.header-scrolled .brand-text h1 {
+  font-size: 0.98rem;
+  line-height: 1.1;
+}
+
+body.has-dynamic-island .app-header.header-scrolled .btn-header-contact {
+  height: 32px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+}
+
+body.has-dynamic-island .app-header.header-scrolled .header-contact-label {
+  display: none;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-logo-wide {
+  height: 38px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-logo {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: var(--bg-body);
+  box-shadow: 0 0 16px rgba(20, 25, 40, 0.7), 0 0 8px var(--gold-glow);
+  padding: 2px;
+}
+
+.brand-text h1 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+}
+
+.brand-text p {
+  font-size: 0.7rem;
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Load More Section (Progressive Virtualization) */
+.load-more-section {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 0 3rem;
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.btn-load-more {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  color: var(--accent-gold);
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--trans-fast), background var(--trans-fast);
+}
+
+.btn-load-more:active {
+  transform: scale(0.96);
+}
+
+.btn-header-contact {
+  background: var(--gold-gradient);
+  border: 1px solid var(--accent-gold);
+  color: var(--bg-body) !important;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  height: 38px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  text-decoration: none;
+  box-shadow: var(--shadow-gold);
+  transition: transform var(--trans-fast);
+}
+
+.btn-header-contact:active {
+  transform: scale(0.95);
+}
+
+/* ==========================================================================
+   HERO & SEARCH STRIP
+   ========================================================================== */
+.app-hero-strip {
+  padding: 1.8rem 1.5rem 1.2rem;
+  background: linear-gradient(180deg, rgba(36, 42, 63, 0.5) 0%, rgba(43, 50, 76, 0.1) 100%);
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.hero-strip-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.hero-heading h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+  color: var(--text-main);
+}
+
+.hero-heading h2 em {
+  font-style: italic;
+  color: var(--accent-gold-light);
+}
+
+.hero-heading p {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  max-width: 600px;
+}
+
+.search-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent-gold);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-main);
+  border-radius: var(--radius-full);
+  padding: 0.75rem 2.4rem 0.75rem 2.6rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 14px var(--gold-glow);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 0.85rem;
+  display: none;
+}
+
+.search-clear-btn.visible {
+  display: block;
+}
+
+.btn-filter-trigger {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-hairline);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  white-space: nowrap;
+}
+
+.btn-filter-trigger:active {
+  transform: scale(0.96);
+}
+
+.btn-filter-trigger.active {
+  border-color: var(--accent-gold);
+  color: var(--text-main);
+  background: var(--bg-elevated);
+}
+
+/* ==========================================================================
+   STICKY CATEGORY NAV STRIP WITH LINEAR SPRING PILL
+   ========================================================================== */
+/* ==========================================================================
+   STICKY CATEGORY NAV STRIP (SEGMENTED CONTROL - BIREBIR LISTE/KART GIBI)
+   ========================================================================== */
+.category-nav-wrapper {
+  position: sticky;
+  top: 61px;
+  z-index: 90;
+  background: var(--bg-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 0.8rem 1.5rem 0.9rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: top 0.35s var(--apple-spring);
+}
+
+.category-nav-wrapper::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Unified Segmented Pill Track (Identical to .view-mode-toggle) */
+.category-nav-scroll {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.35rem;
+  gap: 0.25rem;
+  width: max-content;
+  min-width: max-content;
+  box-sizing: border-box;
+}
+
+/* Fluid Segmented Spring Pill Indicator (Identical to .segmented-spring-pill) */
+.cat-spring-indicator {
+  position: absolute;
+  top: 0.3rem;
+  left: 0;
+  width: 0;
+  background: var(--accent-gold);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              width 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.25s ease,
+              top 0.25s ease,
+              opacity 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+  opacity: 0;
+}
+
+/* Segmented Category Buttons (Identical to .btn-view-toggle) */
+.cat-nav-pill {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-muted);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease, transform var(--trans-fast);
+}
+
+.cat-nav-pill:active {
+  transform: scale(0.96);
+}
+
+.cat-nav-pill.active {
+  color: var(--bg-body) !important;
+  font-weight: 700;
+}
+
+.cat-nav-pill.active i,
+.cat-nav-pill.active span {
+  color: var(--bg-body) !important;
+}
+
+.cat-nav-pill.active .cat-count {
+  background: rgba(18, 22, 36, 0.22) !important;
+  color: var(--bg-body) !important;
+}
+
+.cat-nav-pill i {
+  font-size: 0.82rem;
+}
+
+.cat-count {
+  font-size: 0.7rem;
+  opacity: 0.9;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================================================
+   MAIN VIEWPORT & CHAPTER HEADER
+   ========================================================================== */
+.app-main {
+  flex: 1;
+  padding: 1.8rem 1.5rem 6.5rem;
+}
+
+.category-chapter-header {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-muted);
+  padding-bottom: 0.75rem;
+}
+
+.chapter-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.chapter-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chapter-title i {
+  color: var(--accent-gold);
+  font-size: 1.15rem;
+}
+
+.chapter-count-label {
+  color: var(--accent-gold);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* View Mode Segmented Control with Spring Pill */
+.view-mode-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-full);
+  padding: 0.2rem;
+  gap: 0.2rem;
+}
+
+.segmented-spring-pill {
+  position: absolute;
+  top: 0.2rem;
+  bottom: 0.2rem;
+  left: 0.2rem;
+  width: calc(50% - 0.2rem);
+  background: var(--accent-gold);
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+.btn-view-toggle {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.3s ease, transform var(--trans-fast);
+}
+
+.btn-view-toggle:active {
+  transform: scale(0.94);
+}
+
+.btn-view-toggle.active {
+  color: var(--bg-body) !important;
+  font-weight: 700;
+}
+
+.btn-view-toggle.active i,
+.btn-view-toggle.active span {
+  color: var(--bg-body) !important;
+}
+
+/* ==========================================================================
+   APPLE STAGGERED ENTRANCE & MOTION KEYFRAMES (SAFARI OPTIMIZED)
+   ========================================================================== */
+@keyframes appleCardReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dish-card {
+  animation: appleCardReveal 0.35s var(--apple-ease) backwards;
+}
+
+/* ==========================================================================
+   DISH CARDS: TWO VIEW MODES
+   Mode 1: .view-grid (Desktop/Tablet Card Discovery)
+   Mode 2: .view-list (Native Mobile Food App Feed)
+   ========================================================================== */
+
+/* Mode 1: Grid Mode */
+.dishes-grid.view-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.dishes-grid.view-grid .dish-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--trans-fast), box-shadow var(--trans-fast), border-color var(--trans-fast);
+  cursor: pointer;
+}
+
+.dishes-grid.view-grid .dish-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-gold);
+  box-shadow: var(--shadow-elevated), 0 0 16px var(--gold-glow);
+}
+
+.dishes-grid.view-grid .dish-card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-surface);
+  overflow: hidden;
+}
+
+.dishes-grid.view-grid .dish-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dishes-grid.view-grid .dish-card:hover .dish-card-img {
+  transform: scale(1.06);
+}
+
+.dishes-grid.view-grid .dish-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(43, 50, 76, 0.1) 0%, rgba(36, 42, 63, 0.75) 100%);
+  pointer-events: none;
+}
+
+.dishes-grid.view-grid .dish-card-body {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Mode 2: Native List Feed Mode (App-Style Baseline) */
+.dishes-grid.view-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2.5rem;
+}
+
+.dishes-grid.view-list .dish-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--trans-fast), border-color var(--trans-fast), background var(--trans-fast);
+  cursor: pointer;
+  position: relative;
+}
+
+.dishes-grid.view-list .dish-card:hover {
+  border-color: var(--accent-gold);
+  background: var(--bg-card-hover);
+}
+
+.dishes-grid.view-list .dish-card:active {
+  transform: scale(0.98);
+  background: var(--bg-card-hover);
+}
+
+.dishes-grid.view-list .dish-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.dishes-grid.view-list .dish-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.dishes-grid.view-list .dish-card-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--text-main);
+  white-space: normal;
+  line-height: 1.28;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.dishes-grid.view-list .dish-card-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.dishes-grid.view-list .dish-card-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+.dishes-grid.view-list .dish-badge-group,
+.dishes-grid.view-list .dish-card-pairing,
+.dishes-grid.view-list .dish-img-overlay,
+.dishes-grid.view-list .dish-card-footer {
+  display: none !important;
+}
+
+.dishes-grid.view-list .dish-card-visual {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-surface);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.dishes-grid.view-list .dish-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: -webkit-optimize-contrast;
+  display: block;
+}
+
+.list-crown-icon {
+  color: var(--accent-gold);
+  font-size: 0.74rem;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+}
+
+.dishes-grid.view-list .dish-card-footer {
+  display: none;
+}
+
+/* Chevron indicator on Thumbnail (List Mode) */
+.card-chevron-hint {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(23, 27, 41, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-hairline);
+  color: var(--accent-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  pointer-events: none;
+  transition: transform var(--trans-fast), background var(--trans-fast);
+}
+
+.dish-card:active .card-chevron-hint {
+  background: var(--accent-gold);
+  color: var(--bg-body);
+  transform: translateX(2px);
+}
+
+/* Detail Button Pill (Grid Mode) */
+.btn-dish-detail-pill {
+  width: 100%;
+  background: rgba(43, 50, 76, 0.85);
+  border: 1px solid var(--border-hairline);
+  color: var(--accent-gold-light);
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+  transition: background var(--trans-fast), color var(--trans-fast), border-color var(--trans-fast);
+}
+
+.dish-card:hover .btn-dish-detail-pill,
+.dish-card:active .btn-dish-detail-pill {
+  background: var(--gold-gradient);
+  color: var(--bg-body);
+  border-color: var(--accent-gold);
+}
+
+/* Common Card Typography & Badges */
+.dish-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.25;
+}
+
+.dish-card-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent-gold-light);
+  white-space: nowrap;
+}
+
+.badge-pill {
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.badge-signature {
+  background: var(--gold-gradient);
+  color: var(--bg-body);
+}
+
+.badge-local-photo {
+  background: rgba(16, 185, 129, 0.9);
+  color: #ffffff;
+}
+
+.badge-cuisine {
+  background: rgba(43, 50, 76, 0.85);
+  color: var(--accent-gold-light);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.dish-card-pairing {
+  font-size: 0.74rem;
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* ==========================================================================
+   DISH DETAIL POPUP MODAL CARD (IMMERSIVE BLOOM & TACTILE EXPANSION)
+   Sanki Ekrana Yayılıyormuş Gibi Akıcı & Hissiyatlı Açılış Fiziği
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(28, 34, 52, 0.88) 0%, rgba(10, 13, 24, 0.94) 100%);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  z-index: 1040;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              -webkit-backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.4s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.dish-modal-sheet {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%) scale(0.86);
+  filter: blur(10px);
+  width: min(calc(100% - 32px), 480px);
+  max-height: 90vh;
+  max-height: 90dvh;
+  background: var(--bg-surface);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 22px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.88), 0 0 50px rgba(212, 175, 55, 0.16);
+  z-index: 1050;
+  overflow-y: auto;
+  overflow-x: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              filter 0.38s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.42s ease;
+  scrollbar-width: none;
+  will-change: transform, opacity, filter;
+}
+
+.dish-modal-sheet::-webkit-scrollbar {
+  display: none;
+}
+
+.dish-modal-sheet.active {
+  opacity: 1;
+  visibility: visible;
+  filter: blur(0px);
+  transform: translate(-50%, -50%) scale(1);
+  box-shadow: 0 35px 95px rgba(0, 0, 0, 0.9), 0 0 60px rgba(212, 175, 55, 0.2);
+}
+
+/* Modal Drag Grabber Bar */
+.sheet-drag-handle-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  cursor: grab;
+  touch-action: none;
+}
+
+.sheet-drag-pill {
+  width: 40px;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.32);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Floating Modal Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(18, 22, 36, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  cursor: pointer;
+  z-index: 25;
+  transition: transform var(--trans-fast), background var(--trans-fast), color var(--trans-fast);
+}
+
+.modal-close-btn:hover {
+  background: rgba(30, 36, 56, 0.95);
+  color: var(--accent-gold);
+}
+
+.modal-close-btn:active {
+  transform: scale(0.9);
+}
+
+/* Modal Hero Photography Visual: Classic Cover Photography */
+.modal-hero-visual {
+  width: 100%;
+  height: 250px;
+  background: var(--bg-card);
+  overflow: hidden;
+  position: relative;
+  border-radius: 22px 22px 0 0;
+  border-bottom: 1px solid var(--border-hairline);
+}
+
+.modal-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(0.98);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.dish-modal-sheet.active .modal-hero-img {
+  transform: scale(1);
+}
+
+/* Modal Content Body with Cascading Flow */
+.modal-body {
+  padding: 1.25rem 1.4rem 1.6rem;
+}
+
+.modal-meta-top,
+.modal-title,
+.modal-description,
+.modal-sommelier-card {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.36s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.36s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dish-modal-sheet.active .modal-meta-top {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.06s;
+}
+
+.dish-modal-sheet.active .modal-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.10s;
+}
+
+.dish-modal-sheet.active .modal-description {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.14s;
+}
+
+.dish-modal-sheet.active .modal-sommelier-card {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.18s;
+}
+
+.modal-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.modal-cat-tag {
+  color: var(--accent-gold);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modal-price {
+  font-family: var(--font-sans);
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: var(--accent-gold-light);
+  letter-spacing: 0.02em;
+}
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-bottom: 0.5rem;
+}
+
+.modal-description {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.1rem;
+}
+
+/* Sommelier Pairing Recommendation Card */
+.modal-sommelier-card {
+  background: rgba(18, 22, 34, 0.55);
+  border: 1px solid rgba(197, 160, 89, 0.28);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 0.95rem 1.15rem;
+}
+
+.sommelier-header {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-gold-light);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.sommelier-text {
+  font-size: 0.84rem;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ==========================================================================
+   NATIVE MOBILE OPTIMIZATION (< 768px)
+   Native Bottom Sheets, Fluid Touch Mechanics & Compact App Chrome
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Compact App Header */
+  .app-header {
+    padding: 0.6rem 1rem;
+  }
+  .brand-logo-wide {
+    height: 32px;
+    max-width: 180px;
+  }
+  .brand-logo {
+    height: 38px;
+    width: 38px;
+  }
+  .brand-text h1 {
+    font-size: 1.1rem;
+  }
+  .brand-text p {
+    font-size: 0.64rem;
+  }
+  .btn-header-contact {
+    height: 34px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.78rem;
+  }
+  .header-contact-label {
+    display: none; /* Icon only on mobile header for minimal clutter */
+  }
+
+  /* Compact Hero Search Strip: Hide big editorial desktop text on mobile */
+  .app-hero-strip {
+    padding: 0.85rem 1rem;
+    background: var(--bg-surface);
+  }
+  .hero-heading {
+    display: none; /* Free up 80% screen space for food */
+  }
+  .search-filter-bar {
+    max-width: 100%;
+    gap: 0.5rem;
+  }
+  .search-input {
+    padding: 0.65rem 2.2rem 0.65rem 2.4rem;
+    font-size: 0.86rem;
+  }
+  .btn-filter-trigger {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  /* Category Nav Pill Scroller */
+  .category-nav-wrapper {
+    top: 50px;
+    padding: 0.65rem 1rem 0.75rem;
+  }
+  .category-nav-scroll {
+    padding: 0.25rem 0.3rem;
+    gap: 0.2rem;
+  }
+  .cat-spring-indicator {
+    border-radius: var(--radius-full);
+  }
+  .cat-nav-pill {
+    padding: 0.42rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  /* Main viewport */
+  .app-main {
+    padding: 1rem 1rem 3.5rem;
+  }
+  .chapter-title {
+    font-size: 1.25rem;
+  }
+  .chapter-count-label {
+    font-size: 0.75rem;
+  }
+
+  /* Floating Centered Modal Card on Mobile (Tactile Bloom & Screen Expansion) */
+  .dish-modal-sheet {
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    width: min(calc(100% - 28px), 440px);
+    max-height: 88vh;
+    max-height: 88dvh;
+    border-radius: 22px;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    transform: translate(-50%, -48%) scale(0.86);
+    filter: blur(10px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
+  }
+
+  .dish-modal-sheet.active {
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0px);
+  }
+
+  .modal-hero-visual {
+    height: 210px;
+  }
+
+  .modal-hero-img {
+    height: 100%;
+  }
+
+  .modal-body {
+    padding: 1.15rem 1.25rem 1.4rem;
+  }
+
+  .modal-title {
+    font-size: 1.45rem;
+  }
+
+  .modal-price {
+    font-size: 1.2rem;
+  }
+
+  .modal-description {
+    font-size: 0.85rem;
+  }
+
+  .modal-sommelier-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .sommelier-text {
+    font-size: 0.82rem;
+  }
+
+  /* List Mode on Mobile: Original Baseline Feed */
+  .dishes-grid.view-list {
+    gap: 0.75rem;
+  }
+  .dishes-grid.view-list .dish-card {
+    padding: 0.75rem 0.85rem;
+    gap: 0.85rem;
+    min-height: auto;
+    border-radius: 12px;
+  }
+  .dishes-grid.view-list .dish-card-visual {
+    width: 84px;
+    height: 84px;
+    min-width: 84px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .dishes-grid.view-list .dish-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .dishes-grid.view-list .dish-card-header {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .dishes-grid.view-list .dish-card-title {
+    font-size: 0.96rem;
+    line-height: 1.25;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  .dishes-grid.view-list .dish-card-price {
+    font-size: 0.98rem;
+    margin-top: 1px;
+  }
+  .dishes-grid.view-list .dish-card-desc {
+    font-size: 0.78rem;
+  }
+}
