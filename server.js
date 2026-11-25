@@ -43,7 +43,10 @@ const server = http.createServer((req, res) => {
   }
 
   const url = new URL(req.url, `http://${req.headers.host}`);
-  const pathname = url.pathname;
+  let pathname = url.pathname;
+  try {
+    pathname = decodeURIComponent(url.pathname);
+  } catch (_) {}
 
   // API Endpoints
   if (pathname === '/api/settings') {

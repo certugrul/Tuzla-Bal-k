@@ -284,6 +284,27 @@ button {
   height: 104px;
 }
 
+/* Brand Wide Logo (Tuzla Balık Soyak Yazı Logo) */
+.brand-logo-wide {
+  height: 46px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
+  transition: transform var(--trans-fast), filter var(--trans-fast);
+}
+
+.brand-identity:hover .brand-logo-wide {
+  transform: scale(1.02);
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px var(--gold-glow));
+}
+
+.brand-logo-wide.footer-logo {
+  height: 52px;
+  max-width: 280px;
+}
+
 /* Night Mode: Logo styling with #2b324c base */
 [data-theme="dark"] .brand-logo-img {
   background-color: #2b324c;
@@ -1519,6 +1540,14 @@ button {
   .brand-logo-img.footer-logo {
     height: 84px;
   }
+  .brand-logo-wide {
+    height: 38px;
+    max-width: 190px;
+  }
+  .brand-logo-wide.footer-logo {
+    height: 44px;
+    max-width: 220px;
+  }
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -1596,6 +1625,14 @@ button {
   }
   .brand-logo-img.footer-logo {
     height: 78px;
+  }
+  .brand-logo-wide {
+    height: 34px;
+    max-width: 165px;
+  }
+  .brand-logo-wide.footer-logo {
+    height: 40px;
+    max-width: 190px;
   }
   .hero-metric-strip {
     grid-template-columns: 1fr;

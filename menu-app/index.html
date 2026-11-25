@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <!-- App Stylesheet -->
-  <link rel="stylesheet" href="style.css?v=20261106_21">
+  <link rel="stylesheet" href="style.css?v=20261125_04">
 </head>
 <body>
 
@@ -32,7 +32,7 @@
       <header class="app-header" id="appHeader">
         <div class="header-inner">
           <a href="#hero" class="brand-section" title="Tuzla Balık">
-            <img src="images/tuzlabalikyazilogo.png" alt="Tuzla Balık" class="brand-logo-wide" onerror="this.onerror=null; this.src='../img/tuzlabalikyazilogo.png';">
+            <img src="images/tuzlabalikyazilogo.webp" alt="Tuzla Balık" class="brand-logo-wide" onerror="this.onerror=null; this.src='images/tuzlabalikyazilogo.png';">
           </a>
 
           <div class="header-actions">
@@ -76,8 +76,25 @@
       </div>
     </section>
 
+    <!-- TOP CATEGORIES SHOWCASE STRIP (MENÜNÜN EN BAŞINDAKİ KATEGORİLER) -->
+    <section class="top-categories-section" id="topCategoriesSection" aria-label="Kategoriler">
+      <div class="top-categories-header">
+        <div class="top-cat-header-left">
+          <span class="top-cat-badge"><i class="fa-solid fa-compass"></i> Menü Keşfi</span>
+          <h2 class="top-cat-title">Kategoriler</h2>
+        </div>
+        <span class="top-cat-subtitle">Menüyü görüntülemek için bir lezzet kategorisi seçin</span>
+      </div>
+
+      <div class="top-categories-scroll-wrap">
+        <div class="top-categories-grid" id="topCategoriesGrid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
     <!-- STICKY CATEGORY NAV STRIP -->
-    <nav class="category-nav-wrapper">
+    <nav class="category-nav-wrapper" id="categoryNavWrapper">
       <div class="category-nav-scroll" id="categoryScroll">
         <!-- Rendered by app.js -->
       </div>
@@ -152,7 +169,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="menu-data.js?v=20261106_22"></script>
-  <script src="app.js?v=20261106_22"></script>
+  <script src="menu-data.js?v=20261125_04"></script>
+  <script src="app.js?v=20261125_04"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 
   // Application State
   const state = {
-    selectedCategory: 'all',
+    selectedCategory: null, // Menüye girmeden önce hiçbir kategori seçili değildir ("kategorilere tıklamadan menü gelmesin")
     searchQuery: '',
     selectedFilter: 'all', // 'all', 'signature'
     viewMode: window.innerWidth < 768 ? 'list' : 'grid',
@@ -26,6 +26,11 @@
 
   // DOM Elements
   const categoryScroll = document.getElementById('categoryScroll');
+  const topCategoriesGrid = document.getElementById('topCategoriesGrid');
+  const topCategoriesSection = document.getElementById('topCategoriesSection');
+  const categoryNavWrapper = document.getElementById('categoryNavWrapper');
+  const appHeaderWrapper = document.getElementById('appHeaderWrapper');
+  const appMain = document.querySelector('.app-main');
   const dishesGrid = document.getElementById('dishesGrid');
   const searchInput = document.getElementById('searchInput');
   const searchClearBtn = document.getElementById('searchClearBtn');
@@ -35,6 +40,37 @@
   const viewModeToggle = document.getElementById('viewModeToggle');
   const btnViewList = document.getElementById('btnViewList');
   const btnViewGrid = document.getElementById('btnViewGrid');
+
+  // Menu Visibility Manager ("Kategori açıldıktan sonra menü keşfi kategoriler kısmı görünmesin")
+  function updateMenuVisibility() {
+    const isMenuOpen = !!(state.selectedCategory || state.searchQuery.trim());
+    if (categoryNavWrapper) {
+      categoryNavWrapper.classList.toggle('is-visible', isMenuOpen);
+    }
+    if (appMain) {
+      appMain.classList.toggle('is-visible', isMenuOpen);
+    }
+    if (topCategoriesSection) {
+      topCategoriesSection.classList.toggle('hidden-when-menu-open', isMenuOpen);
+    }
+    document.body.classList.toggle('has-menu-opened', isMenuOpen);
+  }
+
+  // Reset back to Landing View (Kategoriler Vitrini)
+  function resetToLandingView() {
+    state.selectedCategory = null;
+    state.searchQuery = '';
+    state.selectedFilter = 'all';
+    if (searchInput) searchInput.value = '';
+    if (searchClearBtn) searchClearBtn.classList.remove('visible');
+    if (filterTriggerBtn) filterTriggerBtn.classList.remove('active');
+    updateMenuVisibility();
+    renderTopCategories();
+    renderCategoryPills();
+    if (dishesGrid) dishesGrid.innerHTML = '';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    triggerHaptic(8);
+  }
 
   // Modal Elements
   const dishModalBackdrop = document.getElementById('dishModalBackdrop');
@@ -59,8 +95,12 @@
   // Initialize
   function init() {
     updateViewModeUI();
+    renderTopCategories();
     renderCategoryPills();
-    renderDishes();
+    updateMenuVisibility();
+    if (state.selectedCategory || state.searchQuery.trim()) {
+      renderDishes();
+    }
     setupEventListeners();
     setupModalGestures();
     setupScrollHeader();
@@ -92,6 +132,82 @@
         }
       }
     }
+  }
+
+  // Top Categories Metadata (Visual Showcase at Menu Entrance)
+  const TOP_CATEGORY_META = [
+    { id: 'mezeler', name: 'Soğuk Mezeler', image: 'images/mezeler/mezeler.webp', icon: 'fa-solid fa-seedling' },
+    { id: 'ara-sicaklar', name: 'Ara Sıcaklar', image: 'images/arasicaklar/kalamartava.webp', icon: 'fa-solid fa-fire-burner' },
+    { id: 'baliklar', name: 'Mevsim Balıkları', image: 'images/balik_default.webp', icon: 'fa-solid fa-fish-fins' },
+    { id: 'etler', name: 'Kırmızı Et & Izgara', image: 'images/etler_default.webp', icon: 'fa-solid fa-drumstick-bite' },
+    { id: 'salatalar', name: 'Taze Salatalar', image: 'images/salata/roka.webp', icon: 'fa-solid fa-bowl-rice' },
+    { id: 'rakilar', name: 'Rakı Kavı', image: 'images/raki_default.webp', icon: 'fa-solid fa-wine-bottle' },
+    { id: 'saraplar', name: 'Şarap & Bira', image: 'images/cilingir_default.webp', icon: 'fa-solid fa-wine-glass' },
+    { id: 'tatlilar', name: 'Tatlı Kapanışlar', image: 'images/tatli_default.webp', icon: 'fa-solid fa-cake-candles' },
+    { id: 'signature', name: 'Şefin İmzaları', image: 'images/arasicaklar/balikbeyti.webp', icon: 'fa-solid fa-crown', isSig: true }
+  ];
+
+  function renderTopCategories() {
+    if (!topCategoriesGrid) return;
+
+    let html = '';
+    TOP_CATEGORY_META.forEach(cat => {
+      let count = 0;
+      if (cat.id === 'signature') {
+        count = state.items.filter(i => i.isSignature).length;
+      } else if (cat.id === 'saraplar') {
+        count = state.items.filter(i => i.category === 'saraplar' || i.category === 'biralar' || i.category === 'ithal-ickiler').length;
+      } else {
+        count = state.items.filter(i => i.category === cat.id).length;
+      }
+
+      const isActive = state.selectedCategory === cat.id;
+      html += `
+        <div class="top-cat-card ${isActive ? 'active' : ''}" data-category="${cat.id}">
+          <div class="top-cat-visual">
+            <img src="${cat.image}" alt="${cat.name}" class="top-cat-img" loading="eager" onerror="this.onerror=null; this.src='images/mezeler/mezeler.webp';">
+            <div class="top-cat-overlay"></div>
+            <span class="top-cat-count-badge">${count} Lezzet</span>
+            ${cat.isSig ? '<span class="top-cat-sig-badge"><i class="fa-solid fa-crown"></i> Şefin İmzası</span>' : ''}
+          </div>
+          <div class="top-cat-info">
+            <div class="top-cat-icon"><i class="${cat.icon}"></i></div>
+            <span class="top-cat-name">${cat.name}</span>
+          </div>
+        </div>
+      `;
+    });
+
+    topCategoriesGrid.innerHTML = html;
+  }
+
+  // Category Selection & Dynamic Bar Indicator Movement ("sadece barda hareket olsun eskisi gibi")
+  function selectCategory(catId) {
+    state.selectedCategory = catId;
+    triggerHaptic(12);
+
+    // 1. Reveal menu & sticky category nav (hiding top categories section)
+    updateMenuVisibility();
+
+    // 2. Update active pill in category bar with classic sliding spring indicator
+    if (categoryScroll) {
+      categoryScroll.querySelectorAll('.cat-nav-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-category') === catId);
+      });
+      const activeBtn = categoryScroll.querySelector(`.cat-nav-pill[data-category="${catId}"]`);
+      if (activeBtn) {
+        updateCategorySpringIndicator(activeBtn);
+        const wrapper = categoryScroll.closest('.category-nav-wrapper') || categoryScroll;
+        const targetScrollLeft = activeBtn.offsetLeft - (wrapper.clientWidth - activeBtn.offsetWidth) / 2;
+        wrapper.scrollTo({ left: Math.max(0, targetScrollLeft), behavior: 'smooth' });
+      }
+    }
+
+    // 3. Render dishes for the selected category
+    renderDishes();
+
+    // 4. Smoothly scroll to top of menu
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // 2. Render Category Nav Pills with Linear Sliding Spring Indicator
@@ -202,12 +318,16 @@
 
   // 4. Filter & Render Dishes
   function getFilteredItems() {
+    if (!state.selectedCategory && !state.searchQuery.trim()) {
+      return [];
+    }
+
     const filtered = state.items.filter(item => {
       if (state.selectedCategory === 'signature') {
         if (!item.isSignature) return false;
       } else if (state.selectedCategory === 'saraplar') {
         if (item.category !== 'saraplar' && item.category !== 'biralar' && item.category !== 'ithal-ickiler') return false;
-      } else if (state.selectedCategory !== 'all') {
+      } else if (state.selectedCategory && state.selectedCategory !== 'all') {
         if (item.category !== state.selectedCategory) return false;
       }
 
@@ -225,7 +345,7 @@
     });
 
     // Sort A to Z using Turkish locale
-    if (state.selectedCategory !== 'all' || state.searchQuery.trim()) {
+    if ((state.selectedCategory && state.selectedCategory !== 'all') || state.searchQuery.trim()) {
       return filtered.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' }));
     }
 
@@ -236,6 +356,11 @@
 
   function renderDishes(resetPagination = true) {
     if (!dishesGrid) return;
+
+    if (!state.selectedCategory && !state.searchQuery.trim()) {
+      dishesGrid.innerHTML = '';
+      return;
+    }
 
     if (resetPagination) {
       state.visibleCount = state.batchSize;
@@ -248,9 +373,11 @@
         chapterTitle.innerHTML = `<i class="fa-solid fa-utensils"></i> Tüm Seçki`;
       } else if (state.selectedCategory === 'signature') {
         chapterTitle.innerHTML = `<i class="fa-solid fa-crown" style="color:var(--accent-gold);"></i> Şefin İmzaları`;
-      } else if (state.categories[state.selectedCategory]) {
+      } else if (state.selectedCategory && state.categories[state.selectedCategory]) {
         const cat = state.categories[state.selectedCategory];
         chapterTitle.innerHTML = `<i class="${cat.icon || 'fa-solid fa-fish'}"></i> ${cat.name}`;
+      } else if (state.searchQuery.trim()) {
+        chapterTitle.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> Arama Sonuçları`;
       }
     }
 
@@ -494,26 +621,27 @@
       btnViewGrid.addEventListener('click', () => setViewMode('grid'));
     }
 
-    // Category click
+    // Top categories click (Visual Showcase)
+    if (topCategoriesGrid) {
+      topCategoriesGrid.addEventListener('click', e => {
+        const card = e.target.closest('.top-cat-card');
+        if (!card) return;
+        const cat = card.getAttribute('data-category');
+        if (cat) {
+          selectCategory(cat);
+        }
+      });
+    }
+
+    // Category click (Sticky Segmented Scroller)
     if (categoryScroll) {
       categoryScroll.addEventListener('click', e => {
         const btn = e.target.closest('.cat-nav-pill');
         if (!btn) return;
-        triggerHaptic(12);
         const cat = btn.getAttribute('data-category');
-        state.selectedCategory = cat;
-
-        categoryScroll.querySelectorAll('.cat-nav-pill').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        updateCategorySpringIndicator(btn);
-
-        // Smoothly center active pill horizontally in the wrapper without vertical page scroll
-        const wrapper = categoryScroll.closest('.category-nav-wrapper') || categoryScroll;
-        const targetScrollLeft = btn.offsetLeft - (wrapper.clientWidth - btn.offsetWidth) / 2;
-        wrapper.scrollTo({ left: Math.max(0, targetScrollLeft), behavior: 'smooth' });
-
-        renderDishes();
+        if (cat) {
+          selectCategory(cat);
+        }
       });
     }
 
@@ -537,6 +665,10 @@
         if (searchClearBtn) {
           searchClearBtn.classList.toggle('visible', state.searchQuery.length > 0);
         }
+        if (state.searchQuery.trim().length > 0 && !state.selectedCategory) {
+          state.selectedCategory = 'all';
+        }
+        updateMenuVisibility();
         renderDishes();
       });
     }
@@ -547,6 +679,10 @@
         searchInput.value = '';
         state.searchQuery = '';
         searchClearBtn.classList.remove('visible');
+        if (state.selectedCategory === 'all') {
+          state.selectedCategory = null;
+        }
+        updateMenuVisibility();
         renderDishes();
       });
     }
@@ -554,16 +690,17 @@
     // Filter Trigger (toggle signatures)
     if (filterTriggerBtn) {
       filterTriggerBtn.addEventListener('click', () => {
-        // Tactile multi-pulse haptic feedback (screen bloom sensation)
-    triggerHaptic([14, 30, 8]);
-        if (state.selectedFilter === 'signature') {
-          state.selectedFilter = 'all';
-          filterTriggerBtn.classList.remove('active');
-        } else {
-          state.selectedFilter = 'signature';
-          filterTriggerBtn.classList.add('active');
-        }
-        renderDishes();
+        triggerHaptic([14, 30, 8]);
+        selectCategory('signature');
+      });
+    }
+
+    // Logo click returns to landing categories showcase
+    const brandSection = document.querySelector('.brand-section');
+    if (brandSection) {
+      brandSection.addEventListener('click', e => {
+        e.preventDefault();
+        resetToLandingView();
       });
     }
 
@@ -585,7 +722,9 @@
     openDishModal,
     closeDishModal,
     loadMoreDishes,
-    setViewMode
+    setViewMode,
+    selectCategory,
+    resetToLandingView
   };
 
   // Start app on DOMContentLoaded

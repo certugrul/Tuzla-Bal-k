@@ -1,0 +1,9 @@
+{
+  "name": "tuzla-balik-soyak",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tuzla Balık Soyak site - Netlify Functions",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}

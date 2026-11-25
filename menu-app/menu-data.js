@@ -1,6 +1,7 @@
 /**
  * TUZLA BALIK RESTAURANT - VERIFIED MENU DATA
  * Total Active Items: 390
+ * Optimized with high-efficiency WebP photography.
  * Sorted A-Z within each category with authentic restaurant course hierarchy.
  */
 
@@ -58,7 +59,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Acılı / Sevilen",
     "isSignature": true,
-    "image": "images/mezeler/atom.png",
+    "image": "images/mezeler/atom.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -73,7 +74,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Gurme",
     "isSignature": false,
-    "image": "images/mezeler/ahtapotcarpaccio.png",
+    "image": "images/mezeler/ahtapotcarpaccio.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -88,7 +89,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Popüler",
     "isSignature": false,
-    "image": "images/mezeler/saksuka.png",
+    "image": "images/mezeler/saksuka.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -103,7 +104,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Şefin İmzası",
     "isSignature": true,
-    "image": "images/mezeler/antibiyotik.jpg",
+    "image": "images/mezeler/antibiyotik.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -118,7 +119,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Gurme",
     "isSignature": false,
-    "image": "images/mezeler/avokadolukarides.png",
+    "image": "images/mezeler/avokadolukarides.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -133,7 +134,7 @@ window.MENU_ITEMS = [
     "price": 650,
     "badge": "Klasik / İmza",
     "isSignature": true,
-    "image": "images/mezeler/lakerda.png",
+    "image": "images/mezeler/lakerda.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -148,7 +149,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Ada Klasiği",
     "isSignature": false,
-    "image": "images/mezeler/cundameze.jpg",
+    "image": "images/mezeler/cundameze.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -163,7 +164,7 @@ window.MENU_ITEMS = [
     "price": 650,
     "badge": "En Çok Sevilen",
     "isSignature": true,
-    "image": "images/mezeler/ahtapotsalatasi.png",
+    "image": "images/mezeler/ahtapotsalatasi.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -178,7 +179,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Ege Otu",
     "isSignature": false,
-    "image": "images/mezeler/egekarmasi.png",
+    "image": "images/mezeler/egekarmasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -193,7 +194,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Deniz Mahsulü",
     "isSignature": false,
-    "image": "images/mezeler/subyesalatasi.png",
+    "image": "images/mezeler/subyesalatasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -208,7 +209,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Köz / Ekşili",
     "isSignature": false,
-    "image": "images/mezeler/eksilimantar.png",
+    "image": "images/mezeler/eksilimantar.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -223,7 +224,7 @@ window.MENU_ITEMS = [
     "price": 150,
     "badge": "Rakı Eşlikçisi",
     "isSignature": false,
-    "image": "images/mezeler/ezinepeyniri.PNG",
+    "image": "images/mezeler/ezinepeyniri.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -238,7 +239,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Salata Meze",
     "isSignature": false,
-    "image": "images/mezeler/zeytinsalatasi.jpg",
+    "image": "images/mezeler/zeytinsalatasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -253,7 +254,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Yoğurtlu",
     "isSignature": false,
-    "image": "images/mezeler/havuctarator.png",
+    "image": "images/mezeler/havuctarator.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -268,7 +269,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Gurme",
     "isSignature": false,
-    "image": "images/mezeler/somongrawlax.PNG",
+    "image": "images/mezeler/somongrawlax.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -283,7 +284,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Rakı Yanı",
     "isSignature": false,
-    "image": "images/mezeler/karpuzpeynir.jpg",
+    "image": "images/mezeler/karpuzpeynir.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -298,7 +299,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Rakı Yanı",
     "isSignature": false,
-    "image": "images/mezeler/kavunpeynir.jpg",
+    "image": "images/mezeler/kavunpeynir.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -313,7 +314,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/mezeler/fava.png",
+    "image": "images/mezeler/fava.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -328,7 +329,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Peynirli / Popüler",
     "isSignature": false,
-    "image": "images/mezeler/giritezme.png",
+    "image": "images/mezeler/giritezme.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -343,7 +344,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "En Çok Sevilen",
     "isSignature": true,
-    "image": "images/mezeler/levrekmarin.png",
+    "image": "images/mezeler/levrekmarin.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -358,7 +359,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/mezeler/humus.png",
+    "image": "images/mezeler/humus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -373,7 +374,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Yoğurtlu / Köz",
     "isSignature": false,
-    "image": "images/mezeler/kopoglu.png",
+    "image": "images/mezeler/kopoglu.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -388,7 +389,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Yoğurtlu",
     "isSignature": false,
-    "image": "images/mezeler/biberborani.png",
+    "image": "images/mezeler/biberborani.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -403,7 +404,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/mezeler/haydari.png",
+    "image": "images/mezeler/haydari.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -418,7 +419,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Özel Lezzet",
     "isSignature": true,
-    "image": "images/mezeler/izgarazeytin.jpg",
+    "image": "images/mezeler/izgarazeytin.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -433,7 +434,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Söğüş",
     "isSignature": false,
-    "image": "images/mezeler/beyinsogus.png",
+    "image": "images/mezeler/beyinsogus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -448,7 +449,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/mezeler/lubnanmeze.png",
+    "image": "images/mezeler/lubnanmeze.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -463,7 +464,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Bahçeden",
     "isSignature": false,
-    "image": "images/mezeler/komplesogus.png",
+    "image": "images/mezeler/komplesogus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -478,7 +479,7 @@ window.MENU_ITEMS = [
     "price": 375,
     "badge": "Deniz Mahsulü",
     "isSignature": false,
-    "image": "images/mezeler/sosluhamsi.png",
+    "image": "images/mezeler/sosluhamsi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -493,7 +494,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Şefin Dokunuşu",
     "isSignature": false,
-    "image": "images/mezeler/humus.png",
+    "image": "images/mezeler/humus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -508,7 +509,7 @@ window.MENU_ITEMS = [
     "price": 375,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/mezeler/arnavutcigeri.png",
+    "image": "images/mezeler/arnavutcigeri.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -523,7 +524,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Yoğurtlu",
     "isSignature": false,
-    "image": "images/mezeler/bibertarator.png",
+    "image": "images/mezeler/bibertarator.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -538,7 +539,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Söğüş",
     "isSignature": false,
-    "image": "images/mezeler/dilsogus.png",
+    "image": "images/mezeler/dilsogus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -553,7 +554,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Yoğurtlu",
     "isSignature": false,
-    "image": "images/mezeler/kurucacik.png",
+    "image": "images/mezeler/kurucacik.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -568,7 +569,7 @@ window.MENU_ITEMS = [
     "price": 100,
     "badge": "Ege Yeşillikleri",
     "isSignature": false,
-    "image": "images/salata/roka.PNG",
+    "image": "images/salata/roka.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -583,7 +584,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Şefin Önerisi",
     "isSignature": false,
-    "image": "images/mezeler/fava.png",
+    "image": "images/mezeler/fava.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -598,7 +599,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Rakı Yanı",
     "isSignature": false,
-    "image": "images/mezeler/isliciroz.png",
+    "image": "images/mezeler/isliciroz.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -613,7 +614,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Yoğurtlu / Köz",
     "isSignature": false,
-    "image": "images/mezeler/yogurtlupatlican.png",
+    "image": "images/mezeler/yogurtlupatlican.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -628,7 +629,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Yoğurtlu",
     "isSignature": false,
-    "image": "images/mezeler/yogurlusemiz.jpg",
+    "image": "images/mezeler/yogurlusemiz.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -643,7 +644,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Yoğurtlu",
     "isSignature": false,
-    "image": "images/mezeler/saksuklısüzmeyogurt.jpg",
+    "image": "images/mezeler/saksuklisuzmeyogurt.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -658,7 +659,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Deniz Mahsulü",
     "isSignature": false,
-    "image": "images/mezeler/denizmahsullerisalatasi.png",
+    "image": "images/mezeler/denizmahsullerisalatasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -673,7 +674,7 @@ window.MENU_ITEMS = [
     "price": 275,
     "badge": "Peynirli",
     "isSignature": false,
-    "image": "images/mezeler/peynirligirit.png",
+    "image": "images/mezeler/peynirligirit.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -688,7 +689,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Zeytinyağlı",
     "isSignature": false,
-    "image": "images/mezeler/bruksellahanasi.png",
+    "image": "images/mezeler/bruksellahanasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -703,7 +704,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Ege Otu",
     "isSignature": false,
-    "image": "images/mezeler/cibes.png",
+    "image": "images/mezeler/cibes.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -718,7 +719,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Zeytinyağlı",
     "isSignature": false,
-    "image": "images/mezeler/canakenginaradet.png",
+    "image": "images/mezeler/canakenginaradet.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -733,7 +734,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Ege Otu",
     "isSignature": false,
-    "image": "images/mezeler/denizborulcesi.png",
+    "image": "images/mezeler/denizborulcesi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -748,7 +749,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Zeytinyağlı",
     "isSignature": false,
-    "image": "images/mezeler/enginarkalbi.PNG",
+    "image": "images/mezeler/enginarkalbi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -763,7 +764,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Ege Otu",
     "isSignature": false,
-    "image": "images/mezeler/kayakorugu.png",
+    "image": "images/mezeler/kayakorugu.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -778,7 +779,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Şefin İmzası",
     "isSignature": true,
-    "image": "images/arasicaklar/balikbeyti.png",
+    "image": "images/arasicaklar/balikbeyti.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -793,7 +794,7 @@ window.MENU_ITEMS = [
     "price": 375,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/arasicaklar/babykalamardolma.png",
+    "image": "images/arasicaklar/babykalamardolma.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -808,7 +809,7 @@ window.MENU_ITEMS = [
     "price": 800,
     "badge": "Şefin İmzası",
     "isSignature": true,
-    "image": "images/arasicaklar/begendiliahtapot.png",
+    "image": "images/arasicaklar/begendiliahtapot.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -823,7 +824,7 @@ window.MENU_ITEMS = [
     "price": 750,
     "badge": "Gurme",
     "isSignature": false,
-    "image": "images/arasicaklar/begendililevreksarma.png",
+    "image": "images/arasicaklar/begendililevreksarma.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -838,7 +839,7 @@ window.MENU_ITEMS = [
     "price": 800,
     "badge": "Şefin İmzası",
     "isSignature": true,
-    "image": "images/arasicaklar/beğendili karides.jpg",
+    "image": "images/arasicaklar/begendilikarides.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -853,7 +854,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Popüler",
     "isSignature": false,
-    "image": "images/arasicaklar/midyetavasisporsiyon.png",
+    "image": "images/arasicaklar/midyetavasisporsiyon.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -868,7 +869,7 @@ window.MENU_ITEMS = [
     "price": 850,
     "badge": "En Çok Sevilen",
     "isSignature": true,
-    "image": "images/arasicaklar/denizmahsulleriguvec.png",
+    "image": "images/arasicaklar/denizmahsulleriguvec.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -883,7 +884,7 @@ window.MENU_ITEMS = [
     "price": 600,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/arasicaklar/yaprakciger.png",
+    "image": "images/arasicaklar/yaprakciger.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -898,7 +899,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Şefin İmzası",
     "isSignature": true,
-    "image": "images/arasicaklar/karidesmanti.png",
+    "image": "images/arasicaklar/karidesmanti.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -913,7 +914,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/kurudomatessıcak.jpg",
+    "image": "images/arasicaklar/kurudomatessicak.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -928,7 +929,7 @@ window.MENU_ITEMS = [
     "price": 550,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/arasicaklar/hellimlilevreksis.png",
+    "image": "images/arasicaklar/hellimlilevreksis.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -943,7 +944,7 @@ window.MENU_ITEMS = [
     "price": 650,
     "badge": "Ilık Başlangıç",
     "isSignature": false,
-    "image": "images/arasicaklar/tereyagliahtapot.jpg",
+    "image": "images/arasicaklar/tereyagliahtapot.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -958,7 +959,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/arasicaklar/ahtapotizgarabacak.png",
+    "image": "images/arasicaklar/ahtapotizgarabacak.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -973,7 +974,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Gurme",
     "isSignature": false,
-    "image": "images/arasicaklar/jumboshotadet.png",
+    "image": "images/arasicaklar/jumboshotadet.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -988,7 +989,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/arasicaklar/kalamarizgarasisadet.png",
+    "image": "images/arasicaklar/kalamarizgarasisadet.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1003,7 +1004,7 @@ window.MENU_ITEMS = [
     "price": 325,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/arasicaklar/karidessis.jpg",
+    "image": "images/arasicaklar/karidessis.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -1018,7 +1019,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/sucukluhumus.jpg",
+    "image": "images/arasicaklar/sucukluhumus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1033,7 +1034,7 @@ window.MENU_ITEMS = [
     "price": 700,
     "badge": "Güveç",
     "isSignature": false,
-    "image": "images/arasicaklar/karidesguvec.png",
+    "image": "images/arasicaklar/karidesguvec.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -1048,7 +1049,7 @@ window.MENU_ITEMS = [
     "price": 425,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/sicakpatlican.png",
+    "image": "images/arasicaklar/sicakpatlican.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1063,7 +1064,7 @@ window.MENU_ITEMS = [
     "price": 175,
     "badge": "Peynir",
     "isSignature": false,
-    "image": "images/arasicaklar/izgaraköypeyniri.jpg",
+    "image": "images/arasicaklar/izgarakoypeyniri.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1078,7 +1079,7 @@ window.MENU_ITEMS = [
     "price": 850,
     "badge": "Ege Spesiyali",
     "isSignature": false,
-    "image": "images/arasicaklar/denizmahsullusevketibostan.png",
+    "image": "images/arasicaklar/denizmahsullusevketibostan.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1093,7 +1094,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/kremaliistiridyemantari.png",
+    "image": "images/arasicaklar/kremaliistiridyemantari.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1108,7 +1109,7 @@ window.MENU_ITEMS = [
     "price": 475,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/kremalikasarlisevketibostan.jpg",
+    "image": "images/arasicaklar/kremalikasarlisevketibostan.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1123,7 +1124,7 @@ window.MENU_ITEMS = [
     "price": 800,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/kremaliahtapot.jpg",
+    "image": "images/arasicaklar/kremaliahtapot.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -1138,7 +1139,7 @@ window.MENU_ITEMS = [
     "price": 750,
     "badge": "Şefin İmzası",
     "isSignature": true,
-    "image": "images/arasicaklar/sevketibostanlilevrek.png",
+    "image": "images/arasicaklar/sevketibostanlilevrek.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1153,7 +1154,7 @@ window.MENU_ITEMS = [
     "price": 700,
     "badge": "Çok Sevilen",
     "isSignature": true,
-    "image": "images/arasicaklar/balikkokorec.png",
+    "image": "images/arasicaklar/balikkokorec.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1168,7 +1169,7 @@ window.MENU_ITEMS = [
     "price": 800,
     "badge": "Sac Tava",
     "isSignature": false,
-    "image": "images/arasicaklar/balikkavurma.jpg",
+    "image": "images/arasicaklar/balikkavurma.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1183,7 +1184,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/sicakbibertarator.jpg",
+    "image": "images/arasicaklar/sicakbibertarator.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1198,7 +1199,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Ege Otu",
     "isSignature": false,
-    "image": "images/arasicaklar/sicakottabagi.png",
+    "image": "images/arasicaklar/sicakottabagi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1213,7 +1214,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Tava",
     "isSignature": false,
-    "image": "images/arasicaklar/tereyagliistiridyemantar.png",
+    "image": "images/arasicaklar/tereyagliistiridyemantar.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1228,7 +1229,7 @@ window.MENU_ITEMS = [
     "price": 700,
     "badge": "En Çok Sevilen",
     "isSignature": true,
-    "image": "images/arasicaklar/tereyaglikarides.png",
+    "image": "images/arasicaklar/tereyaglikarides.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
     "available": true
@@ -1243,7 +1244,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/arasicaklar/sicakhumus.png",
+    "image": "images/arasicaklar/sicakhumus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1258,7 +1259,7 @@ window.MENU_ITEMS = [
     "price": 700,
     "badge": "Popüler",
     "isSignature": false,
-    "image": "images/arasicaklar/kalamartava.png",
+    "image": "images/arasicaklar/kalamartava.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1273,7 +1274,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Sıcak Meze",
     "isSignature": false,
-    "image": "images/arasicaklar/annepatates.png",
+    "image": "images/arasicaklar/annepatates.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
     "available": true
@@ -1288,7 +1289,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Mevsim Balığı",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1303,7 +1304,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1318,7 +1319,7 @@ window.MENU_ITEMS = [
     "price": 750,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1333,7 +1334,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1348,7 +1349,7 @@ window.MENU_ITEMS = [
     "price": 3500,
     "badge": "Lüks",
     "isSignature": true,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1363,7 +1364,7 @@ window.MENU_ITEMS = [
     "price": 600,
     "badge": "Tava",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1378,7 +1379,7 @@ window.MENU_ITEMS = [
     "price": 1750,
     "badge": "Izgara / Tava",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1393,7 +1394,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Izgara / Fırın",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1408,7 +1409,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Özel Balık",
     "isSignature": true,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1423,7 +1424,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Tava / Şiş",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1438,7 +1439,7 @@ window.MENU_ITEMS = [
     "price": 600,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1453,7 +1454,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Tava",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1468,7 +1469,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Tava / Güveç",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1483,7 +1484,7 @@ window.MENU_ITEMS = [
     "price": 1800,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1498,7 +1499,7 @@ window.MENU_ITEMS = [
     "price": 3000,
     "badge": "Tava",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1513,7 +1514,7 @@ window.MENU_ITEMS = [
     "price": 3000,
     "badge": "Tava / Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1528,7 +1529,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1543,7 +1544,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Buğulama",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1558,7 +1559,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1573,7 +1574,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1588,7 +1589,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1603,7 +1604,7 @@ window.MENU_ITEMS = [
     "price": 600,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1618,7 +1619,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1633,7 +1634,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Tava",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1648,7 +1649,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1663,7 +1664,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Izgara / Fırın",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1678,7 +1679,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1693,7 +1694,7 @@ window.MENU_ITEMS = [
     "price": 1800,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1708,7 +1709,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Özel Balık",
     "isSignature": true,
-    "image": "images/balik_default.jpg",
+    "image": "images/balik_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
     "available": true
@@ -1723,7 +1724,7 @@ window.MENU_ITEMS = [
     "price": 800,
     "badge": "Kırmızı Et",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1738,7 +1739,7 @@ window.MENU_ITEMS = [
     "price": 800,
     "badge": "Kırmızı Et",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1753,7 +1754,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Köfte",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1768,7 +1769,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Izgara",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1783,7 +1784,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Köfte",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1798,7 +1799,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Tavuk",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1813,7 +1814,7 @@ window.MENU_ITEMS = [
     "price": 450,
     "badge": "Kebap",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1828,7 +1829,7 @@ window.MENU_ITEMS = [
     "price": 425,
     "badge": "Kuzu",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1843,7 +1844,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Sakatat",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1858,7 +1859,7 @@ window.MENU_ITEMS = [
     "price": 600,
     "badge": "Kuzu",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1873,7 +1874,7 @@ window.MENU_ITEMS = [
     "price": 800,
     "badge": "Kuzu",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1888,7 +1889,7 @@ window.MENU_ITEMS = [
     "price": 375,
     "badge": "Kuzu",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1903,7 +1904,7 @@ window.MENU_ITEMS = [
     "price": 850,
     "badge": "Kırmızı Et",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1918,7 +1919,7 @@ window.MENU_ITEMS = [
     "price": 325,
     "badge": "Fırından",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1933,7 +1934,7 @@ window.MENU_ITEMS = [
     "price": 275,
     "badge": "Tavuk",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1948,7 +1949,7 @@ window.MENU_ITEMS = [
     "price": 850,
     "badge": "Şefin İmzası",
     "isSignature": true,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1963,7 +1964,7 @@ window.MENU_ITEMS = [
     "price": 850,
     "badge": "Kırmızı Et",
     "isSignature": false,
-    "image": "images/etler_default.jpg",
+    "image": "images/etler_default.webp",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
     "available": true
@@ -1978,7 +1979,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Deniz Mahsulü",
     "isSignature": false,
-    "image": "images/salata/mevsim.jpg",
+    "image": "images/salata/mevsim.webp",
     "isLocalImage": false,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -1993,7 +1994,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Hafif",
     "isSignature": false,
-    "image": "images/salata/yesil.PNG",
+    "image": "images/salata/yesil.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2008,7 +2009,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/salata/kasik.jpg",
+    "image": "images/salata/kasik.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2023,7 +2024,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "En Çok Sevilen",
     "isSignature": true,
-    "image": "images/salata/gavurdagı.jpg",
+    "image": "images/salata/gavurdagı.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2038,7 +2039,7 @@ window.MENU_ITEMS = [
     "price": 325,
     "badge": "Peynirli",
     "isSignature": false,
-    "image": "images/salata/peynirlimevsim.jpg",
+    "image": "images/salata/peynirlimevsim.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2053,7 +2054,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Hafif",
     "isSignature": false,
-    "image": "images/salata/istanbul.PNG",
+    "image": "images/salata/istanbul.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2068,7 +2069,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/salata/coban.PNG",
+    "image": "images/salata/coban.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2083,7 +2084,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/salata/mevsim.jpg",
+    "image": "images/salata/mevsim.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2098,7 +2099,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Popüler",
     "isSignature": false,
-    "image": "images/salata/roka.PNG",
+    "image": "images/salata/roka.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true
@@ -2113,7 +2114,7 @@ window.MENU_ITEMS = [
     "price": 1000,
     "badge": "Âlâ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2128,7 +2129,7 @@ window.MENU_ITEMS = [
     "price": 1550,
     "badge": "Âlâ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2143,7 +2144,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Âlâ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2158,7 +2159,7 @@ window.MENU_ITEMS = [
     "price": 2600,
     "badge": "Âlâ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2173,7 +2174,7 @@ window.MENU_ITEMS = [
     "price": 2650,
     "badge": "Prestij",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2188,7 +2189,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2203,7 +2204,7 @@ window.MENU_ITEMS = [
     "price": 950,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2218,7 +2219,7 @@ window.MENU_ITEMS = [
     "price": 1450,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2233,7 +2234,7 @@ window.MENU_ITEMS = [
     "price": 1750,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2248,7 +2249,7 @@ window.MENU_ITEMS = [
     "price": 2450,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2263,7 +2264,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Özel Seri",
     "isSignature": true,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2278,7 +2279,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Özel Seri",
     "isSignature": true,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2293,7 +2294,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Butik Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2308,7 +2309,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Butik Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2323,7 +2324,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2338,7 +2339,7 @@ window.MENU_ITEMS = [
     "price": 950,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2353,7 +2354,7 @@ window.MENU_ITEMS = [
     "price": 1450,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2368,7 +2369,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2383,7 +2384,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2398,7 +2399,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Terra Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2413,7 +2414,7 @@ window.MENU_ITEMS = [
     "price": 950,
     "badge": "Terra Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2428,7 +2429,7 @@ window.MENU_ITEMS = [
     "price": 1450,
     "badge": "Terra Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2443,7 +2444,7 @@ window.MENU_ITEMS = [
     "price": 1750,
     "badge": "Terra Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2458,7 +2459,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Terra Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2473,7 +2474,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Kadeh",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2488,7 +2489,7 @@ window.MENU_ITEMS = [
     "price": 8000,
     "badge": "Koleksiyonluk",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2503,7 +2504,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Efe Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2518,7 +2519,7 @@ window.MENU_ITEMS = [
     "price": 950,
     "badge": "Efe Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2533,7 +2534,7 @@ window.MENU_ITEMS = [
     "price": 1400,
     "badge": "Efe Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2548,7 +2549,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Efe Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2563,7 +2564,7 @@ window.MENU_ITEMS = [
     "price": 2350,
     "badge": "Efe Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2578,7 +2579,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Efe Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2593,7 +2594,7 @@ window.MENU_ITEMS = [
     "price": 1000,
     "badge": "Efe Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2608,7 +2609,7 @@ window.MENU_ITEMS = [
     "price": 1500,
     "badge": "Efe Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2623,7 +2624,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Efe Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2638,7 +2639,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Efe Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2653,7 +2654,7 @@ window.MENU_ITEMS = [
     "price": 2800,
     "badge": "Tek İmbik",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2668,7 +2669,7 @@ window.MENU_ITEMS = [
     "price": 1050,
     "badge": "Tek İmbik",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2683,7 +2684,7 @@ window.MENU_ITEMS = [
     "price": 1500,
     "badge": "Tek İmbik",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2698,7 +2699,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Tek İmbik",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2713,7 +2714,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Tek İmbik",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2728,7 +2729,7 @@ window.MENU_ITEMS = [
     "price": 2650,
     "badge": "Efe Yeşil",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2743,7 +2744,7 @@ window.MENU_ITEMS = [
     "price": 950,
     "badge": "Efe Yeşil",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2758,7 +2759,7 @@ window.MENU_ITEMS = [
     "price": 1400,
     "badge": "Efe Yeşil",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2773,7 +2774,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Efe Yeşil",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2788,7 +2789,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Efe Yeşil",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2803,7 +2804,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Kadeh",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2818,7 +2819,7 @@ window.MENU_ITEMS = [
     "price": 1650,
     "badge": "Kulüp Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2833,7 +2834,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Kulüp Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2848,7 +2849,7 @@ window.MENU_ITEMS = [
     "price": 1650,
     "badge": "Kulüp Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2863,7 +2864,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Kulüp Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2878,7 +2879,7 @@ window.MENU_ITEMS = [
     "price": 2950,
     "badge": "Mercan",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2893,7 +2894,7 @@ window.MENU_ITEMS = [
     "price": 1100,
     "badge": "Mercan",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2908,7 +2909,7 @@ window.MENU_ITEMS = [
     "price": 1650,
     "badge": "Mercan",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2923,7 +2924,7 @@ window.MENU_ITEMS = [
     "price": 1950,
     "badge": "Mercan",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2938,7 +2939,7 @@ window.MENU_ITEMS = [
     "price": 2650,
     "badge": "Mercan",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2953,7 +2954,7 @@ window.MENU_ITEMS = [
     "price": 1400,
     "badge": "Arak",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2968,7 +2969,7 @@ window.MENU_ITEMS = [
     "price": 3250,
     "badge": "Arak",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2983,7 +2984,7 @@ window.MENU_ITEMS = [
     "price": 1800,
     "badge": "Premium",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -2998,7 +2999,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Premium",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3013,7 +3014,7 @@ window.MENU_ITEMS = [
     "price": 3250,
     "badge": "Koleksiyonluk",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3028,7 +3029,7 @@ window.MENU_ITEMS = [
     "price": 1600,
     "badge": "Saki",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3043,7 +3044,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Saki Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3058,7 +3059,7 @@ window.MENU_ITEMS = [
     "price": 1000,
     "badge": "Saki Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3073,7 +3074,7 @@ window.MENU_ITEMS = [
     "price": 1450,
     "badge": "Saki Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3088,7 +3089,7 @@ window.MENU_ITEMS = [
     "price": 1800,
     "badge": "Saki Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3103,7 +3104,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Saki Gold",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3118,7 +3119,7 @@ window.MENU_ITEMS = [
     "price": 2800,
     "badge": "Siyah Üzüm",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3133,7 +3134,7 @@ window.MENU_ITEMS = [
     "price": 975,
     "badge": "Siyah Üzüm",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3148,7 +3149,7 @@ window.MENU_ITEMS = [
     "price": 1450,
     "badge": "Siyah Üzüm",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3163,7 +3164,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Siyah Üzüm",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3178,7 +3179,7 @@ window.MENU_ITEMS = [
     "price": 2450,
     "badge": "Siyah Üzüm",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3193,7 +3194,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3208,7 +3209,7 @@ window.MENU_ITEMS = [
     "price": 975,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3223,7 +3224,7 @@ window.MENU_ITEMS = [
     "price": 1500,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3238,7 +3239,7 @@ window.MENU_ITEMS = [
     "price": 1750,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3253,7 +3254,7 @@ window.MENU_ITEMS = [
     "price": 2450,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3268,7 +3269,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3283,7 +3284,7 @@ window.MENU_ITEMS = [
     "price": 1000,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3298,7 +3299,7 @@ window.MENU_ITEMS = [
     "price": 1500,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3313,7 +3314,7 @@ window.MENU_ITEMS = [
     "price": 1750,
     "badge": "Sarı Zeybek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3328,7 +3329,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Kadeh",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3343,7 +3344,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3358,7 +3359,7 @@ window.MENU_ITEMS = [
     "price": 950,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3373,7 +3374,7 @@ window.MENU_ITEMS = [
     "price": 1400,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3388,7 +3389,7 @@ window.MENU_ITEMS = [
     "price": 1750,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3403,7 +3404,7 @@ window.MENU_ITEMS = [
     "price": 2350,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3418,7 +3419,7 @@ window.MENU_ITEMS = [
     "price": 1050,
     "badge": "Tekirdağ Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3433,7 +3434,7 @@ window.MENU_ITEMS = [
     "price": 1600,
     "badge": "Tekirdağ Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3448,7 +3449,7 @@ window.MENU_ITEMS = [
     "price": 1900,
     "badge": "Tekirdağ Göbek",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3463,7 +3464,7 @@ window.MENU_ITEMS = [
     "price": 2650,
     "badge": "Tekirdağ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3478,7 +3479,7 @@ window.MENU_ITEMS = [
     "price": 900,
     "badge": "Tekirdağ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3493,7 +3494,7 @@ window.MENU_ITEMS = [
     "price": 1400,
     "badge": "Tekirdağ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3508,7 +3509,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Tekirdağ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3523,7 +3524,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Tekirdağ",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3538,7 +3539,7 @@ window.MENU_ITEMS = [
     "price": 2900,
     "badge": "Rezerv Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3553,7 +3554,7 @@ window.MENU_ITEMS = [
     "price": 1050,
     "badge": "Rezerv Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3568,7 +3569,7 @@ window.MENU_ITEMS = [
     "price": 1550,
     "badge": "Rezerv Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3583,7 +3584,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Rezerv Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3598,7 +3599,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Rezerv Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3613,7 +3614,7 @@ window.MENU_ITEMS = [
     "price": 1500,
     "badge": "Trakya Serisi",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3628,7 +3629,7 @@ window.MENU_ITEMS = [
     "price": 2550,
     "badge": "Trakya Serisi",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3643,7 +3644,7 @@ window.MENU_ITEMS = [
     "price": 2900,
     "badge": "Özel Harman",
     "isSignature": true,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3658,7 +3659,7 @@ window.MENU_ITEMS = [
     "price": 1050,
     "badge": "Özel Harman",
     "isSignature": true,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3673,7 +3674,7 @@ window.MENU_ITEMS = [
     "price": 1550,
     "badge": "Özel Harman",
     "isSignature": true,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3688,7 +3689,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Özel Harman",
     "isSignature": true,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3703,7 +3704,7 @@ window.MENU_ITEMS = [
     "price": 2600,
     "badge": "Özel Harman",
     "isSignature": true,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3718,7 +3719,7 @@ window.MENU_ITEMS = [
     "price": 2600,
     "badge": "Yeni Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3733,7 +3734,7 @@ window.MENU_ITEMS = [
     "price": 900,
     "badge": "Yeni Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3748,7 +3749,7 @@ window.MENU_ITEMS = [
     "price": 1350,
     "badge": "Yeni Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3763,7 +3764,7 @@ window.MENU_ITEMS = [
     "price": 1700,
     "badge": "Yeni Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3778,7 +3779,7 @@ window.MENU_ITEMS = [
     "price": 2150,
     "badge": "Yeni Rakı",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3793,7 +3794,7 @@ window.MENU_ITEMS = [
     "price": 3750,
     "badge": "Ultra Premium",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3808,7 +3809,7 @@ window.MENU_ITEMS = [
     "price": 3750,
     "badge": "Ultra Premium",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3823,7 +3824,7 @@ window.MENU_ITEMS = [
     "price": 2900,
     "badge": "Uzun Demleme",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3838,7 +3839,7 @@ window.MENU_ITEMS = [
     "price": 1000,
     "badge": "Uzun Demleme",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3853,7 +3854,7 @@ window.MENU_ITEMS = [
     "price": 1500,
     "badge": "Uzun Demleme",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3868,7 +3869,7 @@ window.MENU_ITEMS = [
     "price": 1850,
     "badge": "Uzun Demleme",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3883,7 +3884,7 @@ window.MENU_ITEMS = [
     "price": 2600,
     "badge": "Uzun Demleme",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3898,7 +3899,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Yeni Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3913,7 +3914,7 @@ window.MENU_ITEMS = [
     "price": 900,
     "badge": "Yeni Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3928,7 +3929,7 @@ window.MENU_ITEMS = [
     "price": 1400,
     "badge": "Yeni Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3943,7 +3944,7 @@ window.MENU_ITEMS = [
     "price": 1750,
     "badge": "Yeni Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3958,7 +3959,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Yeni Seri",
     "isSignature": false,
-    "image": "images/raki_default.jpg",
+    "image": "images/raki_default.webp",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
     "available": true
@@ -3973,7 +3974,7 @@ window.MENU_ITEMS = [
     "price": 2100,
     "badge": "Cielo İtalya",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -3988,7 +3989,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Cielo İtalya",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4003,7 +4004,7 @@ window.MENU_ITEMS = [
     "price": 2100,
     "badge": "Cielo İtalya",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4018,7 +4019,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Cielo İtalya",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4033,7 +4034,7 @@ window.MENU_ITEMS = [
     "price": 2100,
     "badge": "Cielo İtalya",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4048,7 +4049,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Cielo İtalya",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4063,7 +4064,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Doluca",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4078,7 +4079,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Doluca",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4093,7 +4094,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Doluca",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4108,7 +4109,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Kadeh Şarap",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4123,7 +4124,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Kadeh Şarap",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4138,7 +4139,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Kadeh Şarap",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4153,7 +4154,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Kav Rezerv",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4168,7 +4169,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Kavaklıdere",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4183,7 +4184,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Kayra Allure",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4198,7 +4199,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Kayra Allure",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4213,7 +4214,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Kayra Allure",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4228,7 +4229,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Kayra",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4243,7 +4244,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Kayra Vintage",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4258,7 +4259,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Kayra Vintage",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4273,7 +4274,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Kayra Vintage",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4288,7 +4289,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Kayra Vintage",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4303,7 +4304,7 @@ window.MENU_ITEMS = [
     "price": 2100,
     "badge": "Blush",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4318,7 +4319,7 @@ window.MENU_ITEMS = [
     "price": 2200,
     "badge": "Mon Rêve",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4333,7 +4334,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Özel Seri",
     "isSignature": true,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4348,7 +4349,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "İthal Beyaz",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4363,7 +4364,7 @@ window.MENU_ITEMS = [
     "price": 2900,
     "badge": "Sarafin",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4378,7 +4379,7 @@ window.MENU_ITEMS = [
     "price": 2900,
     "badge": "Sarafin",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4393,7 +4394,7 @@ window.MENU_ITEMS = [
     "price": 2100,
     "badge": "Blush",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4408,7 +4409,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Terra",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4423,7 +4424,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Terra",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4438,7 +4439,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Terra",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4453,7 +4454,7 @@ window.MENU_ITEMS = [
     "price": 2000,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
     "available": true
@@ -4468,7 +4469,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Yoğun Bira",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4483,7 +4484,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Alman Birası",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4498,7 +4499,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Filtresiz",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4513,7 +4514,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "İthal / Lisanslı",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4528,7 +4529,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Meksika Birası",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4543,7 +4544,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Aromalı Bira",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4558,7 +4559,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Malt Bira",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4573,7 +4574,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Özel Seri",
     "isSignature": true,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4588,7 +4589,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Klasik Bira",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4603,7 +4604,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "İrlanda Stout",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4618,7 +4619,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Hollanda Birası",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4633,7 +4634,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Buğday Birası",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4648,7 +4649,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Amerikan",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4663,7 +4664,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Meksika",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4678,7 +4679,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Amber Bira",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4693,7 +4694,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Filtresiz",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4708,7 +4709,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Malt Bira",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4723,7 +4724,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Alman Buğday",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4738,7 +4739,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Votka",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4753,7 +4754,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Kokteyl",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4768,7 +4769,7 @@ window.MENU_ITEMS = [
     "price": 1800,
     "badge": "Aperitif",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4783,7 +4784,7 @@ window.MENU_ITEMS = [
     "price": 2750,
     "badge": "Likör",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4798,7 +4799,7 @@ window.MENU_ITEMS = [
     "price": 550,
     "badge": "Likör",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4813,7 +4814,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4828,7 +4829,7 @@ window.MENU_ITEMS = [
     "price": 1300,
     "badge": "Cin",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4843,7 +4844,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Cin",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4858,7 +4859,7 @@ window.MENU_ITEMS = [
     "price": 3200,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4873,7 +4874,7 @@ window.MENU_ITEMS = [
     "price": 1650,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4888,7 +4889,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4903,7 +4904,7 @@ window.MENU_ITEMS = [
     "price": 3850,
     "badge": "Premium Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4918,7 +4919,7 @@ window.MENU_ITEMS = [
     "price": 2850,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4933,7 +4934,7 @@ window.MENU_ITEMS = [
     "price": 2400,
     "badge": "Votka",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4948,7 +4949,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Cin",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4963,7 +4964,7 @@ window.MENU_ITEMS = [
     "price": 1800,
     "badge": "Votka",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4978,7 +4979,7 @@ window.MENU_ITEMS = [
     "price": 2700,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -4993,7 +4994,7 @@ window.MENU_ITEMS = [
     "price": 2900,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5008,7 +5009,7 @@ window.MENU_ITEMS = [
     "price": 1500,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5023,7 +5024,7 @@ window.MENU_ITEMS = [
     "price": 2500,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5038,7 +5039,7 @@ window.MENU_ITEMS = [
     "price": 1350,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5053,7 +5054,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5068,7 +5069,7 @@ window.MENU_ITEMS = [
     "price": 600,
     "badge": "Kadeh",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5083,7 +5084,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Kokteyl",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5098,7 +5099,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Kokteyl",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5113,7 +5114,7 @@ window.MENU_ITEMS = [
     "price": 2450,
     "badge": "Tekila",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5128,7 +5129,7 @@ window.MENU_ITEMS = [
     "price": 2800,
     "badge": "Tekila",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5143,7 +5144,7 @@ window.MENU_ITEMS = [
     "price": 1450,
     "badge": "Tekila",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5158,7 +5159,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Shot",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5173,7 +5174,7 @@ window.MENU_ITEMS = [
     "price": 2300,
     "badge": "Votka",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5188,7 +5189,7 @@ window.MENU_ITEMS = [
     "price": 2600,
     "badge": "Votka",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5203,7 +5204,7 @@ window.MENU_ITEMS = [
     "price": 1350,
     "badge": "Votka",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5218,7 +5219,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Kadeh Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5233,7 +5234,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Kadeh Viski",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5248,7 +5249,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Kadeh",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5263,7 +5264,7 @@ window.MENU_ITEMS = [
     "price": 400,
     "badge": "Kokteyl",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5278,7 +5279,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Hafif",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5293,7 +5294,7 @@ window.MENU_ITEMS = [
     "price": 200,
     "badge": "Yöresel",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5308,7 +5309,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Ege Tatlısı",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5323,7 +5324,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Sevilen",
     "isSignature": true,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5338,7 +5339,7 @@ window.MENU_ITEMS = [
     "price": 325,
     "badge": "Balık Sonrası",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5353,7 +5354,7 @@ window.MENU_ITEMS = [
     "price": 325,
     "badge": "Çıtır",
     "isSignature": false,
-    "image": "images/baklava_default.jpg",
+    "image": "images/baklava_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5368,7 +5369,7 @@ window.MENU_ITEMS = [
     "price": 275,
     "badge": "Geleneksel",
     "isSignature": false,
-    "image": "images/baklava_default.jpg",
+    "image": "images/baklava_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5383,7 +5384,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Sütlü Tatlı",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5398,7 +5399,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Sütlü Tatlı",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5413,7 +5414,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Paylaşımlık",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5428,7 +5429,7 @@ window.MENU_ITEMS = [
     "price": 325,
     "badge": "Kış Klasiği",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5443,7 +5444,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Mevsim Klasiği",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5458,7 +5459,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Geleneksel",
     "isSignature": false,
-    "image": "images/baklava_default.jpg",
+    "image": "images/baklava_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5473,7 +5474,7 @@ window.MENU_ITEMS = [
     "price": 100,
     "badge": "Serinletici",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5488,7 +5489,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Meyve",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5503,7 +5504,7 @@ window.MENU_ITEMS = [
     "price": 750,
     "badge": "Kutlama",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5518,7 +5519,7 @@ window.MENU_ITEMS = [
     "price": 275,
     "badge": "Geleneksel",
     "isSignature": false,
-    "image": "images/baklava_default.jpg",
+    "image": "images/baklava_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5533,7 +5534,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Ege Tatlısı",
     "isSignature": false,
-    "image": "images/tatli_default.jpg",
+    "image": "images/tatli_default.webp",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
     "available": true
@@ -5548,7 +5549,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Şalgam",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5563,7 +5564,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Şalgam",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5578,7 +5579,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Meyve Suyu",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5593,7 +5594,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Popüler",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5608,7 +5609,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Soğuk İçecek",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5623,7 +5624,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Soğuk İçecek",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5638,7 +5639,7 @@ window.MENU_ITEMS = [
     "price": 75,
     "badge": "Soda",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5653,7 +5654,7 @@ window.MENU_ITEMS = [
     "price": 150,
     "badge": "Ev Yapımı",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5668,7 +5669,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Soğuk İçecek",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5683,7 +5684,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Soğuk İçecek",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5698,7 +5699,7 @@ window.MENU_ITEMS = [
     "price": 100,
     "badge": "Sıcak İçecek",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5713,7 +5714,7 @@ window.MENU_ITEMS = [
     "price": 200,
     "badge": "Karaf",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5728,7 +5729,7 @@ window.MENU_ITEMS = [
     "price": 50,
     "badge": "Su",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5743,7 +5744,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Geleneksel",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5758,7 +5759,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Enerji",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5773,7 +5774,7 @@ window.MENU_ITEMS = [
     "price": 200,
     "badge": "Tonik",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5788,7 +5789,7 @@ window.MENU_ITEMS = [
     "price": 125,
     "badge": "Soğuk İçecek",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5803,7 +5804,7 @@ window.MENU_ITEMS = [
     "price": 150,
     "badge": "Tonik",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5818,7 +5819,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Çerez",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5833,7 +5834,7 @@ window.MENU_ITEMS = [
     "price": 300,
     "badge": "Rakı Yanı",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5848,7 +5849,7 @@ window.MENU_ITEMS = [
     "price": 250,
     "badge": "Karışık Çerez",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5863,7 +5864,7 @@ window.MENU_ITEMS = [
     "price": 350,
     "badge": "Sıcak Çerez",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5878,7 +5879,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Klasik",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
@@ -5893,7 +5894,7 @@ window.MENU_ITEMS = [
     "price": 225,
     "badge": "Çerez",
     "isSignature": false,
-    "image": "images/cilingir_default.jpg",
+    "image": "images/cilingir_default.webp",
     "isLocalImage": false,
     "pairing": null,
     "available": true
