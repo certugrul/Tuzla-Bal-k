@@ -229,6 +229,10 @@ body.has-dynamic-island .app-header.header-scrolled .header-contact-label {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+[data-theme="light"] .brand-logo-wide {
+  filter: brightness(0) !important;
+}
+
 .brand-logo {
   height: 44px;
   width: 44px;

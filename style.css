@@ -291,13 +291,29 @@ button {
   max-width: 260px;
   object-fit: contain;
   display: block;
-  filter: brightness(0) invert(1);
   transition: transform var(--trans-fast), filter var(--trans-fast);
 }
 
-.brand-identity:hover .brand-logo-wide {
+/* Gece Modu (Dark Mode): Beyaz Logo */
+[data-theme="dark"] .brand-logo-wide,
+:root:not([data-theme="light"]) .brand-logo-wide {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .brand-identity:hover .brand-logo-wide,
+:root:not([data-theme="light"]) .brand-identity:hover .brand-logo-wide {
   transform: scale(1.02);
   filter: brightness(0) invert(1) drop-shadow(0 0 12px var(--gold-glow));
+}
+
+/* Gündüz Modu (Day / Light Mode): Siyah Logo ("gündüz modundasa logo siyah olsun") */
+[data-theme="light"] .brand-logo-wide {
+  filter: brightness(0) !important;
+}
+
+[data-theme="light"] .brand-identity:hover .brand-logo-wide {
+  transform: scale(1.02);
+  filter: brightness(0) drop-shadow(0 2px 8px rgba(158, 120, 47, 0.35)) !important;
 }
 
 .brand-logo-wide.footer-logo {
