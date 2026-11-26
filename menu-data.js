@@ -388,7 +388,7 @@ var MENU_ITEMS = [
   {
     "id": "ST00786",
     "raw_name": "AŞK YAKAR",
-    "name": "Erdem Yakar (Özel Acılı)",
+    "name": "Aşk Yakar (Özel Acılı)",
     "price": 250,
     "category": "mezeler",
     "description": "Köz biber, ceviz, kurutulmuş domates ve özel acı baharat harmanı.",

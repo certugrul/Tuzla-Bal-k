@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tuzla Balık Soyak - Misafir Deneyimi Değerlendirmesi</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐟</text></svg>">
+
+  <!-- Google Fonts: Playfair Display + Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-dark: #0d121f;
+      --bg-card: #151c2e;
+      --bg-card-subtle: #1c253d;
+      --border-color: rgba(212, 175, 55, 0.2);
+      --gold-primary: #d4af37;
+      --gold-hover: #e5c358;
+      --gold-glow: rgba(212, 175, 55, 0.35);
+      --text-main: #f5f6fa;
+      --text-muted: #9ba3b8;
+      --star-active: #ffb703;
+      --star-inactive: #3a4461;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(26, 44, 82, 0.6) 0%, transparent 70%),
+        radial-gradient(circle at 10% 90%, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .survey-container {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .survey-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      padding: 0 0.5rem;
+    }
+
+    .brand-logo-img {
+      height: 48px;
+      max-width: 260px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      margin-bottom: 0.8rem;
+    }
+
+    .survey-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--border-color);
+      color: var(--gold-primary);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .survey-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      line-height: 1.25;
+    }
+
+    .survey-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .guest-highlight {
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    /* Main Card */
+    .survey-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+    }
+
+    /* Rating Group */
+    .rating-unit {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .rating-unit:last-of-type {
+      border-bottom: none;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0;
+    }
+
+    .rating-unit-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .rating-label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+    }
+
+    .rating-label i {
+      color: var(--gold-primary);
+      font-size: 0.95rem;
+    }
+
+    .rating-hint {
+      font-size: 0.78rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+      min-height: 1.1rem;
+    }
+
+    /* Star Rating Widget */
+    .star-group {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: flex-start;
+      direction: rtl; /* Allows hover trick */
+      width: fit-content;
+    }
+
+    .star-group input {
+      display: none;
+    }
+
+    .star-group label {
+      font-size: 1.8rem;
+      color: var(--star-inactive);
+      cursor: pointer;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    .star-group label:hover,
+    .star-group label:hover ~ label,
+    .star-group input:checked ~ label {
+      color: var(--star-active);
+      text-shadow: 0 0 12px rgba(255, 183, 3, 0.5);
+    }
+
+    .star-group label:active {
+      transform: scale(1.2);
+    }
+
+    /* Comment Textarea */
+    .comment-unit {
+      margin-top: 1.2rem;
+    }
+
+    .comment-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e4e7ee;
+      margin-bottom: 0.5rem;
+    }
+
+    .comment-textarea {
+      width: 100%;
+      background: var(--bg-card-subtle);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 80px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .comment-textarea:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .comment-textarea::placeholder {
+      color: #636d86;
+    }
+
+    /* Submit Button */
+    .btn-submit-survey {
+      width: 100%;
+      background: linear-gradient(135deg, #d4af37 0%, #b89123 100%);
+      color: #0b0f19;
+      border: none;
+      border-radius: 14px;
+      padding: 1rem;
+      font-size: 1.02rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 8px 24px var(--gold-glow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-submit-survey:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-submit-survey:active {
+      transform: scale(0.98);
+    }
+
+    /* Result State Screen */
+    .result-screen {
+      display: none;
+      text-align: center;
+      padding: 2rem 1.2rem;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .result-desc {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn-google-maps {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: #ffffff;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 0.95rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, background 0.2s;
+    }
+
+    .btn-google-maps:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    .btn-return-home {
+      display: inline-block;
+      margin-top: 1.2rem;
+      color: var(--gold-primary);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    /* Footer Brand */
+    .survey-footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: #5d6780;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="survey-container">
+    
+    <!-- Top Header -->
+    <header class="survey-header">
+      <img src="Assets/tuzlabalikyazilogo.png" alt="Tuzla Balık Soyak" class="brand-logo-img">
+      <br>
+      <div class="survey-badge">
+        <i class="fa-solid fa-utensils"></i>
+        <span>Misafir Değerlendirme Anketi</span>
+      </div>
+      <h1 class="survey-title">Görüşleriniz Bizim İçin Değerli</h1>
+      <p class="survey-subtitle" id="surveySubtitle">
+        Dün akşam Tuzla Balık Soyak'taki deneyiminizi lütfen 30 saniyede puanlayın.
+      </p>
+    </header>
+
+    <!-- Interactive Survey Form Card -->
+    <div class="survey-card" id="surveyCard">
+      <form id="evaluationForm">
+        
+        <!-- 1. Genel Deneyim -->
+        <div class="rating-unit">
+          <div class="rating-unit-header">
+            <span class="rating-label">
+              <i class="fa-solid fa-crown"></i> Genel Deneyim
+            </span>
+            <span class="rating-hint" id="hintOverall">Çok İyi</span>
+          </div>
+          <div class="star-group" data-target="hintOverall">
+            <input type="radio" id="ov5" name="score_overall" value="5" checked><label for="ov5" title="5 Yıldız - Mükemmel">★</label>
+            <input type="radio" id="ov4" name="score_overall" value="4"><label for="ov4" title="4 Yıldız - Çok İyi">★</label>
+            <input type="radio" id="ov3" name="score_overall" value="3"><label for="ov3" title="3 Yıldız - Orta">★</label>
+            <input type="radio" id="ov2" name="score_overall" value="2"><label for="ov2" title="2 Yıldız - Geliştirilmeli">★</label>
+            <input type="radio" id="ov1" name="score_overall" value="1"><label for="ov1" title="1 Yıldız - Memnun Kalmadım">★</label>
+          </div>
+        </div>
+
+        <!-- 2. Mezeler & Balık Lezzeti -->
+        <div class="rating-unit">
+          <div class="rating-unit-header">
+            <span class="rating-label">
+              <i class="fa-solid fa-fish"></i> Meze & Balık Lezzeti
+            </span>
+            <span class="rating-hint" id="hintFood">Kusursuz</span>
+          </div>
+          <div class="star-group" data-target="hintFood">
+            <input type="radio" id="fd5" name="score_food" value="5" checked><label for="fd5">★</label>
+            <input type="radio" id="fd4" name="score_food" value="4"><label for="fd4">★</label>
+            <input type="radio" id="fd3" name="score_food" value="3"><label for="fd3">★</label>
+            <input type="radio" id="fd2" name="score_food" value="2"><label for="fd2">★</label>
+            <input type="radio" id="fd1" name="score_food" value="1"><label for="fd1">★</label>
+          </div>
+        </div>
+
+        <!-- 3. Servis Hızı & İlgi -->
+        <div class="rating-unit">
+          <div class="rating-unit-header">
+            <span class="rating-label">
+              <i class="fa-solid fa-bell-concierge"></i> Servis & İlgi
+            </span>
+            <span class="rating-hint" id="hintService">Hızlı & Güler Yüzlü</span>
+          </div>
+          <div class="star-group" data-target="hintService">
+            <input type="radio" id="sv5" name="score_service" value="5" checked><label for="sv5">★</label>
+            <input type="radio" id="sv4" name="score_service" value="4"><label for="sv4">★</label>
+            <input type="radio" id="sv3" name="score_service" value="3"><label for="sv3">★</label>
+            <input type="radio" id="sv2" name="score_service" value="2"><label for="sv2">★</label>
+            <input type="radio" id="sv1" name="score_service" value="1"><label for="sv1">★</label>
+          </div>
+        </div>
+
+        <!-- 4. Mekan & Atmosfer -->
+        <div class="rating-unit">
+          <div class="rating-unit-header">
+            <span class="rating-label">
+              <i class="fa-solid fa-music"></i> Ortam & Atmosfer
+            </span>
+            <span class="rating-hint" id="hintAmbience">Çok Ferah</span>
+          </div>
+          <div class="star-group" data-target="hintAmbience">
+            <input type="radio" id="am5" name="score_ambience" value="5" checked><label for="am5">★</label>
+            <input type="radio" id="am4" name="score_ambience" value="4"><label for="am4">★</label>
+            <input type="radio" id="am3" name="score_ambience" value="3"><label for="am3">★</label>
+            <input type="radio" id="am2" name="score_ambience" value="2"><label for="am2">★</label>
+            <input type="radio" id="am1" name="score_ambience" value="1"><label for="am1">★</label>
+          </div>
+        </div>
+
+        <!-- 5. Özel Görüş & Not -->
+        <div class="comment-unit">
+          <label class="comment-label" for="surveyComment">
+            Öneri veya eklemek istediğiniz bir not var mı?
+          </label>
+          <textarea id="surveyComment" class="comment-textarea" placeholder="Beğendiğiniz lezzetleri veya geliştirmemizi istediğiniz noktaları yazabilirsiniz..."></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit-survey" id="btnSubmitSurvey">
+          <span>Değerlendirmeyi Gönder</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Result Screen 1: High Rating (>= 4 Stars) -> Google Reviews Hook -->
+    <div class="survey-card result-screen" id="resultHighRating">
+      <div class="result-icon" style="color:#ffb703;">🌟</div>
+      <h2 class="result-title">Harika Bir Akşamdı!</h2>
+      <p class="result-desc">
+        Güzel geri bildiriminiz için tüm Tuzla Balık Soyak ekibi adına yürekten teşekkür ederiz. 
+        <br><br>
+        Deneyiminizi <strong>Google Haritalar</strong>'da da paylaşarak Karşıyaka'daki lezzet severlere yol göstermek ister misiniz?
+      </p>
+
+      <a href="https://maps.google.com/?q=Tuzla+Bal%C4%B1k+Soyak+%C4%B0n%C3%B6n%C3%BC+Mah.+6718.+Sk.+No:66+Kar%C5%9F%C4%B1yaka+%C4%B0zmir" target="_blank" rel="noopener" class="btn-google-maps" id="btnGoogleReview">
+        <i class="fa-brands fa-google" style="color:#4285F4; font-size:1.2rem;"></i>
+        <span>Google'da Yorum Yap (5 Yıldız)</span>
+      </a>
+
+      <div>
+        <a href="index.html" class="btn-return-home">
+          <i class="fa-solid fa-house"></i> Ana Sayfaya Dön
+        </a>
+      </div>
+    </div>
+
+    <!-- Result Screen 2: Lower Rating (<= 3 Stars) -> Private Feedback Saved -->
+    <div class="survey-card result-screen" id="resultLowRating">
+      <div class="result-icon" style="color:#d4af37;">🤍</div>
+      <h2 class="result-title">Geri Bildiriminiz Alındı</h2>
+      <p class="result-desc">
+        Beklentilerinizi tam olarak karşılayamadığımız için üzgünüz. Görüşleriniz doğrudan restoran yöneticimize iletildi.
+        <br><br>
+        Bir sonraki ziyaretinizde kusursuz bir masa ve özel ikramlarımızla sizi tekrar ağırlamaktan onur duyarız.
+      </p>
+
+      <a href="index.html" class="btn-return-home" style="font-size:1rem;">
+        <i class="fa-solid fa-house"></i> Web Sitemize Dön
+      </a>
+    </div>
+
+    <!-- Result Screen 3: Already Completed -->
+    <div class="survey-card result-screen" id="resultAlreadyDone">
+      <div class="result-icon" style="color:#10b981;">✅</div>
+      <h2 class="result-title">Zaten Değerlendirildi</h2>
+      <p class="result-desc">
+        Bu rezervasyon için geri bildiriminiz daha önce kaydedilmiştir. İlginiz ve nazik desteğiniz için tekrar teşekkür ederiz!
+      </p>
+      <a href="index.html" class="btn-return-home" style="font-size:1rem;">
+        <i class="fa-solid fa-house"></i> Ana Sayfaya Dön
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="survey-footer">
+      Tuzla Balık Soyak &bull; İnönü Mah., 6718. Sk. No:66, Karşıyaka / İzmir
+    </footer>
+
+  </div>
+
+  <script>
+    (async function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const resId = urlParams.get('id') || '';
+
+      const ratingHints = {
+        5: 'Kusursuz / Mükemmel',
+        4: 'Çok İyi',
+        3: 'Orta',
+        2: 'Geliştirilmeli',
+        1: 'Memnun Kalmadım'
+      };
+
+      // Listen to star changes to update hints dynamically
+      document.querySelectorAll('.star-group').forEach(group => {
+        const hintEl = document.getElementById(group.dataset.target);
+        group.querySelectorAll('input').forEach(radio => {
+          radio.addEventListener('change', () => {
+            if (hintEl) hintEl.textContent = ratingHints[radio.value] || '';
+          });
+        });
+      });
+
+      // If reservation ID provided, fetch reservation info
+      if (resId) {
+        try {
+          const res = await fetch(`/api/surveys?id=${encodeURIComponent(resId)}`);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.already_completed) {
+              document.getElementById('surveyCard').style.display = 'none';
+              document.getElementById('resultAlreadyDone').style.display = 'block';
+              return;
+            }
+            if (data.name) {
+              document.getElementById('surveySubtitle').innerHTML = 
+                `Merhaba Sayın <span class="guest-highlight">${data.name}</span>, dün akşamki ziyaretinizi değerlendirmeniz bizim için çok kıymetlidir.`;
+            }
+          }
+        } catch (_) {}
+      }
+
+      // Handle Form Submit
+      const form = document.getElementById('evaluationForm');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = document.getElementById('btnSubmitSurvey');
+        btn.disabled = true;
+        btn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Gönderiliyor...`;
+
+        const getScore = name => Number(document.querySelector(`input[name="${name}"]:checked`)?.value) || 5;
+
+        const scoreOverall = getScore('score_overall');
+        const scoreFood = getScore('score_food');
+        const scoreService = getScore('score_service');
+        const scoreAmbience = getScore('score_ambience');
+        const comment = document.getElementById('surveyComment').value.trim();
+
+        const payload = {
+          id: resId || ('guest_' + Date.now()),
+          score_overall: scoreOverall,
+          score_food: scoreFood,
+          score_service: scoreService,
+          score_ambience: scoreAmbience,
+          comment: comment,
+          google_review_clicked: false
+        };
+
+        try {
+          await fetch('/api/surveys', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        } catch (err) {
+          console.warn('Anket sunucuya iletilemedi, yerel tamamlandı:', err);
+        }
+
+        // Branching UI
+        document.getElementById('surveyCard').style.display = 'none';
+
+        if (scoreOverall >= 4) {
+          const highScreen = document.getElementById('resultHighRating');
+          highScreen.style.display = 'block';
+
+          // Track Google review click
+          document.getElementById('btnGoogleReview')?.addEventListener('click', () => {
+            fetch('/api/surveys', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: payload.id, ...payload, google_review_clicked: true })
+            }).catch(() => {});
+          });
+        } else {
+          document.getElementById('resultLowRating').style.display = 'block';
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>

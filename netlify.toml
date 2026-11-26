@@ -16,3 +16,27 @@
   to = "/.netlify/functions/menu"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/api/reservations"
+  to = "/.netlify/functions/reservations"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/reservations/*"
+  to = "/.netlify/functions/reservations"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/surveys"
+  to = "/.netlify/functions/surveys"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/surveys/*"
+  to = "/.netlify/functions/surveys"
+  status = 200
+  force = true

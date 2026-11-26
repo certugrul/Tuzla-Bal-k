@@ -43,6 +43,12 @@
         <span>Menü Yönetimi</span>
       </button>
 
+      <button class="admin-nav-item js-nav-tab" data-tab="reservationsTab">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span>Rezervasyon & Anket</span>
+        <span class="badge-count" id="pendingSurveyBadge" style="display:none; margin-left:auto; background:var(--gold-primary); color:#0e1222; font-size:0.72rem; font-weight:700; padding:2px 7px; border-radius:10px;">0</span>
+      </button>
+
       <button class="admin-nav-item" id="btnOpenAddModal">
         <i class="fa-solid fa-circle-plus" style="color:var(--gold-primary);"></i>
         <span>Yeni Ürün Ekle</span>
@@ -76,7 +82,12 @@
         <h2 class="top-page-title" id="pageTitle">Genel Bakış</h2>
       </div>
 
-      <div class="top-header-right">
+      <div class="top-header-right" style="display:flex; align-items:center; gap:0.8rem;">
+        <span class="bot-status-pill" id="headerBotStatusPill" style="cursor:pointer; display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem; padding:0.35rem 0.8rem; border-radius:999px; background:rgba(37,211,102,0.15); border:1px solid rgba(37,211,102,0.3); color:#25d366; font-weight:600;" title="WhatsApp Bot Bağlantısını Yönet">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span id="headerBotStatusText">WhatsApp: Kontrol Ediliyor...</span>
+        </span>
+
         <span class="sync-badge" id="serverStatusBadge">
           <i class="fa-solid fa-circle-notch fa-spin"></i>
           <span>Bağlantı Kontrol Ediliyor...</span>
@@ -350,6 +361,36 @@
             </div>
           </div>
 
+          <!-- Anket Zamanlayıcı Ayarları -->
+          <div class="settings-section-card">
+            <div class="settings-section-header">
+              <h3>Anket & WhatsApp Zamanlayıcı Ayarları</h3>
+              <p>Müşterilere rezervasyondan sonra gönderilecek anketin zamanlama ve mesaj şablonu ayarları.</p>
+            </div>
+
+            <div class="form-grid-2" style="margin-bottom:1rem;">
+              <div class="form-field">
+                <label for="setting_surveyDelayDays">Gönderim Günü (Gecikme)</label>
+                <select id="setting_surveyDelayDays">
+                  <option value="0">Aynı Gün (0 gün sonra)</option>
+                  <option value="1">1 Gün Sonra (Ertesi Gün - Önerilen)</option>
+                  <option value="2">2 Gün Sonra</option>
+                  <option value="3">3 Gün Sonra</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="setting_surveySendTime">Gönderim Saati (HH:MM)</label>
+                <input type="time" id="setting_surveySendTime">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="setting_surveyMessageTemplate">WhatsApp Mesaj Şablonu ({name} ve {survey_url} etiketleri)</label>
+              <textarea id="setting_surveyMessageTemplate" rows="4"></textarea>
+            </div>
+          </div>
+
           <div style="text-align:right;">
             <button type="submit" class="btn-primary-action" style="padding:0.85rem 2rem; font-size:1rem;">
               <i class="fa-solid fa-floppy-disk"></i>
@@ -404,6 +445,132 @@
             <span>Tümünü Sıfırla (Orijinal Menüye Dön)</span>
           </button>
         </div>
+      </section>
+
+      <!-- TAB 5: REZERVASYONLAR & ANKET YÖNETİMİ -->
+      <section class="tab-panel" id="reservationsTab">
+        
+        <!-- KPI Özet Kartları -->
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-box-info">
+              <span>Toplam Rezervasyon</span>
+              <strong id="statResTotal">0</strong>
+            </div>
+            <div class="stat-box-icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-box-info">
+              <span>Anket Bekleyen (12:00)</span>
+              <strong id="statResDue" style="color:#facc15;">0</strong>
+            </div>
+            <div class="stat-box-icon" style="background:rgba(234, 179, 8, 0.15); color:#facc15;">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-box-info">
+              <span>Gönderilmiş Anket</span>
+              <strong id="statResSent" style="color:#60a5fa;">0</strong>
+            </div>
+            <div class="stat-box-icon" style="background:rgba(59, 130, 246, 0.15); color:#60a5fa;">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-box-info">
+              <span>Doldurulan / Memnuniyet</span>
+              <strong id="statResCompleted" style="color:#34d399;">0</strong>
+            </div>
+            <div class="stat-box-icon" style="background:rgba(16, 185, 129, 0.15); color:#34d399;">
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Otomasyon Durum ve Hızlı Eylem Çubuğu -->
+        <div class="res-banner-card">
+          <div class="res-banner-left">
+            <div class="res-banner-icon">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <div class="res-banner-text">
+              <h4>Akıllı WhatsApp Anket Otomasyonu (<span id="bannerSendTime">12:00</span>)</h4>
+              <p>Müşteriler rezervasyondan <strong id="lblTimingDelay" style="color:#facc15;">1 gün sonra</strong> saat <strong id="lblTimingHour" style="color:#facc15;">12:00</strong>'de anket kuyruğuna alınır.</p>
+            </div>
+          </div>
+
+          <div class="res-banner-actions">
+            <button class="btn-primary-action" id="btnSendAllDue" style="background:#25d366; color:#0b2210; box-shadow:0 4px 14px rgba(37,211,102,0.3);">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Zamanı Gelenleri Gönder (<span id="countDueBtn">0</span>)</span>
+            </button>
+
+            <button class="btn-secondary" id="btnOpenBotModal" style="border-color:#25d366; color:#25d366; font-weight:600;">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span id="bannerBotBtnText">WhatsApp'ı Bağla (QR)</span>
+            </button>
+
+            <button class="btn-secondary" id="btnOpenScheduleModal" style="border-color:var(--gold-primary); color:var(--gold-light);">
+              <i class="fa-solid fa-sliders"></i>
+              <span>Zamanlayıcıyı Düzenle</span>
+            </button>
+
+            <button class="btn-secondary" id="btnOpenAddResModal" style="border-color:var(--gold-primary); color:var(--gold-light);">
+              <i class="fa-solid fa-user-plus"></i>
+              <span>Manuel Rezervasyon Ekle</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Toolbar & Filter -->
+        <div class="toolbar-card">
+          <div class="toolbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="resSearchInput" placeholder="Müşteri adı, telefon veya not ara...">
+          </div>
+
+          <div class="toolbar-filters">
+            <select id="resStatusFilter" class="admin-select" style="min-width:200px;">
+              <option value="all">Tüm Rezervasyonlar</option>
+              <option value="due">⏳ Zamanı Gelmiş (Gönderilecek)</option>
+              <option value="pending">🕒 Zamanı Bekleyen (Gelecek Günler)</option>
+              <option value="sent">✉️ Anket Gönderildi</option>
+              <option value="completed">⭐ Anket Dolduruldu</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Rezervasyonlar Tablosu -->
+        <div class="table-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Müşteri Bilgisi</th>
+                  <th>Telefon</th>
+                  <th>Rezervasyon Zamanı</th>
+                  <th>Anket Zamanlaması</th>
+                  <th>Durum</th>
+                  <th style="text-align:right;">İşlemler</th>
+                </tr>
+              </thead>
+              <tbody id="resTableBody">
+                <!-- Dinamik doldurulur -->
+              </tbody>
+            </table>
+          </div>
+          <div class="table-footer">
+            <span id="resTableCount">0 kayıt listeleniyor</span>
+            <span style="font-size:0.8rem; color:var(--text-dim);">Tuzla Balık Soyak Rezervasyon Motoru</span>
+          </div>
+        </div>
+
       </section>
 
     </main>
@@ -468,6 +635,275 @@
           </button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- MANUEL REZERVASYON EKLEME MODALI -->
+  <div class="modal-overlay" id="resModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Yeni Rezervasyon Ekle</h3>
+        <button class="modal-close-btn js-close-res-modal" aria-label="Kapat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="resForm">
+        <div class="modal-body">
+          <div class="form-grid-2" style="margin-bottom:1rem;">
+            <div class="form-field">
+              <label for="newResName">Müşteri Adı Soyadı *</label>
+              <input type="text" id="newResName" placeholder="Örn: Ahmet Yılmaz" required>
+            </div>
+            <div class="form-field">
+              <label for="newResPhone">Telefon (WhatsApp) *</label>
+              <input type="tel" id="newResPhone" placeholder="0532xxxxxxx" required>
+            </div>
+          </div>
+
+          <div class="form-grid-3" style="margin-bottom:1rem;">
+            <div class="form-field">
+              <label for="newResDate">Rezervasyon Tarihi *</label>
+              <input type="date" id="newResDate" required>
+            </div>
+            <div class="form-field">
+              <label for="newResTime">Saat *</label>
+              <select id="newResTime" required>
+                <option value="13:00">13:00 (Öğle)</option>
+                <option value="18:30">18:30</option>
+                <option value="19:30">19:30</option>
+                <option value="20:00" selected>20:00 (Ana Saat)</option>
+                <option value="20:30">20:30</option>
+                <option value="21:00">21:00</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="newResGuests">Kişi Sayısı *</label>
+              <select id="newResGuests">
+                <option value="2">2 Kişi</option>
+                <option value="4" selected>4 Kişi</option>
+                <option value="6">6 Kişi</option>
+                <option value="8">8 Kişi</option>
+                <option value="10">10+ Kişi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field" style="margin-bottom:1rem;">
+            <label for="newResArea">Masa Alanı Tercihi</label>
+            <select id="newResArea">
+              <option value="Açık Bahçe / Teras">Ferah Açık Bahçe</option>
+              <option value="İç Salon">Nezih İç Salon</option>
+              <option value="Fark etmez">Fark Etmez</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="newResNotes">Özel Not / İstek</label>
+            <textarea id="newResNotes" placeholder="Doğum günü, pencere kenarı masa, şarap seçimi vb..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary js-close-res-modal">Vazgeç</button>
+          <button type="submit" class="btn-primary-action">
+            <i class="fa-solid fa-check"></i>
+            <span>Kaydet & Listeye Ekle</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ANKET SONUÇ DETAY MODALI -->
+  <div class="modal-overlay" id="surveyDetailModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="surveyModalTitle">Misafir Değerlendirme Detayı</h3>
+        <button class="modal-close-btn js-close-survey-modal" aria-label="Kapat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div style="background:rgba(212,175,55,0.08); border:1px solid var(--admin-border); border-radius:var(--radius-sm); padding:1rem; margin-bottom:1rem;">
+          <h4 id="surveyGuestName" style="color:#fff; font-size:1.1rem; margin-bottom:0.3rem;">Misafir Adı</h4>
+          <p id="surveyGuestDate" style="color:var(--text-muted); font-size:0.85rem;">Rezervasyon Tarihi: 25 Kasım 2026</p>
+        </div>
+
+        <div class="survey-modal-score-grid">
+          <div class="score-box">
+            <div class="score-box-title">GENEL DENEYİM</div>
+            <div class="score-box-val" id="modalScoreOverall">⭐ 5.0</div>
+          </div>
+          <div class="score-box">
+            <div class="score-box-title">MEZE & BALIK LEZZETİ</div>
+            <div class="score-box-val" id="modalScoreFood">⭐ 5.0</div>
+          </div>
+          <div class="score-box">
+            <div class="score-box-title">SERVİS & İLGİ</div>
+            <div class="score-box-val" id="modalScoreService">⭐ 5.0</div>
+          </div>
+          <div class="score-box">
+            <div class="score-box-title">MEKAN & ATMOSFER</div>
+            <div class="score-box-val" id="modalScoreAmbience">⭐ 5.0</div>
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-top:1rem;">
+          <label style="color:#fff; font-weight:600; margin-bottom:0.4rem; display:block;">Müşteri Görüş & Notu:</label>
+          <div id="modalCommentBox" style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:8px; padding:1rem; color:#f1f5f9; font-size:0.92rem; min-height:60px; line-height:1.5;">
+            -
+          </div>
+        </div>
+
+        <div id="modalGoogleReviewBadge" style="margin-top:1rem; font-size:0.85rem; color:#34d399; display:flex; align-items:center; gap:0.5rem;">
+          <i class="fa-brands fa-google"></i>
+          <span>Müşteri Google Haritalar'da yorum yazma butonuna tıkladı.</span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary js-close-survey-modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZAMANLAYICI DÜZENLEME MODALI -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--gold-primary);"></i> Zamanlayıcı ve Anket Ayarları</h3>
+        <button class="modal-close-btn js-close-schedule-modal" aria-label="Kapat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="scheduleForm">
+        <div class="modal-body">
+          
+          <div class="form-grid-2" style="margin-bottom:1.2rem;">
+            <div class="form-field">
+              <label for="cfgSurveyDelayDays">Gönderim Günü (Gecikme) *</label>
+              <select id="cfgSurveyDelayDays" required>
+                <option value="0">Aynı Gün (0 gün sonra)</option>
+                <option value="1" selected>1 Gün Sonra (Ertesi Gün - Önerilen)</option>
+                <option value="2">2 Gün Sonra</option>
+                <option value="3">3 Gün Sonra</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="cfgSurveySendTime">Gönderim Saati (HH:MM) *</label>
+              <input type="time" id="cfgSurveySendTime" value="12:00" required>
+            </div>
+          </div>
+
+          <div style="background:rgba(212,175,55,0.08); border:1px solid var(--admin-border); border-radius:var(--radius-sm); padding:0.9rem 1rem; margin-bottom:1.2rem; display:flex; align-items:center; gap:0.75rem;">
+            <input type="checkbox" id="cfgSurveyAutoSend" checked style="width:20px; height:20px; accent-color:var(--gold-primary); cursor:pointer;">
+            <label for="cfgSurveyAutoSend" style="color:#fff; font-size:0.9rem; cursor:pointer; font-weight:600;">
+              Arka Plan Otomatik Zamanlayıcısı Aktif
+              <span style="display:block; font-size:0.78rem; color:var(--text-muted); font-weight:400; margin-top:2px;">
+                Belirlenen saat geldiğinde anketleri otomatik olarak sıraya alır ve hazır hale getirir.
+              </span>
+            </label>
+          </div>
+
+          <div class="form-field">
+            <label for="cfgSurveyMessageTemplate">
+              WhatsApp Anket Mesajı Şablonu
+              <span style="font-size:0.78rem; color:var(--gold-primary); float:right;">{name} ve {survey_url} etiketleri otomatik doldurulur</span>
+            </label>
+            <textarea id="cfgSurveyMessageTemplate" rows="6" style="font-family:inherit; font-size:0.88rem; line-height:1.5;"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary js-close-schedule-modal">Vazgeç</button>
+          <button type="submit" class="btn-primary-action">
+            <i class="fa-solid fa-floppy-disk"></i>
+            <span>Zamanlayıcıyı Kaydet</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- WHATSAPP BOT BAĞLANTI MODALI -->
+  <div class="modal-overlay" id="whatsappModal">
+    <div class="modal-dialog" style="max-width:520px;">
+      <div class="modal-header">
+        <h3><i class="fa-brands fa-whatsapp" style="color:#25d366;"></i> WhatsApp Bot Bağlantısı</h3>
+        <button class="modal-close-btn js-close-bot-modal" aria-label="Kapat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body" style="text-align:center;">
+        
+        <!-- Durum 1: Bağlı Değil / QR Kod Ekranı -->
+        <div id="botSectionQR">
+          <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.2rem;">
+            Mesajların müşterilere <strong>tamamen kendi kendine otomatik</strong> gidebilmesi için restoran telefonunuzdan tek seferlik QR kodu okutun.
+          </p>
+
+          <div id="qrLoadingSpinner" style="display:none; padding:2rem;">
+            <i class="fa-solid fa-circle-notch fa-spin" style="font-size:2.5rem; color:#25d366;"></i>
+            <p style="margin-top:0.8rem; color:var(--text-muted); font-size:0.88rem;">Yeni QR Kod Hazırlanıyor...</p>
+          </div>
+
+          <div id="qrContainer" style="display:none; margin:1rem auto; width:fit-content; background:#fff; padding:12px; border-radius:16px; box-shadow:0 8px 30px rgba(0,0,0,0.5);">
+            <img id="botQrImg" src="" alt="WhatsApp QR" style="width:230px; height:230px; display:block;">
+          </div>
+
+          <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1rem; text-align:left; font-size:0.85rem; color:#cbd5e1; line-height:1.6; margin-top:1.2rem;">
+            <strong>📱 Nasıl Bağlanır?</strong>
+            <ol style="padding-left:1.2rem; margin-top:0.4rem;">
+              <li>Telefonunuzda <strong>WhatsApp</strong> uygulamasını açın.</li>
+              <li><strong>Ayarlar</strong> &gt; <strong>Bağlı Cihazlar</strong> seçeneğine gidin.</li>
+              <li><strong>"Cihaz Bağla"</strong> butonuna basıp yukarıdaki QR kodu okutun.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Durum 2: Zaten Bağlı -->
+        <div id="botSectionConnected" style="display:none; padding:1.5rem 0;">
+          <div style="font-size:3.5rem; color:#25d366; margin-bottom:0.8rem;">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <h4 style="font-size:1.3rem; color:#fff; margin-bottom:0.4rem;">WhatsApp Botu Bağlı!</h4>
+          <p style="color:#a7f3d0; font-size:0.95rem; font-weight:600; margin-bottom:1rem;">
+            Aktif Hat: <span id="lblConnectedPhone" style="color:#fff;">+90 ...</span>
+          </p>
+          <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.5; max-width:400px; margin:0 auto 1.5rem;">
+            Zamanlayıcı saati geldiğinde dünkü rezervasyonlara ait anket mesajları bu numaranız üzerinden <strong>tamamen otomatik</strong> gönderilecektir.
+          </p>
+
+          <!-- Test Mesajı Gönderme -->
+          <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.2rem; text-align:left; margin-bottom:1.5rem;">
+            <label style="font-size:0.85rem; color:#fff; font-weight:600; display:block; margin-bottom:0.4rem;">
+              Hızlı Test: Kendi Numaranıza Test Mesajı Atın
+            </label>
+            <div style="display:flex; gap:0.6rem;">
+              <input type="tel" id="testMsgPhone" placeholder="053xxxxxxxx" style="flex:1; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.6rem 0.8rem; color:#fff; font-size:0.9rem;">
+              <button type="button" id="btnSendTestMsg" class="btn-primary-action" style="background:#25d366; color:#0b2210; padding:0.6rem 1rem; font-size:0.88rem;">
+                <i class="fa-solid fa-paper-plane"></i> Gönder
+              </button>
+            </div>
+          </div>
+
+          <button type="button" id="btnLogoutBot" class="btn-secondary" style="border-color:#ef4444; color:#fca5a5; font-size:0.85rem;">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>WhatsApp Oturumunu Kapat</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary js-close-bot-modal">Kapat</button>
+      </div>
     </div>
   </div>
 

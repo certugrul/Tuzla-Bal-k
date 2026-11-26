@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStats();
     renderTable();
     populateSettingsForm();
+    fetchReservations();
   }
 
   function getDefaultSettings() {
@@ -166,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const titleMap = {
         'dashboardTab': 'Genel Bakış',
         'menuTab': 'Menü Yönetimi',
+        'reservationsTab': 'Rezervasyon & Anket Yönetimi',
         'settingsTab': 'Site Ayarları',
         'backupTab': 'Yedekleme & Dışa Aktarma'
       };
@@ -174,6 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Re-render table if switching to menu
       if (targetId === 'menuTab') {
         renderTable();
+      } else if (targetId === 'reservationsTab') {
+        loadAndRenderReservations();
       }
     });
   });
@@ -429,6 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
         field.value = val;
       }
     }
+    populateScheduleSettings();
   }
 
   if (siteSettingsForm) {
@@ -436,14 +441,15 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
 
       const newSettings = { ...siteSettings };
-      const inputs = siteSettingsForm.querySelectorAll('input, textarea');
+      const inputs = siteSettingsForm.querySelectorAll('input, textarea, select');
       inputs.forEach(input => {
         const key = input.id.replace('setting_', '');
-        newSettings[key] = input.value.trim();
+        newSettings[key] = input.type === 'number' ? Number(input.value) : input.value.trim();
       });
 
       siteSettings = newSettings;
       localStorage.setItem('tuzla_site_settings', JSON.stringify(siteSettings));
+      populateScheduleSettings();
 
       // Attempt to save to server if running
       try {
@@ -572,6 +578,610 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // REZERVASYON & ANKET YÖNETİMİ MANTIĞI
+  // ==========================================
+  let reservationsList = [];
+  let resFilter = 'all';
+  let resSearch = '';
+
+  const resTableBody = document.getElementById('resTableBody');
+  const resTableCount = document.getElementById('resTableCount');
+  const resSearchInput = document.getElementById('resSearchInput');
+  const resStatusFilter = document.getElementById('resStatusFilter');
+  const pendingSurveyBadge = document.getElementById('pendingSurveyBadge');
+  const countDueBtn = document.getElementById('countDueBtn');
+  const btnSendAllDue = document.getElementById('btnSendAllDue');
+
+  // Stats
+  const statResTotal = document.getElementById('statResTotal');
+  const statResDue = document.getElementById('statResDue');
+  const statResSent = document.getElementById('statResSent');
+  const statResCompleted = document.getElementById('statResCompleted');
+
+  // Modals
+  const resModal = document.getElementById('resModal');
+  const btnOpenAddResModal = document.getElementById('btnOpenAddResModal');
+  const resForm = document.getElementById('resForm');
+  const surveyDetailModal = document.getElementById('surveyDetailModal');
+
+  async function fetchReservations() {
+    try {
+      const res = await fetch('/api/reservations');
+      if (res.ok) {
+        reservationsList = await res.json();
+      }
+    } catch (err) {
+      console.warn('Rezervasyonlar API üzerinden alınamadı:', err);
+    }
+    updateReservationBadges();
+  }
+
+  function updateReservationBadges() {
+    const now = new Date();
+    const dueCount = reservationsList.filter(r => r.survey_status === 'pending' && new Date(r.survey_scheduled_at) <= now).length;
+    if (pendingSurveyBadge) {
+      if (dueCount > 0) {
+        pendingSurveyBadge.textContent = dueCount;
+        pendingSurveyBadge.style.display = 'inline-block';
+      } else {
+        pendingSurveyBadge.style.display = 'none';
+      }
+    }
+    if (countDueBtn) countDueBtn.textContent = dueCount;
+  }
+
+  async function loadAndRenderReservations() {
+    await fetchReservations();
+    renderReservationStats();
+    renderReservationTable();
+  }
+
+  function renderReservationStats() {
+    const now = new Date();
+    const total = reservationsList.length;
+    const due = reservationsList.filter(r => r.survey_status === 'pending' && new Date(r.survey_scheduled_at) <= now).length;
+    const sent = reservationsList.filter(r => r.survey_status === 'sent').length;
+    const completedList = reservationsList.filter(r => r.survey_status === 'completed' && r.survey_data);
+    const completed = completedList.length;
+
+    let avgScore = 0;
+    if (completed > 0) {
+      const sum = completedList.reduce((acc, r) => acc + (r.survey_data.score_overall || 5), 0);
+      avgScore = (sum / completed).toFixed(1);
+    }
+
+    if (statResTotal) statResTotal.textContent = total;
+    if (statResDue) statResDue.textContent = due;
+    if (statResSent) statResSent.textContent = sent;
+    if (statResCompleted) {
+      statResCompleted.innerHTML = completed > 0 
+        ? `${completed} <span style="font-size:0.95rem; font-weight:600; color:#ffb703;">(★ ${avgScore})</span>` 
+        : '0';
+    }
+  }
+
+  function renderReservationTable() {
+    if (!resTableBody) return;
+    const now = new Date();
+
+    let filtered = reservationsList.filter(r => {
+      // Status filter
+      const isDue = r.survey_status === 'pending' && new Date(r.survey_scheduled_at) <= now;
+      if (resFilter === 'due' && !isDue) return false;
+      if (resFilter === 'pending' && (r.survey_status !== 'pending' || isDue)) return false;
+      if (resFilter === 'sent' && r.survey_status !== 'sent') return false;
+      if (resFilter === 'completed' && r.survey_status !== 'completed') return false;
+
+      // Search filter
+      if (resSearch) {
+        const query = resSearch.toLowerCase();
+        const matchesName = (r.name || '').toLowerCase().includes(query);
+        const matchesPhone = (r.phone || '').includes(query);
+        const matchesNotes = (r.notes || '').toLowerCase().includes(query);
+        if (!matchesName && !matchesPhone && !matchesNotes) return false;
+      }
+      return true;
+    });
+
+    if (resTableCount) resTableCount.textContent = `${filtered.length} kayıt listeleniyor`;
+
+    if (filtered.length === 0) {
+      resTableBody.innerHTML = `
+        <tr>
+          <td colspan="6" style="text-align:center; padding:2.5rem; color:var(--text-muted);">
+            <i class="fa-solid fa-calendar-xmark" style="font-size:2rem; margin-bottom:0.5rem; display:block; opacity:0.4;"></i>
+            Kayıt bulunamadı.
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    resTableBody.innerHTML = filtered.map(item => {
+      const isDue = item.survey_status === 'pending' && new Date(item.survey_scheduled_at) <= now;
+      
+      let statusHtml = '';
+      if (item.survey_status === 'completed') {
+        const score = item.survey_data?.score_overall || 5;
+        statusHtml = `<span class="status-pill status-completed"><i class="fa-solid fa-star"></i> Dolduruldu (★ ${score}.0)</span>`;
+      } else if (item.survey_status === 'sent') {
+        statusHtml = `<span class="status-pill status-sent"><i class="fa-solid fa-paper-plane"></i> Gönderildi</span>`;
+      } else if (isDue) {
+        statusHtml = `<span class="status-pill status-due"><i class="fa-solid fa-bell"></i> Zamanı Geldi (12:00)</span>`;
+      } else {
+        statusHtml = `<span class="status-pill status-pending"><i class="fa-solid fa-clock"></i> Zamanı Bekliyor</span>`;
+      }
+
+      const scheduledDate = new Date(item.survey_scheduled_at);
+      const scheduledFormatted = !isNaN(scheduledDate)
+        ? scheduledDate.toLocaleString('tr-TR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+        : '-';
+
+      return `
+        <tr>
+          <td>
+            <div style="font-weight:600; color:#fff;">${escapeHtml(item.name)}</div>
+            ${item.notes ? `<div style="font-size:0.78rem; color:var(--gold-primary); margin-top:0.2rem;"><i class="fa-solid fa-note-sticky"></i> ${escapeHtml(item.notes)}</div>` : ''}
+          </td>
+          <td>
+            <a href="tel:${escapeHtml(item.phone)}" style="color:var(--text-muted); text-decoration:none;">
+              <i class="fa-solid fa-phone" style="font-size:0.75rem;"></i> ${escapeHtml(item.phone)}
+            </a>
+          </td>
+          <td>
+            <div style="color:#e2e8f0; font-weight:500;">${escapeHtml(item.date)} - ${escapeHtml(item.time)}</div>
+            <div style="font-size:0.78rem; color:var(--text-muted);">${escapeHtml(item.guests)} Kişi &bull; ${escapeHtml(item.area || 'Fark etmez')}</div>
+          </td>
+          <td>
+            <div style="color:${isDue ? '#facc15' : 'var(--text-muted)'}; font-weight:${isDue ? '600' : '400'};">
+              <i class="fa-regular fa-clock" style="font-size:0.8rem;"></i> ${scheduledFormatted}
+            </div>
+          </td>
+          <td>${statusHtml}</td>
+          <td style="text-align:right;">
+            <div class="table-actions" style="justify-content:flex-end;">
+              ${item.survey_status === 'completed' ? `
+                <button class="btn-survey-view js-view-survey" data-id="${item.id}" title="Anket Yanıtını Görüntüle">
+                  <i class="fa-solid fa-eye"></i> <span>Anketi Gör</span>
+                </button>
+              ` : `
+                <a href="${item.wa_direct_url || '#'}" target="_blank" rel="noopener" class="btn-wa-send js-send-wa" data-id="${item.id}" title="WhatsApp ile Anket Linki Gönder">
+                  <i class="fa-brands fa-whatsapp"></i> <span>WhatsApp ile Gönder</span>
+                </a>
+              `}
+              <button class="btn-action-icon delete js-delete-res" data-id="${item.id}" title="Sil">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // Attach row events
+    resTableBody.querySelectorAll('.js-send-wa').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-id');
+        try {
+          await fetch('/api/reservations/status', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, survey_status: 'sent', survey_sent_via: 'manual_whatsapp' })
+          });
+          const target = reservationsList.find(r => r.id === id);
+          if (target) {
+            target.survey_status = 'sent';
+            target.survey_sent_at = new Date().toISOString();
+          }
+          showToast('WhatsApp açıldı ve durum "Gönderildi" olarak güncellendi!');
+          renderReservationStats();
+          renderReservationTable();
+        } catch (_) {}
+      });
+    });
+
+    resTableBody.querySelectorAll('.js-view-survey').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const target = reservationsList.find(r => r.id === id);
+        if (target && target.survey_data) {
+          openSurveyDetailModal(target);
+        }
+      });
+    });
+
+    resTableBody.querySelectorAll('.js-delete-res').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-id');
+        if (confirm('Bu rezervasyonu silmek istediğinize emin misiniz?')) {
+          try {
+            await fetch('/api/reservations/delete', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id })
+            });
+            reservationsList = reservationsList.filter(r => r.id !== id);
+            showToast('Rezervasyon başarıyla silindi');
+            renderReservationStats();
+            renderReservationTable();
+          } catch (_) {
+            alert('Silme işlemi başarısız oldu.');
+          }
+        }
+      });
+    });
+  }
+
+  function openSurveyDetailModal(resItem) {
+    if (!surveyDetailModal) return;
+    const data = resItem.survey_data || {};
+
+    document.getElementById('surveyGuestName').textContent = resItem.name + ' - ' + (resItem.phone || '');
+    document.getElementById('surveyGuestDate').textContent = `Rezervasyon: ${resItem.date} (${resItem.time}) • Kişi: ${resItem.guests}`;
+
+    document.getElementById('modalScoreOverall').innerHTML = `⭐ ${data.score_overall || 5}.0`;
+    document.getElementById('modalScoreFood').innerHTML = `⭐ ${data.score_food || 5}.0`;
+    document.getElementById('modalScoreService').innerHTML = `⭐ ${data.score_service || 5}.0`;
+    document.getElementById('modalScoreAmbience').innerHTML = `⭐ ${data.score_ambience || 5}.0`;
+
+    document.getElementById('modalCommentBox').textContent = data.comment ? `"${data.comment}"` : '(Misafir ek bir yorum yazmadı)';
+
+    const googleBadge = document.getElementById('modalGoogleReviewBadge');
+    if (googleBadge) {
+      if (data.google_review_clicked) {
+        googleBadge.style.display = 'flex';
+        googleBadge.innerHTML = `<i class="fa-brands fa-google"></i> <span>Misafir Google Haritalar'da yorum yapma butonuna tıkladı! 🌟</span>`;
+      } else {
+        googleBadge.style.display = 'none';
+      }
+    }
+
+    surveyDetailModal.classList.add('open');
+  }
+
+  // Filter & Search Event Listeners
+  if (resSearchInput) {
+    resSearchInput.addEventListener('input', () => {
+      resSearch = resSearchInput.value.trim();
+      renderReservationTable();
+    });
+  }
+
+  if (resStatusFilter) {
+    resStatusFilter.addEventListener('change', () => {
+      resFilter = resStatusFilter.value;
+      renderReservationTable();
+    });
+  }
+
+  // Toplu Gönderim Butonu
+  if (btnSendAllDue) {
+    btnSendAllDue.addEventListener('click', () => {
+      const now = new Date();
+      const dueList = reservationsList.filter(r => r.survey_status === 'pending' && new Date(r.survey_scheduled_at) <= now);
+      if (dueList.length === 0) {
+        showToast('Şu an gönderilmeyi bekleyen anket bulunmuyor.');
+        return;
+      }
+      
+      const first = dueList[0];
+      if (first.wa_direct_url) {
+        window.open(first.wa_direct_url, '_blank');
+      }
+      showToast(`${dueList.length} adet zamanı gelmiş anketten 1.'si açıldı.`);
+    });
+  }
+
+  // Modal Closers
+  document.querySelectorAll('.js-close-res-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (resModal) resModal.classList.remove('open');
+    });
+  });
+
+  document.querySelectorAll('.js-close-survey-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (surveyDetailModal) surveyDetailModal.classList.remove('open');
+    });
+  });
+
+  if (btnOpenAddResModal) {
+    btnOpenAddResModal.addEventListener('click', () => {
+      if (resModal) {
+        document.getElementById('newResDate').value = new Date().toISOString().slice(0, 10);
+        resModal.classList.add('open');
+      }
+    });
+  }
+
+  if (resForm) {
+    resForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('newResName').value.trim();
+      const phone = document.getElementById('newResPhone').value.trim();
+      const date = document.getElementById('newResDate').value;
+      const time = document.getElementById('newResTime').value;
+      const guests = document.getElementById('newResGuests').value;
+      const area = document.getElementById('newResArea').value;
+      const notes = document.getElementById('newResNotes').value.trim();
+
+      try {
+        const response = await fetch('/api/reservations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, date, time, guests, area, notes })
+        });
+        if (response.ok) {
+          showToast('Yeni rezervasyon eklendi! Yarın 12:00 anket kuyruğuna alındı.');
+          resModal.classList.remove('open');
+          resForm.reset();
+          loadAndRenderReservations();
+        } else {
+          alert('Rezervasyon eklenemedi.');
+        }
+      } catch (err) {
+        alert('Hata: ' + err.message);
+      }
+    });
+  }
+
+  // ==========================================
+  // ZAMANLAYICI AYARLARI MANTIĞI
+  // ==========================================
+  const scheduleModal = document.getElementById('scheduleModal');
+  const btnOpenScheduleModal = document.getElementById('btnOpenScheduleModal');
+  const scheduleForm = document.getElementById('scheduleForm');
+
+  function populateScheduleSettings() {
+    const delay = siteSettings.surveyDelayDays !== undefined ? siteSettings.surveyDelayDays : 1;
+    const time = siteSettings.surveySendTime || '12:00';
+    const auto = siteSettings.surveyAutoSend !== false;
+    const tpl = siteSettings.surveyMessageTemplate || `Merhaba Sayın *{name}*,\n\nTuzla Balık Soyak'ta ağırlamaktan büyük mutluluk duyduk. 🐟✨\n\nSizlere daima en taze ve özenli lezzetleri sunabilmemiz için 30 saniyelik kısa değerlendirme anketimize katılırsanız çok mutlu oluruz:\n👉 {survey_url}\n\nAfiyetle ve sevgiyle kalın, tekrar bekleriz! 🥂`;
+
+    // Banner labels
+    const delayMap = { 0: 'Aynı gün', 1: '1 gün sonra', 2: '2 gün sonra', 3: '3 gün sonra' };
+    const bannerSendTime = document.getElementById('bannerSendTime');
+    const lblTimingDelay = document.getElementById('lblTimingDelay');
+    const lblTimingHour = document.getElementById('lblTimingHour');
+    if (bannerSendTime) bannerSendTime.textContent = time;
+    if (lblTimingDelay) lblTimingDelay.textContent = delayMap[delay] || `${delay} gün sonra`;
+    if (lblTimingHour) lblTimingHour.textContent = time;
+
+    // Modal fields
+    const cfgDelay = document.getElementById('cfgSurveyDelayDays');
+    const cfgTime = document.getElementById('cfgSurveySendTime');
+    const cfgAuto = document.getElementById('cfgSurveyAutoSend');
+    const cfgTpl = document.getElementById('cfgSurveyMessageTemplate');
+    if (cfgDelay) cfgDelay.value = String(delay);
+    if (cfgTime) cfgTime.value = time;
+    if (cfgAuto) cfgAuto.checked = auto;
+    if (cfgTpl) cfgTpl.value = tpl;
+
+    // Site settings tab fields
+    const setDelay = document.getElementById('setting_surveyDelayDays');
+    const setTime = document.getElementById('setting_surveySendTime');
+    const setTpl = document.getElementById('setting_surveyMessageTemplate');
+    if (setDelay) setDelay.value = String(delay);
+    if (setTime) setTime.value = time;
+    if (setTpl) setTpl.value = tpl;
+  }
+
+  if (btnOpenScheduleModal) {
+    btnOpenScheduleModal.addEventListener('click', () => {
+      populateScheduleSettings();
+      if (scheduleModal) {
+        scheduleModal.classList.add('active');
+        scheduleModal.classList.add('open');
+      }
+    });
+  }
+
+  document.querySelectorAll('.js-close-schedule-modal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (scheduleModal) {
+        scheduleModal.classList.remove('active');
+        scheduleModal.classList.remove('open');
+      }
+    });
+  });
+
+  if (scheduleForm) {
+    scheduleForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const delayDays = parseInt(document.getElementById('cfgSurveyDelayDays').value, 10);
+      const sendTime = document.getElementById('cfgSurveySendTime').value || '12:00';
+      const autoSend = document.getElementById('cfgSurveyAutoSend').checked;
+      const tpl = document.getElementById('cfgSurveyMessageTemplate').value.trim();
+
+      siteSettings.surveyDelayDays = delayDays;
+      siteSettings.surveySendTime = sendTime;
+      siteSettings.surveyAutoSend = autoSend;
+      if (tpl) siteSettings.surveyMessageTemplate = tpl;
+
+      localStorage.setItem('tuzla_site_settings', JSON.stringify(siteSettings));
+
+      try {
+        await fetch('/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(siteSettings)
+        });
+      } catch (_) {}
+
+      populateScheduleSettings();
+      if (scheduleModal) {
+        scheduleModal.classList.remove('active');
+        scheduleModal.classList.remove('open');
+      }
+      showToast(`Zamanlayıcı güncellendi: ${delayDays} gün sonra saat ${sendTime} olarak ayarlandı!`);
+      
+      // Refresh table to update status
+      fetchReservations().then(renderReservationTable);
+    });
+  }
+
+  // ==========================================
+  // WHATSAPP BOT YÖNETİMİ MANTIĞI
+  // ==========================================
+  const whatsappModal = document.getElementById('whatsappModal');
+  const btnOpenBotModal = document.getElementById('btnOpenBotModal');
+  const headerBotStatusPill = document.getElementById('headerBotStatusPill');
+  const headerBotStatusText = document.getElementById('headerBotStatusText');
+  const bannerBotBtnText = document.getElementById('bannerBotBtnText');
+
+  const botSectionQR = document.getElementById('botSectionQR');
+  const botSectionConnected = document.getElementById('botSectionConnected');
+  const qrLoadingSpinner = document.getElementById('qrLoadingSpinner');
+  const qrContainer = document.getElementById('qrContainer');
+  const botQrImg = document.getElementById('botQrImg');
+  const lblConnectedPhone = document.getElementById('lblConnectedPhone');
+  const testMsgPhone = document.getElementById('testMsgPhone');
+  const btnSendTestMsg = document.getElementById('btnSendTestMsg');
+  const btnLogoutBot = document.getElementById('btnLogoutBot');
+
+  let botPollInterval = null;
+
+  async function checkBotStatus() {
+    try {
+      const res = await fetch('/api/bot/status');
+      if (res.ok) {
+        const data = await res.json();
+        updateBotUI(data);
+        return data;
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function updateBotUI(data) {
+    if (!data) return;
+
+    if (data.isConnected) {
+      if (headerBotStatusText) headerBotStatusText.textContent = `🟢 WhatsApp: Bağlı (${data.connectedPhone || ''})`;
+      if (headerBotStatusPill) {
+        headerBotStatusPill.style.background = 'rgba(37, 211, 102, 0.15)';
+        headerBotStatusPill.style.borderColor = 'rgba(37, 211, 102, 0.4)';
+        headerBotStatusPill.style.color = '#25d366';
+      }
+      if (bannerBotBtnText) bannerBotBtnText.textContent = '🟢 WhatsApp Bağlı';
+
+      if (botSectionConnected) botSectionConnected.style.display = 'block';
+      if (botSectionQR) botSectionQR.style.display = 'none';
+      if (lblConnectedPhone) lblConnectedPhone.textContent = data.connectedPhone || 'Aktif';
+    } else {
+      if (data.status === 'qr_ready' && data.qrDataUrl) {
+        if (headerBotStatusText) headerBotStatusText.textContent = '🟡 WhatsApp: QR Bekleniyor';
+        if (headerBotStatusPill) {
+          headerBotStatusPill.style.background = 'rgba(234, 179, 8, 0.15)';
+          headerBotStatusPill.style.borderColor = 'rgba(234, 179, 8, 0.4)';
+          headerBotStatusPill.style.color = '#facc15';
+        }
+        if (bannerBotBtnText) bannerBotBtnText.textContent = '🟡 WhatsApp QR Okut';
+
+        if (botSectionConnected) botSectionConnected.style.display = 'none';
+        if (botSectionQR) botSectionQR.style.display = 'block';
+        if (qrLoadingSpinner) qrLoadingSpinner.style.display = 'none';
+        if (qrContainer) qrContainer.style.display = 'block';
+        if (botQrImg) botQrImg.src = data.qrDataUrl;
+      } else {
+        if (headerBotStatusText) headerBotStatusText.textContent = '⚪ WhatsApp: Bağlantı Yok';
+        if (headerBotStatusPill) {
+          headerBotStatusPill.style.background = 'rgba(148, 163, 184, 0.15)';
+          headerBotStatusPill.style.borderColor = 'rgba(148, 163, 184, 0.3)';
+          headerBotStatusPill.style.color = '#cbd5e1';
+        }
+        if (bannerBotBtnText) bannerBotBtnText.textContent = 'WhatsApp\'ı Bağla (QR)';
+
+        if (botSectionConnected) botSectionConnected.style.display = 'none';
+        if (botSectionQR) botSectionQR.style.display = 'block';
+        if (qrLoadingSpinner) qrLoadingSpinner.style.display = 'block';
+        if (qrContainer) qrContainer.style.display = 'none';
+      }
+    }
+  }
+
+  function openBotModal() {
+    if (!whatsappModal) return;
+    whatsappModal.classList.add('active');
+    whatsappModal.classList.add('open');
+
+    // Bot başlatma isteği gönder
+    fetch('/api/bot/start', { method: 'POST' }).catch(() => {});
+    checkBotStatus();
+
+    // Modal açıkken her 2.5 saniyede bir durumu kontrol et
+    if (botPollInterval) clearInterval(botPollInterval);
+    botPollInterval = setInterval(checkBotStatus, 2500);
+  }
+
+  function closeBotModal() {
+    if (whatsappModal) {
+      whatsappModal.classList.remove('active');
+      whatsappModal.classList.remove('open');
+    }
+    if (botPollInterval) {
+      clearInterval(botPollInterval);
+      botPollInterval = null;
+    }
+  }
+
+  if (btnOpenBotModal) btnOpenBotModal.addEventListener('click', openBotModal);
+  if (headerBotStatusPill) headerBotStatusPill.addEventListener('click', openBotModal);
+
+  document.querySelectorAll('.js-close-bot-modal').forEach(btn => {
+    btn.addEventListener('click', closeBotModal);
+  });
+
+  // Test Mesajı Gönder
+  if (btnSendTestMsg) {
+    btnSendTestMsg.addEventListener('click', async () => {
+      const phone = (testMsgPhone?.value || '').trim();
+      if (!phone) {
+        alert('Lütfen test mesajının gideceği telefon numarasını yazın.');
+        return;
+      }
+
+      btnSendTestMsg.disabled = true;
+      btnSendTestMsg.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Gönderiliyor...';
+
+      try {
+        const res = await fetch('/api/bot/test-send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            phone,
+            message: 'Tuzla Balık Soyak Bot Test Mesajıdır! 🐟✨ Sistem başarıyla çalışıyor.'
+          })
+        });
+        const result = await res.json();
+        if (res.ok && result.success) {
+          showToast(`Test mesajı +${phone} numarasına başarıyla iletildi!`);
+        } else {
+          alert('Gönderim hatası: ' + (result.error || 'Bilinmeyen hata'));
+        }
+      } catch (err) {
+        alert('İstek hatası: ' + err.message);
+      } finally {
+        btnSendTestMsg.disabled = false;
+        btnSendTestMsg.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Gönder';
+      }
+    });
+  }
+
+  // Oturumu Kapat
+  if (btnLogoutBot) {
+    btnLogoutBot.addEventListener('click', async () => {
+      if (confirm('WhatsApp bot oturumunu kapatmak istediğinize emin misiniz?')) {
+        try {
+          await fetch('/api/bot/logout', { method: 'POST' });
+          showToast('WhatsApp oturumu kapatıldı.');
+          checkBotStatus();
+        } catch (_) {}
+      }
+    });
+  }
+
   // Toast Notification
   function showToast(msg) {
     if (!adminToast || !toastText) return;
@@ -593,4 +1203,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Run
   initData();
+  checkBotStatus();
+  setInterval(checkBotStatus, 15000); // 15 saniyede bir arka plan durum kontrolü
 });

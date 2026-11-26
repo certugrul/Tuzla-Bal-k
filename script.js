@@ -879,6 +879,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const area = document.getElementById('bookArea').value;
       const notes = document.getElementById('bookNotes').value.trim();
 
+      // Arka planda sessiz rezervasyon kaydı (1 gün sonra 12:00 anket otomasyonu için)
+      try {
+        fetch('/api/reservations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, guests, date, time, area, notes })
+        }).catch(() => {});
+      } catch (_) {}
+
       const msg = `Merhaba Tuzla Balık Soyak! 🐟%0AWeb sitenizden Masa Rezervasyonu talebi:%0A%0A*İsim:* ${name}%0A*Telefon:* ${phone}%0A*Kişi Sayısı:* ${guests} Kişi%0A*Tarih:* ${date}%0A*Saat:* ${time}%0A*Masa Tercihi:* ${area}%0A${notes ? '*Özel Not:* ' + notes : ''}`;
 
       window.open(`https://wa.me/905306063517?text=${msg}`, '_blank');
