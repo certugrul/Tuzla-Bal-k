@@ -361,11 +361,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const total = state.tray.reduce((acc, it) => acc + (it.price * it.qty), 0);
     const perPerson = Math.round(total / state.peopleCount);
-    const lines = state.tray.map(i => `• ${i.qty}x ${i.name} (${i.price ? i.price * i.qty + ' TL' : 'Kg'})`).join('%0A');
+    const lines = state.tray.map(i => `• ${i.qty}x ${i.name} (${i.price ? i.price * i.qty + ' TL' : 'Kg'})`).join('\n');
 
-    const msg = `Merhaba Tuzla Balık Soyak! 🐟%0AWeb sitenizden masa menüsü planladım ve rezervasyon yapmak istiyorum:%0A%0A*Masa Sipariş Planı:*%0A${lines}%0A%0A*Kişi Sayısı:* ${state.peopleCount} Kişi%0A*Tahmini Toplam:* ${total.toLocaleString('tr-TR')} TL (Kişi Başı: ~${perPerson.toLocaleString('tr-TR')} TL)%0A%0AMasa müsaitliği için bilgi alabilir miyim?`;
+    const msg = `Merhaba Tuzla Balık Soyak! 🐟\nWeb sitenizden masa menüsü planladım ve rezervasyon yapmak istiyorum:\n\n*Masa Sipariş Planı:*\n${lines}\n\n*Kişi Sayısı:* ${state.peopleCount} Kişi\n*Tahmini Toplam:* ${total.toLocaleString('tr-TR')} TL (Kişi Başı: ~${perPerson.toLocaleString('tr-TR')} TL)\n\nMasa müsaitliği için bilgi alabilir miyim?`;
 
-    window.open(`https://wa.me/905306063517?text=${msg}`, '_blank');
+    window.open(`https://wa.me/905306063517?text=${encodeURIComponent(msg)}`, '_blank');
   });
 
   // 5. Search Controls
@@ -888,9 +888,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }).catch(() => {});
       } catch (_) {}
 
-      const msg = `Merhaba Tuzla Balık Soyak! 🐟%0AWeb sitenizden Masa Rezervasyonu talebi:%0A%0A*İsim:* ${name}%0A*Telefon:* ${phone}%0A*Kişi Sayısı:* ${guests} Kişi%0A*Tarih:* ${date}%0A*Saat:* ${time}%0A*Masa Tercihi:* ${area}%0A${notes ? '*Özel Not:* ' + notes : ''}`;
+      const msg = `Merhaba Tuzla Balık Soyak! 🐟\nWeb sitenizden Masa Rezervasyonu talebi:\n\n*İsim:* ${name}\n*Telefon:* ${phone}\n*Kişi Sayısı:* ${guests} Kişi\n*Tarih:* ${date}\n*Saat:* ${time}\n*Masa Tercihi:* ${area}${notes ? '\n*Özel Not:* ' + notes : ''}`;
 
-      window.open(`https://wa.me/905306063517?text=${msg}`, '_blank');
+      window.open(`https://wa.me/905306063517?text=${encodeURIComponent(msg)}`, '_blank');
       bookingForm.reset();
     });
   }

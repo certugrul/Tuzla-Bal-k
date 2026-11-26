@@ -30,6 +30,7 @@ const MIME_TYPES = {
 // Helper: Read JSON body from incoming request
 function readJsonBody(req) {
   return new Promise((resolve, reject) => {
+    req.setEncoding('utf8');
     let body = '';
     req.on('data', chunk => { body += chunk; });
     req.on('end', () => {
