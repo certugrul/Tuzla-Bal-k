@@ -223,12 +223,11 @@
             <img src="${cat.image}" alt="${cat.name}" class="top-cat-img" loading="eager" onerror="this.onerror=null; this.src='../menu-app/images/mezeler/mezeler.webp';">
             <div class="top-cat-overlay"></div>
             <span class="top-cat-count-badge">${count} Lezzet (%20 İndirimli)</span>
+            ${cat.isSig ? '<span class="top-cat-sig-badge"><i class="fa-solid fa-crown"></i> Şefin İmzası</span>' : ''}
           </div>
-          <div class="top-cat-content">
-            <div class="top-cat-icon-badge">
-              <i class="${cat.icon}"></i>
-            </div>
-            <h3 class="top-cat-name">${cat.name}</h3>
+          <div class="top-cat-info">
+            <div class="top-cat-icon"><i class="${cat.icon}"></i></div>
+            <span class="top-cat-name">${cat.name}</span>
           </div>
         </div>
       `;

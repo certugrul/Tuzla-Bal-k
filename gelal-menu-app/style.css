@@ -237,15 +237,209 @@ body.has-menu-opened .app-main,
   animation: appleSectionReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Kategori seçildikten sonra büyük kategorileri tamamen gizle */
+/* ==========================================================================
+   TOP CATEGORIES SHOWCASE (MENÜNÜN EN BAŞINDAKİ KATEGORİLER)
+   ========================================================================== */
+.top-categories-section {
+  padding: 1.25rem 1.5rem 0.6rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+}
+
 body.has-menu-opened .top-categories-section,
 .top-categories-section.hidden-when-menu-open {
   display: none !important;
 }
 
-.top-categories-section {
+.top-categories-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.95rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid var(--border-hairline, rgba(212, 175, 55, 0.18));
+  gap: 1rem;
+}
+
+.top-cat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.top-cat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(197, 160, 89, 0.14);
+  color: var(--accent-gold, #c5a059);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.top-cat-title {
+  font-family: var(--font-serif, 'Cormorant Garamond', Georgia, serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-main, #ffffff);
+  letter-spacing: -0.01em;
+}
+
+.top-cat-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted, #94a3b8);
+}
+
+.top-categories-scroll-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.top-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.85rem;
+}
+
+.top-cat-card {
+  position: relative;
+  background: var(--bg-card, #1c2237);
+  border: 1px solid var(--border-hairline, rgba(212, 175, 55, 0.2));
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              background 0.3s ease;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-cat-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent-gold, #d4af37);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(212, 175, 55, 0.3);
+}
+
+.top-cat-card:active {
+  transform: scale(0.96);
+  border-color: var(--accent-gold-light, #f3e5ab);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.top-cat-card.active {
+  border-color: var(--accent-gold, #d4af37);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
+  background: rgba(43, 50, 76, 0.98);
+}
+
+.top-cat-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  background: var(--bg-surface, #151a2e);
+  overflow: hidden;
+}
+
+.top-cat-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  image-rendering: -webkit-optimize-contrast;
   display: block;
-  margin-bottom: 1.5rem;
+}
+
+.top-cat-card:hover .top-cat-img {
+  transform: scale(1.08);
+}
+
+.top-cat-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.72) 100%);
+  pointer-events: none;
+}
+
+.top-cat-count-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--accent-gold-light, #f3e5ab);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.12rem 0.48rem;
+  z-index: 2;
+}
+
+.top-cat-sig-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: var(--gold-gradient, linear-gradient(135deg, #d4af37 0%, #aa8010 100%));
+  color: #0f1422;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.64rem;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.top-cat-info,
+.top-cat-content {
+  padding: 0.6rem 0.65rem 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--bg-card, #1c2237);
+  box-sizing: border-box;
+}
+
+.top-cat-icon,
+.top-cat-icon-badge {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.16);
+  color: var(--accent-gold, #c5a059);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.top-cat-name,
+h3.top-cat-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main, #ffffff);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.01em;
+  margin: 0;
+  padding: 0;
 }
 
 /* Gel-Al Pricing Box (Üzeri Çizili Normal Fiyat + İndirimli Gel-Al Fiyatı + Gel Al'a Özel) */
