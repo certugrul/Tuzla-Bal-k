@@ -1101,6 +1101,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Tab Switching between Code and QR
+  const tabConnectCode = document.getElementById('tabConnectCode');
+  const tabConnectQR = document.getElementById('tabConnectQR');
+  const panelConnectCode = document.getElementById('panelConnectCode');
+  const panelConnectQR = document.getElementById('panelConnectQR');
+
+  const botPairingPhoneInput = document.getElementById('botPairingPhoneInput');
+  const btnGetPairingCode = document.getElementById('btnGetPairingCode');
+  const pairingCodeDisplay = document.getElementById('pairingCodeDisplay');
+  const lblPairingCode = document.getElementById('lblPairingCode');
+  const btnCopyPairingCode = document.getElementById('btnCopyPairingCode');
+
+  if (tabConnectCode && tabConnectQR) {
+    tabConnectCode.addEventListener('click', () => {
+      tabConnectCode.style.background = '#25d366';
+      tabConnectCode.style.color = '#0b2210';
+      tabConnectQR.style.background = 'transparent';
+      tabConnectQR.style.color = 'var(--text-muted)';
+      if (panelConnectCode) panelConnectCode.style.display = 'block';
+      if (panelConnectQR) panelConnectQR.style.display = 'none';
+    });
+
+    tabConnectQR.addEventListener('click', () => {
+      tabConnectQR.style.background = '#25d366';
+      tabConnectQR.style.color = '#0b2210';
+      tabConnectCode.style.background = 'transparent';
+      tabConnectCode.style.color = 'var(--text-muted)';
+      if (panelConnectQR) panelConnectQR.style.display = 'block';
+      if (panelConnectCode) panelConnectCode.style.display = 'none';
+    });
+  }
+
+  // Eşleşme Kodu Al
+  let activePairingCode = '';
+  if (btnGetPairingCode) {
+    btnGetPairingCode.addEventListener('click', async () => {
+      const phone = (botPairingPhoneInput?.value || '').trim();
+      if (!phone) {
+        alert('Lütfen telefon numaranızı girin.');
+        return;
+      }
+
+      btnGetPairingCode.disabled = true;
+      btnGetPairingCode.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Kod Alınıyor...';
+
+      try {
+        const res = await fetch('/api/bot/pairing-code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone })
+        });
+        const result = await res.json();
+        if (res.ok && result.code) {
+          activePairingCode = result.code;
+          if (pairingCodeDisplay) pairingCodeDisplay.style.display = 'block';
+          if (lblPairingCode) lblPairingCode.textContent = result.code;
+          showToast('WhatsApp eşleşme kodu oluşturuldu! Şimdi telefonunuza girin.');
+        } else {
+          alert('Kod alınamadı: ' + (result.error || 'Bilinmeyen hata'));
+        }
+      } catch (err) {
+        alert('İstek hatası: ' + err.message);
+      } finally {
+        btnGetPairingCode.disabled = false;
+        btnGetPairingCode.innerHTML = '<i class="fa-solid fa-key"></i> Kod Al';
+      }
+    });
+  }
+
+  // Kodu Kopyala
+  if (btnCopyPairingCode) {
+    btnCopyPairingCode.addEventListener('click', () => {
+      if (activePairingCode) {
+        navigator.clipboard.writeText(activePairingCode.replace(/[^a-zA-Z0-9]/g, ''));
+        showToast('Eşleşme kodu panoya kopyalandı!');
+      }
+    });
+  }
+
   function openBotModal() {
     if (!whatsappModal) return;
     whatsappModal.classList.add('active');
