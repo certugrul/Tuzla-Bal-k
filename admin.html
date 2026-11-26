@@ -180,6 +180,50 @@
 
       <!-- TAB 2: MENU MANAGEMENT -->
       <section class="tab-panel" id="menuTab">
+        <!-- Menu Mode Switcher Card (Restoran Menüsü vs Gel-Al Menüsü) -->
+        <div class="menu-mode-switcher-card">
+          <div class="mode-switcher-left">
+            <span class="mode-switcher-label"><i class="fa-solid fa-layer-group"></i> Menü Yönetim Modu:</span>
+            <div class="menu-mode-pill-toggle">
+              <button type="button" class="btn-mode-pill active" id="btnModeRestaurant" data-mode="restaurant">
+                <i class="fa-solid fa-utensils"></i>
+                <span>🍽️ Restoran Menüsü</span>
+                <span class="mode-count" id="modeCountRestaurant">390</span>
+              </button>
+              <button type="button" class="btn-mode-pill" id="btnModeGelAl" data-mode="gelal">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>🛍️ Gel-Al Menüsü (%20 İndirimli)</span>
+                <span class="mode-count" id="modeCountGelAl">195</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mode-switcher-right">
+            <a href="/menu-app/" target="_blank" rel="noopener" class="btn-open-live-app" id="btnLiveAppRestoran" title="Restoran Menü Uygulamasını Yeni Sekmede Aç">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <span>Restoran App</span>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i>
+            </a>
+            <a href="/gelal-menu-app/" target="_blank" rel="noopener" class="btn-open-live-app gelal" id="btnLiveAppGelAl" title="Gel-Al Menü Uygulamasını Yeni Sekmede Aç">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span>Gel-Al App (%20)</span>
+              <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.75rem;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Gel-Al Active Mode Info Banner -->
+        <div class="gelal-mode-banner" id="gelalModeBanner" style="display:none;">
+          <div class="gelal-banner-content">
+            <i class="fa-solid fa-tag"></i>
+            <div>
+              <strong>Gel-Al Menüsü Yönetimindesiniz:</strong>
+              <span>Mevzuat gereği Rakı, Şarap, Bira ve İthal İçkiler bu menüde otomatik olarak hariç tutulur. Fiyatlar Gel-Al'a özel %20 indirimli hesaplanarak gösterilir.</span>
+            </div>
+          </div>
+          <span class="gelal-discount-tag">%20 İndirim Aktif</span>
+        </div>
+
         <!-- Toolbar Card -->
         <div class="toolbar-card">
           <div class="toolbar-search">
@@ -203,14 +247,16 @@
         <div class="table-card">
           <div class="table-responsive">
             <table class="admin-table">
-              <thead>
+              <thead id="menuTableHead">
                 <tr>
-                  <th style="width: 100px;">Kod</th>
+                  <th style="width: 70px; text-align:center;">Görsel</th>
+                  <th style="width: 90px;">Kod</th>
                   <th>Ürün Adı & Açıklama</th>
-                  <th style="width: 160px;">Kategori</th>
-                  <th style="width: 120px;">Fiyat</th>
-                  <th style="width: 140px;">Rozet</th>
-                  <th style="width: 80px;">İmza</th>
+                  <th style="width: 150px;">Kategori</th>
+                  <th style="width: 110px;" id="colPriceHeader">Restoran Fiyatı</th>
+                  <th style="width: 130px; display:none;" id="colGelAlPriceHeader">Gel-Al (-%20)</th>
+                  <th style="width: 130px;">Rozet</th>
+                  <th style="width: 60px;">İmza</th>
                   <th style="width: 100px; text-align:center;">İşlemler</th>
                 </tr>
               </thead>
@@ -590,6 +636,45 @@
         <div class="modal-body">
           <input type="hidden" id="itemId">
 
+          <!-- ÜRÜN GÖRSELİ YÖNETİMİ -->
+          <div class="form-field image-manager-section" style="margin-bottom:1.25rem;">
+            <label style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span><i class="fa-regular fa-image" style="color:var(--gold-primary);"></i> Ürün Görseli (Fotoğraf)</span>
+              <span id="imgStatusBadge" class="img-status-badge">Görsel Yok</span>
+            </label>
+            
+            <div class="dish-image-edit-box">
+              <div class="dish-image-preview-wrap" id="dishImagePreviewWrap">
+                <img id="dishImagePreview" src="" alt="Görsel Önizleme" style="display:none;">
+                <div class="dish-image-empty-placeholder" id="dishImagePlaceholder">
+                  <i class="fa-regular fa-image" style="font-size:2rem; color:var(--text-dim); margin-bottom:0.4rem;"></i>
+                  <span>Görsel Eklenmemiş</span>
+                  <small style="color:var(--text-muted); font-size:0.75rem;">(Menü uygulamasında şık metin kartı olarak sunulur)</small>
+                </div>
+              </div>
+
+              <div class="dish-image-controls">
+                <input type="hidden" id="itemImage" value="">
+                <input type="file" id="itemImageFileInput" accept="image/png, image/jpeg, image/webp" style="display:none;">
+                
+                <button type="button" class="btn-image-action upload" id="btnTriggerUpload">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <span>Bilgisayardan Fotoğraf Yükle</span>
+                </button>
+                
+                <button type="button" class="btn-image-action gallery" id="btnOpenGalleryModal">
+                  <i class="fa-solid fa-images"></i>
+                  <span>Galeriden Seç (200+ Fotoğraf)</span>
+                </button>
+                
+                <button type="button" class="btn-image-action remove" id="btnRemoveImage">
+                  <i class="fa-solid fa-trash-can"></i>
+                  <span>Görseli Kaldır (Görselsiz Yap)</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div class="form-field" style="margin-bottom:1rem;">
             <label for="itemName">Ürün Adı *</label>
             <input type="text" id="itemName" placeholder="Örn: Torik Lakerda" required>
@@ -635,6 +720,47 @@
           </button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- GALLERY PICKER MODAL -->
+  <div class="modal-overlay" id="galleryPickerModal">
+    <div class="modal-dialog modal-dialog-large">
+      <div class="modal-header">
+        <div>
+          <h3><i class="fa-solid fa-images" style="color:var(--gold-primary);"></i> Fotoğraf Galerisinden Seç</h3>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin:0.2rem 0 0;">Ürüne atamak istediğiniz fotoğrafın üzerine tıklayınız.</p>
+        </div>
+        <button class="modal-close-btn js-close-gallery-modal" aria-label="Kapat">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="gallery-filter-bar">
+        <div class="gallery-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="gallerySearchInput" placeholder="Galeride ara (örn: ahtapot, kalamar, fava...)" autocomplete="off">
+        </div>
+        <select id="galleryCategoryFilter" class="gallery-cat-select">
+          <option value="all">Tüm Kategoriler (200+)</option>
+          <option value="mezeler">Soğuk Mezeler</option>
+          <option value="arasicaklar">Ara Sıcaklar</option>
+          <option value="salata">Salatalar</option>
+          <option value="uploads">Yüklenenler</option>
+        </select>
+      </div>
+
+      <div class="modal-body gallery-grid-body" id="galleryGridBody">
+        <div style="text-align:center; padding:3rem; color:var(--text-muted);">
+          <i class="fa-solid fa-spinner fa-spin" style="font-size:1.8rem; color:var(--gold-primary); margin-bottom:0.8rem; display:block;"></i>
+          Fotoğraflar yükleniyor...
+        </div>
+      </div>
+
+      <div class="modal-footer" style="justify-content:space-between;">
+        <span id="galleryCountLabel" style="font-size:0.82rem; color:var(--text-muted);">0 fotoğraf listeleniyor</span>
+        <button type="button" class="btn-secondary js-close-gallery-modal">Vazgeç</button>
+      </div>
     </div>
   </div>
 
@@ -962,7 +1088,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="menu-data.js"></script>
-  <script src="admin.js"></script>
+  <script src="menu-app/menu-data.js?v=20261126_01"></script>
+  <script src="admin.js?v=20261126_01"></script>
 </body>
 </html>

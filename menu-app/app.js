@@ -12,16 +12,37 @@
   'use strict';
 
   // Application State
+  // Eski ve şişkin localStorage önbelleklerini temizle
+  if (typeof localStorage !== 'undefined') {
+    const cached = localStorage.getItem('tuzla_custom_menu');
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached);
+        if (Array.isArray(parsed) && parsed.length > 390) {
+          localStorage.removeItem('tuzla_custom_menu');
+        }
+      } catch (_) {}
+    }
+  }
+
+  const rawMenuItems = (typeof window !== 'undefined' && Array.isArray(window.MENU_ITEMS))
+    ? window.MENU_ITEMS.map(item => ({
+        ...item,
+        isSignature: Boolean(item.isSignature || item.is_signature),
+        is_signature: Boolean(item.isSignature || item.is_signature)
+      }))
+    : [];
+
   const state = {
     selectedCategory: null, // Menüye girmeden önce hiçbir kategori seçili değildir ("kategorilere tıklamadan menü gelmesin")
     searchQuery: '',
     selectedFilter: 'all', // 'all', 'signature'
     viewMode: window.innerWidth < 768 ? 'list' : 'grid',
-    items: window.MENU_ITEMS || [],
+    items: rawMenuItems,
     categories: window.MENU_CATEGORIES || {},
     activeModalDish: null,
-    visibleCount: 24,
-    batchSize: 24
+    visibleCount: 36,
+    batchSize: 36
   };
 
   // DOM Elements
@@ -191,10 +212,10 @@
 
     // 2. Update active pill in category bar with classic sliding spring indicator
     if (categoryScroll) {
-      categoryScroll.querySelectorAll('.cat-nav-pill').forEach(b => {
+      categoryScroll.querySelectorAll('.cat-nav-pill, .cat-pill').forEach(b => {
         b.classList.toggle('active', b.getAttribute('data-category') === catId);
       });
-      const activeBtn = categoryScroll.querySelector(`.cat-nav-pill[data-category="${catId}"]`);
+      const activeBtn = categoryScroll.querySelector(`.cat-nav-pill[data-category="${catId}"], .cat-pill[data-category="${catId}"]`);
       if (activeBtn) {
         updateCategorySpringIndicator(activeBtn);
         const wrapper = categoryScroll.closest('.category-nav-wrapper') || categoryScroll;
@@ -216,12 +237,12 @@
 
     let html = `
       <div class="cat-spring-indicator" id="catSpringIndicator"></div>
-      <button class="cat-nav-pill ${state.selectedCategory === 'all' ? 'active' : ''}" data-category="all">
+      <button class="cat-nav-pill cat-pill ${state.selectedCategory === 'all' ? 'active' : ''}" data-category="all">
         <i class="fa-solid fa-utensils"></i>
         <span>Tüm Seçki</span>
         <span class="cat-count">${state.items.length}</span>
       </button>
-      <button class="cat-nav-pill ${state.selectedCategory === 'signature' ? 'active' : ''}" data-category="signature">
+      <button class="cat-nav-pill cat-pill ${state.selectedCategory === 'signature' ? 'active' : ''}" data-category="signature">
         <i class="fa-solid fa-crown" style="color:var(--accent-gold);"></i>
         <span>Şefin İmzaları</span>
         <span class="cat-count">${state.items.filter(i => i.isSignature).length}</span>
@@ -237,7 +258,7 @@
       }
       if (count === 0) continue;
       html += `
-        <button class="cat-nav-pill ${state.selectedCategory === key ? 'active' : ''}" data-category="${key}">
+        <button class="cat-nav-pill cat-pill ${state.selectedCategory === key ? 'active' : ''}" data-category="${key}">
           <i class="${cat.icon || 'fa-solid fa-fish'}"></i>
           <span>${cat.shortName || cat.name}</span>
           <span class="cat-count">${count}</span>
@@ -352,6 +373,15 @@
     return filtered;
   }
 
+  // Helper: Does dish have a valid, genuine image?
+  function hasDishImage(dish) {
+    if (!dish) return false;
+    if (!dish.image || typeof dish.image !== 'string' || !dish.image.trim()) return false;
+    if (dish.isLocalImage === false) return false;
+    if (dish.image.includes('_default.') || dish.image.includes('/default.') || dish.image.includes('placeholder')) return false;
+    return true;
+  }
+
   let infiniteScrollObserver = null;
 
   function renderDishes(resetPagination = true) {
@@ -404,12 +434,13 @@
       const isSig = dish.isSignature;
       const isLocal = dish.isLocalImage;
       const animDelay = idx < 8 ? Math.min(idx * 24, 200) : 0;
+      const hasImg = hasDishImage(dish);
 
       if (isList) {
         // Ultra-Compact Native Food Feed (6 Rows Fit on Screen)
         html += `
           <article 
-            class="dish-card" 
+            class="dish-card ${hasImg ? 'has-image' : 'no-image'}" 
             data-dish-id="${dish.id}" 
             ${animDelay > 0 ? `style="animation-delay: ${animDelay}ms;"` : ''}
             onclick="window.TuzlaMenuApp.openDishModal('${dish.id}')"
@@ -420,49 +451,63 @@
                 <div class="dish-card-price">${dish.price ? dish.price + ' ₺' : 'Mevsim Fiyatı'}</div>
               </div>
               <p class="dish-card-desc">${dish.description || ''}</p>
+              ${dish.badge && !hasImg ? `<div class="dish-badge-row"><span class="badge-pill badge-cuisine">${dish.badge}</span></div>` : ''}
             </div>
 
-            <div class="dish-card-visual">
-              <img 
-                src="${dish.image}" 
-                alt="${dish.name}" 
-                class="dish-card-img" 
-                loading="lazy"
-                onerror="this.onerror=null; this.src='images/mezeler/mezeler.webp';"
-              >
-            </div>
+            ${hasImg ? `
+              <div class="dish-card-visual">
+                <img 
+                  src="${dish.image}" 
+                  alt="${dish.name}" 
+                  class="dish-card-img" 
+                  loading="lazy"
+                  onerror="this.onerror=null; const v=this.closest('.dish-card-visual'); if(v) v.style.display='none'; this.closest('.dish-card')?.classList.remove('has-image'); this.closest('.dish-card')?.classList.add('no-image');"
+                >
+              </div>
+            ` : ''}
           </article>
         `;
       } else {
         // Grid View (Visual Cards)
         html += `
           <article 
-            class="dish-card" 
+            class="dish-card ${hasImg ? 'has-image' : 'no-image'}" 
             data-dish-id="${dish.id}" 
             ${animDelay > 0 ? `style="animation-delay: ${animDelay}ms;"` : ''}
             onclick="window.TuzlaMenuApp.openDishModal('${dish.id}')"
           >
-            <div class="dish-card-visual">
-              <img 
-                src="${dish.image}" 
-                alt="${dish.name}" 
-                class="dish-card-img" 
-                loading="lazy"
-                onerror="this.onerror=null; this.src='images/mezeler/mezeler.webp';"
-              >
-              <div class="dish-img-overlay"></div>
-              <div class="dish-badge-group">
-                ${isSig ? `<span class="badge-pill badge-signature"><i class="fa-solid fa-crown"></i> Şefin İmzası</span>` : ''}
-                ${isLocal ? `<span class="badge-pill badge-local-photo"><i class="fa-solid fa-camera"></i> Özgün Fotoğraf</span>` : ''}
-                ${dish.badge && !isSig ? `<span class="badge-pill badge-cuisine">${dish.badge}</span>` : ''}
+            ${hasImg ? `
+              <div class="dish-card-visual">
+                <img 
+                  src="${dish.image}" 
+                  alt="${dish.name}" 
+                  class="dish-card-img" 
+                  loading="lazy"
+                  onerror="this.onerror=null; const v=this.closest('.dish-card-visual'); if(v) v.style.display='none'; this.closest('.dish-card')?.classList.remove('has-image'); this.closest('.dish-card')?.classList.add('no-image');"
+                >
+                <div class="dish-img-overlay"></div>
+                <div class="dish-badge-group">
+                  ${isSig ? `<span class="badge-pill badge-signature"><i class="fa-solid fa-crown"></i> Şefin İmzası</span>` : ''}
+                  ${isLocal ? `<span class="badge-pill badge-local-photo"><i class="fa-solid fa-camera"></i> Özgün Fotoğraf</span>` : ''}
+                  ${dish.badge && !isSig ? `<span class="badge-pill badge-cuisine">${dish.badge}</span>` : ''}
+                </div>
               </div>
-            </div>
+            ` : ''}
             <div class="dish-card-body">
+              ${!hasImg ? `
+                <div class="dish-card-top-row">
+                  <div class="dish-badge-group inline">
+                    ${isSig ? `<span class="badge-pill badge-signature"><i class="fa-solid fa-crown"></i> Şefin İmzası</span>` : ''}
+                    ${dish.badge && !isSig ? `<span class="badge-pill badge-cuisine">${dish.badge}</span>` : ''}
+                  </div>
+                  <div class="dish-card-price">${dish.price ? dish.price + ' ₺' : 'Mevsim Fiyatı'}</div>
+                </div>
+              ` : ''}
               <div class="dish-card-header">
                 <h3 class="dish-card-title">${dish.name}</h3>
-                <div class="dish-card-price">${dish.price ? dish.price + ' ₺' : 'Mevsim Fiyatı'}</div>
+                ${hasImg ? `<div class="dish-card-price">${dish.price ? dish.price + ' ₺' : 'Mevsim Fiyatı'}</div>` : ''}
               </div>
-              <p class="dish-card-desc">${dish.description}</p>
+              <p class="dish-card-desc">${dish.description || ''}</p>
               ${dish.pairing ? `
                 <div class="dish-card-pairing">
                   <i class="fa-solid fa-wine-glass"></i>
@@ -523,10 +568,27 @@
 
     state.activeModalDish = dish;
 
-    modalHeroImg.src = dish.image;
-    modalHeroImg.onerror = function () {
-      this.src = 'images/mezeler/mezeler.webp';
-    };
+    const hasImg = hasDishImage(dish);
+    if (hasImg) {
+      if (modalHeroVisual) modalHeroVisual.style.display = '';
+      if (modalHeroImg) {
+        modalHeroImg.src = dish.image;
+        modalHeroImg.alt = dish.name;
+        modalHeroImg.onerror = function () {
+          if (modalHeroVisual) modalHeroVisual.style.display = 'none';
+          if (dishModalSheet) dishModalSheet.classList.add('no-hero-image');
+        };
+      }
+      if (dishModalSheet) dishModalSheet.classList.remove('no-hero-image');
+    } else {
+      if (modalHeroVisual) modalHeroVisual.style.display = 'none';
+      if (modalHeroImg) {
+        modalHeroImg.src = '';
+        modalHeroImg.alt = '';
+        modalHeroImg.onerror = null;
+      }
+      if (dishModalSheet) dishModalSheet.classList.add('no-hero-image');
+    }
 
     let catDisplayName = '';
     if (dish.category === 'saraplar' || dish.category === 'biralar' || dish.category === 'ithal-ickiler') {
@@ -636,7 +698,7 @@
     // Category click (Sticky Segmented Scroller)
     if (categoryScroll) {
       categoryScroll.addEventListener('click', e => {
-        const btn = e.target.closest('.cat-nav-pill');
+        const btn = e.target.closest('.cat-nav-pill, .cat-pill');
         if (!btn) return;
         const cat = btn.getAttribute('data-category');
         if (cat) {
@@ -679,11 +741,12 @@
         searchInput.value = '';
         state.searchQuery = '';
         searchClearBtn.classList.remove('visible');
-        if (state.selectedCategory === 'all') {
-          state.selectedCategory = null;
+        if (state.selectedCategory === 'all' || !state.selectedCategory) {
+          resetToLandingView();
+        } else {
+          updateMenuVisibility();
+          renderDishes();
         }
-        updateMenuVisibility();
-        renderDishes();
       });
     }
 

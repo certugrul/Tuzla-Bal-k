@@ -1,0 +1,449 @@
+/* ==========================================================================
+   TUZLA BALIK SOYAK - GEL-AL ÖZEL GASTRONOMİ MENÜ UYGULAMASI STİLLERİ
+   menu-app stillerini miras alır ve Gel-Al'a özel %20 indirim vurgularını ekler.
+   ========================================================================== */
+
+@import url('../menu-app/style.css');
+
+/* Gel-Al Header Branding Pill */
+.brand-gelal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.1) 100%);
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold-light);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--radius-full);
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Header WhatsApp Button */
+.btn-header-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #25D366;
+  color: #ffffff;
+  padding: 0.42rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.35);
+  transition: transform var(--trans-fast), filter var(--trans-fast);
+}
+
+.btn-header-wa:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+/* Gel-Al Promo Badge in Hero */
+.gelal-promo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+  margin-bottom: 0.85rem;
+  animation: pulseBadge 2.4s infinite ease-in-out;
+}
+
+@keyframes pulseBadge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* ==========================================================================
+   STICKY CATEGORY NAV STRIP WITH LINEAR SPRING PILL
+   ========================================================================== */
+.category-nav-wrapper {
+  position: sticky;
+  top: 61px;
+  z-index: 90;
+  background: var(--bg-glass, rgba(18, 22, 36, 0.92));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-hairline, rgba(212, 175, 55, 0.18));
+  padding: 0.8rem 1.5rem 0.9rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: none;
+}
+
+body.has-menu-opened .category-nav-wrapper,
+.category-nav-wrapper.is-visible {
+  display: block !important;
+  animation: applePillReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes applePillReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appleSectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-nav-wrapper::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Unified Segmented Pill Track */
+.category-nav-scroll {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-input, rgba(255, 255, 255, 0.06));
+  border: 1px solid var(--border-hairline, rgba(212, 175, 55, 0.2));
+  border-radius: var(--radius-full, 9999px);
+  padding: 0.3rem 0.35rem;
+  gap: 0.25rem;
+  width: max-content;
+  min-width: max-content;
+  box-sizing: border-box;
+}
+
+/* Fluid Segmented Spring Pill Indicator */
+.cat-spring-indicator,
+.category-gold-indicator {
+  position: absolute;
+  top: 0.3rem;
+  left: 0;
+  width: 0;
+  height: calc(100% - 0.6rem);
+  background: var(--accent-gold, #d4af37);
+  border-radius: var(--radius-full, 9999px);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              width 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.25s ease,
+              top 0.25s ease,
+              opacity 0.2s ease;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.45);
+  opacity: 0;
+}
+
+/* Segmented Category Buttons */
+.cat-nav-pill,
+.cat-pill {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: var(--text-muted, #94a3b8) !important;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full, 9999px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s ease, transform var(--trans-fast, 0.15s ease);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.cat-nav-pill:active,
+.cat-pill:active {
+  transform: scale(0.96);
+}
+
+.cat-nav-pill.active,
+.cat-pill.active {
+  color: #0f1422 !important;
+  font-weight: 700;
+}
+
+.cat-nav-pill.active i,
+.cat-pill.active i,
+.cat-nav-pill.active span,
+.cat-pill.active span {
+  color: #0f1422 !important;
+}
+
+.cat-nav-pill.active .cat-count,
+.cat-pill.active .cat-count,
+.cat-nav-pill.active .cat-count-badge,
+.cat-pill.active .cat-count-badge {
+  background: rgba(15, 20, 34, 0.22) !important;
+  color: #0f1422 !important;
+}
+
+.cat-nav-pill i,
+.cat-pill i {
+  font-size: 0.82rem;
+  color: inherit;
+}
+
+.cat-count,
+.cat-count-badge {
+  font-size: 0.7rem;
+  opacity: 0.95;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted, #94a3b8);
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-full, 9999px);
+  font-weight: 700;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.app-main {
+  flex: 1;
+  padding: 1.8rem 1.5rem 6.5rem;
+  display: none;
+}
+
+body.has-menu-opened .app-main,
+.app-main.is-visible {
+  display: block !important;
+  animation: appleSectionReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Kategori seçildikten sonra büyük kategorileri tamamen gizle */
+body.has-menu-opened .top-categories-section,
+.top-categories-section.hidden-when-menu-open {
+  display: none !important;
+}
+
+.top-categories-section {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+/* Gel-Al Pricing Box (Üzeri Çizili Normal Fiyat + İndirimli Gel-Al Fiyatı + Gel Al'a Özel) */
+.gelal-price-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gelal-price-numbers {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.original-price-strike {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  opacity: 0.75;
+  font-weight: 500;
+}
+
+.original-price-strike s {
+  text-decoration: line-through;
+}
+
+.gelal-discounted-price {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #34d399; /* Canlı zümrüt yeşili indirim rengi */
+  text-shadow: 0 0 10px rgba(52, 211, 153, 0.25);
+  white-space: nowrap;
+}
+
+.dish-card-price-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* Gel-Al Tag Badge */
+.badge-gelal-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Kart Üzeri Rozet Grubu */
+.dish-card-visual .dish-badge-group {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  z-index: 3;
+}
+
+.dish-card.no-image .dish-badge-group.inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.4rem;
+}
+
+.badge-pill.badge-gelal-live {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.45) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  font-size: 0.7rem !important;
+  font-weight: 800 !important;
+  padding: 0.22rem 0.55rem !important;
+  letter-spacing: 0.03em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+}
+
+/* Kart Başlığı ve Fiyat Yerleşimi */
+.dishes-grid.view-grid .dish-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.dishes-grid.view-grid .dish-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Liste Görünümünde Fiyat Hizalaması */
+.dishes-grid.view-list .dish-card-price-col .gelal-price-box {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+
+/* Modal Pricing for Gel-Al */
+.modal-gelal-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.modal-original-price s {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.modal-gelal-price {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #34d399;
+}
+
+.modal-gelal-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Modal WhatsApp Order Action */
+.modal-order-action {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-hairline);
+}
+
+.btn-modal-wa-order {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  font-size: 0.94rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  transition: transform var(--trans-fast), filter var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.btn-modal-wa-order:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+
+.btn-modal-wa-order:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .brand-gelal-pill {
+    display: none; /* Mobilde header dar olduğundan gizle */
+  }
+  .btn-header-wa .header-contact-label {
+    display: none;
+  }
+  .btn-header-wa {
+    padding: 0.45rem;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+  }
+  .gelal-discounted-price {
+    font-size: 1.05rem;
+  }
+  .original-price-strike {
+    font-size: 0.8rem;
+  }
+}

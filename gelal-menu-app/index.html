@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Tuzla Balık Soyak | Gel-Al Menüsü (%20 İndirimli)</title>
+  <meta name="description" content="Tuzla Balık Soyak Gel-Al menüsü. Gel-al teslimatlarda geçerli tüm lezzetlerde %20 indirim avantajı.">
+  <meta name="theme-color" content="#1a2035">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gel-Al Tuzla Balık">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../Assets/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=20261126_03">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- APP HEADER STICKY ANCHOR -->
+    <div class="app-header-wrapper" id="appHeaderWrapper">
+      <header class="app-header" id="appHeader">
+        <div class="header-inner">
+          <a href="#hero" class="brand-section" title="Tuzla Balık Gel-Al">
+            <img src="../menu-app/images/tuzlabalikyazilogo.webp" alt="Tuzla Balık" class="brand-logo-wide" onerror="this.onerror=null; this.src='../menu-app/images/tuzlabalikyazilogo.png';">
+            <span class="brand-gelal-pill"><i class="fa-solid fa-bag-shopping"></i> GEL-AL MENÜSÜ</span>
+          </a>
+
+          <div class="header-actions">
+            <a href="https://wa.me/905306063517?text=Merhaba%20Tuzla%20Bal%C4%B1k%20Soyak!%20Gel-Al%20sipari%C5%9Fi%20vermek%20istiyorum." target="_blank" rel="noopener" class="btn-header-wa" title="WhatsApp ile Gel-Al Sipariş">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span class="header-contact-label">Gel-Al Sipariş</span>
+            </a>
+            <a href="tel:+905306063517" class="btn-header-contact" title="Restoranı Ara">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <!-- GEL-AL SPECIAL HERO BANNER -->
+    <section class="app-hero-strip" id="hero">
+      <div class="hero-strip-content">
+        <div class="gelal-promo-badge">
+          <i class="fa-solid fa-tag"></i> GEL-AL TESLİMATTA %20 İNDİRİM
+        </div>
+
+        <div class="hero-heading">
+          <h2>Restoran Lezzetleri Sofranızda, <em>%20 İndirimle.</em></h2>
+          <p>Tuzla Balık Soyak mutfağından taze günlük Ege mezeleri ve sıcak balık lezzetlerimizi gelip teslim alımlarda <strong>%20 avantajlı fiyatlarla</strong> sipariş edebilirsiniz.</p>
+        </div>
+
+        <div class="search-filter-bar">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input 
+              type="text" 
+              class="search-input" 
+              id="searchInput" 
+              placeholder="Gel-Al lezzet veya içecek arayın..." 
+              autocomplete="off"
+            >
+            <button class="search-clear-btn" id="searchClearBtn" title="Temizle">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <button class="btn-filter-trigger" id="filterTriggerBtn" title="Sadece Şefin İmzalarını Göster">
+            <i class="fa-solid fa-crown" style="color:var(--accent-gold);"></i>
+            <span>İmzalar</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP CATEGORIES SHOWCASE STRIP (ALKOLLER HARİÇ GEL-AL KATEGORİLERİ) -->
+    <section class="top-categories-section" id="topCategoriesSection" aria-label="Gel-Al Kategorileri">
+      <div class="top-categories-header">
+        <div class="top-cat-header-left">
+          <span class="top-cat-badge"><i class="fa-solid fa-bag-shopping"></i> Gel-Al Seçkisi</span>
+          <h2 class="top-cat-title">Lezzet Kategorileri</h2>
+        </div>
+        <span class="top-cat-subtitle">Görüntülemek için bir kategori seçin</span>
+      </div>
+
+      <div class="top-categories-scroll-wrap">
+        <div class="top-categories-grid" id="topCategoriesGrid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- STICKY CATEGORY NAV STRIP -->
+    <nav class="category-nav-wrapper" id="categoryNavWrapper">
+      <div class="category-nav-scroll" id="categoryScroll">
+        <!-- Rendered by app.js -->
+      </div>
+    </nav>
+
+    <!-- MAIN DISHES VIEWPORT -->
+    <main class="app-main">
+      <div class="category-chapter-header">
+        <div class="chapter-left">
+          <h2 class="chapter-title" id="chapterTitle">
+            <i class="fa-solid fa-utensils"></i> Gel-Al Lezzetleri
+          </h2>
+          <span class="chapter-count-label" id="chapterCount">Yükleniyor...</span>
+        </div>
+
+        <!-- Mobile & Desktop View Mode Switcher -->
+        <div class="view-mode-toggle" id="viewModeToggle">
+          <div class="segmented-spring-pill" id="segmentedSpringPill"></div>
+          <button class="btn-view-toggle active" data-view="list" id="btnViewList" title="Liste Görünümü">
+            <i class="fa-solid fa-list-ul"></i>
+            <span class="view-toggle-text">Liste</span>
+          </button>
+          <button class="btn-view-toggle" data-view="grid" id="btnViewGrid" title="Kart Görünümü">
+            <i class="fa-solid fa-table-cells"></i>
+            <span class="view-toggle-text">Kart</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- DISHES GRID / LIST -->
+      <div class="dishes-grid view-list" id="dishesGrid">
+        <!-- Rendered by app.js -->
+      </div>
+    </main>
+  </div>
+
+  <!-- DISH DETAIL POPUP MODAL -->
+  <div class="modal-backdrop" id="dishModalBackdrop"></div>
+  <div class="dish-modal-sheet" id="dishModalSheet" role="dialog" aria-modal="true" aria-label="Lezzet Detayı">
+    <div class="sheet-drag-handle-bar">
+      <span class="sheet-drag-pill"></span>
+    </div>
+
+    <button class="modal-close-btn" id="modalCloseBtn" title="Kapat">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+    <!-- Hero Visual -->
+    <div class="modal-hero-visual" id="modalHeroVisual">
+      <img src="" alt="" class="modal-hero-img" id="modalHeroImg">
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <div class="modal-meta-top">
+        <span class="modal-cat-tag" id="modalCatTag">Kategori</span>
+        <div class="modal-price-wrap" id="modalPriceWrap">
+          <!-- Rendered by app.js (Strikethrough original + discounted price) -->
+        </div>
+      </div>
+      <h2 class="modal-title" id="modalTitle">Lezzet Başlığı</h2>
+      <p class="modal-description" id="modalDescription">Açıklama</p>
+
+      <div class="modal-sommelier-card" id="modalSommelierCard">
+        <div class="sommelier-header">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>Gel-Al Servis & Paket Notu</span>
+        </div>
+        <p class="sommelier-text" id="modalSommelierText">Taze paketleme notu</p>
+      </div>
+
+      <div class="modal-order-action">
+        <a href="#" id="modalBtnOrderWa" target="_blank" rel="noopener" class="btn-modal-wa-order">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Bu Lezzeti WhatsApp ile Gel-Al Sipariş Ver</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared menu-data.js from menu-app -->
+  <script src="../menu-app/menu-data.js?v=20261126_03"></script>
+  <!-- Gel-Al App Logic -->
+  <script src="app.js?v=20261126_03"></script>
+</body>
+</html>

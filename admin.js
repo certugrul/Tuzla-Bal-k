@@ -8,11 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
   let menuCategories = {};
   let siteSettings = {};
 
+  let activeMenuMode = 'restaurant'; // 'restaurant' | 'gelal'
+  const GELAL_EXCLUDED_CATEGORIES = ['rakilar', 'saraplar', 'biralar', 'ithal-ickiler'];
+  const GELAL_DISCOUNT_RATE = 0.20;
+
   let currentCategory = 'all';
   let searchQuery = '';
   let currentPage = 1;
   const pageSize = 20;
   let editingItemId = null;
+
+  // Gallery Picker State
+  let galleryImages = [];
+  let galleryLoaded = false;
+  let gallerySearch = '';
+  let galleryCategory = 'all';
 
   // DOM Elements
   const navTabs = document.querySelectorAll('.js-nav-tab');
@@ -25,6 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const statTotalCategories = document.getElementById('statTotalCategories');
   const statSignatureItems = document.getElementById('statSignatureItems');
   const statAvgPrice = document.getElementById('statAvgPrice');
+
+  // Menu Switcher & Banner Elements
+  const btnModeRestaurant = document.getElementById('btnModeRestaurant');
+  const btnModeGelAl = document.getElementById('btnModeGelAl');
+  const modeCountRestaurant = document.getElementById('modeCountRestaurant');
+  const modeCountGelAl = document.getElementById('modeCountGelAl');
+  const gelalModeBanner = document.getElementById('gelalModeBanner');
+  const colPriceHeader = document.getElementById('colPriceHeader');
+  const colGelAlPriceHeader = document.getElementById('colGelAlPriceHeader');
 
   // Table Elements
   const menuTableBody = document.getElementById('menuTableBody');
@@ -40,6 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const itemForm = document.getElementById('itemForm');
   const modalCloseBtns = document.querySelectorAll('.js-close-modal');
   const btnOpenAddModal = document.getElementById('btnOpenAddModal');
+
+  // Image Manager Elements
+  const dishImagePreviewWrap = document.getElementById('dishImagePreviewWrap');
+  const dishImagePreview = document.getElementById('dishImagePreview');
+  const dishImagePlaceholder = document.getElementById('dishImagePlaceholder');
+  const imgStatusBadge = document.getElementById('imgStatusBadge');
+  const itemImage = document.getElementById('itemImage');
+  const itemImageFileInput = document.getElementById('itemImageFileInput');
+  const btnTriggerUpload = document.getElementById('btnTriggerUpload');
+  const btnOpenGalleryModal = document.getElementById('btnOpenGalleryModal');
+  const btnRemoveImage = document.getElementById('btnRemoveImage');
+
+  // Gallery Picker Modal Elements
+  const galleryPickerModal = document.getElementById('galleryPickerModal');
+  const galleryGridBody = document.getElementById('galleryGridBody');
+  const gallerySearchInput = document.getElementById('gallerySearchInput');
+  const galleryCategoryFilter = document.getElementById('galleryCategoryFilter');
+  const galleryCountLabel = document.getElementById('galleryCountLabel');
+  const closeGalleryBtns = document.querySelectorAll('.js-close-gallery-modal');
 
   // Settings Form
   const siteSettingsForm = document.getElementById('siteSettingsForm');
@@ -70,14 +108,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load Menu
     const savedMenu = localStorage.getItem('tuzla_custom_menu');
-    if (savedMenu) {
+    if (typeof window !== 'undefined' && window.MENU_ITEMS && window.MENU_ITEMS.length > 0) {
+      if (savedMenu) {
+        try {
+          const parsed = JSON.parse(savedMenu);
+          // Orijinal dosyadaki gerçek fotoğraf eşleştirmelerini koru
+          const imgMap = {};
+          window.MENU_ITEMS.forEach(it => {
+            if (it.image && it.isLocalImage !== false) {
+              imgMap[it.id] = { image: it.image, isLocalImage: it.isLocalImage };
+            }
+          });
+          menuItems = parsed.map(it => {
+            if ((!it.image || it.isLocalImage === false) && imgMap[it.id]) {
+              return { ...it, image: imgMap[it.id].image, isLocalImage: imgMap[it.id].isLocalImage };
+            }
+            return it;
+          });
+        } catch (e) {
+          menuItems = [...window.MENU_ITEMS];
+        }
+      } else {
+        menuItems = [...window.MENU_ITEMS];
+      }
+    } else if (savedMenu) {
       try {
         menuItems = JSON.parse(savedMenu);
       } catch (e) {
-        menuItems = (typeof MENU_ITEMS !== 'undefined') ? [...MENU_ITEMS] : [];
+        menuItems = [];
       }
-    } else {
-      menuItems = (typeof MENU_ITEMS !== 'undefined') ? [...MENU_ITEMS] : [];
     }
 
     menuCategories = (typeof MENU_CATEGORIES !== 'undefined') ? MENU_CATEGORIES : {};
@@ -88,11 +147,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate Category Dropdowns
     populateCategoryDropdowns();
 
-    // Render Everything
+    // Update Counts & Render Everything
+    updateMenuModeCounts();
     renderStats();
     renderTable();
     populateSettingsForm();
     fetchReservations();
+  }
+
+  // Update counts on switcher pills
+  function updateMenuModeCounts() {
+    const totalRestaurant = menuItems.length;
+    const totalGelAl = menuItems.filter(item => !GELAL_EXCLUDED_CATEGORIES.includes(item.category)).length;
+    if (modeCountRestaurant) modeCountRestaurant.textContent = totalRestaurant;
+    if (modeCountGelAl) modeCountGelAl.textContent = totalGelAl;
   }
 
   function getDefaultSettings() {
@@ -137,15 +205,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const defaultCategoryNames = {
+    'mezeler': 'Soğuk Mezeler',
+    'ara-sicaklar': 'Ara Sıcaklar',
+    'baliklar': 'Mevsim Balıkları',
+    'etler': 'Kırmızı Et & Izgara',
+    'salatalar': 'Taze Salatalar',
+    'rakilar': 'Rakı Kavı',
+    'saraplar': 'Şaraplar',
+    'biralar': 'Biralar',
+    'ithal-ickiler': 'İthal & Sert İçkiler',
+    'tatlilar': 'Tatlı Kapanışlar',
+    'mesrubatlar': 'Alkolsüz İçecekler',
+    'cerezler': 'Çerez & Meyve'
+  };
+
+  function getCategoryName(catKey) {
+    if (!catKey) return 'Genel';
+    const cat = menuCategories[catKey];
+    if (cat) {
+      return cat.name || cat.tr || cat.shortName || defaultCategoryNames[catKey] || catKey;
+    }
+    return defaultCategoryNames[catKey] || catKey;
+  }
+
   // Populate Dropdowns
   function populateCategoryDropdowns() {
     const selects = [adminCategorySelect, document.getElementById('itemCategory')];
+    const catKeys = new Set([
+      ...Object.keys(menuCategories),
+      ...Object.keys(defaultCategoryNames),
+      ...menuItems.map(i => i.category).filter(Boolean)
+    ]);
+
     selects.forEach(select => {
       if (!select) return;
       const isFilter = select === adminCategorySelect;
       let html = isFilter ? '<option value="all">Tüm Kategoriler</option>' : '';
-      for (const [key, val] of Object.entries(menuCategories)) {
-        html += `<option value="${key}">${val.tr}</option>`;
+      for (const key of catKeys) {
+        if (isFilter && activeMenuMode === 'gelal' && GELAL_EXCLUDED_CATEGORIES.includes(key)) {
+          continue; // Gel-Al modunda alkol kategorilerini filtre kutusunda gizle
+        }
+        const label = getCategoryName(key);
+        html += `<option value="${key}">${label}</option>`;
       }
       select.innerHTML = html;
     });
@@ -200,6 +302,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Menu Table Filter & Render
   function getFilteredItems() {
     return menuItems.filter(item => {
+      // Gel-Al modunda alkollü içecek kategorileri otomatik elenir
+      if (activeMenuMode === 'gelal') {
+        if (GELAL_EXCLUDED_CATEGORIES.includes(item.category)) return false;
+      }
+
       if (currentCategory !== 'all' && item.category !== currentCategory) return false;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
@@ -215,6 +322,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTable() {
     if (!menuTableBody) return;
 
+    // Table Header durumunu moda göre ayarla
+    if (colGelAlPriceHeader) {
+      colGelAlPriceHeader.style.display = (activeMenuMode === 'gelal') ? '' : 'none';
+    }
+    if (colPriceHeader) {
+      colPriceHeader.textContent = (activeMenuMode === 'gelal') ? 'Restoran Fiyatı' : 'Fiyat';
+    }
+
     const filtered = getFilteredItems();
     const totalCount = filtered.length;
     const totalPages = Math.ceil(totalCount / pageSize) || 1;
@@ -224,11 +339,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const startIdx = (currentPage - 1) * pageSize;
     const pageItems = filtered.slice(startIdx, startIdx + pageSize);
+    const colSpanTotal = (activeMenuMode === 'gelal') ? 9 : 8;
 
     if (pageItems.length === 0) {
       menuTableBody.innerHTML = `
         <tr>
-          <td colspan="7" style="text-align:center; padding:3rem 1rem; color:var(--text-muted);">
+          <td colspan="${colSpanTotal}" style="text-align:center; padding:3rem 1rem; color:var(--text-muted);">
             <i class="fa-solid fa-box-open" style="font-size:2rem; color:var(--gold-primary); margin-bottom:0.5rem; display:block;"></i>
             Kayıt bulunamadı. Farklı bir arama veya kategori seçebilirsiniz.
           </td>
@@ -236,26 +352,59 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     } else {
       menuTableBody.innerHTML = pageItems.map(item => {
-        const catInfo = menuCategories[item.category] || { tr: item.category };
+        const catLabel = getCategoryName(item.category);
         const priceText = item.price ? `${item.price.toLocaleString('tr-TR')} ₺` : 'Günlük / Kg';
-        const badgeHtml = item.badge ? `<span class="tag-badge">${escapeHtml(item.badge)}</span>` : '<span style="color:var(--text-dim);">-</span>';
+        const hasImg = Boolean(item.image && item.isLocalImage !== false && item.image.trim() !== '');
+
+        // 1. Görsel Sütunu Thumbnail
+        const thumbHtml = hasImg
+          ? `<div class="td-thumb-wrap" onclick="window.editMenuItem('${item.id}')" title="Görseli Değiştir / Düzenle">
+              <img src="menu-app/${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="table-dish-thumb" onerror="this.parentElement.className='td-thumb-wrap no-img'; this.parentElement.innerHTML='<i class=\\'fa-solid fa-camera\\'></i><span class=\\'thumb-add-label\\'>Ekle</span>';">
+              <div class="thumb-edit-overlay"><i class="fa-solid fa-pen"></i></div>
+            </div>`
+          : `<div class="td-thumb-wrap no-img" onclick="window.editMenuItem('${item.id}')" title="Görsel Ekle / Düzenle">
+              <i class="fa-solid fa-camera"></i>
+              <span class="thumb-add-label">Ekle</span>
+            </div>`;
+
+        // 2. Fiyat Sütunları
+        let priceColHtml = '';
+        if (activeMenuMode === 'gelal') {
+          const gelalPrice = item.price ? Math.round(item.price * (1 - GELAL_DISCOUNT_RATE)) : null;
+          const gelalPriceText = gelalPrice ? `${gelalPrice.toLocaleString('tr-TR')} ₺` : 'Günlük / Kg';
+          priceColHtml = `
+            <td><s style="color:var(--text-muted); font-size:0.88rem;">${priceText}</s></td>
+            <td><span class="price-tag gelal-accent"><i class="fa-solid fa-arrow-down" style="font-size:0.75rem;"></i> ${gelalPriceText}</span></td>
+          `;
+        } else {
+          priceColHtml = `<td><span class="price-tag">${priceText}</span></td>`;
+        }
+
+        // 3. Rozet Sütunu
+        let badgeHtml = '';
+        if (activeMenuMode === 'gelal') {
+          badgeHtml = `<span class="tag-badge" style="background:rgba(16,185,129,0.15); color:#34d399; border:1px solid rgba(16,185,129,0.3); font-weight:600;"><i class="fa-solid fa-tag"></i> Gel Al'a Özel</span>`;
+        } else {
+          badgeHtml = item.badge ? `<span class="tag-badge">${escapeHtml(item.badge)}</span>` : '<span style="color:var(--text-dim);">-</span>';
+        }
 
         return `
           <tr data-id="${item.id}">
+            <td style="text-align:center;">${thumbHtml}</td>
             <td><span class="item-code-badge">${item.id}</span></td>
             <td class="item-title-col">
               <strong>${escapeHtml(item.name)}</strong>
               <small>${escapeHtml(item.description || '')}</small>
             </td>
-            <td><span class="cat-badge">${escapeHtml(catInfo.tr)}</span></td>
-            <td><span class="price-tag">${priceText}</span></td>
+            <td><span class="cat-badge">${escapeHtml(catLabel)}</span></td>
+            ${priceColHtml}
             <td>${badgeHtml}</td>
             <td>
               ${item.is_signature ? '<i class="fa-solid fa-star" style="color:#f59e0b;" title="Şefin İmzası"></i>' : '<span style="color:var(--text-dim);">-</span>'}
             </td>
             <td>
               <div class="table-actions">
-                <button class="btn-icon-action edit" onclick="window.editMenuItem('${item.id}')" title="Düzenle">
+                <button class="btn-icon-action edit" onclick="window.editMenuItem('${item.id}')" title="Düzenle / Görsel Değiştir">
                   <i class="fa-solid fa-pen-to-square"></i>
                 </button>
                 <button class="btn-icon-action delete" onclick="window.deleteMenuItem('${item.id}')" title="Sil">
@@ -269,11 +418,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (pageInfo) {
-      pageInfo.textContent = `Toplam ${totalCount} üründen ${startIdx + 1} - ${Math.min(startIdx + pageSize, totalCount)} arası gösteriliyor (Sayfa ${currentPage} / ${totalPages})`;
+      const modeLabel = (activeMenuMode === 'gelal') ? '🛍️ Gel-Al Menüsü (%20 İndirimli)' : '🍽️ Restoran Menüsü';
+      pageInfo.textContent = `Toplam ${totalCount} üründen ${startIdx + 1} - ${Math.min(startIdx + pageSize, totalCount)} arası gösteriliyor (${modeLabel} • Sayfa ${currentPage} / ${totalPages})`;
     }
 
     if (prevPageBtn) prevPageBtn.disabled = currentPage <= 1;
     if (nextPageBtn) nextPageBtn.disabled = currentPage >= totalPages;
+
+    updateMenuModeCounts();
   }
 
   // Table Search & Category Filter
@@ -309,6 +461,282 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // MENÜ MODU GEÇİŞİ (RESTORAN vs GEL-AL)
+  // ==========================================
+  if (btnModeRestaurant) {
+    btnModeRestaurant.addEventListener('click', () => {
+      if (activeMenuMode === 'restaurant') return;
+      activeMenuMode = 'restaurant';
+      btnModeRestaurant.classList.add('active');
+      btnModeGelAl?.classList.remove('active');
+      if (gelalModeBanner) gelalModeBanner.style.display = 'none';
+      populateCategoryDropdowns();
+      currentPage = 1;
+      renderTable();
+      showToast('🍽️ Restoran Menüsü Yönetimi seçildi.');
+    });
+  }
+
+  if (btnModeGelAl) {
+    btnModeGelAl.addEventListener('click', () => {
+      if (activeMenuMode === 'gelal') return;
+      activeMenuMode = 'gelal';
+      btnModeGelAl.classList.add('active');
+      btnModeRestaurant?.classList.remove('active');
+      if (gelalModeBanner) gelalModeBanner.style.display = 'flex';
+      if (GELAL_EXCLUDED_CATEGORIES.includes(currentCategory)) {
+        currentCategory = 'all';
+      }
+      populateCategoryDropdowns();
+      currentPage = 1;
+      renderTable();
+      showToast('🛍️ Gel-Al Menüsü (%20 indirimli, alkolsüz) seçildi.');
+    });
+  }
+
+  // ==========================================
+  // ÜRÜN GÖRSELİ ÖNİZLEME VE GÜNCELLEME
+  // ==========================================
+  function updateImagePreviewUI(imagePath) {
+    const rawPath = (imagePath || '').trim();
+    if (itemImage) itemImage.value = rawPath;
+
+    if (rawPath) {
+      const srcUrl = rawPath.startsWith('http://') || rawPath.startsWith('https://') || rawPath.startsWith('/')
+        ? rawPath
+        : `menu-app/${rawPath}`;
+
+      if (dishImagePreview) {
+        dishImagePreview.src = srcUrl;
+        dishImagePreview.style.display = 'block';
+        dishImagePreview.onerror = function () {
+          dishImagePreview.style.display = 'none';
+          if (dishImagePlaceholder) dishImagePlaceholder.style.display = 'flex';
+        };
+      }
+      if (dishImagePlaceholder) dishImagePlaceholder.style.display = 'none';
+      if (imgStatusBadge) {
+        imgStatusBadge.textContent = 'Fotoğraf Var';
+        imgStatusBadge.className = 'img-status-badge has-img';
+      }
+    } else {
+      if (dishImagePreview) {
+        dishImagePreview.src = '';
+        dishImagePreview.style.display = 'none';
+      }
+      if (dishImagePlaceholder) dishImagePlaceholder.style.display = 'flex';
+      if (imgStatusBadge) {
+        imgStatusBadge.textContent = 'Görsel Yok';
+        imgStatusBadge.className = 'img-status-badge';
+      }
+    }
+  }
+
+  // Bilgisayardan Fotoğraf Yükleme
+  if (btnTriggerUpload && itemImageFileInput) {
+    btnTriggerUpload.addEventListener('click', () => {
+      itemImageFileInput.value = '';
+      itemImageFileInput.click();
+    });
+
+    itemImageFileInput.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith('image/')) {
+        alert('Lütfen geçerli bir resim dosyası seçin (PNG, JPG, WEBP).');
+        return;
+      }
+
+      if (file.size > 8 * 1024 * 1024) {
+        alert('Resim boyutu 8MB\'tan küçük olmalıdır.');
+        return;
+      }
+
+      const origText = btnTriggerUpload.innerHTML;
+      btnTriggerUpload.disabled = true;
+      btnTriggerUpload.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Fotoğraf Yükleniyor...</span>';
+
+      const reader = new FileReader();
+      reader.onload = async (evt) => {
+        try {
+          const res = await fetch('/api/upload-image', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              filename: file.name,
+              dataUrl: evt.target.result
+            })
+          });
+
+          const result = await res.json();
+          if (res.ok && result.success && result.imagePath) {
+            updateImagePreviewUI(result.imagePath);
+            showToast('Fotoğraf başarıyla yüklendi!');
+          } else {
+            alert('Görsel yüklenemedi: ' + (result.error || 'Bilinmeyen hata'));
+          }
+        } catch (err) {
+          alert('Sunucuya bağlanılamadı: ' + err.message);
+        } finally {
+          btnTriggerUpload.disabled = false;
+          btnTriggerUpload.innerHTML = origText;
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  // Görseli Kaldır (Görselsiz Yap)
+  if (btnRemoveImage) {
+    btnRemoveImage.addEventListener('click', () => {
+      updateImagePreviewUI('');
+      showToast('Görsel kaldırıldı. Menüde şık metin kartı olarak görünecek.');
+    });
+  }
+
+  // ==========================================
+  // FOTOĞRAF GALERİSİ MODAL MANTIĞI
+  // ==========================================
+  async function loadGalleryImages() {
+    if (galleryLoaded && galleryImages.length > 0) {
+      renderGalleryGrid();
+      return;
+    }
+
+    if (galleryGridBody) {
+      galleryGridBody.innerHTML = `
+        <div style="text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1;">
+          <i class="fa-solid fa-spinner fa-spin" style="font-size:2rem; color:var(--gold-primary); margin-bottom:0.8rem; display:block;"></i>
+          Fotoğraf galerisi taranıyor (200+ görsel)...
+        </div>
+      `;
+    }
+
+    try {
+      const res = await fetch('/api/images/gallery');
+      const data = await res.json();
+      if (res.ok && data.success && Array.isArray(data.images)) {
+        galleryImages = data.images;
+        galleryLoaded = true;
+        populateGalleryCategoryFilter();
+        renderGalleryGrid();
+      } else {
+        throw new Error(data.error || 'Galeri yüklenemedi');
+      }
+    } catch (err) {
+      if (galleryGridBody) {
+        galleryGridBody.innerHTML = `
+          <div style="text-align:center; padding:3rem; color:#f87171; grid-column:1/-1;">
+            <i class="fa-solid fa-triangle-exclamation" style="font-size:2rem; margin-bottom:0.8rem; display:block;"></i>
+            Galeri yüklenirken hata oluştu: ${escapeHtml(err.message)}
+          </div>
+        `;
+      }
+    }
+  }
+
+  function populateGalleryCategoryFilter() {
+    if (!galleryCategoryFilter) return;
+    const cats = new Set();
+    galleryImages.forEach(img => {
+      if (img.category) cats.add(img.category);
+    });
+    let html = `<option value="all">Tüm Kategoriler (${galleryImages.length} Fotoğraf)</option>`;
+    Array.from(cats).sort().forEach(cat => {
+      const label = menuCategories[cat] ? menuCategories[cat].tr : cat;
+      const count = galleryImages.filter(i => i.category === cat).length;
+      html += `<option value="${escapeHtml(cat)}">${escapeHtml(label)} (${count})</option>`;
+    });
+    galleryCategoryFilter.innerHTML = html;
+  }
+
+  function renderGalleryGrid() {
+    if (!galleryGridBody) return;
+
+    const q = gallerySearch.toLowerCase().trim();
+    const filtered = galleryImages.filter(img => {
+      if (galleryCategory !== 'all' && img.category !== galleryCategory) return false;
+      if (q) {
+        const inFilename = img.filename.toLowerCase().includes(q);
+        const inPath = img.path.toLowerCase().includes(q);
+        const inCat = img.category.toLowerCase().includes(q);
+        if (!inFilename && !inPath && !inCat) return false;
+      }
+      return true;
+    });
+
+    if (galleryCountLabel) {
+      galleryCountLabel.textContent = `${filtered.length} fotoğraf listeleniyor (Toplam: ${galleryImages.length})`;
+    }
+
+    if (filtered.length === 0) {
+      galleryGridBody.innerHTML = `
+        <div style="text-align:center; padding:3rem; color:var(--text-muted); grid-column:1/-1;">
+          <i class="fa-solid fa-magnifying-glass" style="font-size:2rem; color:var(--gold-primary); margin-bottom:0.8rem; display:block;"></i>
+          Aramanıza uygun fotoğraf bulunamadı.
+        </div>
+      `;
+      return;
+    }
+
+    const currentSelectedPath = (itemImage ? itemImage.value : '').trim();
+
+    galleryGridBody.innerHTML = filtered.map(img => {
+      const isSelected = currentSelectedPath === img.path;
+      const displayName = img.filename
+        .replace(/^dish_\d+_/, '')
+        .replace(/\.[^/.]+$/, '')
+        .replace(/[_-]/g, ' ');
+
+      return `
+        <div class="gallery-item-tile ${isSelected ? 'selected' : ''}" onclick="window.selectGalleryImage('${escapeHtml(img.path)}')" title="${escapeHtml(displayName)}">
+          <img src="menu-app/${escapeHtml(img.path)}" alt="${escapeHtml(displayName)}" class="gallery-tile-img" loading="lazy">
+          <div class="gallery-tile-info">${escapeHtml(displayName)}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  window.selectGalleryImage = (imagePath) => {
+    updateImagePreviewUI(imagePath);
+    closeGalleryModal();
+    showToast('Fotoğraf galeriden seçildi!');
+  };
+
+  function openGalleryModal() {
+    galleryPickerModal?.classList.add('active');
+    loadGalleryImages();
+  }
+
+  function closeGalleryModal() {
+    galleryPickerModal?.classList.remove('active');
+  }
+
+  if (btnOpenGalleryModal) {
+    btnOpenGalleryModal.addEventListener('click', openGalleryModal);
+  }
+
+  closeGalleryBtns.forEach(btn => btn.addEventListener('click', closeGalleryModal));
+  galleryPickerModal?.addEventListener('click', (e) => {
+    if (e.target === galleryPickerModal) closeGalleryModal();
+  });
+
+  if (gallerySearchInput) {
+    gallerySearchInput.addEventListener('input', (e) => {
+      gallerySearch = e.target.value;
+      renderGalleryGrid();
+    });
+  }
+
+  if (galleryCategoryFilter) {
+    galleryCategoryFilter.addEventListener('change', (e) => {
+      galleryCategory = e.target.value;
+      renderGalleryGrid();
+    });
+  }
+
   // 5. Add / Edit Modal Logic
   window.editMenuItem = (id) => {
     const item = menuItems.find(i => i.id === id);
@@ -325,6 +753,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('itemDesc').value = item.description || '';
     document.getElementById('itemSignature').checked = !!item.is_signature;
 
+    const hasImg = (item.image && item.isLocalImage !== false) ? item.image : '';
+    updateImagePreviewUI(hasImg);
+
     openModal();
   };
 
@@ -337,6 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
       saveMenuState();
       renderStats();
       renderTable();
+      updateMenuModeCounts();
       showToast(`"${item.name}" başarıyla silindi.`);
     }
   };
@@ -350,6 +782,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Auto-generate random ST ID
       const nextId = 'ST' + Math.floor(10000 + Math.random() * 90000);
       document.getElementById('itemId').value = nextId;
+      updateImagePreviewUI('');
       openModal();
     });
   }
@@ -378,6 +811,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const badge = document.getElementById('itemBadge').value.trim();
       const description = document.getElementById('itemDesc').value.trim();
       const is_signature = document.getElementById('itemSignature').checked;
+      const imagePath = (document.getElementById('itemImage')?.value || '').trim();
+      const hasImage = Boolean(imagePath);
 
       const price = priceVal ? parseInt(priceVal, 10) : null;
 
@@ -397,7 +832,9 @@ document.addEventListener('DOMContentLoaded', () => {
             price,
             badge,
             description,
-            is_signature
+            is_signature,
+            image: imagePath,
+            isLocalImage: hasImage
           };
           showToast(`"${name}" başarıyla güncellendi!`);
         }
@@ -411,7 +848,9 @@ document.addEventListener('DOMContentLoaded', () => {
           price,
           badge: badge || 'Yeni',
           description,
-          is_signature
+          is_signature,
+          image: imagePath,
+          isLocalImage: hasImage
         });
         showToast(`"${name}" menüye eklendi!`);
       }
@@ -420,6 +859,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal();
       renderStats();
       renderTable();
+      updateMenuModeCounts();
     });
   }
 

@@ -103,18 +103,28 @@ const server = http.createServer(async (req, res) => {
   // 2. MENÜ API (/api/menu)
   // ==========================================
   if (pathname === '/api/menu') {
-    const menuDataPath = path.join(BASE_DIR, 'menu-data.js');
+    const menuAppPath = path.join(BASE_DIR, 'menu-app', 'menu-data.js');
+    const rootMenuPath = path.join(BASE_DIR, 'menu-data.js');
+    const activePath = fs.existsSync(menuAppPath) ? menuAppPath : rootMenuPath;
+
     if (req.method === 'GET') {
       res.writeHead(200, { 'Content-Type': 'application/javascript; charset=utf-8' });
-      res.end(fs.readFileSync(menuDataPath, 'utf8'));
+      res.end(fs.readFileSync(activePath, 'utf8'));
       return;
     }
 
     if (req.method === 'POST') {
       try {
         const { items, categories } = await readJsonBody(req);
-        const newJsContent = `// Tuzla Balık Soyak - Dinamik Menü Veritabanı\n// Backoffice üzerinden güncellendi\n\nvar MENU_CATEGORIES = ${JSON.stringify(categories, null, 2)};\n\nvar MENU_ITEMS = ${JSON.stringify(items, null, 2)};\n\nif (typeof window !== "undefined") {\n  window.MENU_CATEGORIES = MENU_CATEGORIES;\n  window.MENU_ITEMS = MENU_ITEMS;\n}\n`;
-        fs.writeFileSync(menuDataPath, newJsContent, 'utf8');
+        
+        // Write to menu-app/menu-data.js
+        const menuAppJs = `/**\n * TUZLA BALIK RESTAURANT - VERIFIED MENU DATA\n * Total Active Items: ${items.length}\n * Optimized with high-efficiency WebP photography.\n * Sorted A-Z within each category with authentic restaurant course hierarchy.\n */\n\nwindow.MENU_CATEGORIES = ${JSON.stringify(categories, null, 2)};\n\nwindow.MENU_ITEMS = ${JSON.stringify(items, null, 2)};\n`;
+        fs.writeFileSync(menuAppPath, menuAppJs, 'utf8');
+
+        // Also sync root menu-data.js
+        const rootJs = `// Tuzla Balık Soyak - Dinamik Menü Veritabanı\n// Backoffice üzerinden güncellendi\n\nvar MENU_CATEGORIES = ${JSON.stringify(categories, null, 2)};\n\nvar MENU_ITEMS = ${JSON.stringify(items, null, 2)};\n\nif (typeof window !== "undefined") {\n  window.MENU_CATEGORIES = MENU_CATEGORIES;\n  window.MENU_ITEMS = MENU_ITEMS;\n}\n`;
+        fs.writeFileSync(rootMenuPath, rootJs, 'utf8');
+
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ success: true, count: items.length, message: 'Menü başarıyla diske kaydedildi' }));
       } catch (err) {
@@ -123,6 +133,94 @@ const server = http.createServer(async (req, res) => {
       }
       return;
     }
+  }
+
+  // ==========================================
+  // 2.1 GÖRSEL YÜKLEME VE GALERİ API
+  // ==========================================
+  if (pathname === '/api/upload-image' && req.method === 'POST') {
+    try {
+      const { filename, dataUrl } = await readJsonBody(req);
+      if (!filename || !dataUrl) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'filename ve dataUrl gereklidir' }));
+        return;
+      }
+
+      // Base64 çözümleme
+      const matches = dataUrl.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+      let buffer;
+      if (matches && matches.length === 3) {
+        buffer = Buffer.from(matches[2], 'base64');
+      } else {
+        buffer = Buffer.from(dataUrl, 'base64');
+      }
+
+      // Güvenli dosya ismi üretme
+      const ext = path.extname(filename).toLowerCase() || '.webp';
+      const baseName = path.basename(filename, ext).replace(/[^a-zA-Z0-9_\-]/g, '_');
+      const safeFilename = `dish_${Date.now()}_${baseName}${ext}`;
+
+      const uploadDir = path.join(BASE_DIR, 'menu-app', 'images', 'uploads');
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+
+      const targetPath = path.join(uploadDir, safeFilename);
+      fs.writeFileSync(targetPath, buffer);
+
+      const relPath = `images/uploads/${safeFilename}`;
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({
+        success: true,
+        imagePath: relPath,
+        url: `/menu-app/${relPath}`,
+        filename: safeFilename
+      }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Görsel yüklenemedi', details: err.message }));
+    }
+    return;
+  }
+
+  if (pathname === '/api/images/gallery' && req.method === 'GET') {
+    try {
+      const imgBase = path.join(BASE_DIR, 'menu-app', 'images');
+      function scanDir(dir, relPrefix = '') {
+        let results = [];
+        if (!fs.existsSync(dir)) return results;
+        const list = fs.readdirSync(dir);
+        for (const item of list) {
+          const full = path.join(dir, item);
+          const stat = fs.statSync(full);
+          if (stat.isDirectory()) {
+            results = results.concat(scanDir(full, (relPrefix ? relPrefix + '/' : '') + item));
+          } else {
+            const ext = path.extname(item).toLowerCase();
+            if (['.webp', '.png', '.jpg', '.jpeg'].includes(ext)) {
+              if (!item.includes('default') && !item.includes('logo')) {
+                const imgPath = `images/${relPrefix ? relPrefix + '/' : ''}${item}`;
+                results.push({
+                  filename: item,
+                  category: relPrefix || 'genel',
+                  path: imgPath,
+                  url: `/menu-app/${imgPath}`
+                });
+              }
+            }
+          }
+        }
+        return results;
+      }
+      const gallery = scanDir(imgBase);
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ success: true, count: gallery.length, images: gallery }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Galeri listelenemedi', details: err.message }));
+    }
+    return;
   }
 
   // ==========================================
@@ -421,8 +519,27 @@ const server = http.createServer(async (req, res) => {
   }
 
   // ==========================================
-  // 9. STATIC DOSYA SUNUCUSU
+  // 9. GEL-AL MENÜ VE STATİK DOSYA SUNUCUSU
   // ==========================================
+  // /gelal kısayol yönlendirmesi
+  if (pathname === '/gelal' || pathname === '/gelal/') {
+    res.writeHead(302, { 'Location': '/gelal-menu-app/' });
+    res.end();
+    return;
+  }
+
+  // Gel-Al Menu App görsellerini menu-app/images/ klasöründen ortak sunma
+  if (pathname.startsWith('/gelal-menu-app/images/')) {
+    const subPath = pathname.replace('/gelal-menu-app/images/', '');
+    const sharedImgFile = path.join(BASE_DIR, 'menu-app', 'images', subPath);
+    if (fs.existsSync(sharedImgFile)) {
+      const ext = path.extname(sharedImgFile).toLowerCase();
+      res.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
+      res.end(fs.readFileSync(sharedImgFile));
+      return;
+    }
+  }
+
   let filePath = path.join(BASE_DIR, pathname === '/' ? 'index.html' : pathname);
   
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
@@ -445,6 +562,8 @@ server.listen(PORT, () => {
   console.log(`🐟 TUZLA BALIK SOYAK WEB SUNUCUSU AKTİF!`);
   console.log(`------------------------------------------------------`);
   console.log(`🌐 Ana Web Sitesi:    http://localhost:${PORT}/`);
+  console.log(`📱 Menü App:          http://localhost:${PORT}/menu-app/`);
+  console.log(`🛍️  Gel-Al Menü App:   http://localhost:${PORT}/gelal-menu-app/`);
   console.log(`⚙️  Backoffice Paneli: http://localhost:${PORT}/admin.html`);
   console.log(`📊 Anket Sayfası:     http://localhost:${PORT}/anket.html?id=res_demo_01`);
   console.log(`======================================================\n`);

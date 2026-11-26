@@ -696,7 +696,8 @@ body.has-menu-opened .top-categories-section,
 }
 
 /* Fluid Segmented Spring Pill Indicator (Identical to .segmented-spring-pill) */
-.cat-spring-indicator {
+.cat-spring-indicator,
+.category-gold-indicator {
   position: absolute;
   top: 0.3rem;
   left: 0;
@@ -715,7 +716,8 @@ body.has-menu-opened .top-categories-section,
 }
 
 /* Segmented Category Buttons (Identical to .btn-view-toggle) */
-.cat-nav-pill {
+.cat-nav-pill,
+.cat-pill {
   position: relative;
   z-index: 2;
   background: transparent !important;
@@ -733,30 +735,39 @@ body.has-menu-opened .top-categories-section,
   transition: color 0.3s ease, transform var(--trans-fast);
 }
 
-.cat-nav-pill:active {
+.cat-nav-pill:active,
+.cat-pill:active {
   transform: scale(0.96);
 }
 
-.cat-nav-pill.active {
+.cat-nav-pill.active,
+.cat-pill.active {
   color: var(--bg-body) !important;
   font-weight: 700;
 }
 
 .cat-nav-pill.active i,
-.cat-nav-pill.active span {
+.cat-pill.active i,
+.cat-nav-pill.active span,
+.cat-pill.active span {
   color: var(--bg-body) !important;
 }
 
-.cat-nav-pill.active .cat-count {
+.cat-nav-pill.active .cat-count,
+.cat-pill.active .cat-count,
+.cat-nav-pill.active .cat-count-badge,
+.cat-pill.active .cat-count-badge {
   background: rgba(18, 22, 36, 0.22) !important;
   color: var(--bg-body) !important;
 }
 
-.cat-nav-pill i {
+.cat-nav-pill i,
+.cat-pill i {
   font-size: 0.82rem;
 }
 
-.cat-count {
+.cat-count,
+.cat-count-badge {
   font-size: 0.7rem;
   opacity: 0.9;
   background: rgba(255, 255, 255, 0.08);
@@ -1086,6 +1097,71 @@ body.has-menu-opened .top-categories-section,
   display: none;
 }
 
+/* Cards Without Image (Text-focused Luxury Presentation) */
+.dishes-grid.view-list .dish-card.no-image {
+  padding: 0.95rem 1.15rem;
+}
+
+.dishes-grid.view-list .dish-card.no-image .dish-card-body {
+  width: 100%;
+}
+
+.dish-badge-row {
+  margin-top: 0.4rem;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dishes-grid.view-grid .dish-card.no-image {
+  min-height: 170px;
+  justify-content: flex-start;
+  background: var(--bg-card);
+  border: 1px solid var(--border-hairline);
+  position: relative;
+}
+
+.dishes-grid.view-grid .dish-card.no-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.45) 0%, rgba(212, 175, 55, 0.05) 100%);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.dishes-grid.view-grid .dish-card.no-image .dish-card-body {
+  padding: 1.25rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.65rem;
+  height: 100%;
+}
+
+.dishes-grid.view-grid .dish-card.no-image .dish-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.dishes-grid.view-grid .dish-card.no-image .dish-badge-group.inline {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.dishes-grid.view-grid .dish-card.no-image .dish-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
 /* Chevron indicator on Thumbnail (List Mode) */
 .card-chevron-hint {
   position: absolute;
@@ -1332,6 +1408,21 @@ body.has-menu-opened .top-categories-section,
 
 .dish-modal-sheet.active .modal-hero-img {
   transform: scale(1);
+}
+
+/* Modal without Hero Image */
+.dish-modal-sheet.no-hero-image .modal-hero-visual {
+  display: none !important;
+}
+
+.dish-modal-sheet.no-hero-image .modal-body {
+  padding-top: 2.2rem;
+}
+
+.dish-modal-sheet.no-hero-image .modal-close-btn {
+  top: 0.85rem;
+  right: 0.85rem;
+  background: rgba(30, 36, 56, 0.9);
 }
 
 /* Modal Content Body with Cascading Flow */
@@ -1647,6 +1738,9 @@ body.has-menu-opened .top-categories-section,
     gap: 0.85rem;
     min-height: auto;
     border-radius: 12px;
+  }
+  .dishes-grid.view-list .dish-card.no-image {
+    padding: 0.85rem 0.95rem;
   }
   .dishes-grid.view-list .dish-card-visual {
     width: 84px;
