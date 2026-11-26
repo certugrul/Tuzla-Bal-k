@@ -226,6 +226,75 @@ const server = http.createServer(async (req, res) => {
   // ==========================================
   // 3. REZERVASYONLAR API (/api/reservations)
   // ==========================================
+  if (pathname === '/api/reservations/export' && req.method === 'GET') {
+    const list = automation.loadReservations();
+    const format = (url.searchParams.get('format') || 'csv').toLowerCase();
+    const dateStr = new Date().toISOString().slice(0, 10);
+
+    if (format === 'json') {
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Disposition': `attachment; filename="tuzla_balik_rezervasyonlar_${dateStr}.json"`
+      });
+      res.end(JSON.stringify(list, null, 2));
+      return;
+    }
+
+    // Default: Excel uyumlu UTF-8 CSV with BOM
+    const bom = '\uFEFF';
+    const header = ['ID', 'Müşteri Adı', 'Telefon', 'Kişi Sayısı', 'Masa / Alan', 'Tarih', 'Saat', 'Notlar', 'Kayıt Zamanı', 'Anket Durumu', 'Anket Puanı', 'Google Yorum Tıklandı Mı'];
+    const escapeCsv = (val) => {
+      if (val === null || val === undefined) return '""';
+      const str = String(val).replace(/"/g, '""');
+      return `"${str}"`;
+    };
+
+    const rows = list.map(item => {
+      const score = (item.survey_data && item.survey_data.score) ? item.survey_data.score : '';
+      const gReview = (item.survey_data && item.survey_data.clicked_google_review) ? 'Evet' : 'Hayır';
+      return [
+        escapeCsv(item.id),
+        escapeCsv(item.name),
+        escapeCsv(item.phone),
+        escapeCsv(item.guests),
+        escapeCsv(item.area),
+        escapeCsv(item.date),
+        escapeCsv(item.time),
+        escapeCsv(item.notes),
+        escapeCsv(item.created_at),
+        escapeCsv(item.survey_status),
+        escapeCsv(score),
+        escapeCsv(gReview)
+      ].join(';');
+    });
+
+    const csvContent = bom + [header.join(';'), ...rows].join('\r\n');
+    res.writeHead(200, {
+      'Content-Type': 'text/csv; charset=utf-8',
+      'Content-Disposition': `attachment; filename="tuzla_balik_rezervasyonlar_${dateStr}.csv"`
+    });
+    res.end(csvContent);
+    return;
+  }
+
+  if (pathname === '/api/reservations/restore' && req.method === 'POST') {
+    try {
+      const data = await readJsonBody(req);
+      if (Array.isArray(data)) {
+        automation.saveReservations(data);
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: true, count: data.length, message: `${data.length} rezervasyon başarıyla geri yüklendi` }));
+        return;
+      }
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Geçersiz veri: dizi bekleniyor' }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Geri yükleme hatası', details: err.message }));
+    }
+    return;
+  }
+
   if (pathname === '/api/reservations') {
     const list = automation.loadReservations();
 
@@ -336,6 +405,99 @@ const server = http.createServer(async (req, res) => {
     } catch (err) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'Silme işlemi başarısız', details: err.message }));
+    }
+    return;
+  }
+
+  // ==========================================
+  // 5.1 REZERVASYONLARI DIŞA AKTAR (/api/reservations/export)
+  // ==========================================
+  if (pathname === '/api/reservations/export' && req.method === 'GET') {
+    const list = automation.loadReservations();
+    const format = (url.searchParams.get('format') || 'csv').toLowerCase();
+    const dateStr = new Date().toISOString().slice(0, 10);
+
+    if (format === 'json') {
+      res.writeHead(200, {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Disposition': `attachment; filename="tuzla_balik_rezervasyonlar_${dateStr}.json"`
+      });
+      res.end(JSON.stringify(list, null, 2));
+      return;
+    }
+
+    // Excel Uyumlu CSV (UTF-8 BOM + noktalı virgül)
+    const bom = '\uFEFF';
+    const headers = [
+      'ID',
+      'Müşteri Adı',
+      'Telefon',
+      'Kişi Sayısı',
+      'Masa/Bölüm',
+      'Rezervasyon Tarihi',
+      'Saat',
+      'Özel Notlar',
+      'Kayıt Zamanı',
+      'Anket Durumu',
+      'Anket Zamanlaması',
+      'Gönderim Zamanı',
+      'Anket Puanı (1-5)',
+      'Google Yorum Tıklandı Mı'
+    ];
+
+    const escapeCsv = (val) => {
+      if (val === null || val === undefined) return '""';
+      const s = String(val).replace(/"/g, '""').replace(/\r?\n/g, ' ');
+      return `"${s}"`;
+    };
+
+    const rows = list.map(item => {
+      const score = (item.survey_data && item.survey_data.score) ? item.survey_data.score : '';
+      const gReview = (item.survey_data && item.survey_data.clicked_google_review) ? 'Evet' : 'Hayır';
+      return [
+        escapeCsv(item.id),
+        escapeCsv(item.name),
+        escapeCsv(item.phone),
+        escapeCsv(item.guests),
+        escapeCsv(item.area),
+        escapeCsv(item.date),
+        escapeCsv(item.time),
+        escapeCsv(item.notes),
+        escapeCsv(item.created_at),
+        escapeCsv(item.survey_status),
+        escapeCsv(item.survey_scheduled_at),
+        escapeCsv(item.survey_sent_at),
+        escapeCsv(score),
+        escapeCsv(gReview)
+      ].join(';');
+    });
+
+    const csvContent = bom + [headers.join(';'), ...rows].join('\r\n');
+    res.writeHead(200, {
+      'Content-Type': 'text/csv; charset=utf-8',
+      'Content-Disposition': `attachment; filename="tuzla_balik_rezervasyonlar_${dateStr}.csv"`
+    });
+    res.end(csvContent);
+    return;
+  }
+
+  // ==========================================
+  // 5.2 REZERVASYONLARI GERİ YÜKLE (/api/reservations/restore)
+  // ==========================================
+  if (pathname === '/api/reservations/restore' && req.method === 'POST') {
+    try {
+      const data = await readJsonBody(req);
+      if (Array.isArray(data)) {
+        automation.saveReservations(data);
+        res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ success: true, count: data.length, message: 'Rezervasyonlar başarıyla geri yüklendi' }));
+        return;
+      }
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Geçersiz veri formatı, dizi bekleniyor' }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: err.message }));
     }
     return;
   }

@@ -465,12 +465,29 @@
         <div class="settings-section-card">
           <div class="settings-section-header">
             <h3>Yedek Al & Dışa Aktar (JSON)</h3>
-            <p>Mevcut menüyü ve tüm ayarlarınızı tek bir JSON yedek dosyası olarak bilgisayarınıza indirin.</p>
+            <p>Mevcut menüyü, rezervasyonları ve tüm ayarlarınızı tek bir JSON yedek dosyası olarak bilgisayarınıza indirin.</p>
           </div>
           <button class="btn-secondary" id="btnDownloadBackup" style="background:rgba(212,175,55,0.15); border-color:var(--gold-primary); color:var(--gold-light); font-weight:600;">
             <i class="fa-solid fa-download"></i>
-            <span>Yedek Dosyasını İndir (.json)</span>
+            <span>Tam Sistem Yedeğini İndir (.json)</span>
           </button>
+        </div>
+
+        <div class="settings-section-card" style="border-left: 4px solid #38bdf8;">
+          <div class="settings-section-header">
+            <h3>Rezervasyon Yedekleri & Müşteri Listesi (Excel & JSON)</h3>
+            <p>Tüm geçmiş rezervasyonları, anket puanlarını ve müşteri iletişim listesini Excel (CSV) veya JSON dosyası olarak tek tıkla indirin.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="btn-secondary" id="btnBackupTabExportExcel" style="border-color:#38bdf8; color:#38bdf8; font-weight:600;">
+              <i class="fa-solid fa-file-excel"></i>
+              <span>Rezervasyonları Excel (CSV) İndir</span>
+            </button>
+            <button type="button" class="btn-secondary" id="btnBackupTabExportJson" style="border-color:#c084fc; color:#c084fc; font-weight:600;">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Rezervasyon JSON Yedeği Al</span>
+            </button>
+          </div>
         </div>
 
         <div class="settings-section-card">
@@ -581,7 +598,7 @@
             <input type="text" id="resSearchInput" placeholder="Müşteri adı, telefon veya not ara...">
           </div>
 
-          <div class="toolbar-filters">
+          <div class="toolbar-filters" style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
             <select id="resStatusFilter" class="admin-select" style="min-width:200px;">
               <option value="all">Tüm Rezervasyonlar</option>
               <option value="due">⏳ Zamanı Gelmiş (Gönderilecek)</option>
@@ -589,6 +606,15 @@
               <option value="sent">✉️ Anket Gönderildi</option>
               <option value="completed">⭐ Anket Dolduruldu</option>
             </select>
+
+            <button type="button" class="btn-secondary" id="btnExportResExcel" style="border-color:#38bdf8; color:#38bdf8; padding:8px 14px;" title="Excel uyumlu CSV dosyası olarak indir">
+              <i class="fa-solid fa-file-excel"></i>
+              <span>Excel (CSV) İndir</span>
+            </button>
+            <button type="button" class="btn-secondary" id="btnExportResJson" style="border-color:#c084fc; color:#c084fc; padding:8px 14px;" title="JSON formatında tam yedek indir">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>JSON Yedeği Al</span>
+            </button>
           </div>
         </div>
 

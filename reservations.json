@@ -1,21 +1,5 @@
 [
   {
-    "id": "res_1795693017558_9c3r8",
-    "name": "ee",
-    "phone": "ee",
-    "guests": "4",
-    "area": "Açık Bahçe / Teras",
-    "date": "2026-11-26",
-    "time": "20:00",
-    "notes": "",
-    "created_at": "2026-11-26T11:36:57.558Z",
-    "survey_scheduled_at": "2026-11-26T11:07:00.000Z",
-    "survey_status": "pending",
-    "survey_sent_at": null,
-    "survey_sent_via": null,
-    "survey_data": null
-  },
-  {
     "id": "res_1795691847982_660sh",
     "name": "e",
     "phone": "1111111111",

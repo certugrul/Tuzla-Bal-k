@@ -960,17 +960,18 @@ document.addEventListener('DOMContentLoaded', () => {
         exportedAt: new Date().toISOString(),
         siteSettings: siteSettings,
         categories: menuCategories,
-        menuItems: menuItems
+        menuItems: menuItems,
+        reservations: (typeof reservationsList !== 'undefined' ? reservationsList : [])
       };
 
       const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `tuzla_balik_yedek_${new Date().toISOString().slice(0, 10)}.json`;
+      a.download = `tuzla_balik_tam_yedek_${new Date().toISOString().slice(0, 10)}.json`;
       a.click();
       URL.revokeObjectURL(url);
-      showToast('Yedek dosyası bilgisayarınıza indirildi!');
+      showToast('Menü, ayarlar ve rezervasyonlar içeren tam yedek indirildi!');
     });
   }
 
@@ -991,10 +992,21 @@ document.addEventListener('DOMContentLoaded', () => {
             saveMenuState();
             localStorage.setItem('tuzla_site_settings', JSON.stringify(siteSettings));
 
+            // Eğer yedek içinde rezervasyonlar da varsa sunucuya geri yükle
+            if (parsed.reservations && Array.isArray(parsed.reservations)) {
+              fetch('/api/reservations/restore', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(parsed.reservations)
+              }).then(() => {
+                if (typeof loadAndRenderReservations === 'function') loadAndRenderReservations();
+              }).catch(() => {});
+            }
+
             renderStats();
             renderTable();
             populateSettingsForm();
-            showToast('Yedek başarıyla yüklendi ve menü güncellendi!');
+            showToast('Yedek başarıyla yüklendi ve menü/ayarlar güncellendi!');
           } else {
             alert('Geçersiz yedek dosyası formatı.');
           }
@@ -1312,6 +1324,22 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast(`${dueList.length} adet zamanı gelmiş anketten 1.'si açıldı.`);
     });
   }
+
+  // Rezervasyon Yedekleme & Dışa Aktarma Butonları
+  function triggerReservationExport(format) {
+    showToast(`📥 Rezervasyon listesi ${format.toUpperCase()} formatında indiriliyor...`);
+    window.location.href = `/api/reservations/export?format=${format}`;
+  }
+
+  const btnExportResExcel = document.getElementById('btnExportResExcel');
+  const btnExportResJson = document.getElementById('btnExportResJson');
+  const btnBackupTabExportExcel = document.getElementById('btnBackupTabExportExcel');
+  const btnBackupTabExportJson = document.getElementById('btnBackupTabExportJson');
+
+  if (btnExportResExcel) btnExportResExcel.addEventListener('click', () => triggerReservationExport('csv'));
+  if (btnExportResJson) btnExportResJson.addEventListener('click', () => triggerReservationExport('json'));
+  if (btnBackupTabExportExcel) btnBackupTabExportExcel.addEventListener('click', () => triggerReservationExport('csv'));
+  if (btnBackupTabExportJson) btnBackupTabExportJson.addEventListener('click', () => triggerReservationExport('json'));
 
   // Modal Closers
   document.querySelectorAll('.js-close-res-modal').forEach(btn => {
