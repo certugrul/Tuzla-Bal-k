@@ -379,7 +379,8 @@
       });
     }
 
-    return filtered;
+    // Bütün kategorilerde A'dan Z'ye sıralama
+    return filtered.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' }));
   }
 
   let infiniteScrollObserver = null;

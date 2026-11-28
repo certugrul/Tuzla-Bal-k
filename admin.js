@@ -336,6 +336,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 4. Menu Table Filter & Render
   function getFilteredItems() {
+    const categoryOrder = [
+      'mezeler',
+      'ara-sicaklar',
+      'baliklar',
+      'etler',
+      'salatalar',
+      'rakilar',
+      'saraplar',
+      'biralar',
+      'ithal-ickiler',
+      'tatlilar',
+      'cerezler',
+      'mesrubatlar'
+    ];
+
     return menuItems.filter(item => {
       // Gel-Al modunda alkollü içecek kategorileri otomatik elenir
       if (activeMenuMode === 'gelal') {
@@ -351,6 +366,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!inName && !inId && !inDesc) return false;
       }
       return true;
+    }).sort((a, b) => {
+      if (currentCategory === 'all' && !searchQuery) {
+        const orderA = categoryOrder.indexOf(a.category);
+        const orderB = categoryOrder.indexOf(b.category);
+        const rankA = orderA === -1 ? 999 : orderA;
+        const rankB = orderB === -1 ? 999 : orderB;
+        if (rankA !== rankB) return rankA - rankB;
+        return (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' });
+      }
+      return (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' });
     });
   }
 

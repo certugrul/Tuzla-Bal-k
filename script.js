@@ -132,11 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return activeMenuItems.filter(item => {
       // Category Match
       if (state.selectedCategory !== 'all') {
-        if (state.selectedCategory === 'saraplar') {
-          if (item.category !== 'saraplar' && item.category !== 'biralar' && item.category !== 'ithal-ickiler') {
-            return false;
-          }
-        } else if (item.category !== state.selectedCategory) {
+        if (item.category !== state.selectedCategory) {
           return false;
         }
       }
@@ -171,14 +167,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const rankA = orderA === -1 ? 999 : orderA;
         const rankB = orderB === -1 ? 999 : orderB;
         if (rankA !== rankB) return rankA - rankB;
-        if (a.is_signature && !b.is_signature) return -1;
-        if (!a.is_signature && b.is_signature) return 1;
         return (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' });
       }
-      // Signature first, then by price
-      if (a.is_signature && !b.is_signature) return -1;
-      if (!a.is_signature && b.is_signature) return 1;
-      return (a.price || 999999) - (b.price || 999999);
+      // Bütün kategorilerde ve aramalarda A'dan Z'ye sıralama
+      return (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' });
     });
   }
 

@@ -250,12 +250,7 @@
     `;
 
     for (const [key, cat] of Object.entries(state.categories)) {
-      let count = 0;
-      if (key === 'saraplar') {
-        count = state.items.filter(i => i.category === 'saraplar' || i.category === 'biralar' || i.category === 'ithal-ickiler').length;
-      } else {
-        count = state.items.filter(i => i.category === key).length;
-      }
+      const count = state.items.filter(i => i.category === key).length;
       if (count === 0) continue;
       html += `
         <button class="cat-nav-pill cat-pill ${state.selectedCategory === key ? 'active' : ''}" data-category="${key}">
@@ -346,8 +341,6 @@
     const filtered = state.items.filter(item => {
       if (state.selectedCategory === 'signature') {
         if (!item.isSignature) return false;
-      } else if (state.selectedCategory === 'saraplar') {
-        if (item.category !== 'saraplar' && item.category !== 'biralar' && item.category !== 'ithal-ickiler') return false;
       } else if (state.selectedCategory && state.selectedCategory !== 'all') {
         if (item.category !== state.selectedCategory) return false;
       }
@@ -392,12 +385,8 @@
       });
     }
 
-    // Sort A to Z using Turkish locale
-    if ((state.selectedCategory && state.selectedCategory !== 'all') || state.searchQuery.trim()) {
-      return filtered.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' }));
-    }
-
-    return filtered;
+    // Bütün kategorilerde ve aramalarda A'dan Z'ye alfabetik sıralama
+    return filtered.sort((a, b) => (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' }));
   }
 
   // Helper: Does dish have a valid, genuine image?
