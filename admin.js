@@ -1729,6 +1729,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Oturumu Sıfırla & Yeni QR İste
+  const btnResetBotSession = document.getElementById('btnResetBotSession');
+  if (btnResetBotSession) {
+    btnResetBotSession.addEventListener('click', async () => {
+      btnResetBotSession.disabled = true;
+      btnResetBotSession.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sıfırlanıyor...';
+      try {
+        await fetch('/api/bot/reset', { method: 'POST' });
+        showToast('WhatsApp oturumu sıfırlandı, yeni bağlantı hazırlanıyor...');
+        setTimeout(checkBotStatus, 1200);
+      } catch (err) {
+        alert('Hata: ' + err.message);
+      } finally {
+        btnResetBotSession.disabled = false;
+        btnResetBotSession.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i> Oturumu Sıfırla & Yeni QR/Kod İste';
+      }
+    });
+  }
+
   // Toast Notification
   function showToast(msg) {
     if (!adminToast || !toastText) return;

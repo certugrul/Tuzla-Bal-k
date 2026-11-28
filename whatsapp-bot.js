@@ -64,7 +64,8 @@ async function startWhatsAppBot() {
 
       if (connection === 'close') {
         const statusCode = lastDisconnect?.error?.output?.statusCode;
-        const shouldReconnect = statusCode !== DisconnectReason.loggedOut;
+        const isLoggedOut = statusCode === DisconnectReason.loggedOut || statusCode === 401;
+        const shouldReconnect = !isLoggedOut;
         console.log(`[WhatsApp Bot] Bağlantı kapandı (Kod: ${statusCode}). Yeniden bağlanılıyor mu: ${shouldReconnect}`);
         
         botStatus = 'disconnected';
@@ -72,8 +73,18 @@ async function startWhatsAppBot() {
         currentQRDataUrl = null;
         connectedUser = null;
         isStarting = false;
+        sock = null;
 
-        if (shouldReconnect) {
+        if (isLoggedOut) {
+          console.log('[WhatsApp Bot] Oturum süresi dolmuş veya cihaz çıkış yapmış. Eski kimlik bilgileri temizleniyor...');
+          try {
+            if (fs.existsSync(AUTH_FOLDER)) {
+              fs.rmSync(AUTH_FOLDER, { recursive: true, force: true });
+            }
+          } catch (_) {}
+          // Temizledikten sonra taze bir oturum ile QR/Kod için yeniden başlat
+          setTimeout(() => startWhatsAppBot(), 1500);
+        } else if (shouldReconnect) {
           setTimeout(() => startWhatsAppBot(), 3000);
         }
       } else if (connection === 'open') {

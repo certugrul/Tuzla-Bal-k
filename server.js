@@ -639,6 +639,14 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (pathname === '/api/bot/reset' && req.method === 'POST') {
+    await whatsappBot.logoutBot();
+    whatsappBot.startWhatsAppBot();
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ success: true, message: 'WhatsApp oturumu sıfırlandı ve yeni QR kod hazırlanıyor' }));
+    return;
+  }
+
   if (pathname === '/api/bot/test-send' && req.method === 'POST') {
     try {
       const { phone, message } = await readJsonBody(req);

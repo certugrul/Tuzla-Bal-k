@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Tuzla Balık Soyak site - Netlify Functions",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "@netlify/blobs": "^8.1.0",
     "@whiskeysockets/baileys": "^7.0.0-rc14",
