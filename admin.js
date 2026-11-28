@@ -92,6 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const adminToast = document.getElementById('adminToast');
   const toastText = document.getElementById('toastText');
 
+  // Auth & Login Elements
+  const adminLoginOverlay = document.getElementById('adminLoginOverlay');
+  const adminLoginForm = document.getElementById('adminLoginForm');
+  const loginUsername = document.getElementById('loginUsername');
+  const loginPassword = document.getElementById('loginPassword');
+  const loginErrorMsg = document.getElementById('loginErrorMsg');
+  const btnLoginSubmit = document.getElementById('btnLoginSubmit');
+  const btnAdminLogout = document.getElementById('btnAdminLogout');
+  const headerUserInfo = document.getElementById('headerUserInfo');
+  const headerUserName = document.getElementById('headerUserName');
+
   // 1. Initialize Data
   function initData() {
     // Load Settings
@@ -1903,13 +1914,122 @@ document.addEventListener('DOMContentLoaded', () => {
               .replace(/'/g, "&#039;");
   }
 
-  // Run
-  initData();
-  checkBotStatus();
-  setInterval(checkBotStatus, 15000); // 15 saniyede bir arka plan durum kontrolü
+  // ==========================================
+  // YÖNETİCİ GİRİŞ / ÇIKIŞ & YETKİLENDİRME (AUTH)
+  // ==========================================
+  async function checkAuth() {
+    const token = localStorage.getItem('tuzla_admin_token');
+    try {
+      const res = await fetch('/api/auth/me', {
+        headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.authenticated && data.user) {
+          if (adminLoginOverlay) adminLoginOverlay.style.display = 'none';
+          if (headerUserInfo) {
+            headerUserInfo.style.display = 'inline-flex';
+            if (headerUserName) headerUserName.textContent = data.user.username;
+          }
+          return true;
+        }
+      }
+    } catch (_) {}
+
+    // Oturum yok veya geçersiz
+    if (adminLoginOverlay) adminLoginOverlay.style.display = 'flex';
+    if (headerUserInfo) headerUserInfo.style.display = 'none';
+    return false;
+  }
+
+  if (adminLoginForm) {
+    adminLoginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = loginUsername ? loginUsername.value.trim() : '';
+      const password = loginPassword ? loginPassword.value : '';
+      if (!username || !password) return;
+
+      if (btnLoginSubmit) {
+        btnLoginSubmit.disabled = true;
+        btnLoginSubmit.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Giriş Yapılıyor...';
+      }
+      if (loginErrorMsg) loginErrorMsg.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          localStorage.setItem('tuzla_admin_token', data.token);
+          if (adminLoginOverlay) adminLoginOverlay.style.display = 'none';
+          if (headerUserInfo) {
+            headerUserInfo.style.display = 'inline-flex';
+            if (headerUserName) headerUserName.textContent = data.user.username;
+          }
+          showToast(`Hoş geldiniz Sayın ${data.user.username}!`);
+          initData();
+          checkBotStatus();
+        } else {
+          if (loginErrorMsg) {
+            loginErrorMsg.textContent = data.error || 'Giriş başarısız. Kullanıcı adı veya şifre hatalı.';
+            loginErrorMsg.style.display = 'block';
+          }
+        }
+      } catch (err) {
+        if (loginErrorMsg) {
+          loginErrorMsg.textContent = 'Sunucuya bağlanırken bir hata oluştu: ' + err.message;
+          loginErrorMsg.style.display = 'block';
+        }
+      } finally {
+        if (btnLoginSubmit) {
+          btnLoginSubmit.disabled = false;
+          btnLoginSubmit.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Giriş Yap';
+        }
+      }
+    });
+  }
+
+  if (btnAdminLogout) {
+    btnAdminLogout.addEventListener('click', async () => {
+      if (!confirm('Yönetici oturumundan çıkmak istediğinize emin misiniz?')) return;
+      try {
+        const token = localStorage.getItem('tuzla_admin_token');
+        await fetch('/api/auth/logout', {
+          method: 'POST',
+          headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+        });
+      } catch (_) {}
+      localStorage.removeItem('tuzla_admin_token');
+      if (adminLoginOverlay) {
+        adminLoginOverlay.style.display = 'flex';
+        if (loginPassword) loginPassword.value = '';
+      }
+      if (headerUserInfo) headerUserInfo.style.display = 'none';
+      showToast('Güvenli çıkış yapıldı.');
+    });
+  }
+
+  // Run with Auth Check
+  checkAuth().then(isAuth => {
+    if (isAuth) {
+      initData();
+      checkBotStatus();
+    }
+  });
+
+  setInterval(() => {
+    const overlay = document.getElementById('adminLoginOverlay');
+    if (overlay && overlay.style.display !== 'none') return;
+    checkBotStatus();
+  }, 15000); // 15 saniyede bir arka plan durum kontrolü
 
   // Zamanlayıcı saati geldiğinde veya sunucudan otomatik gönderildiğinde F5 OLMADAN canlı güncelle
   setInterval(async () => {
+    const overlay = document.getElementById('adminLoginOverlay');
+    if (overlay && overlay.style.display !== 'none') return; // Giriş yapılmamışsa canlı istek yapma
     await fetchReservations();
     renderReservationStats();
     const resTab = document.getElementById('reservationsTab');

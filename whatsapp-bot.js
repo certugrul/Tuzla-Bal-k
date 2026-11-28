@@ -4,7 +4,7 @@
  * Tek seferlik QR kod okutulduktan sonra arka planda otomatik mesaj atabilir.
  */
 
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } = require('@whiskeysockets/baileys');
+const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers, makeCacheableSignalKeyStore } = require('@whiskeysockets/baileys');
 const pino = require('pino');
 const QRCode = require('qrcode');
 const path = require('path');
@@ -21,6 +21,9 @@ let currentQRDataUrl = null;
 let botStatus = 'disconnected'; // 'disconnected' | 'connecting' | 'qr_ready' | 'connected'
 let connectedUser = null;
 let isStarting = false;
+
+// "Mesaj bekleniyor..." (Waiting for this message) hatasını önlemek için son mesaj önbelleği
+const sentMessagesCache = new Map();
 
 function normalizePhone(phone) {
   if (!phone) return '';
@@ -41,17 +44,29 @@ async function startWhatsAppBot() {
     }
 
     const { state, saveCreds } = await useMultiFileAuthState(AUTH_FOLDER);
+    const silentLogger = pino({ level: 'silent' });
 
     sock = makeWASocket({
-      auth: state,
-      logger: pino({ level: 'silent' }),
+      auth: {
+        creds: state.creds,
+        keys: makeCacheableSignalKeyStore(state.keys, silentLogger)
+      },
+      logger: silentLogger,
       printQRInTerminal: false,
       browser: Browsers.macOS('Desktop'),
       syncFullHistory: false,
-      markOnlineOnConnect: false,
+      markOnlineOnConnect: true,
       generateHighQualityLinkPreview: false,
       connectTimeoutMs: 60000,
-      keepAliveIntervalMs: 25000
+      keepAliveIntervalMs: 15000,
+      defaultQueryTimeoutMs: 60000,
+      retryRequestDelayMs: 250,
+      getMessage: async (key) => {
+        if (key && key.id && sentMessagesCache.has(key.id)) {
+          return sentMessagesCache.get(key.id);
+        }
+        return { conversation: 'Tuzla Balık Soyak Bildirimi' };
+      }
     });
 
     sock.ev.on('creds.update', saveCreds);
@@ -136,6 +151,14 @@ async function sendTextMessage(targetPhone, messageText) {
   const result = await sock.sendMessage(jid, {
     text: messageText
   });
+
+  if (result && result.key && result.key.id) {
+    sentMessagesCache.set(result.key.id, result.message || { conversation: messageText });
+    if (sentMessagesCache.size > 500) {
+      const oldestKey = sentMessagesCache.keys().next().value;
+      sentMessagesCache.delete(oldestKey);
+    }
+  }
 
   console.log(`[WhatsApp Bot] Mesaj başarıyla iletildi: +${cleanPhone}`);
   return { success: true, messageId: result?.key?.id };

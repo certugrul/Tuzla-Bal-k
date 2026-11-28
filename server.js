@@ -10,9 +10,32 @@ process.env.TZ = 'Europe/Istanbul';
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const automation = require('./automation');
 const whatsappBot = require('./whatsapp-bot');
 const db = require('./db');
+
+// Aktif yönetici oturumları (Token -> { user, expiresAt })
+const activeSessions = new Map();
+
+function getAuthUser(req) {
+  const authHeader = req.headers['authorization'];
+  let token = null;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    token = authHeader.slice(7).trim();
+  } else if (req.headers.cookie) {
+    const match = req.headers.cookie.match(/tuzla_admin_token=([^;]+)/);
+    if (match) token = match[1];
+  }
+  if (token && activeSessions.has(token)) {
+    const session = activeSessions.get(token);
+    if (session.expiresAt > Date.now()) {
+      return session.user;
+    }
+    activeSessions.delete(token);
+  }
+  return null;
+}
 
 const PORT = process.env.PORT || 3000;
 const BASE_DIR = __dirname;
@@ -84,7 +107,100 @@ const server = http.createServer(async (req, res) => {
   const hostUrl = `http://${req.headers.host}`;
 
   // ==========================================
-  // 0. VERİTABANI DURUMU (/api/db-status)
+  // 0. KULLANICI GİRİŞ & YETKİLENDİRME API (/api/auth/*)
+  // ==========================================
+  if (pathname === '/api/auth/login' && req.method === 'POST') {
+    try {
+      const { username, password } = await readJsonBody(req);
+      if (!username || !password) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: 'Kullanıcı adı ve şifre zorunludur' }));
+        return;
+      }
+
+      const user = await db.verifyUser(username.trim(), password);
+      if (!user) {
+        res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: 'Kullanıcı adı veya şifre hatalı' }));
+        return;
+      }
+
+      // 7 Günlük Güvenli Token Üret
+      const token = crypto.randomBytes(32).toString('hex');
+      activeSessions.set(token, {
+        user,
+        expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000
+      });
+
+      res.setHeader('Set-Cookie', `tuzla_admin_token=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=604800`);
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({
+        success: true,
+        token,
+        user: { username: user.username, role: user.role }
+      }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: err.message }));
+    }
+    return;
+  }
+
+  if (pathname === '/api/auth/logout' && req.method === 'POST') {
+    const authHeader = req.headers['authorization'];
+    let token = null;
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      token = authHeader.slice(7).trim();
+    } else if (req.headers.cookie) {
+      const match = req.headers.cookie.match(/tuzla_admin_token=([^;]+)/);
+      if (match) token = match[1];
+    }
+    if (token) activeSessions.delete(token);
+
+    res.setHeader('Set-Cookie', 'tuzla_admin_token=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0');
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({ success: true, message: 'Başarıyla çıkış yapıldı' }));
+    return;
+  }
+
+  if (pathname === '/api/auth/me' && req.method === 'GET') {
+    const user = getAuthUser(req);
+    if (user) {
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ authenticated: true, user }));
+    } else {
+      res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ authenticated: false, error: 'Oturum bulunamadı' }));
+    }
+    return;
+  }
+
+  if (pathname === '/api/auth/change-password' && req.method === 'POST') {
+    const user = getAuthUser(req);
+    if (!user) {
+      res.writeHead(401, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: 'Yetkisiz erişim' }));
+      return;
+    }
+    try {
+      const { newPassword } = await readJsonBody(req);
+      if (!newPassword || newPassword.length < 4) {
+        res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify({ error: 'Şifre en az 4 karakter olmalıdır' }));
+        return;
+      }
+      await db.changePassword(user.username, newPassword);
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ success: true, message: 'Şifreniz başarıyla güncellendi' }));
+    } catch (err) {
+      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ error: err.message }));
+    }
+    return;
+  }
+
+  // ==========================================
+  // 0.1 VERİTABANI DURUMU (/api/db-status)
   // ==========================================
   if (pathname === '/api/db-status' && req.method === 'GET') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
@@ -151,16 +267,11 @@ const server = http.createServer(async (req, res) => {
       try {
         const { items, categories } = await readJsonBody(req);
         
-        // Write to menu-app/menu-data.js
-        const menuAppJs = `/**\n * TUZLA BALIK RESTAURANT - VERIFIED MENU DATA\n * Total Active Items: ${items.length}\n * Optimized with high-efficiency WebP photography.\n * Sorted A-Z within each category with authentic restaurant course hierarchy.\n */\n\nwindow.MENU_CATEGORIES = ${JSON.stringify(categories, null, 2)};\n\nwindow.MENU_ITEMS = ${JSON.stringify(items, null, 2)};\n`;
-        fs.writeFileSync(menuAppPath, menuAppJs, 'utf8');
-
-        // Also sync root menu-data.js
-        const rootJs = `// Tuzla Balık Soyak - Dinamik Menü Veritabanı\n// Backoffice üzerinden güncellendi\n\nvar MENU_CATEGORIES = ${JSON.stringify(categories, null, 2)};\n\nvar MENU_ITEMS = ${JSON.stringify(items, null, 2)};\n\nif (typeof window !== "undefined") {\n  window.MENU_CATEGORIES = MENU_CATEGORIES;\n  window.MENU_ITEMS = MENU_ITEMS;\n}\n`;
-        fs.writeFileSync(rootMenuPath, rootJs, 'utf8');
+        // Veritabanına (MySQL menu_store) ve diske çift yönlü kaydet
+        await db.saveMenuStore(categories, items);
 
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-        res.end(JSON.stringify({ success: true, count: items.length, message: 'Menü başarıyla diske kaydedildi' }));
+        res.end(JSON.stringify({ success: true, count: items.length, message: 'Menü başarıyla veritabanına ve diske kaydedildi' }));
       } catch (err) {
         res.writeHead(400, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Menü kaydedilemedi', details: err.message }));
@@ -811,8 +922,13 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': contentType });
     res.end(fs.readFileSync(filePath));
   } else {
+    const page404 = path.join(BASE_DIR, '404.html');
     res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end('<h1>404 - Sayfa Bulunamadı</h1><p><a href="/">Ana Sayfaya Dön</a> | <a href="/admin.html">Yönetim Paneli</a></p>');
+    if (fs.existsSync(page404)) {
+      res.end(fs.readFileSync(page404));
+    } else {
+      res.end('<h1>404 - Sayfa Bulunamadı</h1><p><a href="/">Ana Sayfaya Dön</a></p>');
+    }
   }
 });
 

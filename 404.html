@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upss! Sayfa Bulunamadı - Tuzla Balık Soyak</title>
+  <link rel="icon" type="image/png" href="/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #070d1a;
+      --bg-card: rgba(15, 25, 48, 0.75);
+      --gold-primary: #d4af37;
+      --gold-light: #f5e7a9;
+      --gold-dark: #aa820a;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-gold: rgba(212, 175, 55, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #050a14 0%, #070d1a 100%);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Floating ambient wave particles */
+    .ambient-glow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(40px);
+      animation: pulseGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.9) translate(-10px, -10px); opacity: 0.6; }
+      100% { transform: scale(1.1) translate(10px, 10px); opacity: 1; }
+    }
+
+    .error-card {
+      position: relative;
+      z-index: 10;
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 24px;
+      padding: 3.5rem 2.5rem;
+      max-width: 580px;
+      width: 100%;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.1);
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .brand-header {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 50px;
+    }
+
+    .brand-header i {
+      color: var(--gold-primary);
+      font-size: 1.1rem;
+    }
+
+    .brand-header span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: var(--gold-light);
+    }
+
+    .error-code {
+      font-family: 'Cinzel', serif;
+      font-size: 6.5rem;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #fff 0%, var(--gold-light) 40%, var(--gold-primary) 70%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      letter-spacing: -2px;
+      text-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .error-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .error-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2.25rem;
+    }
+
+    .actions-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      width: 100%;
+    }
+
+    @media (min-width: 480px) {
+      .actions-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.8rem;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #d4af37 0%, #aa820a 100%);
+      color: #070d1a;
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+      background: linear-gradient(135deg, #f5e7a9 0%, #d4af37 100%);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: #f8fafc;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(212, 175, 55, 0.4);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .footer-note {
+      margin-top: 2.5rem;
+      font-size: 0.8rem;
+      color: rgba(148, 163, 184, 0.5);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="error-card">
+    <div class="brand-header">
+      <i class="fa-solid fa-fish-fins"></i>
+      <span>TUZLA BALIK SOYAK</span>
+    </div>
+
+    <div class="error-code">404</div>
+
+    <h1 class="error-title">Upss! Sayfa Bulunamadı</h1>
+
+    <p class="error-desc">
+      Aradığınız lezzet rotası veya sayfa suların derinliklerinde kaybolmuş ya da taşınmış olabilir.
+    </p>
+
+    <div class="actions-group">
+      <a href="/" class="btn btn-primary">
+        <i class="fa-solid fa-house"></i> Ana Sayfaya Dön
+      </a>
+      <a href="/menu-app/" class="btn btn-secondary">
+        <i class="fa-solid fa-utensils"></i> Menüyü Keşfet
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    © 2026 Tuzla Balık Soyak • Ege'nin En Taze Lezzetleri
+  </div>
+</body>
+</html>

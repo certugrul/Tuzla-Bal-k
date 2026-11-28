@@ -6,6 +6,13 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
+
+const SALT = 'tuzla_soyak_salt_2026';
+
+function hashPassword(password) {
+  return crypto.createHash('sha256').update(String(password) + SALT).digest('hex');
+}
 
 // Eğer .env dosyası varsa ortam değişkenlerini yükle
 const envPath = path.join(__dirname, '.env');
@@ -33,6 +40,7 @@ if (fs.existsSync(envPath)) {
 
 const RESERVATIONS_FILE = path.join(__dirname, 'reservations.json');
 const SETTINGS_FILE = path.join(__dirname, 'site-settings.json');
+const USERS_FILE = path.join(__dirname, 'users.json');
 
 let pool = null;
 let isDbReady = false;
@@ -88,6 +96,58 @@ async function initDatabase() {
           items LONGTEXT
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
       `);
+
+      await pool.query(`
+        CREATE TABLE IF NOT EXISTS users (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          username VARCHAR(64) UNIQUE NOT NULL,
+          password_hash VARCHAR(128) NOT NULL,
+          role VARCHAR(32) DEFAULT 'admin',
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+      `);
+
+      // Yönetici Kullanıcısını Tohumla (admin / tbalik35)
+      const [userRows] = await pool.query('SELECT COUNT(*) as count FROM users WHERE username = ?', ['admin']);
+      if (userRows[0].count === 0) {
+        const defaultHash = hashPassword('tbalik35');
+        await pool.query('INSERT INTO users (username, password_hash, role) VALUES (?, ?, ?)', ['admin', defaultHash, 'admin']);
+        console.log('[DB] Varsayılan yönetici hesabı oluşturuldu (admin / tbalik35)');
+      }
+
+      // Menü Veritabanını Tohumla / Senkronize Et
+      const [menuRows] = await pool.query('SELECT COUNT(*) as count FROM menu_store WHERE id = 1');
+      const menuAppPath = path.join(__dirname, 'menu-app', 'menu-data.js');
+      const rootMenuPath = path.join(__dirname, 'menu-data.js');
+
+      if (menuRows[0].count === 0 && fs.existsSync(menuAppPath)) {
+        try {
+          const menuContent = fs.readFileSync(menuAppPath, 'utf8');
+          const catMatch = menuContent.match(/window\.MENU_CATEGORIES\s*=\s*(\{[\s\S]*?\});/);
+          const itemsMatch = menuContent.match(/window\.MENU_ITEMS\s*=\s*(\[[\s\S]*?\]);/);
+          if (catMatch && itemsMatch) {
+            await pool.query(
+              'INSERT INTO menu_store (id, categories, items) VALUES (1, ?, ?) ON DUPLICATE KEY UPDATE categories = VALUES(categories), items = VALUES(items)',
+              [catMatch[1], itemsMatch[1]]
+            );
+            console.log('[DB] Menü verileri MySQL menu_store tablosuna aktarıldı.');
+          }
+        } catch (e) {
+          console.warn('[DB] Menü tohumlama uyarısı:', e.message);
+        }
+      } else if (menuRows[0].count > 0) {
+        try {
+          const [dbMenuRows] = await pool.query('SELECT categories, items FROM menu_store WHERE id = 1');
+          if (dbMenuRows.length > 0 && dbMenuRows[0].items) {
+            const cats = JSON.parse(dbMenuRows[0].categories || '{}');
+            const itms = JSON.parse(dbMenuRows[0].items || '[]');
+            const menuAppJs = `/**\n * TUZLA BALIK RESTAURANT - VERIFIED MENU DATA\n * Total Active Items: ${itms.length}\n */\n\nwindow.MENU_CATEGORIES = ${JSON.stringify(cats, null, 2)};\n\nwindow.MENU_ITEMS = ${JSON.stringify(itms, null, 2)};\n`;
+            fs.writeFileSync(menuAppPath, menuAppJs, 'utf8');
+            const rootJs = `// Tuzla Balık Soyak - Dinamik Menü Veritabanı\nvar MENU_CATEGORIES = ${JSON.stringify(cats, null, 2)};\nvar MENU_ITEMS = ${JSON.stringify(itms, null, 2)};\nif (typeof window !== "undefined") {\n  window.MENU_CATEGORIES = MENU_CATEGORIES;\n  window.MENU_ITEMS = MENU_ITEMS;\n}\n`;
+            fs.writeFileSync(rootMenuPath, rootJs, 'utf8');
+          }
+        } catch (_) {}
+      }
 
       // İlk tohumlama veya Çift Yönlü Senkronizasyon (Hydration)
       const [rows] = await pool.query('SELECT COUNT(*) as count FROM reservations');
@@ -307,6 +367,126 @@ async function saveSettings(settingsObj) {
   } catch (_) {}
 }
 
+// Menü Veritabanını Oku
+async function getMenuStore() {
+  if (isDbReady && pool) {
+    try {
+      const [rows] = await pool.query('SELECT categories, items FROM menu_store WHERE id = 1');
+      if (rows.length > 0 && rows[0].items) {
+        return {
+          categories: JSON.parse(rows[0].categories || '{}'),
+          items: JSON.parse(rows[0].items || '[]')
+        };
+      }
+    } catch (e) {
+      console.error('[DB] MySQL menü okuma hatası:', e.message);
+    }
+  }
+
+  // Fallback: JS dosyasını oku
+  try {
+    const menuAppPath = path.join(__dirname, 'menu-app', 'menu-data.js');
+    if (fs.existsSync(menuAppPath)) {
+      const content = fs.readFileSync(menuAppPath, 'utf8');
+      const catMatch = content.match(/window\.MENU_CATEGORIES\s*=\s*(\{[\s\S]*?\});/);
+      const itemsMatch = content.match(/window\.MENU_ITEMS\s*=\s*(\[[\s\S]*?\]);/);
+      return {
+        categories: catMatch ? JSON.parse(catMatch[1]) : {},
+        items: itemsMatch ? JSON.parse(itemsMatch[1]) : []
+      };
+    }
+  } catch (_) {}
+  return { categories: {}, items: [] };
+}
+
+// Menü Veritabanını Kaydet
+async function saveMenuStore(categories, items) {
+  const catStr = JSON.stringify(categories, null, 2);
+  const itemsStr = JSON.stringify(items, null, 2);
+
+  if (isDbReady && pool) {
+    try {
+      await pool.query(
+        'INSERT INTO menu_store (id, categories, items) VALUES (1, ?, ?) ON DUPLICATE KEY UPDATE categories = VALUES(categories), items = VALUES(items)',
+        [catStr, itemsStr]
+      );
+    } catch (e) {
+      console.error('[DB] MySQL menü yazma hatası:', e.message);
+    }
+  }
+
+  // Dosyalara da senkronize yaz
+  try {
+    const menuAppPath = path.join(__dirname, 'menu-app', 'menu-data.js');
+    const rootMenuPath = path.join(__dirname, 'menu-data.js');
+
+    const menuAppJs = `/**\n * TUZLA BALIK RESTAURANT - VERIFIED MENU DATA\n * Total Active Items: ${items.length}\n */\n\nwindow.MENU_CATEGORIES = ${catStr};\n\nwindow.MENU_ITEMS = ${itemsStr};\n`;
+    fs.writeFileSync(menuAppPath, menuAppJs, 'utf8');
+
+    const rootJs = `// Tuzla Balık Soyak - Dinamik Menü Veritabanı\nvar MENU_CATEGORIES = ${catStr};\nvar MENU_ITEMS = ${itemsStr};\nif (typeof window !== "undefined") {\n  window.MENU_CATEGORIES = MENU_CATEGORIES;\n  window.MENU_ITEMS = MENU_ITEMS;\n}\n`;
+    fs.writeFileSync(rootMenuPath, rootJs, 'utf8');
+  } catch (_) {}
+}
+
+// Kullanıcı Doğrulama (Login)
+async function verifyUser(username, password) {
+  const hash = hashPassword(password);
+
+  if (isDbReady && pool) {
+    try {
+      const [rows] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
+      if (rows.length > 0 && rows[0].password_hash === hash) {
+        return {
+          id: rows[0].id,
+          username: rows[0].username,
+          role: rows[0].role || 'admin'
+        };
+      }
+    } catch (e) {
+      console.error('[DB] MySQL kullanıcı doğrulama hatası:', e.message);
+    }
+  }
+
+  // Fallback: JSON / Default
+  try {
+    if (fs.existsSync(USERS_FILE)) {
+      const list = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+      const u = list.find(user => user.username === username && user.password_hash === hash);
+      if (u) return { username: u.username, role: u.role || 'admin' };
+    }
+  } catch (_) {}
+
+  // Built-in default user (admin / tbalik35)
+  if (username === 'admin' && hash === hashPassword('tbalik35')) {
+    return { username: 'admin', role: 'admin' };
+  }
+
+  return null;
+}
+
+// Şifre Değiştirme
+async function changePassword(username, newPassword) {
+  const hash = hashPassword(newPassword);
+  if (isDbReady && pool) {
+    try {
+      await pool.query('UPDATE users SET password_hash = ? WHERE username = ?', [hash, username]);
+    } catch (e) {
+      console.error('[DB] Şifre güncelleme hatası:', e.message);
+    }
+  }
+
+  try {
+    let list = [];
+    if (fs.existsSync(USERS_FILE)) {
+      list = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+    }
+    const idx = list.findIndex(u => u.username === username);
+    if (idx >= 0) list[idx].password_hash = hash;
+    else list.push({ username, password_hash: hash, role: 'admin' });
+    fs.writeFileSync(USERS_FILE, JSON.stringify(list, null, 2), 'utf8');
+  } catch (_) {}
+}
+
 module.exports = {
   initDatabase,
   getReservations,
@@ -315,5 +495,10 @@ module.exports = {
   saveAllReservations,
   getSettings,
   saveSettings,
+  getMenuStore,
+  saveMenuStore,
+  verifyUser,
+  changePassword,
+  hashPassword,
   isDatabaseActive: () => isDbReady
 };
