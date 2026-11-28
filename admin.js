@@ -1863,13 +1863,17 @@ document.addEventListener('DOMContentLoaded', () => {
   checkBotStatus();
   setInterval(checkBotStatus, 15000); // 15 saniyede bir arka plan durum kontrolü
 
-  // Zamanlayıcı saati geldiğinde veya yeni rezervasyon eklendiğinde sayfayı yenilemeden anında güncelle
+  // Zamanlayıcı saati geldiğinde veya sunucudan otomatik gönderildiğinde F5 OLMADAN canlı güncelle
   setInterval(async () => {
     await fetchReservations();
     renderReservationStats();
-    const resTab = document.getElementById('tab-reservations');
-    if (resTab && !resTab.classList.contains('hidden')) {
-      renderReservationTable();
+    const resTab = document.getElementById('reservationsTab');
+    if (resTab && resTab.classList.contains('active')) {
+      const activeEl = document.activeElement;
+      const isTypingInTable = activeEl && resTableBody && resTableBody.contains(activeEl);
+      if (!isTypingInTable) {
+        renderReservationTable();
+      }
     }
-  }, 8000); // Her 8 saniyede bir dinamik canlı senkronizasyon
+  }, 3000); // Her 3 saniyede bir F5 gerektirmeyen kesintisiz canlı senkronizasyon
 });

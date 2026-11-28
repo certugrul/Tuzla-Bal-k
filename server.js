@@ -808,7 +808,7 @@ server.listen(PORT, () => {
   console.log(`📊 Anket Sayfası:     http://localhost:${PORT}/anket.html?id=res_demo_01`);
   console.log(`======================================================\n`);
 
-  // Zamanı gelen anketleri otomatik gönderen arka plan servisi (15 saniyede bir tarar)
+  // Zamanı gelen anketleri otomatik gönderen arka plan servisi (5 saniyede bir tarar)
   let isAutoSending = false;
   setInterval(async () => {
     if (isAutoSending) return;
@@ -846,7 +846,7 @@ server.listen(PORT, () => {
     } finally {
       isAutoSending = false;
     }
-  }, 15000);
+  }, 5000);
 
   // WhatsApp botunu başlat
   whatsappBot.startWhatsAppBot();
