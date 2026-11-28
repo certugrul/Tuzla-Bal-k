@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Table Elements
   const menuTableBody = document.getElementById('menuTableBody');
+  const menuMobileCards = document.getElementById('menuMobileCards');
   const adminSearchInput = document.getElementById('adminSearchInput');
   const adminCategorySelect = document.getElementById('adminCategorySelect');
   const pageInfo = document.getElementById('pageInfo');
@@ -472,7 +473,17 @@ document.addEventListener('DOMContentLoaded', () => {
           </td>
         </tr>
       `;
+      if (menuMobileCards) {
+        menuMobileCards.innerHTML = `
+          <div class="mobile-empty-state">
+            <i class="fa-solid fa-box-open"></i>
+            <h4>Kayıt Bulunamadı</h4>
+            <p>Farklı bir arama terimi deneyebilir veya kategoriyi değiştirebilirsiniz.</p>
+          </div>
+        `;
+      }
     } else {
+      // 1. Desktop Table Rows
       menuTableBody.innerHTML = pageItems.map(item => {
         const catLabel = getCategoryName(item.category);
         const priceText = item.price ? `${item.price.toLocaleString('tr-TR')} ₺` : 'Günlük / Kg';
@@ -537,6 +548,72 @@ document.addEventListener('DOMContentLoaded', () => {
           </tr>
         `;
       }).join('');
+
+      // 2. Mobile Native Cards View (Spacious and Touch-Friendly)
+      if (menuMobileCards) {
+        menuMobileCards.innerHTML = pageItems.map(item => {
+          const catLabel = getCategoryName(item.category);
+          const priceText = item.price ? `${item.price.toLocaleString('tr-TR')} ₺` : 'Günlük / Kg';
+          const hasImg = Boolean(item.image && item.isLocalImage !== false && item.image.trim() !== '');
+
+          let gelalDiscountHtml = '';
+          if (activeMenuMode === 'gelal') {
+            const gelalPrice = item.price ? Math.round(item.price * (1 - GELAL_DISCOUNT_RATE)) : null;
+            const gelalPriceText = gelalPrice ? `${gelalPrice.toLocaleString('tr-TR')} ₺` : 'Günlük / Kg';
+            gelalDiscountHtml = `
+              <div class="mobile-price-gelal">
+                <s class="mobile-old-price">${priceText}</s>
+                <span class="mobile-cur-price"><i class="fa-solid fa-tag"></i> ${gelalPriceText}</span>
+              </div>
+            `;
+          }
+
+          return `
+            <div class="mobile-dish-card" data-id="${item.id}">
+              <div class="mobile-card-main">
+                <div class="mobile-card-thumb-box" onclick="window.editMenuItem('${item.id}')">
+                  ${hasImg 
+                    ? `<img src="menu-app/${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="mobile-dish-img" onerror="this.parentElement.innerHTML='<div class=\\'mobile-card-no-img\\'><i class=\\'fa-solid fa-camera\\'></i></div>';">`
+                    : `<div class="mobile-card-no-img"><i class="fa-solid fa-camera"></i></div>`
+                  }
+                  <div class="mobile-thumb-edit-pill"><i class="fa-solid fa-pen"></i></div>
+                </div>
+
+                <div class="mobile-card-content">
+                  <div class="mobile-card-header-line">
+                    <h4 class="mobile-card-dish-name" onclick="window.editMenuItem('${item.id}')">${escapeHtml(item.name)}</h4>
+                    ${item.is_signature ? '<span class="mobile-crown-tag"><i class="fa-solid fa-crown"></i> Şefin İmzası</span>' : ''}
+                  </div>
+                  
+                  <div class="mobile-card-meta-line">
+                    <span class="mobile-cat-badge">${escapeHtml(catLabel)}</span>
+                    <span class="mobile-code-badge">${item.id}</span>
+                    ${item.badge ? `<span class="mobile-custom-badge">${escapeHtml(item.badge)}</span>` : ''}
+                  </div>
+
+                  ${item.description ? `<p class="mobile-card-dish-desc">${escapeHtml(item.description)}</p>` : ''}
+                </div>
+              </div>
+
+              <div class="mobile-card-footer">
+                <div class="mobile-card-price-area">
+                  ${activeMenuMode === 'gelal' ? gelalDiscountHtml : `<span class="mobile-main-price">${priceText}</span>`}
+                </div>
+
+                <div class="mobile-card-actions">
+                  <button type="button" class="btn-mobile-edit" onclick="window.editMenuItem('${item.id}')">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Düzenle</span>
+                  </button>
+                  <button type="button" class="btn-mobile-delete" onclick="window.deleteMenuItem('${item.id}')" title="Ürünü Sil">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
     }
 
     if (pageInfo) {
@@ -1241,6 +1318,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderReservationTable() {
     if (!resTableBody) return;
+    const resMobileCards = document.getElementById('resMobileCards');
     const now = new Date();
 
     let filtered = reservationsList.filter(r => {
@@ -1273,9 +1351,19 @@ document.addEventListener('DOMContentLoaded', () => {
           </td>
         </tr>
       `;
+      if (resMobileCards) {
+        resMobileCards.innerHTML = `
+          <div class="mobile-empty-state">
+            <i class="fa-solid fa-calendar-xmark"></i>
+            <h4>Rezervasyon Bulunamadı</h4>
+            <p>Seçilen filtrede kayıtlı rezervasyon bulunmuyor.</p>
+          </div>
+        `;
+      }
       return;
     }
 
+    // 1. Desktop Table Rows
     resTableBody.innerHTML = filtered.map(item => {
       const isDue = item.survey_status === 'pending' && new Date(item.survey_scheduled_at) <= now;
       
@@ -1343,100 +1431,191 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }).join('');
 
-    // Attach row events
-    resTableBody.querySelectorAll('.js-send-wa').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const id = btn.getAttribute('data-id');
-        try {
-          await fetch('/api/reservations/status', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id, survey_status: 'sent', survey_sent_via: 'manual_whatsapp' })
-          });
-          const target = reservationsList.find(r => r.id === id);
-          if (target) {
-            target.survey_status = 'sent';
-            target.survey_sent_at = new Date().toISOString();
-          }
-          showToast('WhatsApp açıldı ve durum "Gönderildi" olarak güncellendi!');
-          renderReservationStats();
-          renderReservationTable();
-        } catch (_) {}
-      });
-    });
-
-    resTableBody.querySelectorAll('.js-view-survey').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.getAttribute('data-id');
-        const target = reservationsList.find(r => r.id === id);
-        if (target && target.survey_data) {
-          openSurveyDetailModal(target);
+    // 2. Mobile Native Booking Cards
+    if (resMobileCards) {
+      resMobileCards.innerHTML = filtered.map(item => {
+        const isDue = item.survey_status === 'pending' && new Date(item.survey_scheduled_at) <= now;
+        
+        let statusHtml = '';
+        if (item.survey_status === 'completed') {
+          const score = item.survey_data?.score_overall || 5;
+          statusHtml = `<span class="status-pill status-completed"><i class="fa-solid fa-star"></i> Dolduruldu (★ ${score}.0)</span>`;
+        } else if (item.survey_status === 'sent') {
+          statusHtml = `<span class="status-pill status-sent"><i class="fa-solid fa-paper-plane"></i> Gönderildi</span>`;
+        } else if (isDue) {
+          statusHtml = `<span class="status-pill status-due"><i class="fa-solid fa-bell"></i> Zamanı Geldi</span>`;
+        } else {
+          statusHtml = `<span class="status-pill status-pending"><i class="fa-solid fa-clock"></i> Zamanı Bekliyor</span>`;
         }
-      });
-    });
 
-    resTableBody.querySelectorAll('.js-delete-res').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const id = btn.getAttribute('data-id');
-        if (confirm('Bu rezervasyonu silmek istediğinize emin misiniz?')) {
+        const scheduledDate = new Date(item.survey_scheduled_at);
+        const scheduledFormatted = !isNaN(scheduledDate)
+          ? scheduledDate.toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+          : '-';
+
+        return `
+          <div class="mobile-res-card" data-id="${item.id}">
+            <div class="mobile-res-header">
+              <div class="mobile-res-guest">
+                <h4 class="mobile-res-name">${escapeHtml(item.name)}</h4>
+                <span class="mobile-res-party"><i class="fa-solid fa-users"></i> ${escapeHtml(item.guests)} Kişi &bull; ${escapeHtml(item.area || 'Fark etmez')}</span>
+              </div>
+              <div class="mobile-res-status-box">
+                ${statusHtml}
+              </div>
+            </div>
+
+            <div class="mobile-res-body">
+              <div class="mobile-res-row">
+                <div class="mobile-res-datetime">
+                  <i class="fa-regular fa-calendar-days"></i>
+                  <strong>${escapeHtml(item.date)}</strong> &bull; <span>${escapeHtml(item.time)}</span>
+                </div>
+                <div class="mobile-res-contact">
+                  <a href="tel:${escapeHtml(item.phone)}" class="mobile-btn-phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>${escapeHtml(item.phone)}</span>
+                  </a>
+                  <a href="https://wa.me/${normalizePhone(item.phone)}" target="_blank" class="mobile-btn-wa" title="WhatsApp ile Mesaj At">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </a>
+                </div>
+              </div>
+
+              ${item.notes ? `
+                <div class="mobile-res-notes">
+                  <i class="fa-solid fa-note-sticky"></i>
+                  <span>${escapeHtml(item.notes)}</span>
+                </div>
+              ` : ''}
+
+              <div class="mobile-res-clock-row">
+                <i class="fa-regular fa-clock"></i>
+                <span>Otomatik Anket: <strong>${scheduledFormatted}</strong></span>
+                ${item.survey_status === 'pending' ? `
+                  <button type="button" class="btn-mobile-clock-edit js-edit-single-schedule" data-id="${item.id}" title="Anket saatini değiştir">
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                ` : ''}
+              </div>
+            </div>
+
+            <div class="mobile-res-footer">
+              ${item.survey_status === 'completed' ? `
+                <button type="button" class="btn-survey-view js-view-survey" data-id="${item.id}" style="flex:1; height:44px; border-radius:10px; justify-content:center;">
+                  <i class="fa-solid fa-eye"></i> <span>Anketi Gör</span>
+                </button>
+              ` : `
+                <a href="${item.wa_direct_url || '#'}" target="_blank" rel="noopener" class="btn-wa-send js-send-wa ${isDue ? 'is-due' : ''}" data-id="${item.id}" style="flex:1; height:44px; border-radius:10px; justify-content:center;">
+                  <i class="fa-brands fa-whatsapp"></i> <span>${isDue ? 'Şimdi Gönder' : 'WhatsApp Gönder'}</span>
+                </a>
+              `}
+              <button type="button" class="btn-action-icon delete js-delete-res" data-id="${item.id}" title="Sil" style="width:44px; height:44px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center;">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Attach row events for both table and mobile cards
+    const resContainers = [resTableBody, resMobileCards].filter(Boolean);
+    resContainers.forEach(container => {
+      container.querySelectorAll('.js-send-wa').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = btn.getAttribute('data-id');
           try {
-            await fetch('/api/reservations/delete', {
+            await fetch('/api/reservations/status', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id })
+              body: JSON.stringify({ id, survey_status: 'sent', survey_sent_via: 'manual_whatsapp' })
             });
-            reservationsList = reservationsList.filter(r => r.id !== id);
-            showToast('Rezervasyon başarıyla silindi');
+            const target = reservationsList.find(r => r.id === id);
+            if (target) {
+              target.survey_status = 'sent';
+              target.survey_sent_at = new Date().toISOString();
+            }
+            showToast('WhatsApp açıldı ve durum "Gönderildi" olarak güncellendi!');
             renderReservationStats();
             renderReservationTable();
-          } catch (_) {
-            alert('Silme işlemi başarısız oldu.');
-          }
-        }
+          } catch (_) {}
+        });
       });
-    });
 
-    // Tekil anket zamanı düzenleme
-    resTableBody.querySelectorAll('.js-edit-single-schedule').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const id = btn.getAttribute('data-id');
-        const target = reservationsList.find(r => r.id === id);
-        if (!target) return;
-
-        let defaultVal = '';
-        if (target.survey_scheduled_at) {
-          const d = new Date(target.survey_scheduled_at);
-          const trParts = new Intl.DateTimeFormat('en-US', {
-            timeZone: 'Europe/Istanbul',
-            year: 'numeric', month: '2-digit', day: '2-digit',
-            hour: '2-digit', minute: '2-digit', hour12: false
-          }).formatToParts(d);
-          const getPart = type => trParts.find(p => p.type === type)?.value || '';
-          defaultVal = `${getPart('year')}-${getPart('month')}-${getPart('day')} ${getPart('hour')}:${getPart('minute')}`;
-        }
-
-        const newDateTime = prompt(
-          `"${target.name}" için yeni anket zamanı girin:\n(Örnek: 2026-11-28 15:30 veya 2026-11-29 12:00)`,
-          defaultVal
-        );
-        if (!newDateTime) return;
-
-        const clean = newDateTime.trim().replace(' ', 'T');
-        try {
-          const res = await fetch('/api/reservations/reschedule', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id, scheduled_at: clean })
-          });
-          if (res.ok) {
-            showToast('Anket zamanı başarıyla güncellendi!');
-            loadAndRenderReservations();
-          } else {
-            alert('Zaman güncellenemedi.');
+      container.querySelectorAll('.js-view-survey').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          const target = reservationsList.find(r => r.id === id);
+          if (target && target.survey_data) {
+            openSurveyDetailModal(target);
           }
-        } catch (err) {
-          alert('Hata: ' + err.message);
-        }
+        });
+      });
+
+      container.querySelectorAll('.js-delete-res').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = btn.getAttribute('data-id');
+          if (confirm('Bu rezervasyonu silmek istediğinize emin misiniz?')) {
+            try {
+              await fetch('/api/reservations/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id })
+              });
+              reservationsList = reservationsList.filter(r => r.id !== id);
+              showToast('Rezervasyon başarıyla silindi');
+              renderReservationStats();
+              renderReservationTable();
+            } catch (_) {
+              alert('Silme işlemi başarısız oldu.');
+            }
+          }
+        });
+      });
+
+      // Tekil anket zamanı düzenleme
+      container.querySelectorAll('.js-edit-single-schedule').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = btn.getAttribute('data-id');
+          const target = reservationsList.find(r => r.id === id);
+          if (!target) return;
+
+          let defaultVal = '';
+          if (target.survey_scheduled_at) {
+            const d = new Date(target.survey_scheduled_at);
+            const trParts = new Intl.DateTimeFormat('en-US', {
+              timeZone: 'Europe/Istanbul',
+              year: 'numeric', month: '2-digit', day: '2-digit',
+              hour: '2-digit', minute: '2-digit', hour12: false
+            }).formatToParts(d);
+            const getPart = type => trParts.find(p => p.type === type)?.value || '';
+            defaultVal = `${getPart('year')}-${getPart('month')}-${getPart('day')} ${getPart('hour')}:${getPart('minute')}`;
+          }
+
+          const newDateTime = prompt(
+            `"${target.name}" için yeni anket zamanı girin:\n(Örnek: 2026-11-28 15:30 veya 2026-11-29 12:00)`,
+            defaultVal
+          );
+          if (!newDateTime) return;
+
+          const clean = newDateTime.trim().replace(' ', 'T');
+          try {
+            const res = await fetch('/api/reservations/reschedule', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id, scheduled_at: clean })
+            });
+            if (res.ok) {
+              showToast('Anket zamanı başarıyla güncellendi!');
+              loadAndRenderReservations();
+            } else {
+              alert('Zaman güncellenemedi.');
+            }
+          } catch (err) {
+            alert('Hata: ' + err.message);
+          }
+        });
       });
     });
   }
