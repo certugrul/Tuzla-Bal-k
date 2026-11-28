@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const perPerson = Math.round(total / state.peopleCount);
     const lines = state.tray.map(i => `• ${i.qty}x ${i.name} (${i.price ? i.price * i.qty + ' TL' : 'Kg'})`).join('\n');
 
-    const msg = `Merhaba Tuzla Balık Soyak! 🐟\nWeb sitenizden masa menüsü planladım ve rezervasyon yapmak istiyorum:\n\n*Masa Sipariş Planı:*\n${lines}\n\n*Kişi Sayısı:* ${state.peopleCount} Kişi\n*Tahmini Toplam:* ${total.toLocaleString('tr-TR')} TL (Kişi Başı: ~${perPerson.toLocaleString('tr-TR')} TL)\n\n_(Not: Ürünlerimiz günlük taze hazırlandığından dolaptaki güncel çeşitler ve masa müsaitliği hakkında bilgi alabilir miyim?)_`;
+    const msg = `Merhaba Tuzla Balık Soyak! 🐟\nWeb sitenizden masa menüsü planladım ve rezervasyon yapmak istiyorum:\n\n*Masa Sipariş Planı:*\n${lines}\n\n*Kişi Sayısı:* ${state.peopleCount} Kişi\n*Tahmini Toplam:* ${total.toLocaleString('tr-TR')} TL (Kişi Başı: ~${perPerson.toLocaleString('tr-TR')} TL)\n\n_(Not: Lezzetlerimiz günlük taze olarak hazırlandığından dolaptaki çeşitler farklılık gösterebilir. Güncel çeşitler ve rezervasyon için bilgi alabilir miyim?)_`;
 
     window.open(`https://wa.me/905306063517?text=${encodeURIComponent(msg)}`, '_blank');
   });

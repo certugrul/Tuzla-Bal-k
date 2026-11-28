@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStats();
     renderTable();
     populateSettingsForm();
-    fetchReservations();
+    loadAndRenderReservations();
   }
 
   // Update counts on switcher pills
@@ -1316,10 +1316,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function formatWaPhone(phone) {
+    if (!phone) return '';
+    let digits = String(phone).replace(/\D/g, '');
+    if (digits.startsWith('0')) digits = '90' + digits.slice(1);
+    else if (digits.length === 10) digits = '90' + digits;
+    return digits;
+  }
+
   function renderReservationTable() {
     if (!resTableBody) return;
-    const resMobileCards = document.getElementById('resMobileCards');
-    const now = new Date();
+    try {
+      const resMobileCards = document.getElementById('resMobileCards');
+      const now = new Date();
 
     let filtered = reservationsList.filter(r => {
       // Status filter
@@ -1476,7 +1485,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fa-solid fa-phone"></i>
                     <span>${escapeHtml(item.phone)}</span>
                   </a>
-                  <a href="https://wa.me/${normalizePhone(item.phone)}" target="_blank" class="mobile-btn-wa" title="WhatsApp ile Mesaj At">
+                  <a href="https://wa.me/${formatWaPhone(item.phone)}" target="_blank" class="mobile-btn-wa" title="WhatsApp ile Mesaj At">
                     <i class="fa-brands fa-whatsapp"></i>
                   </a>
                 </div>
@@ -1618,6 +1627,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     });
+    } catch (err) {
+      console.error('renderReservationTable hatası:', err);
+    }
   }
 
   function openSurveyDetailModal(resItem) {
