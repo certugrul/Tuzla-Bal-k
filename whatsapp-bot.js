@@ -226,6 +226,18 @@ async function requestPairingCode(targetPhone) {
   };
 }
 
+// Otomatik Canlı Tutma / Watchdog Bekçisi:
+// Her 20 saniyede bir oturumu denetler. Eğer bağlantı kopmuşsa ve kimlik bilgileri varsa anında otomatik yeniden ayağa kaldırır.
+setInterval(() => {
+  if (botStatus !== 'connected' && !isStarting) {
+    const credsPath = path.join(AUTH_FOLDER, 'creds.json');
+    if (fs.existsSync(credsPath)) {
+      console.log('[WhatsApp Watchdog] Bağlantı boşta/kopuk, otomatik yeniden bağlanılıyor...');
+      startWhatsAppBot().catch(err => console.warn('[WhatsApp Watchdog] Yeniden bağlanma uyarısı:', err.message));
+    }
+  }
+}, 20000);
+
 module.exports = {
   startWhatsAppBot,
   requestPairingCode,
