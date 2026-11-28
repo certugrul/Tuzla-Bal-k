@@ -10,6 +10,7 @@
   "dependencies": {
     "@netlify/blobs": "^8.1.0",
     "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "mysql2": "^3.24.6",
     "qrcode": "^1.5.4"
   }
 }

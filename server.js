@@ -12,6 +12,7 @@ const fs = require('fs');
 const path = require('path');
 const automation = require('./automation');
 const whatsappBot = require('./whatsapp-bot');
+const db = require('./db');
 
 const PORT = process.env.PORT || 3000;
 const BASE_DIR = __dirname;
@@ -75,14 +76,14 @@ const server = http.createServer(async (req, res) => {
   // 1. AYARLAR API (/api/settings)
   // ==========================================
   if (pathname === '/api/settings') {
-    const settingsPath = path.join(BASE_DIR, 'site-settings.json');
     if (req.method === 'GET') {
-      if (fs.existsSync(settingsPath)) {
+      try {
+        const settings = await db.getSettings();
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-        res.end(fs.readFileSync(settingsPath, 'utf8'));
-      } else {
-        res.writeHead(404, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: 'Settings not found' }));
+        res.end(JSON.stringify(settings));
+      } catch (err) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Ayarlar okunamadı', details: err.message }));
       }
       return;
     }
@@ -90,7 +91,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST') {
       try {
         const parsed = await readJsonBody(req);
-        fs.writeFileSync(settingsPath, JSON.stringify(parsed, null, 2), 'utf8');
+        await db.saveSettings(parsed);
         
         // Eğer zamanlayıcı ayarları değiştirildiyse bekleyen rezervasyonların anket saatlerini otomatik güncelle
         if (parsed.surveyDelayDays !== undefined || parsed.surveySendTime !== undefined) {
@@ -304,9 +305,8 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (pathname === '/api/reservations') {
-    const list = automation.loadReservations();
-
     if (req.method === 'GET') {
+      const list = await db.getReservations();
       // Her kayda 1-tık doğrudan WhatsApp linkini hesaplayıp ekle
       const enriched = list.map(item => ({
         ...item,
@@ -346,8 +346,7 @@ const server = http.createServer(async (req, res) => {
           survey_data: null
         };
 
-        list.unshift(newReservation);
-        automation.saveReservations(list);
+        await db.upsertReservation(newReservation);
 
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({
@@ -369,7 +368,7 @@ const server = http.createServer(async (req, res) => {
   if (pathname === '/api/reservations/status' && req.method === 'POST') {
     try {
       const { id, survey_status, survey_sent_via } = await readJsonBody(req);
-      const list = automation.loadReservations();
+      const list = await db.getReservations();
       const target = list.find(r => r.id === id);
       if (!target) {
         res.writeHead(404, { 'Content-Type': 'application/json' });
@@ -383,7 +382,7 @@ const server = http.createServer(async (req, res) => {
         target.survey_sent_via = survey_sent_via || 'manual_whatsapp';
       }
 
-      automation.saveReservations(list);
+      await db.upsertReservation(target);
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ success: true, reservation: target }));
     } catch (err) {
@@ -402,7 +401,7 @@ const server = http.createServer(async (req, res) => {
         res.end(JSON.stringify({ error: 'id ve scheduled_at zorunludur' }));
         return;
       }
-      const list = automation.loadReservations();
+      const list = await db.getReservations();
       const target = list.find(r => r.id === id);
       if (!target) {
         res.writeHead(404, { 'Content-Type': 'application/json' });
@@ -416,7 +415,7 @@ const server = http.createServer(async (req, res) => {
         cleanInput += '+03:00';
       }
       target.survey_scheduled_at = new Date(cleanInput).toISOString();
-      automation.saveReservations(list);
+      await db.upsertReservation(target);
 
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ success: true, reservation: target }));
@@ -433,15 +432,14 @@ const server = http.createServer(async (req, res) => {
   if (pathname === '/api/reservations/delete' && req.method === 'POST') {
     try {
       const { id } = await readJsonBody(req);
-      let list = automation.loadReservations();
-      const initialLen = list.length;
-      list = list.filter(r => r.id !== id);
-      if (list.length === initialLen) {
+      const list = await db.getReservations();
+      const target = list.find(r => r.id === id);
+      if (!target) {
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ error: 'Kayıt bulunamadı' }));
         return;
       }
-      automation.saveReservations(list);
+      await db.deleteReservation(id);
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ success: true, message: 'Rezervasyon silindi' }));
     } catch (err) {
@@ -530,7 +528,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const data = await readJsonBody(req);
       if (Array.isArray(data)) {
-        automation.saveReservations(data);
+        await db.saveAllReservations(data);
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ success: true, count: data.length, message: 'Rezervasyonlar başarıyla geri yüklendi' }));
         return;
@@ -548,9 +546,8 @@ const server = http.createServer(async (req, res) => {
   // 6. ANKET API (/api/surveys)
   // ==========================================
   if (pathname === '/api/surveys') {
-    const list = automation.loadReservations();
-
     if (req.method === 'GET') {
+      const list = await db.getReservations();
       const surveyId = url.searchParams.get('id');
       if (surveyId) {
         const item = list.find(r => r.id === surveyId);
@@ -596,6 +593,7 @@ const server = http.createServer(async (req, res) => {
           return;
         }
 
+        const list = await db.getReservations();
         const item = list.find(r => r.id === payload.id);
         if (!item) {
           res.writeHead(404, { 'Content-Type': 'application/json' });
@@ -614,7 +612,7 @@ const server = http.createServer(async (req, res) => {
         };
         item.survey_status = 'completed';
 
-        automation.saveReservations(list);
+        await db.upsertReservation(item);
 
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({
@@ -767,6 +765,11 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end('<h1>404 - Sayfa Bulunamadı</h1><p><a href="/">Ana Sayfaya Dön</a> | <a href="/admin.html">Yönetim Paneli</a></p>');
   }
+});
+
+// Veritabanını başlat (MySQL / JSON fallback)
+db.initDatabase().catch(err => {
+  console.warn('[DB] Veritabanı başlatma hatası:', err.message);
 });
 
 server.listen(PORT, () => {

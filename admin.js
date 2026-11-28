@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const res = await fetch('/api/settings');
       if (res.ok) {
-        serverStatusBadge.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> <span>Yerel Sunucuya Bağlı (Otomatik Kayıt Aktif)</span>';
+        serverStatusBadge.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> <span>Sunucuya & Veritabanına Bağlı (Canlı Senkron)</span>';
         serverStatusBadge.style.color = '#34d399';
         serverStatusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
 
@@ -203,13 +203,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (serverSettings && serverSettings.restaurantName) {
           siteSettings = { ...siteSettings, ...serverSettings };
           localStorage.setItem('tuzla_site_settings', JSON.stringify(siteSettings));
+          populateSettingsForm();
           if (typeof populateScheduleSettings === 'function') {
             populateScheduleSettings();
           }
         }
       }
     } catch (e) {
-      serverStatusBadge.innerHTML = '<i class="fa-solid fa-hard-drive" style="color:var(--gold-primary);"></i> <span>Tarayıcı Modu (LocalStorage Aktif)</span>';
+      serverStatusBadge.innerHTML = '<i class="fa-solid fa-hard-drive" style="color:var(--gold-primary);"></i> <span>Çevrimdışı Mod (LocalStorage Aktif)</span>';
       serverStatusBadge.style.color = 'var(--gold-light)';
       serverStatusBadge.style.borderColor = 'rgba(212, 175, 55, 0.3)';
     }
@@ -1832,11 +1833,13 @@ document.addEventListener('DOMContentLoaded', () => {
   checkBotStatus();
   setInterval(checkBotStatus, 15000); // 15 saniyede bir arka plan durum kontrolü
 
-  // Zamanlayıcı saati geldiğinde sayfayı yenilemeden anında "Zamanı Geldi"ye dönüştür
-  setInterval(() => {
-    if (reservationsList && reservationsList.length > 0) {
-      renderReservationStats();
+  // Zamanlayıcı saati geldiğinde veya yeni rezervasyon eklendiğinde sayfayı yenilemeden anında güncelle
+  setInterval(async () => {
+    await fetchReservations();
+    renderReservationStats();
+    const resTab = document.getElementById('tab-reservations');
+    if (resTab && !resTab.classList.contains('hidden')) {
       renderReservationTable();
     }
-  }, 10000); // Her 10 saniyede bir saat kontrolü
+  }, 8000); // Her 8 saniyede bir dinamik canlı senkronizasyon
 });

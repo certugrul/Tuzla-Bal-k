@@ -43,6 +43,12 @@ function loadReservations() {
 function saveReservations(data) {
   try {
     fs.writeFileSync(RESERVATIONS_PATH, JSON.stringify(data, null, 2), 'utf8');
+    try {
+      const db = require('./db');
+      if (db && typeof db.saveAllReservations === 'function') {
+        db.saveAllReservations(data).catch(() => {});
+      }
+    } catch (_) {}
     return true;
   } catch (err) {
     console.error('[Automation] Rezervasyonlar kaydedilemedi:', err.message);
