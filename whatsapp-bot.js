@@ -10,7 +10,10 @@ const QRCode = require('qrcode');
 const path = require('path');
 const fs = require('fs');
 
-const AUTH_FOLDER = path.join(__dirname, '.whatsapp_auth');
+// Linux/Hostinger sunucusunda oturumu kalıcı home dizininde sakla (deploy'larda sıfırlanmaz)
+const AUTH_FOLDER = (process.platform === 'linux' && process.env.HOME)
+  ? path.join(process.env.HOME, '.tuzla_whatsapp_auth')
+  : path.join(__dirname, '.whatsapp_auth');
 
 let sock = null;
 let currentQR = null;
