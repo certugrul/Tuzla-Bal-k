@@ -194,7 +194,20 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const res = await fetch('/api/settings');
       if (res.ok) {
-        serverStatusBadge.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> <span>Sunucuya & Veritabanına Bağlı (Canlı Senkron)</span>';
+        let dbLabel = 'Sunucuya Bağlı (Canlı Senkron)';
+        try {
+          const dbRes = await fetch('/api/db-status');
+          if (dbRes.ok) {
+            const dbInfo = await dbRes.json();
+            if (dbInfo.is_db_ready) {
+              dbLabel = `MySQL Veritabanı Aktif (${dbInfo.db_name})`;
+            } else {
+              dbLabel = 'Sunucu Aktif (JSON Dosya Modu)';
+            }
+          }
+        } catch (_) {}
+
+        serverStatusBadge.innerHTML = `<i class="fa-solid fa-database" style="color:#10b981;"></i> <span>${dbLabel}</span>`;
         serverStatusBadge.style.color = '#34d399';
         serverStatusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
 

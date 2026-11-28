@@ -73,6 +73,20 @@ const server = http.createServer(async (req, res) => {
   const hostUrl = `http://${req.headers.host}`;
 
   // ==========================================
+  // 0. VERİTABANI DURUMU (/api/db-status)
+  // ==========================================
+  if (pathname === '/api/db-status' && req.method === 'GET') {
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify({
+      database: db.isDatabaseActive() ? 'MySQL (Hostinger Aktif)' : 'JSON (Yerel Dosya Modu)',
+      is_db_ready: db.isDatabaseActive(),
+      db_name: process.env.DB_NAME || null,
+      db_user: process.env.DB_USER || null
+    }));
+    return;
+  }
+
+  // ==========================================
   // 1. AYARLAR API (/api/settings)
   // ==========================================
   if (pathname === '/api/settings') {
