@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Allow: /menu-app/
+Allow: /gelal-menu-app/
+Disallow: /admin.html
+Disallow: /api/
+
+# AI Search & LLM Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+Sitemap: https://tuzlabaliksoyak.com/sitemap.xml
