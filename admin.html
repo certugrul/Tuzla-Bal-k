@@ -58,6 +58,9 @@
         <strong>Tuzla Balık</strong>
         <span>BACKOFFICE PANELİ</span>
       </div>
+      <button type="button" class="sidebar-close-btn" id="btnCloseSidebar" aria-label="Menüyü Kapat">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
     <nav class="sidebar-nav">
@@ -107,11 +110,17 @@
     </div>
   </aside>
 
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
   <!-- Main Workspace -->
   <div class="admin-main">
     <!-- Top Header -->
     <header class="admin-top-header">
       <div class="top-header-left">
+        <button type="button" class="btn-sidebar-toggle" id="btnToggleSidebar" aria-label="Menüyü Aç/Kapat">
+          <i class="fa-solid fa-bars"></i>
+        </button>
         <h2 class="top-page-title" id="pageTitle">Genel Bakış</h2>
       </div>
 
@@ -1157,6 +1166,32 @@
       </div>
     </div>
   </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <nav class="admin-bottom-nav" id="adminBottomNav">
+    <button type="button" class="bottom-nav-item js-bottom-tab active" data-tab="dashboardTab">
+      <i class="fa-solid fa-chart-pie"></i>
+      <span>Özet</span>
+    </button>
+    <button type="button" class="bottom-nav-item js-bottom-tab" data-tab="menuTab">
+      <i class="fa-solid fa-utensils"></i>
+      <span>Menü</span>
+    </button>
+    <button type="button" class="bottom-nav-fab" id="bottomNavAddBtn" title="Yeni Ürün Ekle" aria-label="Yeni Ürün Ekle">
+      <i class="fa-solid fa-plus"></i>
+    </button>
+    <button type="button" class="bottom-nav-item js-bottom-tab" data-tab="reservationsTab">
+      <div class="bottom-nav-icon-wrap" style="position:relative; display:inline-flex;">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span class="bottom-badge-dot" id="bottomNavResBadge" style="display:none; position:absolute; top:-3px; right:-6px; width:8px; height:8px; background:var(--gold-primary); border-radius:50%; box-shadow:0 0 6px var(--gold-primary);"></span>
+      </div>
+      <span>Rezervasyon</span>
+    </button>
+    <button type="button" class="bottom-nav-item js-bottom-tab" data-tab="settingsTab">
+      <i class="fa-solid fa-sliders"></i>
+      <span>Ayarlar</span>
+    </button>
+  </nav>
 
   <!-- Toast Notification -->
   <div class="admin-toast" id="adminToast">

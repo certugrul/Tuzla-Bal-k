@@ -288,36 +288,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Navigation Tab Switcher
-  navTabs.forEach(tab => {
-    tab.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = tab.getAttribute('data-tab');
-      navTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
+  // 2. Navigation Tab Switcher & Mobile Drawer
+  const adminSidebar = document.querySelector('.admin-sidebar');
+  const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+  const btnCloseSidebar = document.getElementById('btnCloseSidebar');
+  const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+  const bottomNavAddBtn = document.getElementById('bottomNavAddBtn');
 
-      tabPanels.forEach(p => p.classList.remove('active'));
-      const activePanel = document.getElementById(targetId);
-      if (activePanel) activePanel.classList.add('active');
+  function openMobileSidebar() {
+    if (adminSidebar) adminSidebar.classList.add('open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
 
-      // Update page title
-      const titleMap = {
-        'dashboardTab': 'Genel Bakış',
-        'menuTab': 'Menü Yönetimi',
-        'reservationsTab': 'Rezervasyon & Anket Yönetimi',
-        'settingsTab': 'Site Ayarları',
-        'backupTab': 'Yedekleme & Dışa Aktarma'
-      };
-      if (pageTitle) pageTitle.textContent = titleMap[targetId] || 'Yönetim Paneli';
+  function closeMobileSidebar() {
+    if (adminSidebar) adminSidebar.classList.remove('open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove('show');
+    document.body.style.overflow = '';
+  }
 
-      // Re-render table if switching to menu
-      if (targetId === 'menuTab') {
-        renderTable();
-      } else if (targetId === 'reservationsTab') {
-        loadAndRenderReservations();
+  if (btnToggleSidebar) {
+    btnToggleSidebar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (adminSidebar && adminSidebar.classList.contains('open')) {
+        closeMobileSidebar();
+      } else {
+        openMobileSidebar();
       }
     });
+  }
+
+  if (btnCloseSidebar) {
+    btnCloseSidebar.addEventListener('click', closeMobileSidebar);
+  }
+
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', closeMobileSidebar);
+  }
+
+  function switchTab(targetId) {
+    // Sync active classes on both sidebar items and bottom nav items
+    document.querySelectorAll('.js-nav-tab, .js-bottom-tab').forEach(t => {
+      if (t.getAttribute('data-tab') === targetId) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    });
+
+    tabPanels.forEach(p => p.classList.remove('active'));
+    const activePanel = document.getElementById(targetId);
+    if (activePanel) activePanel.classList.add('active');
+
+    // Update page title
+    const titleMap = {
+      'dashboardTab': 'Genel Bakış',
+      'menuTab': 'Menü Yönetimi',
+      'reservationsTab': 'Rezervasyon & Anket',
+      'settingsTab': 'Site Ayarları',
+      'backupTab': 'Yedekleme & Dışa Aktar'
+    };
+    if (pageTitle) pageTitle.textContent = titleMap[targetId] || 'Yönetim Paneli';
+
+    // Close mobile drawer if open
+    closeMobileSidebar();
+
+    // Re-render table if switching to menu
+    if (targetId === 'menuTab') {
+      renderTable();
+    } else if (targetId === 'reservationsTab') {
+      loadAndRenderReservations();
+    }
+
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Attach click listener for all tabs (sidebar, dashboard cards, bottom navigation)
+  document.addEventListener('click', (e) => {
+    const tabBtn = e.target.closest('.js-nav-tab, .js-bottom-tab');
+    if (tabBtn) {
+      e.preventDefault();
+      const targetId = tabBtn.getAttribute('data-tab');
+      if (targetId) switchTab(targetId);
+    }
   });
+
+  if (bottomNavAddBtn) {
+    bottomNavAddBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openAddModal();
+    });
+  }
 
   // 3. Render Dashboard Stats
   function renderStats() {
@@ -1139,6 +1201,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         pendingSurveyBadge.style.display = 'none';
       }
+    }
+    const bottomNavResBadge = document.getElementById('bottomNavResBadge');
+    if (bottomNavResBadge) {
+      bottomNavResBadge.style.display = dueCount > 0 ? 'block' : 'none';
     }
     if (countDueBtn) countDueBtn.textContent = dueCount;
   }
