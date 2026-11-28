@@ -1160,7 +1160,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (item.survey_status === 'sent') {
         statusHtml = `<span class="status-pill status-sent"><i class="fa-solid fa-paper-plane"></i> Gönderildi</span>`;
       } else if (isDue) {
-        statusHtml = `<span class="status-pill status-due"><i class="fa-solid fa-bell"></i> Zamanı Geldi (12:00)</span>`;
+        statusHtml = `<span class="status-pill status-due"><i class="fa-solid fa-bell"></i> Zamanı Geldi</span>`;
       } else {
         statusHtml = `<span class="status-pill status-pending"><i class="fa-solid fa-clock"></i> Zamanı Bekliyor</span>`;
       }
@@ -1821,4 +1821,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initData();
   checkBotStatus();
   setInterval(checkBotStatus, 15000); // 15 saniyede bir arka plan durum kontrolü
+
+  // Zamanlayıcı saati geldiğinde sayfayı yenilemeden anında "Zamanı Geldi"ye dönüştür
+  setInterval(() => {
+    if (reservationsList && reservationsList.length > 0) {
+      renderReservationStats();
+      renderReservationTable();
+    }
+  }, 10000); // Her 10 saniyede bir saat kontrolü
 });
