@@ -47,6 +47,17 @@ function readJsonBody(req) {
   });
 }
 
+// Zamanı gelen ve gönderilmeyi bekleyen rezervasyonları veritabanından çek
+async function getDueReservations() {
+  const list = await db.getReservations();
+  const now = new Date();
+  return list.filter(r => {
+    if (r.survey_status !== 'pending') return false;
+    if (!r.survey_scheduled_at) return true;
+    return new Date(r.survey_scheduled_at) <= now;
+  });
+}
+
 const server = http.createServer(async (req, res) => {
   // Disable aggressive caching so updates reflect instantly in all browsers
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
@@ -645,9 +656,11 @@ const server = http.createServer(async (req, res) => {
   // 7. ZAMANLANMIŞ ANKET KONTROLÜ / TOPLU GÖNDERİM (/api/automation/due)
   // ==========================================
   if (pathname === '/api/automation/due' && req.method === 'GET') {
-    const dueList = automation.getDueSurveys().map(item => ({
+    const dueRaw = await getDueReservations();
+    const domainUrl = process.env.PUBLIC_URL || (process.env.DB_NAME ? 'https://tuzlabaliksoyak.com' : hostUrl);
+    const dueList = dueRaw.map(item => ({
       ...item,
-      wa_direct_url: automation.getWhatsAppDirectUrl(item, hostUrl)
+      wa_direct_url: automation.getWhatsAppDirectUrl(item, domainUrl)
     }));
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
     res.end(JSON.stringify({
@@ -715,27 +728,25 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (pathname === '/api/bot/send-due' && req.method === 'POST') {
-    const dueList = automation.getDueSurveys();
+    const dueList = await getDueReservations();
     const results = [];
-    const all = automation.loadReservations();
+    const domainUrl = process.env.PUBLIC_URL || (process.env.DB_NAME ? 'https://tuzlabaliksoyak.com' : hostUrl);
 
     for (const item of dueList) {
       try {
-        const rawMsg = automation.generateRawSurveyMessage(item, hostUrl);
+        const rawMsg = automation.generateRawSurveyMessage(item, domainUrl);
         await whatsappBot.sendTextMessage(item.phone, rawMsg);
         
-        const target = all.find(r => r.id === item.id);
-        if (target) {
-          target.survey_status = 'sent';
-          target.survey_sent_via = 'bot';
-          target.survey_sent_at = new Date().toISOString();
-        }
+        item.survey_status = 'sent';
+        item.survey_sent_via = 'bot';
+        item.survey_sent_at = new Date().toISOString();
+        await db.upsertReservation(item);
+
         results.push({ id: item.id, name: item.name, success: true });
       } catch (err) {
         results.push({ id: item.id, name: item.name, success: false, error: err.message });
       }
     }
-    automation.saveReservations(all);
 
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
     res.end(JSON.stringify({ success: true, processed: results.length, results }));
@@ -797,34 +808,45 @@ server.listen(PORT, () => {
   console.log(`📊 Anket Sayfası:     http://localhost:${PORT}/anket.html?id=res_demo_01`);
   console.log(`======================================================\n`);
 
-  // Zamanlayıcıyı başlat ve otomatik bot gönderimini bağla
-  automation.startAutomationScheduler({
-    onDueSurveys: async (dueList) => {
+  // Zamanı gelen anketleri otomatik gönderen arka plan servisi (15 saniyede bir tarar)
+  let isAutoSending = false;
+  setInterval(async () => {
+    if (isAutoSending) return;
+    try {
+      const settings = await db.getSettings();
+      if (settings.surveyAutoSend === false) return;
+
       const botState = whatsappBot.getBotStatus();
-      if (botState.isConnected) {
-        console.log(`[Automation] WhatsApp Bot BAĞLI. ${dueList.length} adet anket otomatik gönderiliyor...`);
-        const all = automation.loadReservations();
-        for (const item of dueList) {
-          try {
-            const rawMsg = automation.generateRawSurveyMessage(item, `http://localhost:${PORT}`);
-            await whatsappBot.sendTextMessage(item.phone, rawMsg);
-            const target = all.find(r => r.id === item.id);
-            if (target) {
-              target.survey_status = 'sent';
-              target.survey_sent_via = 'bot';
-              target.survey_sent_at = new Date().toISOString();
-            }
-            console.log(`[Automation] ${item.name} (${item.phone}) kişisine anket otomatik WhatsApp ile iletildi!`);
-          } catch (err) {
-            console.error(`[Automation] ${item.name} anket gönderimi başarısız:`, err.message);
-          }
+      if (!botState.isConnected) return; // WhatsApp bağlı değilse bekle
+
+      const dueList = await getDueReservations();
+      if (!dueList || dueList.length === 0) return;
+
+      isAutoSending = true;
+      const domainUrl = process.env.PUBLIC_URL || (process.env.DB_NAME ? 'https://tuzlabaliksoyak.com' : `http://localhost:${PORT}`);
+      console.log(`[AutoSend] Zamanı gelmiş ${dueList.length} adet anket bulundu, WhatsApp üzerinden otomatik gönderiliyor...`);
+
+      for (const item of dueList) {
+        try {
+          const rawMsg = automation.generateRawSurveyMessage(item, domainUrl);
+          await whatsappBot.sendTextMessage(item.phone, rawMsg);
+
+          item.survey_status = 'sent';
+          item.survey_sent_via = 'bot';
+          item.survey_sent_at = new Date().toISOString();
+          await db.upsertReservation(item);
+
+          console.log(`[AutoSend] ✅ ${item.name} (${item.phone}) kişisine anket WhatsApp ile otomatik gönderildi!`);
+        } catch (err) {
+          console.error(`[AutoSend] ❌ ${item.name} (${item.phone}) anket gönderimi başarısız:`, err.message);
         }
-        automation.saveReservations(all);
-      } else {
-        console.log(`[Automation] ⚠️ Zamanlayıcı tetiklendi ancak WhatsApp Bot henüz bağlı değil. Lütfen Admin panelinden QR kod okutun veya tek tıkla 'WhatsApp ile Gönder' butonunu kullanın.`);
       }
+    } catch (err) {
+      console.error('[AutoSend] Otomatik gönderim hatası:', err.message);
+    } finally {
+      isAutoSending = false;
     }
-  });
+  }, 15000);
 
   // WhatsApp botunu başlat
   whatsappBot.startWhatsAppBot();

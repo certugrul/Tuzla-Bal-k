@@ -1383,7 +1383,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Toplu Gönderim Butonu
   if (btnSendAllDue) {
-    btnSendAllDue.addEventListener('click', () => {
+    btnSendAllDue.addEventListener('click', async () => {
       const now = new Date();
       const dueList = reservationsList.filter(r => r.survey_status === 'pending' && new Date(r.survey_scheduled_at) <= now);
       if (dueList.length === 0) {
@@ -1391,6 +1391,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
+      // WhatsApp Bot bağlı mı kontrol et
+      try {
+        const botRes = await fetch('/api/bot/status');
+        const botData = await botRes.json();
+        if (botData.isConnected) {
+          showToast(`🤖 WhatsApp Bot ${dueList.length} adet anket mesajını otomatik gönderiyor...`);
+          const sendRes = await fetch('/api/bot/send-due', { method: 'POST' });
+          const sendData = await sendRes.json();
+          if (sendData.success) {
+            showToast(`✅ ${sendData.processed} adet anket WhatsApp üzerinden başarıyla gönderildi!`);
+            await loadAndRenderReservations();
+            return;
+          }
+        }
+      } catch (_) {}
+
+      // Fallback: Doğrudan WhatsApp bağlantısı
       const first = dueList[0];
       if (first.wa_direct_url) {
         window.open(first.wa_direct_url, '_blank');
