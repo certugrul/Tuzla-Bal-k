@@ -145,17 +145,18 @@ async function initDatabase() {
         console.log('[DB] Menü verileri MySQL menu_store tablosuna aktarıldı.');
       } else if (menuRows.length > 0) {
         let dbCount = 0;
+        let dbItemsRaw = menuRows[0].items || '[]';
         try {
-          dbCount = JSON.parse(menuRows[0].items || '[]').length;
+          dbCount = JSON.parse(dbItemsRaw).length;
         } catch (_) {}
 
-        // Eğer diskteki güncel kod/deploy sürümünde daha fazla veya yeni ürün varsa, MySQL'i anında güncelle
-        if (diskItemsCount > dbCount && diskItems) {
+        // Eğer diskteki güncel kod/deploy sürümünde ürün sayısı farklıysa veya sıralama/içerik güncellenmişse, MySQL'i anında güncelle
+        if (diskItems && (diskItemsCount !== dbCount || diskItems !== dbItemsRaw)) {
           await pool.query(
             'UPDATE menu_store SET categories = ?, items = ? WHERE id = 1',
             [diskCats, diskItems]
           );
-          console.log(`[DB] MySQL menu_store güncellendi: ${dbCount} -> ${diskItemsCount} ürün.`);
+          console.log(`[DB] MySQL menu_store güncellendi: ${diskItemsCount} ürün (mezeden meşrubata sıralı).`);
         } else if (dbCount > 0) {
           const cats = JSON.parse(menuRows[0].categories || '{}');
           const itms = JSON.parse(menuRows[0].items || '[]');

@@ -353,6 +353,32 @@
       });
     }
 
+    const categoryOrder = [
+      'mezeler',
+      'ara-sicaklar',
+      'baliklar',
+      'etler',
+      'salatalar',
+      'rakilar',
+      'saraplar',
+      'biralar',
+      'ithal-ickiler',
+      'tatlilar',
+      'cerezler',
+      'mesrubatlar'
+    ];
+
+    if (state.selectedCategory === 'all' && !state.searchQuery.trim()) {
+      filtered.sort((a, b) => {
+        const orderA = categoryOrder.indexOf(a.category);
+        const orderB = categoryOrder.indexOf(b.category);
+        const rankA = orderA === -1 ? 999 : orderA;
+        const rankB = orderB === -1 ? 999 : orderB;
+        if (rankA !== rankB) return rankA - rankB;
+        return (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' });
+      });
+    }
+
     return filtered;
   }
 

@@ -60,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
     { id: 'salatalar', label: 'Taze Salatalar' },
     { id: 'rakilar', label: 'Rakı Kavı' },
     { id: 'saraplar', label: 'Şarap & Bira' },
-    { id: 'tatlilar', label: 'Tatlı Kapanışlar' }
+    { id: 'tatlilar', label: 'Tatlı Kapanışlar' },
+    { id: 'mesrubatlar', label: 'Meşrubatlar' }
   ];
 
   // DOM Elements
@@ -150,6 +151,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return true;
     }).sort((a, b) => {
+      if (state.selectedCategory === 'all' && !state.searchQuery) {
+        const categoryOrder = [
+          'mezeler',
+          'ara-sicaklar',
+          'baliklar',
+          'etler',
+          'salatalar',
+          'rakilar',
+          'saraplar',
+          'biralar',
+          'ithal-ickiler',
+          'tatlilar',
+          'cerezler',
+          'mesrubatlar'
+        ];
+        const orderA = categoryOrder.indexOf(a.category);
+        const orderB = categoryOrder.indexOf(b.category);
+        const rankA = orderA === -1 ? 999 : orderA;
+        const rankB = orderB === -1 ? 999 : orderB;
+        if (rankA !== rankB) return rankA - rankB;
+        if (a.is_signature && !b.is_signature) return -1;
+        if (!a.is_signature && b.is_signature) return 1;
+        return (a.name || '').localeCompare(b.name || '', 'tr', { sensitivity: 'base' });
+      }
       // Signature first, then by price
       if (a.is_signature && !b.is_signature) return -1;
       if (!a.is_signature && b.is_signature) return 1;
