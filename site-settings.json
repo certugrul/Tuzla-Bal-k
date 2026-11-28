@@ -20,8 +20,8 @@
   "statBalik": "45+",
   "statRaki": "120+",
   "statYag": "%100",
-  "surveyDelayDays": 0,
-  "surveySendTime": "14:07",
+  "surveyDelayDays": 1,
+  "surveySendTime": "12:00",
   "surveyAutoSend": true,
   "surveyMessageTemplate": "Merhaba Sayın *{name}*,\n\nTuzla Balık Soyak'ta ağırlamaktan büyük mutluluk duyduk. 🐟✨\n\nSizlere daima en taze ve özenli lezzetleri sunabilmemiz için 30 saniyelik kısa değerlendirme anketimize katılırsanız çok mutlu oluruz:\n👉 {survey_url}\n\nAfiyetle ve sevgiyle kalın, tekrar bekleriz! 🥂"
 }

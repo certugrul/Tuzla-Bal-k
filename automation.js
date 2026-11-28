@@ -4,6 +4,8 @@
  * anket gönderimini dinamik olarak yönetir.
  */
 
+process.env.TZ = 'Europe/Istanbul';
+
 const fs = require('fs');
 const path = require('path');
 

@@ -5,6 +5,8 @@
  * Çalıştırmak için terminalde: node server.js
  */
 
+process.env.TZ = 'Europe/Istanbul';
+
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -408,7 +410,12 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
-      target.survey_scheduled_at = new Date(scheduled_at).toISOString();
+      let cleanInput = String(scheduled_at).trim().replace(' ', 'T');
+      if (!cleanInput.includes('+') && !cleanInput.endsWith('Z')) {
+        if (cleanInput.length === 16) cleanInput += ':00';
+        cleanInput += '+03:00';
+      }
+      target.survey_scheduled_at = new Date(cleanInput).toISOString();
       automation.saveReservations(list);
 
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });

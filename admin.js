@@ -197,6 +197,16 @@ document.addEventListener('DOMContentLoaded', () => {
         serverStatusBadge.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#10b981;"></i> <span>Yerel Sunucuya Bağlı (Otomatik Kayıt Aktif)</span>';
         serverStatusBadge.style.color = '#34d399';
         serverStatusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+
+        // Sunucudaki taze ayarları çek ve senkronize et
+        const serverSettings = await res.json();
+        if (serverSettings && serverSettings.restaurantName) {
+          siteSettings = { ...siteSettings, ...serverSettings };
+          localStorage.setItem('tuzla_site_settings', JSON.stringify(siteSettings));
+          if (typeof populateScheduleSettings === 'function') {
+            populateScheduleSettings();
+          }
+        }
       }
     } catch (e) {
       serverStatusBadge.innerHTML = '<i class="fa-solid fa-hard-drive" style="color:var(--gold-primary);"></i> <span>Tarayıcı Modu (LocalStorage Aktif)</span>';
