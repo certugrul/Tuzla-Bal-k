@@ -1,6 +1,4 @@
 // Tuzla Balık Soyak - Dinamik Menü Veritabanı
-// Backoffice üzerinden güncellendi
-
 var MENU_CATEGORIES = {
   "mezeler": {
     "name": "Soğuk Mezeler",
@@ -63,7 +61,6 @@ var MENU_CATEGORIES = {
     "icon": "fa-solid fa-bowl-food"
   }
 };
-
 var MENU_ITEMS = [
   {
     "id": "ST00024",
@@ -72,13 +69,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Süzme yoğurt üzerinde tereyağında kızartılmış acı kurutulmuş Arnavut biberleri.",
-    "price": 250,
+    "price": 300,
     "badge": "Acılı / Sevilen",
     "isSignature": true,
     "image": "images/mezeler/atom.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0073"
   },
   {
     "id": "ST00020",
@@ -87,13 +86,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Çok ince yaprak dilimlenmiş ahtapot, kapari, pembe biber ve zeytinyağı.",
-    "price": 450,
+    "price": 750,
     "badge": "Gurme",
     "isSignature": false,
     "image": "images/mezeler/ahtapotcarpaccio.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 450,
+    "code": "URK0067"
   },
   {
     "id": "ST00120",
@@ -102,13 +103,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Kızarmış patlıcan, biber ve patates küpleri, sarımsaklı domates sosunda.",
-    "price": 250,
+    "price": 300,
     "badge": "Popüler",
     "isSignature": false,
     "image": "images/mezeler/saksuka.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0055"
   },
   {
     "id": "ST00856",
@@ -117,13 +120,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Sarımsak, zencefil, acı biber ve zeytinyağıyla hazırlanan şifa kaynağı.",
-    "price": 300,
+    "price": 350,
     "badge": "Şefin İmzası",
     "isSignature": true,
     "image": "images/mezeler/antibiyotik.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0091"
   },
   {
     "id": "ST00749",
@@ -132,13 +137,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Taze avokado yatağında haşlanmış karidesler ve narenciyeli sos.",
-    "price": 450,
+    "price": 600,
     "badge": "Gurme",
     "isSignature": false,
     "image": "images/mezeler/avokadolukarides.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 350,
+    "code": "URK0107"
   },
   {
     "id": "ST00090",
@@ -147,13 +154,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Eski usul tuzlanmış gerçek torik lakerda, kırmızı soğan halkalarıyla.",
-    "price": 650,
+    "price": 800,
     "badge": "Klasik / İmza",
     "isSignature": true,
     "image": "images/mezeler/lakerda.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 475,
+    "code": "URK0071"
   },
   {
     "id": "ST00784",
@@ -162,13 +171,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Ezine peyniri, ceviz, fesleğen ve sızma zeytinyağlı ada klasiği.",
-    "price": 250,
+    "price": 325,
     "badge": "Ada Klasiği",
     "isSignature": false,
     "image": "images/mezeler/cundameze.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0133"
   },
   {
     "id": "ST00021",
@@ -192,13 +203,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Deniz börülcesi, cibez, turp otu ve şevketi bostandan oluşan seçki.",
-    "price": 300,
+    "price": 350,
     "badge": "Ege Otu",
     "isSignature": false,
     "image": "images/mezeler/egekarmasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0663"
   },
   {
     "id": "ST00118",
@@ -222,13 +235,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Közlenmiş patlıcan, sumak, nar ekşisi, ceviz ve zeytinyağı.",
-    "price": 250,
+    "price": 300,
     "badge": "Köz / Ekşili",
     "isSignature": false,
     "image": "images/mezeler/eksilimantar.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0664"
   },
   {
     "id": "ST00105",
@@ -237,13 +252,14 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Tam yağlı, olgunlaştırılmış Çanakkale Ezine koyun/keçi peyniri.",
-    "price": 150,
+    "price": 200,
     "badge": "Rakı Eşlikçisi",
     "isSignature": false,
     "image": "images/mezeler/ezinepeyniri.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0045"
   },
   {
     "id": "ST00138",
@@ -252,13 +268,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Yeşil zeytin, ceviz, nar ekşisi, taze soğan ve sızma zeytinyağı.",
-    "price": 300,
+    "price": 375,
     "badge": "Salata Meze",
     "isSignature": false,
     "image": "images/mezeler/zeytinsalatasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 250,
+    "code": "URK0099"
   },
   {
     "id": "ST00065",
@@ -267,13 +285,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Zeytinyağında sotelenmiş havuç, süzme yoğurt, ceviz ve sarımsak.",
-    "price": 225,
+    "price": 300,
     "badge": "Yoğurtlu",
     "isSignature": false,
     "image": "images/mezeler/havuctarator.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0062"
   },
   {
     "id": "ST00794",
@@ -282,13 +302,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Tuz, şeker, taze dereotu ve kişniş tohumlarıyla marine somon dilimleri.",
-    "price": 400,
+    "price": 550,
     "badge": "Gurme",
     "isSignature": false,
     "image": "images/mezeler/somongrawlax.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0678"
   },
   {
     "id": "ST00076",
@@ -297,13 +319,14 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Yaz akşamlarının efsanevi rakı eşlikçisi taze karpuz ve tam yağlı Ezine.",
-    "price": 250,
+    "price": 400,
     "badge": "Rakı Yanı",
     "isSignature": false,
     "image": "images/mezeler/karpuzpeynir.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0449"
   },
   {
     "id": "ST00078",
@@ -312,13 +335,14 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Kırkağaç kavunu dilimleri ve 1. sınıf Çanakkale Ezine peyniri.",
-    "price": 300,
+    "price": 400,
     "badge": "Rakı Yanı",
     "isSignature": false,
     "image": "images/mezeler/kavunpeynir.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0047"
   },
   {
     "id": "ST00058",
@@ -327,13 +351,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Kuru bakladan ipeksi kıvamda ezme, sızma zeytinyağı ile.",
-    "price": 225,
+    "price": 275,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/mezeler/fava.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0049"
   },
   {
     "id": "ST00061",
@@ -357,13 +383,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Mekanımızın dillere destan narenciye ve hardal soslu levrek marini.",
-    "price": 450,
+    "price": 600,
     "badge": "En Çok Sevilen",
     "isSignature": true,
     "image": "images/mezeler/levrekmarin.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 350,
+    "code": "URK0120"
   },
   {
     "id": "ST00067",
@@ -372,13 +400,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Haşlanmış nohut, tahin, kimyon, limon suyu ve sızma zeytinyağı.",
-    "price": 250,
+    "price": 300,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/mezeler/humus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0066"
   },
   {
     "id": "ST00081",
@@ -387,13 +417,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Közlenmiş patlıcan, biber ve domates soslu sarımsaklı yoğurtlu meze.",
-    "price": 225,
+    "price": 300,
     "badge": "Yoğurtlu / Köz",
     "isSignature": false,
     "image": "images/mezeler/kopoglu.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0056"
   },
   {
     "id": "ST00040",
@@ -402,13 +434,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Közlenmiş kapya biberler ve sarımsaklı süzme yoğurt.",
-    "price": 250,
+    "price": 300,
     "badge": "Yoğurtlu",
     "isSignature": false,
     "image": "images/mezeler/biberborani.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0110"
   },
   {
     "id": "ST00066",
@@ -417,13 +451,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Süzme yoğurt, beyaz peynir, tereyağında kavrulmuş nane ve sarımsak.",
-    "price": 225,
+    "price": 275,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/mezeler/haydari.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0095"
   },
   {
     "id": "ST00070",
@@ -432,13 +468,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Kömür ateşinde ızgaralanmış iri yeşil zeytinler, kekikli sosla.",
-    "price": 250,
+    "price": 300,
     "badge": "Özel Lezzet",
     "isSignature": true,
     "image": "images/mezeler/izgarazeytin.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0665"
   },
   {
     "id": "ST00741",
@@ -447,13 +485,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Özel baharatlar, zeytinyağı, limon ve maydanoz eşliğinde.",
-    "price": 400,
+    "price": 600,
     "badge": "Söğüş",
     "isSignature": false,
     "image": "images/mezeler/beyinsogus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 350,
+    "code": "URK0659"
   },
   {
     "id": "ST00769",
@@ -462,13 +502,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Tahinli, sarımsaklı köz patlıcan ve nar taneleri.",
-    "price": 300,
+    "price": 350,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/mezeler/lubnanmeze.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0088"
   },
   {
     "id": "ST00080",
@@ -477,13 +519,14 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Çengelköy salatalığı, tarla domatesi, biberler, roka ve taze nane.",
-    "price": 250,
+    "price": 300,
     "badge": "Bahçeden",
     "isSignature": false,
     "image": "images/mezeler/komplesogus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0075"
   },
   {
     "id": "ST00116",
@@ -492,13 +535,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Taze Karadeniz hamsileri, narenciye ve zeytinyağı sosunda tam porsiyon.",
-    "price": 375,
+    "price": 550,
     "badge": "Deniz Mahsulü",
     "isSignature": false,
     "image": "images/mezeler/sosluhamsi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0074"
   },
   {
     "id": "ST00068",
@@ -507,13 +552,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Tahinli ipek humus ile fırınlanmış kırmızı pancarın uyumu.",
-    "price": 225,
+    "price": 300,
     "badge": "Şefin Dokunuşu",
     "isSignature": false,
     "image": "images/mezeler/humus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0042"
   },
   {
     "id": "ST00023",
@@ -522,13 +569,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Küp doğranmış kuzu ciğeri, sumaklı kırmızı soğan ve maydanoz.",
-    "price": 375,
+    "price": 550,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/mezeler/arnavutcigeri.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0085"
   },
   {
     "id": "ST00678",
@@ -537,13 +586,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Ceviz, sarımsak ve süzme yoğurtla harmanlanmış köz biber.",
-    "price": 250,
+    "price": 325,
     "badge": "Yoğurtlu",
     "isSignature": false,
     "image": "images/mezeler/bibertarator.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0052"
   },
   {
     "id": "ST00770",
@@ -552,13 +603,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "İnce dilimlenmiş yumuşacık dana dili, hardal ve taze otlar ile.",
-    "price": 400,
+    "price": 550,
     "badge": "Söğüş",
     "isSignature": false,
     "image": "images/mezeler/dilsogus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0677"
   },
   {
     "id": "ST00086",
@@ -567,13 +620,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Koyu süzme yoğurt, minik doğranmış çıtır salatalık, nane ve zeytinyağı.",
-    "price": 225,
+    "price": 275,
     "badge": "Yoğurtlu",
     "isSignature": false,
     "image": "images/mezeler/kurucacik.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0048"
   },
   {
     "id": "ST00108",
@@ -612,13 +667,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Geleneksel kurutulmuş uskumru çirozu, dereotlu sızma zeytinyağında.",
-    "price": 400,
+    "price": 600,
     "badge": "Rakı Yanı",
     "isSignature": false,
     "image": "images/mezeler/isliciroz.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 350,
+    "code": "URK0068"
   },
   {
     "id": "ST00134",
@@ -627,13 +684,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Köz ateşinde tütsülenmiş patlıcan, sarımsaklı yoğurt ile.",
-    "price": 225,
+    "price": 300,
     "badge": "Yoğurtlu / Köz",
     "isSignature": false,
     "image": "images/mezeler/yogurtlupatlican.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0114"
   },
   {
     "id": "ST00136",
@@ -642,13 +701,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Taze körpe semizotu yaprakları ve sarımsaklı süzme yoğurt.",
-    "price": 225,
+    "price": 300,
     "badge": "Yoğurtlu",
     "isSignature": false,
     "image": "images/mezeler/yogurlusemiz.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0158"
   },
   {
     "id": "ST00121",
@@ -672,13 +733,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Kalamar, ahtapot, karides ve sübye parçaları sızma zeytinyağında.",
-    "price": 450,
+    "price": 650,
     "badge": "Deniz Mahsulü",
     "isSignature": false,
     "image": "images/mezeler/denizmahsullerisalatasi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 400,
+    "code": "URK0084"
   },
   {
     "id": "ST00063",
@@ -687,13 +750,14 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Marine edilmiş Girit peyniri küpleri, kekik ve zeytinyağı.",
-    "price": 275,
+    "price": 800,
     "badge": "Peynirli",
     "isSignature": false,
     "image": "images/mezeler/peynirligirit.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0105"
   },
   {
     "id": "ST00044",
@@ -732,13 +796,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Garnitürlü tam porsiyon taze zeytinyağlı çanak enginar.",
-    "price": 350,
+    "price": 400,
     "badge": "Zeytinyağlı",
     "isSignature": false,
     "image": "images/mezeler/canakenginaradet.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 225,
+    "code": "URK0661"
   },
   {
     "id": "ST00054",
@@ -747,13 +813,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Geleneksel sarımsaklı sızma zeytinyağı sosunda deniz börülcesi.",
-    "price": 300,
+    "price": 350,
     "badge": "Ege Otu",
     "isSignature": false,
     "image": "images/mezeler/denizborulcesi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 225,
+    "code": "URK0058"
   },
   {
     "id": "ST00139",
@@ -762,13 +830,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Taze dereotu ve limon soslu özel zeytinyağlı enginar tabağı.",
-    "price": 300,
+    "price": 450,
     "badge": "Zeytinyağlı",
     "isSignature": false,
     "image": "images/mezeler/enginarkalbi.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 250,
+    "code": "URK0126"
   },
   {
     "id": "ST00079",
@@ -777,13 +847,15 @@ var MENU_ITEMS = [
     "category": "mezeler",
     "rawCategory": "Soğuk Mezeler & Ege Otları",
     "description": "Ege kıyılarının kayalıklarından toplanan ekşimsi lezzetli yabani ot.",
-    "price": 250,
+    "price": 350,
     "badge": "Ege Otu",
     "isSignature": false,
     "image": "images/mezeler/kayakorugu.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 200,
+    "code": "URK0082"
   },
   {
     "id": "ST00859",
@@ -792,13 +864,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Lavaş ekmeğine sarılı balık köftesi, domates ve yoğurt sosuyla.",
-    "price": 300,
+    "price": 375,
     "badge": "Şefin İmzası",
     "isSignature": true,
     "image": "images/arasicaklar/balikbeyti.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0355"
   },
   {
     "id": "ST00155",
@@ -807,13 +880,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Peynir ve ot dolgulu küçük boy taze kalamarlar ızgara şişte.",
-    "price": 375,
+    "price": 450,
     "badge": "Izgara",
     "isSignature": false,
     "image": "images/arasicaklar/babykalamardolma.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0396"
   },
   {
     "id": "ST00154",
@@ -822,13 +896,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Dumanı tüten tereyağlı patlıcan beğendi üzerinde kömürde ızgara ahtapot.",
-    "price": 800,
+    "price": 950,
     "badge": "Şefin İmzası",
     "isSignature": true,
     "image": "images/arasicaklar/begendiliahtapot.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 650,
+    "code": "URK0397"
   },
   {
     "id": "ST00156",
@@ -837,13 +913,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Patlıcan beğendi yatağında fırınlanmış levrek rulo sarma.",
-    "price": 750,
+    "price": 850,
     "badge": "Gurme",
     "isSignature": false,
     "image": "images/arasicaklar/begendililevreksarma.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0403"
   },
   {
     "id": "ST00157",
@@ -852,13 +929,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Kadifemsi köz patlıcan beğendi üzerinde sarımsaklı tereyağında karides.",
-    "price": 800,
+    "price": 950,
     "badge": "Şefin İmzası",
     "isSignature": true,
     "image": "images/arasicaklar/begendilikarides.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 500,
+    "code": "URK0401"
   },
   {
     "id": "ST00190",
@@ -867,13 +946,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Altın sarısı çıtır midye tava porsiyonu, yanında ev yapımı tarator sos.",
-    "price": 450,
+    "price": 550,
     "badge": "Popüler",
     "isSignature": false,
     "image": "images/arasicaklar/midyetavasisporsiyon.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0404"
   },
   {
     "id": "ST00162",
@@ -882,13 +962,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Ahtapot, kalamar, karides, krema ve erimiş taze kaşarlı güveç.",
-    "price": 850,
+    "price": 450,
     "badge": "En Çok Sevilen",
     "isSignature": true,
     "image": "images/arasicaklar/denizmahsulleriguvec.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0098"
   },
   {
     "id": "ST00207",
@@ -897,13 +979,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Kusursuz incelikte kesilmiş, unlanıp kızartılmış çıtır kuzu ciğeri.",
-    "price": 600,
+    "price": 650,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/arasicaklar/yaprakciger.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 400,
+    "code": "URK0378"
   },
   {
     "id": "ST00179",
@@ -912,13 +996,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Karides dolgulu el yapımı mantı, sarımsaklı yoğurt ve nane yağı sosuyla.",
-    "price": 450,
+    "price": 500,
     "badge": "Şefin İmzası",
     "isSignature": true,
     "image": "images/arasicaklar/karidesmanti.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 350,
+    "code": "URK0420"
   },
   {
     "id": "ST00170",
@@ -942,13 +1028,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Tam porsiyon hellimli levrek şiş, roka ve limonla.",
-    "price": 550,
+    "price": 700,
     "badge": "Izgara",
     "isSignature": false,
     "image": "images/arasicaklar/hellimlilevreksis.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0646"
   },
   {
     "id": "ST00731",
@@ -957,13 +1044,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Tereyağında hafifçe ısıtılmış, pul biberli ve sarımsaklı ahtapot.",
-    "price": 650,
+    "price": 750,
     "badge": "Ilık Başlangıç",
     "isSignature": false,
     "image": "images/arasicaklar/tereyagliahtapot.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 500,
+    "code": "URK0636"
   },
   {
     "id": "ST00140",
@@ -972,13 +1061,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Kömür ızgarasında dışı çıtır içi lokum ahtapot bacağı, kekikli zeytinyağı ile.",
-    "price": 450,
+    "price": 575,
     "badge": "Izgara",
     "isSignature": false,
     "image": "images/arasicaklar/ahtapotizgarabacak.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "code": "URK0400"
   },
   {
     "id": "ST00172",
@@ -987,13 +1077,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Özel sos eşliğinde shot kadehinde sunulan jumbo karides.",
-    "price": 300,
+    "price": 375,
     "badge": "Gurme",
     "isSignature": false,
     "image": "images/arasicaklar/jumboshotadet.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "code": "URK0362"
   },
   {
     "id": "ST00175",
@@ -1002,13 +1093,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Kömür ateşinde nar gibi kızarmış taze kalamar şişi.",
-    "price": 350,
+    "price": 450,
     "badge": "Izgara",
     "isSignature": false,
     "image": "images/arasicaklar/kalamarizgarasisadet.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0398"
   },
   {
     "id": "ST00180",
@@ -1017,13 +1109,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Kömürde pişirilmiş marine karides şiş.",
-    "price": 325,
+    "price": 600,
     "badge": "Izgara",
     "isSignature": false,
     "image": "images/arasicaklar/karidessis.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "code": "URK0650"
   },
   {
     "id": "ST00779",
@@ -1032,13 +1125,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırında dumanı tüten sıcak humus üzerinde çıtır kasap sucuğu dilimleri.",
-    "price": 400,
+    "price": 550,
     "badge": "Fırından",
     "isSignature": false,
     "image": "images/arasicaklar/sucukluhumus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 350,
+    "code": "URK0417"
   },
   {
     "id": "ST00178",
@@ -1047,13 +1142,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırında domates, biber, sarımsak ve erimiş kaşar altında karides güveç.",
-    "price": 700,
+    "price": 850,
     "badge": "Güveç",
     "isSignature": false,
     "image": "images/arasicaklar/karidesguvec.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "code": "URK0393"
   },
   {
     "id": "ST00197",
@@ -1062,13 +1158,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırında erimiş kaşar peyniri kaplı sıcak köz patlıcan.",
-    "price": 425,
+    "price": 550,
     "badge": "Fırından",
     "isSignature": false,
     "image": "images/arasicaklar/sicakpatlican.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0428"
   },
   {
     "id": "ST00169",
@@ -1092,13 +1190,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Ege'nin şevketi bostanı, karides ve kalamarla krema sosunda.",
-    "price": 850,
+    "price": 550,
     "badge": "Ege Spesiyali",
     "isSignature": false,
     "image": "images/arasicaklar/denizmahsullusevketibostan.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0367"
   },
   {
     "id": "ST00670",
@@ -1107,13 +1206,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırında eritilmiş kaşar ve krema soslu taze istiridye mantarı.",
-    "price": 450,
+    "price": 600,
     "badge": "Fırından",
     "isSignature": false,
     "image": "images/arasicaklar/kremaliistiridyemantari.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 400,
+    "code": "URK0415"
   },
   {
     "id": "ST00184",
@@ -1122,13 +1223,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırın güveçte krema ve kaşar peyniriyle graten edilmiş şevket-i bostan.",
-    "price": 475,
+    "price": 600,
     "badge": "Fırından",
     "isSignature": false,
     "image": "images/arasicaklar/kremalikasarlisevketibostan.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 400,
+    "code": "URK0651"
   },
   {
     "id": "ST00730",
@@ -1137,13 +1240,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırında eritilmiş kaşar peyniri, krema, mantar ve ahtapot parçaları.",
-    "price": 800,
+    "price": 1100,
     "badge": "Fırından",
     "isSignature": false,
     "image": "images/arasicaklar/kremaliahtapot.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 650,
+    "code": "URK0635"
   },
   {
     "id": "ST00186",
@@ -1152,13 +1257,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Taze levrek filetoları ve Ege'nin taze şevketi bostanı.",
-    "price": 750,
+    "price": 900,
     "badge": "Şefin İmzası",
     "isSignature": true,
     "image": "images/arasicaklar/sevketibostanlilevrek.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 650,
+    "code": "URK0504"
   },
   {
     "id": "ST00855",
@@ -1167,13 +1274,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "İnce kıyılmış balık filetoları, domates, biber ve baharatlarla sacda.",
-    "price": 700,
+    "price": 750,
     "badge": "Çok Sevilen",
     "isSignature": true,
     "image": "images/arasicaklar/balikkokorec.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 500,
+    "code": "URK0421"
   },
   {
     "id": "ST00438",
@@ -1182,13 +1291,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Mantar, arpacık soğan, renkli biberler ve domatesle sotelenmiş taze balık.",
-    "price": 800,
+    "price": 1050,
     "badge": "Sac Tava",
     "isSignature": false,
     "image": "images/arasicaklar/balikkavurma.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 650,
+    "code": "URK0426"
   },
   {
     "id": "ST00679",
@@ -1197,13 +1308,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırından yeni çıkmış sıcak cevizli köz biber tarator.",
-    "price": 400,
+    "price": 550,
     "badge": "Fırından",
     "isSignature": false,
     "image": "images/arasicaklar/sicakbibertarator.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 350,
+    "code": "URK0388"
   },
   {
     "id": "ST00198",
@@ -1227,13 +1340,14 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Tavada cızırdayan taze sarımsak ve tereyağlı istiridye mantarı.",
-    "price": 450,
+    "price": 550,
     "badge": "Tava",
     "isSignature": false,
     "image": "images/arasicaklar/tereyagliistiridyemantar.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "code": "URK0648"
   },
   {
     "id": "ST00668",
@@ -1242,13 +1356,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Cızırdayan bakır güveçte taze sarımsak, pul biber ve tereyağlı karides.",
-    "price": 700,
+    "price": 850,
     "badge": "En Çok Sevilen",
     "isSignature": true,
     "image": "images/arasicaklar/tereyaglikarides.webp",
     "isLocalImage": true,
     "pairing": "Beylerbeyi Göbek & Yeni Rakı Giz",
-    "available": true
+    "available": true,
+    "halfPrice": 550,
+    "code": "URK0394"
   },
   {
     "id": "ST00775",
@@ -1257,13 +1373,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Fırında sıcak servis edilen, üzerine tereyağı ve çam fıstığı gezdirilmiş humus.",
-    "price": 350,
+    "price": 450,
     "badge": "Fırından",
     "isSignature": false,
     "image": "images/arasicaklar/sicakhumus.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0652"
   },
   {
     "id": "ST00176",
@@ -1272,13 +1390,15 @@ var MENU_ITEMS = [
     "category": "ara-sicaklar",
     "rawCategory": "Ara Sıcaklar & Deniz Ürünleri",
     "description": "Özel un karışımında altın sarısı kızarmış, tarator soslu kalamar.",
-    "price": 700,
+    "price": 900,
     "badge": "Popüler",
     "isSignature": false,
     "image": "images/arasicaklar/kalamartava.webp",
     "isLocalImage": true,
     "pairing": "Efe Gold & Tekirdağ Altın Seri",
-    "available": true
+    "available": true,
+    "halfPrice": 550,
+    "code": "URK0395"
   },
   {
     "id": "ST00209",
@@ -1323,7 +1443,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0685"
   },
   {
     "id": "ST00853",
@@ -1332,13 +1453,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Özel marinasyonlu taze balık parçaları ve arpacık soğan şişte kömürde.",
-    "price": 750,
+    "price": 800,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0501"
   },
   {
     "id": "ST00660",
@@ -1347,13 +1469,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Mevsimin kraliçesi taze lüfer kömür ızgarasında nar gibi.",
-    "price": 2500,
+    "price": 3500,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0014"
   },
   {
     "id": "ST00877",
@@ -1362,13 +1485,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Buharda veya tereyağında ızgaralanmış lüks deniz ıstakozu ziyafeti.",
-    "price": 3500,
+    "price": 4000,
     "badge": "Lüks",
     "isSignature": true,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0686"
   },
   {
     "id": "ST00414",
@@ -1407,13 +1531,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Ege deniz levreği kömür ateşinde sulu sulu pişirilir.",
-    "price": 1850,
+    "price": 2250,
     "badge": "Izgara / Fırın",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0009"
   },
   {
     "id": "ST00665",
@@ -1422,13 +1547,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Derin suların en lezzetli balıklarından Dülger tava veya ızgara.",
-    "price": 2000,
+    "price": 2400,
     "badge": "Özel Balık",
     "isSignature": true,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0001"
   },
   {
     "id": "ST00667",
@@ -1473,7 +1599,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0697"
   },
   {
     "id": "ST00664",
@@ -1482,13 +1609,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Kemiksiz, ıstakoz dokusunda beyaz etli fener balığı güveç veya tava.",
-    "price": 1700,
+    "price": 2200,
     "badge": "Tava / Güveç",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0607"
   },
   {
     "id": "ST00666",
@@ -1497,13 +1625,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Etli ve sulu kaya levreği kömür ateşinde enfes ızgara.",
-    "price": 1800,
+    "price": 2000,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0007"
   },
   {
     "id": "ST00789",
@@ -1512,13 +1641,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Tavada tereyağında nar gibi pişmiş nefis kalkan balığı.",
-    "price": 3000,
+    "price": 4000,
     "badge": "Tava",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0026"
   },
   {
     "id": "ST00659",
@@ -1527,13 +1657,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Ege'nin kırmızısı kaya barbunu; unlanıp tavada nar gibi kızartılmış.",
-    "price": 3000,
+    "price": 3250,
     "badge": "Tava / Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0013"
   },
   {
     "id": "ST00867",
@@ -1548,7 +1679,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0004"
   },
   {
     "id": "ST00683",
@@ -1557,13 +1689,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Çorbası ve buğulamasıyla meşhur taptaze kırlangıç balığı.",
-    "price": 2500,
+    "price": 3250,
     "badge": "Buğulama",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0028"
   },
   {
     "id": "ST00787",
@@ -1572,13 +1705,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Lüferin en iri ve lezzetli hali Kofana kömür ızgarasında.",
-    "price": 2500,
+    "price": 3250,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0687"
   },
   {
     "id": "ST00682",
@@ -1587,13 +1721,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Akdeniz'in beyaz incisi leziz lahos balığı ızgara veya şiş.",
-    "price": 2500,
+    "price": 3250,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0690"
   },
   {
     "id": "ST00661",
@@ -1602,13 +1737,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Taze Ege kıyı mırmırı kömür ızgarasında.",
-    "price": 1700,
+    "price": 1850,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0008"
   },
   {
     "id": "ST00793",
@@ -1647,13 +1783,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "İnce ve lezzetli beyaz etli pisi balığı tereyağında tavada.",
-    "price": 2000,
+    "price": 3500,
     "badge": "Tava",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0614"
   },
   {
     "id": "ST00663",
@@ -1677,13 +1814,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Ege derin sularının şahı sinarit kömür ızgarasında.",
-    "price": 2750,
+    "price": 3500,
     "badge": "Izgara / Fırın",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0016"
   },
   {
     "id": "ST00662",
@@ -1692,13 +1830,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Ege'nin pembe kabuklu leziz mercan balığı ızgara veya fırında.",
-    "price": 2750,
+    "price": 3500,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0011"
   },
   {
     "id": "ST00472",
@@ -1707,13 +1846,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Yağlı ve lezzetli uskumru fileto kömür ateşinde ızgara.",
-    "price": 1800,
+    "price": 2000,
     "badge": "Izgara",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0012"
   },
   {
     "id": "ST00791",
@@ -1722,13 +1862,14 @@ var MENU_ITEMS = [
     "category": "baliklar",
     "rawCategory": "Taze Mevsim Balıkları",
     "description": "Yağlı ve besleyici bütün yılan balığı ızgara.",
-    "price": 2000,
+    "price": 2500,
     "badge": "Özel Balık",
     "isSignature": true,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Narince & Beylerbeyi Göbek",
-    "available": true
+    "available": true,
+    "code": "URK0694"
   },
   {
     "id": "ST00210",
@@ -1767,13 +1908,14 @@ var MENU_ITEMS = [
     "category": "etler",
     "rawCategory": "Kırmızı Et & Izgaralar",
     "description": "Közlenmiş domates, biber ve patates eşliğinde tam porsiyon kasap köfte.",
-    "price": 450,
+    "price": 125,
     "badge": "Köfte",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
-    "available": true
+    "available": true,
+    "code": "URK0409"
   },
   {
     "id": "ST00225",
@@ -1797,13 +1939,14 @@ var MENU_ITEMS = [
     "category": "etler",
     "rawCategory": "Kırmızı Et & Izgaralar",
     "description": "İçi erimiş kaşar peyniri dolgulu nefis ızgara köfte porsiyonu.",
-    "price": 300,
+    "price": 550,
     "badge": "Köfte",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
-    "available": true
+    "available": true,
+    "code": "URK0410"
   },
   {
     "id": "ST00239",
@@ -1887,13 +2030,14 @@ var MENU_ITEMS = [
     "category": "etler",
     "rawCategory": "Kırmızı Et & Izgaralar",
     "description": "Kömür ızgarasında terbiye edilmiş taptaze kuzu pirzola.",
-    "price": 800,
+    "price": 1100,
     "badge": "Kuzu",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
-    "available": true
+    "available": true,
+    "code": "URK0423"
   },
   {
     "id": "ST00232",
@@ -1902,13 +2046,14 @@ var MENU_ITEMS = [
     "category": "etler",
     "rawCategory": "Kırmızı Et & Izgaralar",
     "description": "Marine edilmiş yumuşacık kuzu but etleri şişte köz biber ve domatesle.",
-    "price": 375,
+    "price": 450,
     "badge": "Kuzu",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Kavaklıdere Selection Öküzgözü-Boğazkere",
-    "available": true
+    "available": true,
+    "code": "URK0698"
   },
   {
     "id": "ST00212",
@@ -1992,13 +2137,15 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "Göbek marul, Akdeniz yeşillikleri, nane, dereotu ve zeytinyağı.",
-    "price": 250,
+    "price": 350,
     "badge": "Hafif",
     "isSignature": false,
     "image": "images/salata/yesil.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
-    "available": true
+    "available": true,
+    "halfPrice": 275,
+    "code": "URK0043"
   },
   {
     "id": "ST00006",
@@ -2007,13 +2154,15 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "Kaşıkla yenecek küçüklükte ince doğranmış taze sebzeler ve nar ekşisi.",
-    "price": 300,
+    "price": 425,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/salata/kasik.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0446"
   },
   {
     "id": "ST00003",
@@ -2022,13 +2171,15 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "İncecik kıyılmış domates, bol ceviz içi, nar ekşisi ve sumak harmanı.",
-    "price": 350,
+    "price": 450,
     "badge": "En Çok Sevilen",
     "isSignature": true,
     "image": "images/salata/gavurdagı.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0044"
   },
   {
     "id": "ST00002",
@@ -2037,13 +2188,15 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "Bol küp Ezine beyaz peyniri ve zeytinyağı ile zenginleştirilmiş çoban salata.",
-    "price": 325,
+    "price": 425,
     "badge": "Peynirli",
     "isSignature": false,
     "image": "images/salata/peynirlimevsim.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
-    "available": true
+    "available": true,
+    "halfPrice": 325,
+    "code": "URK0503"
   },
   {
     "id": "ST00005",
@@ -2052,13 +2205,15 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "Mevsim yeşillikleri, çeri domates, mısır ve özel vinegret sos.",
-    "price": 300,
+    "price": 400,
     "badge": "Hafif",
     "isSignature": false,
     "image": "images/salata/istanbul.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0447"
   },
   {
     "id": "ST00001",
@@ -2067,13 +2222,15 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "Küp doğranmış tarla domatesi, salatalık, biber, mor soğan, sızma zeytinyağı ve limon.",
-    "price": 300,
+    "price": 400,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/salata/coban.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0502"
   },
   {
     "id": "ST00008",
@@ -2082,13 +2239,15 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "Havuç, mor lahana, marul, taze yeşillikler ve limon sosu.",
-    "price": 250,
+    "price": 400,
     "badge": "Klasik",
     "isSignature": false,
     "image": "images/salata/mevsim.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
-    "available": true
+    "available": true,
+    "halfPrice": 300,
+    "code": "URK0143"
   },
   {
     "id": "ST00778",
@@ -2097,14 +2256,16 @@ var MENU_ITEMS = [
     "category": "salatalar",
     "rawCategory": "Bahçe & Deniz Salataları",
     "description": "Çıtır roka yaprakları, çeri domatesler, Ezine peyniri ve balzamik sos.",
-    "price": 300,
+    "price": 350,
     "badge": "Popüler",
     "isSignature": false,
     "image": "images/salata/roka.webp",
     "isLocalImage": true,
     "pairing": "Soğuk Sıkım Erken Hasat Ayvalık Zeytinyağı",
     "available": true,
-    "is_signature": false
+    "is_signature": false,
+    "halfPrice": 275,
+    "code": "URK0468"
   },
   {
     "id": "ST00480",
@@ -2113,13 +2274,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Kurutulmuş üzümlerin meşe fıçılarda yıllanmasıyla üretilen lezzet.",
-    "price": 1000,
+    "price": 3900,
     "badge": "Âlâ",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0349"
   },
   {
     "id": "ST00481",
@@ -2128,13 +2290,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Âlâ Rakı.",
-    "price": 1550,
+    "price": 2100,
     "badge": "Âlâ",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0296"
   },
   {
     "id": "ST00703",
@@ -2143,13 +2306,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Âlâ Rakı.",
-    "price": 1850,
+    "price": 3650,
     "badge": "Âlâ",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0762"
   },
   {
     "id": "ST00482",
@@ -2158,13 +2322,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Âlâ Rakı.",
-    "price": 2600,
+    "price": 3250,
     "badge": "Âlâ",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0297"
   },
   {
     "id": "ST00270",
@@ -2188,13 +2353,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Beylerbeyi Göbek Rakısı.",
-    "price": 2750,
+    "price": 4000,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0304"
   },
   {
     "id": "ST00483",
@@ -2203,13 +2369,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "%100 yaş üzüm ve sadece göbek distilatından üretilmiş şekersiz lezzet.",
-    "price": 950,
+    "price": 1350,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0281"
   },
   {
     "id": "ST00484",
@@ -2233,13 +2400,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Beylerbeyi Göbek Rakısı.",
-    "price": 1750,
+    "price": 2750,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0310"
   },
   {
     "id": "ST00486",
@@ -2248,13 +2416,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Beylerbeyi Göbek Rakısı (Çok Tercih Edilen).",
-    "price": 2450,
+    "price": 3250,
     "badge": "Beylerbeyi Göbek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0316"
   },
   {
     "id": "ST00868",
@@ -2308,13 +2477,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Beylerbeyi Margaz butik rakı.",
-    "price": 2750,
+    "price": 3900,
     "badge": "Butik Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0560"
   },
   {
     "id": "ST00707",
@@ -2323,13 +2493,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Beylerbeyi Mavi Rakı.",
-    "price": 2700,
+    "price": 3500,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0299"
   },
   {
     "id": "ST00272",
@@ -2338,13 +2509,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "3 kez damıtılmış yaş üzüm rakısı.",
-    "price": 950,
+    "price": 1300,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0300"
   },
   {
     "id": "ST00704",
@@ -2353,13 +2525,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Beylerbeyi Mavi Rakı.",
-    "price": 1450,
+    "price": 1900,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0302"
   },
   {
     "id": "ST00705",
@@ -2368,13 +2541,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Beylerbeyi Mavi Rakı.",
-    "price": 1700,
+    "price": 2400,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0303"
   },
   {
     "id": "ST00706",
@@ -2383,13 +2557,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Beylerbeyi Mavi Rakı.",
-    "price": 2300,
+    "price": 2900,
     "badge": "Beylerbeyi Mavi",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0351"
   },
   {
     "id": "ST00497",
@@ -2398,13 +2573,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Beylerbeyi Terra Gold.",
-    "price": 2700,
+    "price": 3500,
     "badge": "Terra Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0339"
   },
   {
     "id": "ST00493",
@@ -2413,13 +2589,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Meşe fıçıda dinlendirilmiş hafif altın tonlu göbek rakısı.",
-    "price": 950,
+    "price": 1300,
     "badge": "Terra Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0342"
   },
   {
     "id": "ST00494",
@@ -2428,13 +2605,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Beylerbeyi Terra Gold.",
-    "price": 1450,
+    "price": 1900,
     "badge": "Terra Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0337"
   },
   {
     "id": "ST00495",
@@ -2443,13 +2621,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Beylerbeyi Terra Gold.",
-    "price": 1750,
+    "price": 2400,
     "badge": "Terra Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0341"
   },
   {
     "id": "ST00496",
@@ -2473,13 +2652,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Buz ve soğuk su eşliğinde duble kadeh servis.",
-    "price": 400,
+    "price": 500,
     "badge": "Kadeh",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0307"
   },
   {
     "id": "ST00817",
@@ -2488,13 +2668,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Fransız meşe fıçılarda 5 yıl dinlendirilmiş koleksiyonluk başyapıt.",
-    "price": 8000,
+    "price": 8500,
     "badge": "Koleksiyonluk",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0864"
   },
   {
     "id": "ST00502",
@@ -2503,13 +2684,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Efe Gold.",
-    "price": 2700,
+    "price": 3600,
     "badge": "Efe Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0315"
   },
   {
     "id": "ST00498",
@@ -2518,13 +2700,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Meşe fıçılarda olgunlaştırılmış altın renkli Efe Gold.",
-    "price": 950,
+    "price": 1250,
     "badge": "Efe Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0313"
   },
   {
     "id": "ST00499",
@@ -2533,13 +2716,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Efe Gold.",
-    "price": 1400,
+    "price": 1750,
     "badge": "Efe Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0314"
   },
   {
     "id": "ST00500",
@@ -2548,13 +2732,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Efe Gold.",
-    "price": 1700,
+    "price": 2200,
     "badge": "Efe Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0301"
   },
   {
     "id": "ST00501",
@@ -2563,13 +2748,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Efe Gold.",
-    "price": 2350,
+    "price": 2750,
     "badge": "Efe Gold",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0352"
   },
   {
     "id": "ST00507",
@@ -2713,13 +2899,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Efe Tek İmbik.",
-    "price": 2500,
+    "price": 3600,
     "badge": "Tek İmbik",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0323"
   },
   {
     "id": "ST00517",
@@ -2803,13 +2990,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Tam kararında servis edilen kadeh rakı.",
-    "price": 350,
+    "price": 450,
     "badge": "Kadeh",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0309"
   },
   {
     "id": "ST00709",
@@ -2863,13 +3051,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "%50 alkol derecesi ve yoğun anasonuyla nostaljik meyhane klasiği.",
-    "price": 2700,
+    "price": 3600,
     "badge": "Kulüp Rakı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0298"
   },
   {
     "id": "ST00520",
@@ -2878,13 +3067,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Mercan Göbek Rakısı.",
-    "price": 2950,
+    "price": 4600,
     "badge": "Mercan",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0333"
   },
   {
     "id": "ST00711",
@@ -2893,13 +3083,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Balık sofralarına yakışır göbek distilesi.",
-    "price": 1100,
+    "price": 1425,
     "badge": "Mercan",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0695"
   },
   {
     "id": "ST00712",
@@ -2908,13 +3099,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Mercan Göbek Rakısı.",
-    "price": 1650,
+    "price": 2500,
     "badge": "Mercan",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0348"
   },
   {
     "id": "ST00518",
@@ -2923,13 +3115,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Mercan Göbek Rakısı.",
-    "price": 1950,
+    "price": 2950,
     "badge": "Mercan",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0350"
   },
   {
     "id": "ST00519",
@@ -2938,13 +3131,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Mercan Göbek Rakısı.",
-    "price": 2650,
+    "price": 3500,
     "badge": "Mercan",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0347"
   },
   {
     "id": "ST00757",
@@ -2953,13 +3147,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Geleneksel Ortadoğu arak distilasyonu.",
-    "price": 1400,
+    "price": 1450,
     "badge": "Arak",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0733"
   },
   {
     "id": "ST00752",
@@ -2968,13 +3163,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Mtailat Arak Rakı.",
-    "price": 3250,
+    "price": 3900,
     "badge": "Arak",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0830"
   },
   {
     "id": "ST00521",
@@ -3013,13 +3209,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Butik damıtım ustalarının imza gurme rakısı.",
-    "price": 3250,
+    "price": 3950,
     "badge": "Koleksiyonluk",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0322"
   },
   {
     "id": "ST00750",
@@ -3028,13 +3225,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Özel gümüş filtreli damıtım Saki Deluxe.",
-    "price": 1600,
+    "price": 2300,
     "badge": "Saki",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0804"
   },
   {
     "id": "ST00527",
@@ -3118,13 +3316,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Saki Siyah Üzüm 18 Ay.",
-    "price": 2800,
+    "price": 4100,
     "badge": "Siyah Üzüm",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0305"
   },
   {
     "id": "ST00680",
@@ -3133,13 +3332,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Ege siyah üzümlerinden 18 ay dinlendirilmiş zengin gövdeli rakı.",
-    "price": 975,
+    "price": 1350,
     "badge": "Siyah Üzüm",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0306"
   },
   {
     "id": "ST00528",
@@ -3148,13 +3348,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Saki Siyah Üzüm 18 Ay.",
-    "price": 1450,
+    "price": 2300,
     "badge": "Siyah Üzüm",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0318"
   },
   {
     "id": "ST00529",
@@ -3163,13 +3364,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Saki Siyah Üzüm 18 Ay.",
-    "price": 1850,
+    "price": 2800,
     "badge": "Siyah Üzüm",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0319"
   },
   {
     "id": "ST00530",
@@ -3178,13 +3380,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Saki Siyah Üzüm 18 Ay.",
-    "price": 2450,
+    "price": 3500,
     "badge": "Siyah Üzüm",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0320"
   },
   {
     "id": "ST00715",
@@ -3193,13 +3396,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Sarı Zeybek 3 Meşe.",
-    "price": 2750,
+    "price": 4250,
     "badge": "Sarı Zeybek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0328"
   },
   {
     "id": "ST00532",
@@ -3208,13 +3412,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "3 farklı meşe fıçıda olgunlaştırılmış, vanilya ve anason aromalı.",
-    "price": 975,
+    "price": 1375,
     "badge": "Sarı Zeybek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0312"
   },
   {
     "id": "ST00533",
@@ -3223,13 +3428,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Sarı Zeybek 3 Meşe.",
-    "price": 1500,
+    "price": 2200,
     "badge": "Sarı Zeybek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0353"
   },
   {
     "id": "ST00676",
@@ -3238,13 +3444,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Sarı Zeybek 3 Meşe.",
-    "price": 1750,
+    "price": 2850,
     "badge": "Sarı Zeybek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0311"
   },
   {
     "id": "ST00288",
@@ -3253,13 +3460,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Sarı Zeybek 3 Meşe.",
-    "price": 2450,
+    "price": 3400,
     "badge": "Sarı Zeybek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0317"
   },
   {
     "id": "ST00714",
@@ -3328,13 +3536,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Buz ve soğuk su eşliğinde tek kadeh servis.",
-    "price": 300,
+    "price": 400,
     "badge": "Kadeh",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0308"
   },
   {
     "id": "ST00545",
@@ -3343,13 +3552,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Tekirdağ Altın Seri.",
-    "price": 2700,
+    "price": 3600,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0279"
   },
   {
     "id": "ST00541",
@@ -3358,13 +3568,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Meşe fıçılarda dinlendirilmiş efsanevi sarı altın seri.",
-    "price": 950,
+    "price": 1250,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0276"
   },
   {
     "id": "ST00542",
@@ -3373,13 +3584,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Tekirdağ Altın Seri.",
-    "price": 1400,
+    "price": 1750,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0292"
   },
   {
     "id": "ST00543",
@@ -3388,13 +3600,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Tekirdağ Altın Seri.",
-    "price": 1750,
+    "price": 2200,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0293"
   },
   {
     "id": "ST00544",
@@ -3403,13 +3616,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Tekirdağ Altın Seri.",
-    "price": 2350,
+    "price": 2750,
     "badge": "Tekirdağ Altın",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0294"
   },
   {
     "id": "ST00869",
@@ -3418,13 +3632,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Bakır imbiklerin yalnızca orta akımı olan saf göbek kısmı.",
-    "price": 1050,
+    "price": 1350,
     "badge": "Tekirdağ Göbek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0739"
   },
   {
     "id": "ST00870",
@@ -3433,13 +3648,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Tekirdağ Göbek Rakısı.",
-    "price": 1600,
+    "price": 1900,
     "badge": "Tekirdağ Göbek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0853"
   },
   {
     "id": "ST00871",
@@ -3448,13 +3664,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Tekirdağ Göbek Rakısı.",
-    "price": 1900,
+    "price": 2400,
     "badge": "Tekirdağ Göbek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0738"
   },
   {
     "id": "ST00540",
@@ -3538,13 +3755,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Tekirdağ Öküzgözü Rezerv.",
-    "price": 2900,
+    "price": 3900,
     "badge": "Rezerv Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0827"
   },
   {
     "id": "ST00716",
@@ -3568,13 +3786,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Tekirdağ Öküzgözü Rezerv.",
-    "price": 1550,
+    "price": 2100,
     "badge": "Rezerv Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0852"
   },
   {
     "id": "ST00717",
@@ -3598,13 +3817,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Tekirdağ Öküzgözü Rezerv.",
-    "price": 2700,
+    "price": 3300,
     "badge": "Rezerv Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0847"
   },
   {
     "id": "ST00548",
@@ -3718,13 +3938,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Kalabalık dost sofralarına özel 100'lük Yeni Rakı.",
-    "price": 2600,
+    "price": 3000,
     "badge": "Yeni Rakı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0288"
   },
   {
     "id": "ST00475",
@@ -3733,13 +3954,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "Geleneksel anason kokusu ve dengeli tadıyla sofraların vazgeçilmezi.",
-    "price": 900,
+    "price": 1100,
     "badge": "Yeni Rakı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0282"
   },
   {
     "id": "ST00477",
@@ -3748,13 +3970,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik klasik Yeni Rakı şişesi.",
-    "price": 1350,
+    "price": 1500,
     "badge": "Yeni Rakı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0284"
   },
   {
     "id": "ST00476",
@@ -3763,13 +3986,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik klasik Yeni Rakı şişesi.",
-    "price": 1700,
+    "price": 2000,
     "badge": "Yeni Rakı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0286"
   },
   {
     "id": "ST00478",
@@ -3778,13 +4002,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik klasik Yeni Rakı şişesi.",
-    "price": 2150,
+    "price": 2500,
     "badge": "Yeni Rakı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0280"
   },
   {
     "id": "ST00818",
@@ -3898,13 +4123,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "100'lük Yeni Rakı Yeni Seri.",
-    "price": 2700,
+    "price": 3200,
     "badge": "Yeni Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0289"
   },
   {
     "id": "ST00558",
@@ -3913,13 +4139,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "İlk hasat anason tohumlarıyla zenginleştirilmiş yumuşak içim.",
-    "price": 900,
+    "price": 1150,
     "badge": "Yeni Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0283"
   },
   {
     "id": "ST00559",
@@ -3928,13 +4155,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "35'lik Yeni Rakı Yeni Seri.",
-    "price": 1400,
+    "price": 1550,
     "badge": "Yeni Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0285"
   },
   {
     "id": "ST00560",
@@ -3943,13 +4171,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "50'lik Yeni Rakı Yeni Seri.",
-    "price": 1750,
+    "price": 2100,
     "badge": "Yeni Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0287"
   },
   {
     "id": "ST00561",
@@ -3958,13 +4187,14 @@ var MENU_ITEMS = [
     "category": "rakilar",
     "rawCategory": "Rakı Kavı (Tüm Boylar)",
     "description": "70'lik Yeni Rakı Yeni Seri.",
-    "price": 2300,
+    "price": 2600,
     "badge": "Yeni Seri",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Buzlu Su & Ege Kavunu & Ezine Peynir",
-    "available": true
+    "available": true,
+    "code": "URK0295"
   },
   {
     "id": "ST00831",
@@ -4108,13 +4338,14 @@ var MENU_ITEMS = [
     "category": "saraplar",
     "rawCategory": "Şarap Kavı",
     "description": "Mevsimin ferahlatıcı sek beyaz şarabı kadeh servis.",
-    "price": 400,
+    "price": 600,
     "badge": "Kadeh Şarap",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
-    "available": true
+    "available": true,
+    "code": "URK0216"
   },
   {
     "id": "ST00308",
@@ -4123,13 +4354,14 @@ var MENU_ITEMS = [
     "category": "saraplar",
     "rawCategory": "Şarap Kavı",
     "description": "Gövdesi dengeli sek kırmızı şarap kadeh servis.",
-    "price": 400,
+    "price": 600,
     "badge": "Kadeh Şarap",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
-    "available": true
+    "available": true,
+    "code": "URK0217"
   },
   {
     "id": "ST00728",
@@ -4138,13 +4370,14 @@ var MENU_ITEMS = [
     "category": "saraplar",
     "rawCategory": "Şarap Kavı",
     "description": "Meyvemsi ferahlatıcı pembe şarap kadeh servis.",
-    "price": 400,
+    "price": 600,
     "badge": "Kadeh Şarap",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
-    "available": true
+    "available": true,
+    "code": "URK0235"
   },
   {
     "id": "ST00838",
@@ -4168,13 +4401,14 @@ var MENU_ITEMS = [
     "category": "saraplar",
     "rawCategory": "Şarap Kavı",
     "description": "Kapadokya volkanik topraklarının gevrek ve diri beyaz üzümü.",
-    "price": 2400,
+    "price": 2500,
     "badge": "Kavaklıdere",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
-    "available": true
+    "available": true,
+    "code": "URK0716"
   },
   {
     "id": "ST00812",
@@ -4243,13 +4477,14 @@ var MENU_ITEMS = [
     "category": "saraplar",
     "rawCategory": "Şarap Kavı",
     "description": "Koyu yakut renkli, vanilya ve böğürtlen notaları.",
-    "price": 2400,
+    "price": 2750,
     "badge": "Kayra Vintage",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
-    "available": true
+    "available": true,
+    "code": "URK0721"
   },
   {
     "id": "ST00810",
@@ -4303,13 +4538,14 @@ var MENU_ITEMS = [
     "category": "saraplar",
     "rawCategory": "Şarap Kavı",
     "description": "Kalecik Karası ve Shiraz üzümlerinden taze pembe şarap.",
-    "price": 2100,
+    "price": 2250,
     "badge": "Blush",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Tuzla Balık İsli Çiroz & Peynir Seçkisi",
-    "available": true
+    "available": true,
+    "code": "URK0218"
   },
   {
     "id": "ST00727",
@@ -4519,7 +4755,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0188"
   },
   {
     "id": "ST00323",
@@ -4633,13 +4870,14 @@ var MENU_ITEMS = [
     "category": "biralar",
     "rawCategory": "Bira Çeşitleri",
     "description": "Kişniş ve turunçgil notalarına sahip zarif Fransız buğday birası.",
-    "price": 300,
+    "price": 350,
     "badge": "Buğday Birası",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0858"
   },
   {
     "id": "ST00331",
@@ -4654,7 +4892,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0193"
   },
   {
     "id": "ST00333",
@@ -4714,7 +4953,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0194"
   },
   {
     "id": "ST00337",
@@ -4738,13 +4978,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "%100 kış buğdayından İsveç'in saf votkası.",
-    "price": 2400,
+    "price": 3750,
     "badge": "Votka",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0480"
   },
   {
     "id": "ST00386",
@@ -4768,13 +5009,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "İtalyan aperitifi; Prosecco, soda ve portakal dilimiyle hazırlanır.",
-    "price": 1800,
+    "price": 4250,
     "badge": "Aperitif",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0763"
   },
   {
     "id": "ST00878",
@@ -4813,13 +5055,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "Yumuşak içimli İskoç klasiği.",
-    "price": 2300,
+    "price": 4000,
     "badge": "Viski",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0758"
   },
   {
     "id": "ST00865",
@@ -4828,13 +5071,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "35'lik Beefeater Cin.",
-    "price": 1300,
+    "price": 3000,
     "badge": "Cin",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0782"
   },
   {
     "id": "ST00864",
@@ -4843,13 +5087,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "9 botanikle damıtılmış Londra kuru cini.",
-    "price": 2400,
+    "price": 3750,
     "badge": "Cin",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0783"
   },
   {
     "id": "ST00388",
@@ -4933,13 +5178,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "Saf buzul kaynak suyuyla üretilmiş Finlandiya votkası.",
-    "price": 2400,
+    "price": 3650,
     "badge": "Votka",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0754"
   },
   {
     "id": "ST00394",
@@ -4948,13 +5194,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "Ardıç meyvesi ağırlıklı klasik İngiliz cini.",
-    "price": 2300,
+    "price": 3750,
     "badge": "Cin",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0482"
   },
   {
     "id": "ST00395",
@@ -5113,13 +5360,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "Meksika'nın en sevilen tekilası.",
-    "price": 2450,
+    "price": 4250,
     "badge": "Tekila",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0750"
   },
   {
     "id": "ST00695",
@@ -5128,13 +5376,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "100'lük Olmeca Tekila.",
-    "price": 2800,
+    "price": 4750,
     "badge": "Tekila",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0775"
   },
   {
     "id": "ST00692",
@@ -5143,13 +5392,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "35'lik Olmeca Tekila.",
-    "price": 1450,
+    "price": 3250,
     "badge": "Tekila",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0751"
   },
   {
     "id": "ST00402",
@@ -5158,13 +5408,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "Tuz ve taze limon dilimi eşliğinde sek tekila shot.",
-    "price": 300,
+    "price": 375,
     "badge": "Shot",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0494"
   },
   {
     "id": "ST00688",
@@ -5233,13 +5484,14 @@ var MENU_ITEMS = [
     "category": "ithal-ickiler",
     "rawCategory": "Kokteyller & İthal İçkiler",
     "description": "Buz veya sade servis tek kadeh viski.",
-    "price": 250,
+    "price": 450,
     "badge": "Kadeh Viski",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0799"
   },
   {
     "id": "ST00406",
@@ -5278,13 +5530,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Kavrulmuş badem ve süzme çiçek balı eşliğinde nefis tatlı.",
-    "price": 300,
+    "price": 350,
     "badge": "Hafif",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0165"
   },
   {
     "id": "ST00656",
@@ -5293,13 +5546,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Taze peynir ve irmiğin eşsiz uyumu, hafif ılık servis.",
-    "price": 200,
+    "price": 300,
     "badge": "Yöresel",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0710"
   },
   {
     "id": "ST00372",
@@ -5323,7 +5577,7 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Tereyağlı sıcak irmik helvası içinde saklı kaymaklı dondurma sürprizi.",
-    "price": 300,
+    "price": 350,
     "badge": "Sevilen",
     "isSignature": true,
     "image": "",
@@ -5338,13 +5592,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Toprak güveçte fırınlanmış dumanı tüten tahin helvası, üzerinde Maraş kesme dondurma.",
-    "price": 325,
+    "price": 350,
     "badge": "Balık Sonrası",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0160"
   },
   {
     "id": "ST00348",
@@ -5383,13 +5638,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Üzeri nar gibi fırınlanmış, bol sütlü geleneksel toprak kase sütlaç.",
-    "price": 250,
+    "price": 300,
     "badge": "Sütlü Tatlı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0178"
   },
   {
     "id": "ST00363",
@@ -5398,13 +5654,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Dibi hafif yanık karamelli geleneksel sütlü kazandibi tatlısı.",
-    "price": 250,
+    "price": 300,
     "badge": "Sütlü Tatlı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0175"
   },
   {
     "id": "ST00361",
@@ -5413,13 +5670,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Fırın helva, irmik, kabak veya mevsim tatlılarından oluşan zengin tadım tabağı.",
-    "price": 350,
+    "price": 400,
     "badge": "Paylaşımlık",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0179"
   },
   {
     "id": "ST00359",
@@ -5428,13 +5686,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Tahin, ceviz ve taze manda kaymağı eşliğinde fırın bal kabağı.",
-    "price": 325,
+    "price": 350,
     "badge": "Kış Klasiği",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0162"
   },
   {
     "id": "ST00339",
@@ -5449,7 +5708,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0167"
   },
   {
     "id": "ST00861",
@@ -5458,13 +5718,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Karamelize şerbetli yumuşacık ekmek kadayıfı ve manda kaymağı.",
-    "price": 300,
+    "price": 325,
     "badge": "Geleneksel",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0177"
   },
   {
     "id": "ST00345",
@@ -5473,13 +5734,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Hakiki keçi sütü ve salep ile dövülmüş Maraş dondurması.",
-    "price": 100,
+    "price": 250,
     "badge": "Serinletici",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0170"
   },
   {
     "id": "ST00367",
@@ -5488,13 +5750,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Mevsimine göre özenle soyulup dilimlenmiş ferahlatıcı meyve seçkisi.",
-    "price": 250,
+    "price": 350,
     "badge": "Meyve",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0169"
   },
   {
     "id": "ST00370",
@@ -5533,13 +5796,14 @@ var MENU_ITEMS = [
     "category": "tatlilar",
     "rawCategory": "Tatlılar & Taze Meyveler",
     "description": "Kuru Ege incirlerinin sütün sıcaklığında mayalanmasıyla hazırlanan hafif tatlı.",
-    "price": 300,
+    "price": 200,
     "badge": "Ege Tatlısı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": "Geleneksel Damla Sakızlı Türk Kahvesi",
-    "available": true
+    "available": true,
+    "code": "URK0168"
   },
   {
     "id": "ST00244",
@@ -5548,13 +5812,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Rakı sofralarının can yoldaşı acılı mor havuç şalgam suyu.",
-    "price": 250,
+    "price": 300,
     "badge": "Şalgam",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0433"
   },
   {
     "id": "ST00733",
@@ -5578,13 +5843,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Vişne, şeftali, kayısı seçenekleriyle.",
-    "price": 125,
+    "price": 150,
     "badge": "Meyve Suyu",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0509"
   },
   {
     "id": "ST00249",
@@ -5608,13 +5874,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Buz ve limon eşliğinde.",
-    "price": 125,
+    "price": 150,
     "badge": "Soğuk İçecek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0432"
   },
   {
     "id": "ST00255",
@@ -5623,13 +5890,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Şekersiz kutu veya cam kola.",
-    "price": 125,
+    "price": 150,
     "badge": "Soğuk İçecek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0436"
   },
   {
     "id": "ST00261",
@@ -5638,13 +5906,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Cam şişede zengin mineralli doğal maden suyu.",
-    "price": 75,
+    "price": 100,
     "badge": "Soda",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0439"
   },
   {
     "id": "ST00256",
@@ -5668,13 +5937,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Ferahlatıcı portakal lezzeti.",
-    "price": 125,
+    "price": 150,
     "badge": "Soğuk İçecek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0437"
   },
   {
     "id": "ST00251",
@@ -5743,13 +6013,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Köpüklü soğuk yayık ayranı.",
-    "price": 125,
+    "price": 150,
     "badge": "Geleneksel",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0438"
   },
   {
     "id": "ST00258",
@@ -5764,7 +6035,8 @@ var MENU_ITEMS = [
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0709"
   },
   {
     "id": "ST00260",
@@ -5788,13 +6060,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Buz gibi gazoz.",
-    "price": 125,
+    "price": 150,
     "badge": "Soğuk İçecek",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0441"
   },
   {
     "id": "ST00266",
@@ -5803,13 +6076,14 @@ var MENU_ITEMS = [
     "category": "mesrubatlar",
     "rawCategory": "Meşrubatlar & Sıcak İçecekler",
     "description": "Cin ve kokteyller için kaliteli tonik.",
-    "price": 150,
+    "price": 200,
     "badge": "Tonik",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0435"
   },
   {
     "id": "ST00408",
@@ -5833,13 +6107,14 @@ var MENU_ITEMS = [
     "category": "cerezler",
     "rawCategory": "Çerezler & Rakı Yanı",
     "description": "Birinci sınıf çıtır Antep fıstığı tabağı.",
-    "price": 300,
+    "price": 350,
     "badge": "Rakı Yanı",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0787"
   },
   {
     "id": "ST00681",
@@ -5848,13 +6123,14 @@ var MENU_ITEMS = [
     "category": "cerezler",
     "rawCategory": "Çerezler & Rakı Yanı",
     "description": "Badem, fındık, kaju ve fıstıktan oluşan zengin meze çerezi.",
-    "price": 250,
+    "price": 300,
     "badge": "Karışık Çerez",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0041"
   },
   {
     "id": "ST00409",
@@ -5863,13 +6139,14 @@ var MENU_ITEMS = [
     "category": "cerezler",
     "rawCategory": "Çerezler & Rakı Yanı",
     "description": "Tavada ısıtılarak sıcak sıcak servis edilen tuzlu Antep fıstığı.",
-    "price": 350,
+    "price": 450,
     "badge": "Sıcak Çerez",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0791"
   },
   {
     "id": "ST00686",
@@ -5878,13 +6155,14 @@ var MENU_ITEMS = [
     "category": "cerezler",
     "rawCategory": "Çerezler & Rakı Yanı",
     "description": "Rakı kadehinin yanında mideyi rahatlatan gevrek leblebi.",
-    "price": 225,
+    "price": 200,
     "badge": "Klasik",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
-    "available": true
+    "available": true,
+    "code": "URK0788"
   },
   {
     "id": "ST00410",
@@ -5893,16 +6171,898 @@ var MENU_ITEMS = [
     "category": "cerezler",
     "rawCategory": "Çerezler & Rakı Yanı",
     "description": "Kavrulmuş çıtır yer fıstığı.",
-    "price": 225,
+    "price": 250,
     "badge": "Çerez",
     "isSignature": false,
     "image": "",
     "isLocalImage": false,
     "pairing": null,
+    "available": true,
+    "code": "URK0789"
+  },
+  {
+    "id": "TB_URK0019",
+    "code": "URK0019",
+    "name": "Ege Dil Balığı (Bütün / Kg)",
+    "rawName": "DİL BALIĞI BÜTÜN",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Ege denizinden taze günlük dil balığı. Izgara veya tavada nar gibi kızartılarak bütün olarak servis edilir.",
+    "price": 2750,
+    "badge": "Taze Mezat / Bütün",
+    "isSignature": true,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0006",
+    "code": "URK0006",
+    "name": "Karadeniz Palamut (Bütün / Kg)",
+    "rawName": "PALAMUT",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Yağlı mevsim palamutu. İsteğe göre ızgara veya fırında defne yaprağıyla bütün pişirilir.",
+    "price": 800,
+    "badge": "Mevsim Balığı",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0017",
+    "code": "URK0017",
+    "name": "Ege Çipura Balığı (Bütün / Kg)",
+    "rawName": "ÇİPURA",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Geleneksel kömür ızgarasında pişen taze Ege çipurası. Zeytinyağlı limon sos eşliğinde.",
+    "price": 2200,
+    "badge": "Klasik Lezzet",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0018",
+    "code": "URK0018",
+    "name": "Marmara Sarıkanat İstavrit (Kg)",
+    "rawName": "İSTAVRİT SARI KANAT",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Taze sarıkanat istavrit. Çıtır tava olarak mısır unuyla nar gibi pişirilir.",
+    "price": 1850,
+    "badge": "Çıtır Lezzet",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0029",
+    "code": "URK0029",
+    "name": "Ada Beyi Balığı (İskorpit - Bütün / Kg)",
+    "rawName": "ADA BEYİ BALIĞI",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Derin denizlerin beyaz etli eşsiz lezzeti Ada Beyi (İskorpit). Izgara veya güveçte tereyağlı.",
+    "price": 2750,
+    "badge": "Özel Mezat",
+    "isSignature": true,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0030",
+    "code": "URK0030",
+    "name": "Deniz Turnası (Bütün / Kg)",
+    "rawName": "TURNA BALIK",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Ege sularından taze avlanan deniz turnası. Çıtır tava veya ızgara seçeneğiyle.",
+    "price": 2000,
+    "badge": "Günlük Balık",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0032",
+    "code": "URK0032",
+    "name": "İri Kaya Barbunu (Bütün / Kg)",
+    "rawName": "BARBUN İRİ",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Ege taşlıklarının iri boy kaya barbunu. Zeytinyağında tavada veya ızgarada eşsiz lezzet.",
+    "price": 3750,
+    "badge": "Özel Mezat / İri Boy",
+    "isSignature": true,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0524",
+    "code": "URK0524",
+    "name": "Boğaz Kofanası (Bütün / Kg)",
+    "rawName": "KOFANA BÜTÜN",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Lüfer ailesinin en büyüğü kofana. Izgarada nar gibi pişirilir.",
+    "price": 3500,
+    "badge": "Lüks Mezat",
+    "isSignature": true,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0693",
+    "code": "URK0693",
+    "name": "Ege Orkinos Balığı (Bütün / Kg)",
+    "rawName": "ORKINOS",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Yüksek proteinli taze Ege orkinosu. Izgara biftek veya kömür ateşinde pişirilir.",
+    "price": 2700,
+    "badge": "Protein Deposu",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0711",
+    "code": "URK0711",
+    "name": "Ege Deniz Kefali (Kg)",
+    "rawName": "KEFAL",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Açık deniz kefali. Fırında veya tavada özel sosla servis edilir.",
+    "price": 2200,
+    "badge": "Mevsim",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0784",
+    "code": "URK0784",
+    "name": "Boğaz Torik Balığı (Bütün / Kg)",
+    "rawName": "TORİK",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Lakerdanın ana hammaddesi yağlı Boğaz toriği. Izgara takoz veya fırında.",
+    "price": 2200,
+    "badge": "Özel Lezzet",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0811",
+    "code": "URK0811",
+    "name": "Özel Soslu Balık Buğulama (Geleneksel Güveç)",
+    "rawName": "BALIK BUĞULAMA",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Mevsim balıkları, domates, biber, sarımsak ve tereyağıyla toprak güveçte ağır ateşte buğulama.",
+    "price": 2750,
+    "badge": "Şefin Güveci",
+    "isSignature": true,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_28",
+    "code": "28",
+    "name": "Karadeniz Usulü Çıtır Hamsi Tava (400 gr)",
+    "rawName": "Karadeniz Usülü Hamsi Tava(400Gr.)",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Mısır unlu çıtır Karadeniz hamsisi, roka ve soğan eşliğinde (400 gr standart porsiyon).",
+    "price": 800,
+    "badge": "Çıtır Tava",
+    "isSignature": false,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0708",
+    "code": "URK0708",
+    "name": "Karadeniz Usulü Çıtır Hamsi Tava (1 Kg Aile Boyu)",
+    "rawName": "KARADENİZ USÜLÜ HAMSİ 1 KG",
+    "category": "baliklar",
+    "rawCategory": "Deniz Balıkları & Mezat",
+    "description": "Büyük sofralar için 1 kg mısır unlu nar gibi pişmiş taze hamsi tava.",
+    "price": 1200,
+    "badge": "Aile Boyu / 1 Kg",
+    "isSignature": true,
+    "image": "images/balik_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0277",
+    "code": "URK0277",
+    "name": "Tekirdağ Rakısı Klasik (Mavi) 20 cl",
+    "rawName": "TEKİRDAĞ MAVİ - 20 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "%100 yaş üzüm ve anasondan üretilen klasik Tekirdağ lezzeti. 20 cl küçük boy.",
+    "price": 1200,
+    "badge": "20 cl",
+    "isSignature": false,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0290",
+    "code": "URK0290",
+    "name": "Tekirdağ Rakısı Klasik (Mavi) 35 cl",
+    "rawName": "TEKİRDAĞ MAVİ - 35 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "Geleneksel bakır imbiklerde damıtılan klasik Tekirdağ rakısı. 35 cl boy.",
+    "price": 1700,
+    "badge": "35 cl",
+    "isSignature": false,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0278",
+    "code": "URK0278",
+    "name": "Tekirdağ Rakısı Klasik (Mavi) 50 cl",
+    "rawName": "TEKİRDAĞ MAVİ- 50 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "Klasik Tekirdağ rakısı orta boy 50 cl şişe.",
+    "price": 2200,
+    "badge": "50 cl",
+    "isSignature": false,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0291",
+    "code": "URK0291",
+    "name": "Tekirdağ Rakısı Klasik (Mavi) 70 cl (Büyük)",
+    "rawName": "TEKİRDAĞ MAVİ- 70 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "Klasik Tekirdağ rakısı standart büyük 70 cl şişe.",
+    "price": 2700,
+    "badge": "70 cl",
+    "isSignature": true,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0275",
+    "code": "URK0275",
+    "name": "Tekirdağ Rakısı Klasik (Mavi) 100 cl (1 Lt)",
+    "rawName": "TEKİRDAĞ MAVİ- 100 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "Kalabalık masaların tercihi klasik Tekirdağ 1 Litre (100 cl).",
+    "price": 3350,
+    "badge": "100 cl",
+    "isSignature": false,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0325",
+    "code": "URK0325",
+    "name": "Beylerbeyi Göbek İncir Rakısı 70 cl",
+    "rawName": "BEYLERBEYİ GÖBEK İNCİR - 70 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "Ege kuru incirlerinin göbek distilasyonuyla üretilen özel aromatik gurme rakı.",
+    "price": 3900,
+    "badge": "Gurme Seri / İncir",
+    "isSignature": true,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0326",
+    "code": "URK0326",
+    "name": "Kulüp Rakı Delüks 70 cl",
+    "rawName": "KULÜP RAKI DELÜKS 70 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "Cumhuriyet klasiği Kulüp Rakı’nın zengin gövdeli delüks serisi 70 cl.",
+    "price": 3700,
+    "badge": "Delüks Seri",
+    "isSignature": true,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0345",
+    "code": "URK0345",
+    "name": "Tekirdağ Göbek Rakısı 70 cl",
+    "rawName": "TEKİRDAĞ GÖBEK - 70 CL",
+    "category": "rakilar",
+    "rawCategory": "Rakı Çeşitleri",
+    "description": "Damıtımın en saf göbek kısmından elde edilen yumuşak içimli Tekirdağ Göbek.",
+    "price": 2900,
+    "badge": "Göbek Rakısı",
+    "isSignature": true,
+    "image": "images/raki_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0477",
+    "code": "URK0477",
+    "name": "Smirnoff Red Vodka (Kadeh)",
+    "rawName": "SMİRNOFF VODKA KADEH",
+    "category": "ithal-ickiler",
+    "rawCategory": "İthal İçkiler & Viskiler",
+    "description": "Tek porsiyon kadeh Smirnoff votka, buz ve limon eşliğinde.",
+    "price": 600,
+    "badge": "Kadeh",
+    "isSignature": false,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0479",
+    "code": "URK0479",
+    "name": "Absolut Blue Vodka (Kadeh)",
+    "rawName": "ABSOLUT VODKA KADEH",
+    "category": "ithal-ickiler",
+    "rawCategory": "İthal İçkiler & Viskiler",
+    "description": "İsveç buğday votkası Absolut, tek porsiyon kadeh servis.",
+    "price": 650,
+    "badge": "Kadeh",
+    "isSignature": false,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0481",
+    "code": "URK0481",
+    "name": "Gordon's London Dry Gin (Kadeh)",
+    "rawName": "GORDON CİN KADEH",
+    "category": "ithal-ickiler",
+    "rawCategory": "İthal İçkiler & Viskiler",
+    "description": "Ardıç aromalı klasik London Dry cin kadeh servis.",
+    "price": 600,
+    "badge": "Kadeh",
+    "isSignature": false,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0486",
+    "code": "URK0486",
+    "name": "Johnnie Walker Black Label 12 Yıl (Kadeh)",
+    "rawName": "J.W BLACK LABEL KADEH",
+    "category": "ithal-ickiler",
+    "rawCategory": "İthal İçkiler & Viskiler",
+    "description": "12 yıllık İskoç harman viskisi, sek veya buzlu kadeh servis.",
+    "price": 600,
+    "badge": "Kadeh / 12 Yıl",
+    "isSignature": true,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0488",
+    "code": "URK0488",
+    "name": "Chivas Regal 12 Yıl Viski (Kadeh)",
+    "rawName": "CHİVAS 12 KADEH VİSKİ",
+    "category": "ithal-ickiler",
+    "rawCategory": "İthal İçkiler & Viskiler",
+    "description": "Speyside harmanı lüks İskoç viskisi kadeh servis.",
+    "price": 600,
+    "badge": "Kadeh / 12 Yıl",
+    "isSignature": true,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0490",
+    "code": "URK0490",
+    "name": "Jack Daniel's Old No.7 Tennessee (Kadeh)",
+    "rawName": "JACK DANİELS KADEH VİSKİ",
+    "category": "ithal-ickiler",
+    "rawCategory": "İthal İçkiler & Viskiler",
+    "description": "Akçaağaç kömüründen süzülen otantik Tennessee viskisi kadeh servis.",
+    "price": 600,
+    "badge": "Kadeh",
+    "isSignature": false,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0714",
+    "code": "URK0714",
+    "name": "Urla Vourla Kırmızı Şarap 75 cl",
+    "rawName": "URLA VOURLA KIRMIZI",
+    "category": "saraplar",
+    "rawCategory": "Şarap Kavı",
+    "description": "Boğazkere, Merlot, Syrah ve Cabernet Sauvignon kupajı. Urla bağlarının ödüllü kırmızı şarabı.",
+    "price": 3500,
+    "badge": "Urla Bağları / Ödüllü",
+    "isSignature": true,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0719",
+    "code": "URK0719",
+    "name": "Urla Nexus Kırmızı Şarap 75 cl",
+    "rawName": "URLA NEXUS KIRMIZI",
+    "category": "saraplar",
+    "rawCategory": "Şarap Kavı",
+    "description": "Merlot, Nero d’Avola ve Cabernet Franc kupajı. Meşe fıçılarda dinlendirilmiş lüks gövde.",
+    "price": 3500,
+    "badge": "Lüks Rezerv",
+    "isSignature": true,
+    "image": "images/cilingir_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0060",
+    "code": "URK0060",
+    "name": "Fesleğenli Levrek Marin",
+    "rawName": "LEVREK FESLEĞENLİ",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Taze tarladan toplanan fesleğenler, sızma zeytinyağı ve taze deniz levreği filetosunun marinasyonu.",
+    "price": 600,
+    "halfPrice": 350,
+    "badge": "Şefin Spesiyali",
+    "isSignature": true,
+    "image": "images/mezeler/levrekmarin.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0054",
+    "code": "URK0054",
+    "name": "Hardallı Köz Patlıcan Mezesi",
+    "rawName": "PATLICAN HARDALLI",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Közde pişirilmiş patlıcanların taneli Dijon hardalı, sarımsak ve zeytinyağı ile lezzetlendirilmiş hali.",
+    "price": 350,
+    "halfPrice": 250,
+    "badge": "Yeni Lezzet",
+    "isSignature": false,
+    "image": "images/mezeler/yogurtlupatlican.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0089",
+    "code": "URK0089",
+    "name": "Aşk Acısı (Özel Acılı Atom Mezesi)",
+    "rawName": "AŞK ACISI",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Közlenmiş acı Arnavut biberleri, ceviz, tulum peyniri ve zeytinyağlı özel harç. Damakta unutulmaz tat.",
+    "price": 325,
+    "halfPrice": 200,
+    "badge": "Acılı / Sevilen",
+    "isSignature": true,
+    "image": "images/mezeler/atom.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0090",
+    "code": "URK0090",
+    "name": "Sicilyano (Kurutulmuş Domatesli Meze)",
+    "rawName": "SİCİLYANO",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Güneşte kurutulmuş Ege domatesleri, kekik, ceviz ve Ezine peyniri harmanı.",
+    "price": 325,
+    "halfPrice": 200,
+    "badge": "Akdeniz",
+    "isSignature": false,
+    "image": "images/mezeler/kurudomatessicak.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0112",
+    "code": "URK0112",
+    "name": "Bademlik (Taze Bademli Meze)",
+    "rawName": "BADEMLİK",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Kavrulmuş Datça bademleri, süzme yoğurt ve sarımsaklı zeytinyağı dokunuşu.",
+    "price": 325,
+    "halfPrice": 200,
+    "badge": "Özel Meze",
+    "isSignature": false,
+    "image": "images/mezeler/haydari.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0658",
+    "code": "URK0658",
+    "name": "Zinnur Mezesi (Saray Spesiyali)",
+    "rawName": "ZİNNUR",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Geleneksel saray reçetesi: İnce kıyım deniz mahsulleri, safranlı zeytinyağı ve taze baharatlar.",
+    "price": 750,
+    "badge": "Gurme Seçki",
+    "isSignature": true,
+    "image": "images/mezeler/denizmahsullerisalatasi.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0100",
+    "code": "URK0100",
+    "name": "İsli Fırın Pancar Mezesi",
+    "rawName": "İSLİ PANCAR",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Meşe dumanında tütsülenmiş taze pancarlar, keçi peyniri kırıntıları ve balzamik sirke.",
+    "price": 300,
+    "halfPrice": 200,
+    "badge": "Tütsülü",
+    "isSignature": false,
+    "image": "images/mezeler/mezeler.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0638",
+    "code": "URK0638",
+    "name": "Orkinos Pastırması (Deniz Pastırması)",
+    "rawName": "ORKINOS PASTIRMA",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Çemen ve baharatlarla özel olarak dinlendirilmiş ince dilim orkinos balığı.",
+    "price": 550,
+    "halfPrice": 350,
+    "badge": "Gurme Meze",
+    "isSignature": true,
+    "image": "images/mezeler/somongrawlax.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0154",
+    "code": "URK0154",
+    "name": "Somon Lakerda (Norveç Somonu)",
+    "rawName": "SOMON LAKERDA PORSİYON",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Özel tuzlama tekniğiyle hazırlanmış yumuşacık yağlı somon lakerdası.",
+    "price": 800,
+    "halfPrice": 500,
+    "badge": "Şefin Spesiyali",
+    "isSignature": true,
+    "image": "images/mezeler/lakerda.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0641",
+    "code": "URK0641",
+    "name": "Geleneksel Cevizli Çerkez Tavuğu",
+    "rawName": "ÇERKEZ TAVUĞU",
+    "category": "mezeler",
+    "rawCategory": "Soğuk Mezeler & Ege Otları",
+    "description": "Didiklenmiş tavuk eti, bol ceviz içi, sarımsak ve tereyağlı kırmızı biber yağı.",
+    "price": 350,
+    "halfPrice": 225,
+    "badge": "Klasik",
+    "isSignature": false,
+    "image": "images/mezeler/mezeler.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0361",
+    "code": "URK0361",
+    "name": "Levrek Künefe (Deniz Mahsullü Çıtır Kadayıf)",
+    "rawName": "LEVREK KÜNEFE",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "Çıtır tel kadayıfa sarılmış taze levrek filetosu, kaşar peyniri ve özel tereyağlı sos eşliğinde.",
+    "price": 550,
+    "badge": "Şefin İmzası",
+    "isSignature": true,
+    "image": "images/arasicaklar/begendililevreksarma.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0359",
+    "code": "URK0359",
+    "name": "Okyanus Topu (Çıtır Deniz Mahsulleri)",
+    "rawName": "OKYANUS TOPU",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "Karides, kalamar ve ahtapot harcından hazırlanan altın sarısı çıtır deniz topları.",
+    "price": 650,
+    "badge": "Özel Çıtır",
+    "isSignature": true,
+    "image": "images/arasicaklar/kalamartava.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0363",
+    "code": "URK0363",
+    "name": "Gemici Böreği (Deniz Mahsullü Çıtır Muska)",
+    "rawName": "GEMİCİ BÖREĞİ",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "El açması yufkada karides, kalamar ve kaşar peynirli fırınlanmış çıtır börek.",
+    "price": 300,
+    "badge": "Çıtır Sıcak",
+    "isSignature": false,
+    "image": "images/arasicaklar/kalamartava.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0389",
+    "code": "URK0389",
+    "name": "Poseidon Deniz Mahsulleri Şöleni",
+    "rawName": "POSEİDON",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "Jumbo karides, ızgara ahtapot kolu, çıtır kalamar ve midyenin sıcak güveç tabağındaki krallığı.",
+    "price": 1750,
+    "badge": "Lüks Şölen",
+    "isSignature": true,
+    "image": "images/arasicaklar/denizmahsulleriguvec.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0373",
+    "code": "URK0373",
+    "name": "Çapkın Karides (Acı Soslu & Tereyağlı)",
+    "rawName": "ÇAPKIN KARİDES",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "Kızgın tereyağında sarımsak, acı pul biber ve domates sosuyla sote karides.",
+    "price": 450,
+    "badge": "Acılı Sıcak",
+    "isSignature": false,
+    "image": "images/arasicaklar/tereyaglikarides.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0867",
+    "code": "URK0867",
+    "name": "Geleneksel Kalamar Dolma",
+    "rawName": "KALAMAR DOLMA",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "İç pilav, fıstık ve kuş üzümüyle doldurulmuş ızgara kalamar.",
+    "price": 1150,
+    "badge": "Geleneksel",
+    "isSignature": true,
+    "image": "images/arasicaklar/babykalamardolma.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0385",
+    "code": "URK0385",
+    "name": "Orkinos Tandır (Ağır Ateşte Pişmiş)",
+    "rawName": "ORKİNOS TANDIR",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "Taş fırında ağır ağır lokum kıvamında pişirilen taze orkinos parçaları.",
+    "price": 850,
+    "halfPrice": 500,
+    "badge": "Fırın Spesiyali",
+    "isSignature": true,
+    "image": "images/arasicaklar/balikkavurma.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0868",
+    "code": "URK0868",
+    "name": "Akya Balık Tandır",
+    "rawName": "AKYA TANDIR",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "Akya balığının güveçte tereyağı ve arpacık soğanla fırınlanmış hali.",
+    "price": 850,
+    "badge": "Güveçte Tandır",
+    "isSignature": false,
+    "image": "images/arasicaklar/balikkavurma.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0135",
+    "code": "URK0135",
+    "name": "Zaganaki Tulum Peyniri Kızartması",
+    "rawName": "ZAGANAKİ TULUM",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "İzmir tulum peynirinin tavada çıtır panelenip sıcak bal ve susamla servisi.",
+    "price": 400,
+    "halfPrice": 250,
+    "badge": "Ege Sıcağı",
+    "isSignature": true,
+    "image": "images/arasicaklar/izgarakoypeyniri.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0408",
+    "code": "URK0408",
+    "name": "Ege Usulü Çıtır Balık Köftesi",
+    "rawName": "BALIK KÖFTE",
+    "category": "ara-sicaklar",
+    "rawCategory": "Denizden Sıcaklar & Ara Sıcaklar",
+    "description": "Levrek ve mezgit etinden hazırlanan taze otlu çıtır balık köftesi.",
+    "price": 350,
+    "badge": "Çocukların Favorisi",
+    "isSignature": false,
+    "image": "images/arasicaklar/balikkokorec.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0161",
+    "code": "URK0161",
+    "name": "Çikolatalı Sıcak Sufle",
+    "rawName": "SUFLE",
+    "category": "tatlilar",
+    "rawCategory": "Tatlılar & Meyveler",
+    "description": "Belçika çikolatasıyla hazırlanan akışkan sıcak sufle, vanilyalı dondurma eşliğinde.",
+    "price": 350,
+    "badge": "Sıcak Tatlı",
+    "isSignature": true,
+    "image": "images/tatli_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0171",
+    "code": "URK0171",
+    "name": "Ballı & Cevizli Karamelize Muz",
+    "rawName": "BALLI MUZ",
+    "category": "tatlilar",
+    "rawCategory": "Tatlılar & Meyveler",
+    "description": "Çam balı ve tereyağında karamelize edilmiş muz dilimleri, dövülmüş ceviz içiyle.",
+    "price": 250,
+    "badge": "Hafif Tatlı",
+    "isSignature": false,
+    "image": "images/tatli_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0626",
+    "code": "URK0626",
+    "name": "Amber Tatlısı (Özel İncirli & Kaymaklı)",
+    "rawName": "AMBER",
+    "category": "tatlilar",
+    "rawCategory": "Tatlılar & Meyveler",
+    "description": "Ege kuru incirlerinin cevizle doldurulup kaymak ve karamelize şerbetle sunumu.",
+    "price": 350,
+    "badge": "Ege Klasiği",
+    "isSignature": true,
+    "image": "images/tatli_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0370",
+    "code": "URK0370",
+    "name": "Özel Marineli Dana Şaşlık Izgara",
+    "rawName": "DANA ŞAŞLIK ŞİŞ",
+    "category": "etler",
+    "rawCategory": "Etler & Izgaralar",
+    "description": "Halka soğan ve krema marinasyonunda dinlendirilmiş yumuşacık dana antrikot şiş.",
+    "price": 1200,
+    "badge": "Et Spesiyali",
+    "isSignature": true,
+    "image": "images/etler_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0382",
+    "code": "URK0382",
+    "name": "Zırh Kuzu Beyti Izgara Şiş",
+    "rawName": "KUZU BEYTİ 1 ŞİŞ",
+    "category": "etler",
+    "rawCategory": "Etler & Izgaralar",
+    "description": "Satır kıyması kuzu eti, köz biber ve domates eşliğinde lavaş üstünde.",
+    "price": 650,
+    "badge": "Zırh Kıyması",
+    "isSignature": false,
+    "image": "images/etler_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0379",
+    "code": "URK0379",
+    "name": "Kömür Ateşinde Halka Kuzu Kokoreç",
+    "rawName": "KOKOREÇ HALKA",
+    "category": "etler",
+    "rawCategory": "Etler & Izgaralar",
+    "description": "Balıkesir kuzu kokoreci, kömür ızgarasında dilimlenmiş, kekik ve pul biber ile.",
+    "price": 450,
+    "badge": "Sokak Lezzeti",
+    "isSignature": true,
+    "image": "images/etler_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0411",
+    "code": "URK0411",
+    "name": "Osmanlı Baharatlı Kasap Sucuğu Izgara",
+    "rawName": "OSMANLI SUCUK ADET",
+    "category": "etler",
+    "rawCategory": "Etler & Izgaralar",
+    "description": "Özel baharat karışımlı fermente dana sucuk ızgara.",
+    "price": 475,
+    "badge": "Izgara Sucuk",
+    "isSignature": false,
+    "image": "images/etler_default.webp",
+    "isLocalImage": true,
+    "available": true
+  },
+  {
+    "id": "TB_URK0706",
+    "code": "URK0706",
+    "name": "Tereyağlı Yaprak Bonfile Dilimleri",
+    "rawName": "TEREYAĞLI BONFİLE DİLİMLERİ",
+    "category": "etler",
+    "rawCategory": "Etler & Izgaralar",
+    "description": "İnce dilimlenmiş taze dana bonfile parçaları, kızgın tereyağı ve kekik eşliğinde cızırdayan tavada.",
+    "price": 1050,
+    "halfPrice": 750,
+    "badge": "Şefin Eti",
+    "isSignature": true,
+    "image": "images/etler_default.webp",
+    "isLocalImage": true,
     "available": true
   }
 ];
-
 if (typeof window !== "undefined") {
   window.MENU_CATEGORIES = MENU_CATEGORIES;
   window.MENU_ITEMS = MENU_ITEMS;
