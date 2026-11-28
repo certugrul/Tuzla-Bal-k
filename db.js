@@ -116,37 +116,54 @@ async function initDatabase() {
       }
 
       // Menü Veritabanını Tohumla / Senkronize Et
-      const [menuRows] = await pool.query('SELECT COUNT(*) as count FROM menu_store WHERE id = 1');
       const menuAppPath = path.join(__dirname, 'menu-app', 'menu-data.js');
       const rootMenuPath = path.join(__dirname, 'menu-data.js');
+      let diskItemsCount = 0;
+      let diskCats = null;
+      let diskItems = null;
 
-      if (menuRows[0].count === 0 && fs.existsSync(menuAppPath)) {
+      if (fs.existsSync(menuAppPath)) {
         try {
           const menuContent = fs.readFileSync(menuAppPath, 'utf8');
           const catMatch = menuContent.match(/window\.MENU_CATEGORIES\s*=\s*(\{[\s\S]*?\});/);
           const itemsMatch = menuContent.match(/window\.MENU_ITEMS\s*=\s*(\[[\s\S]*?\]);/);
           if (catMatch && itemsMatch) {
-            await pool.query(
-              'INSERT INTO menu_store (id, categories, items) VALUES (1, ?, ?) ON DUPLICATE KEY UPDATE categories = VALUES(categories), items = VALUES(items)',
-              [catMatch[1], itemsMatch[1]]
-            );
-            console.log('[DB] Menü verileri MySQL menu_store tablosuna aktarıldı.');
-          }
-        } catch (e) {
-          console.warn('[DB] Menü tohumlama uyarısı:', e.message);
-        }
-      } else if (menuRows[0].count > 0) {
-        try {
-          const [dbMenuRows] = await pool.query('SELECT categories, items FROM menu_store WHERE id = 1');
-          if (dbMenuRows.length > 0 && dbMenuRows[0].items) {
-            const cats = JSON.parse(dbMenuRows[0].categories || '{}');
-            const itms = JSON.parse(dbMenuRows[0].items || '[]');
-            const menuAppJs = `/**\n * TUZLA BALIK RESTAURANT - VERIFIED MENU DATA\n * Total Active Items: ${itms.length}\n */\n\nwindow.MENU_CATEGORIES = ${JSON.stringify(cats, null, 2)};\n\nwindow.MENU_ITEMS = ${JSON.stringify(itms, null, 2)};\n`;
-            fs.writeFileSync(menuAppPath, menuAppJs, 'utf8');
-            const rootJs = `// Tuzla Balık Soyak - Dinamik Menü Veritabanı\nvar MENU_CATEGORIES = ${JSON.stringify(cats, null, 2)};\nvar MENU_ITEMS = ${JSON.stringify(itms, null, 2)};\nif (typeof window !== "undefined") {\n  window.MENU_CATEGORIES = MENU_CATEGORIES;\n  window.MENU_ITEMS = MENU_ITEMS;\n}\n`;
-            fs.writeFileSync(rootMenuPath, rootJs, 'utf8');
+            diskCats = catMatch[1];
+            diskItems = itemsMatch[1];
+            const parsed = JSON.parse(diskItems);
+            diskItemsCount = parsed.length;
           }
         } catch (_) {}
+      }
+
+      const [menuRows] = await pool.query('SELECT categories, items FROM menu_store WHERE id = 1');
+      if (menuRows.length === 0 && diskItems) {
+        await pool.query(
+          'INSERT INTO menu_store (id, categories, items) VALUES (1, ?, ?) ON DUPLICATE KEY UPDATE categories = VALUES(categories), items = VALUES(items)',
+          [diskCats, diskItems]
+        );
+        console.log('[DB] Menü verileri MySQL menu_store tablosuna aktarıldı.');
+      } else if (menuRows.length > 0) {
+        let dbCount = 0;
+        try {
+          dbCount = JSON.parse(menuRows[0].items || '[]').length;
+        } catch (_) {}
+
+        // Eğer diskteki güncel kod/deploy sürümünde daha fazla veya yeni ürün varsa, MySQL'i anında güncelle
+        if (diskItemsCount > dbCount && diskItems) {
+          await pool.query(
+            'UPDATE menu_store SET categories = ?, items = ? WHERE id = 1',
+            [diskCats, diskItems]
+          );
+          console.log(`[DB] MySQL menu_store güncellendi: ${dbCount} -> ${diskItemsCount} ürün.`);
+        } else if (dbCount > 0) {
+          const cats = JSON.parse(menuRows[0].categories || '{}');
+          const itms = JSON.parse(menuRows[0].items || '[]');
+          const menuAppJs = `window.MENU_CATEGORIES = ${JSON.stringify(cats, null, 2)};\n\nwindow.MENU_ITEMS = ${JSON.stringify(itms, null, 2)};\n`;
+          fs.writeFileSync(menuAppPath, menuAppJs, 'utf8');
+          const rootJs = `var MENU_CATEGORIES = ${JSON.stringify(cats, null, 2)};\nvar MENU_ITEMS = ${JSON.stringify(itms, null, 2)};\nif (typeof window !== "undefined") {\n  window.MENU_CATEGORIES = MENU_CATEGORIES;\n  window.MENU_ITEMS = MENU_ITEMS;\n}\n`;
+          fs.writeFileSync(rootMenuPath, rootJs, 'utf8');
+        }
       }
 
       // İlk tohumlama veya Çift Yönlü Senkronizasyon (Hydration)
