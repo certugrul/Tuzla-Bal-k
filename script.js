@@ -340,21 +340,44 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Tray Drawer Open / Close
+  let scrollYBeforeTray = 0;
+
   function openTray() {
     trayDrawer?.classList.add('active');
     trayBackdrop?.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    scrollYBeforeTray = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = `-${scrollYBeforeTray}px`;
+    document.body.classList.add('tray-open');
   }
 
   function closeTray() {
     trayDrawer?.classList.remove('active');
     trayBackdrop?.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('tray-open');
+    document.body.style.top = '';
+    window.scrollTo(0, scrollYBeforeTray);
   }
 
   trayOpenBtns.forEach(btn => btn.addEventListener('click', openTray));
   trayCloseBtn?.addEventListener('click', closeTray);
   trayBackdrop?.addEventListener('click', closeTray);
+
+  // Isolate touch and scroll to tray products list only
+  trayBackdrop?.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+  }, { passive: false });
+
+  trayDrawer?.addEventListener('touchmove', (e) => {
+    if (!e.target.closest('#trayScrollBody')) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && trayDrawer?.classList.contains('active')) {
+      closeTray();
+    }
+  });
 
   peopleMinusBtn?.addEventListener('click', () => {
     if (state.peopleCount > 1) {

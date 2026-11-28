@@ -1220,6 +1220,13 @@ button {
 /* --------------------------------------------------------------------------
    TABLE ORDER & BILL CALCULATOR TRAY DRAWER
    -------------------------------------------------------------------------- */
+body.tray-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .tray-backdrop {
   position: fixed;
   inset: 0;
@@ -1253,6 +1260,8 @@ button {
   visibility: hidden;
   pointer-events: none;
   transition: transform var(--trans-smooth), visibility var(--trans-smooth);
+  overscroll-behavior: contain;
+  overflow: hidden;
 }
 .table-tray-drawer.active {
   transform: translateX(0);
@@ -1266,6 +1275,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
 }
 .tray-top-bar h3 {
   font-size: 1.25rem;
@@ -1280,8 +1290,11 @@ button {
 }
 
 .tray-scroll-body {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   padding: 1.5rem;
 }
 .tray-dish-row {
@@ -1335,6 +1348,7 @@ button {
   border-radius: var(--radius-sm);
   padding: 1rem;
   margin: 1rem 1.5rem 0;
+  flex-shrink: 0;
 }
 .tray-calc-row {
   display: flex;
@@ -1382,6 +1396,7 @@ button {
 .tray-bottom-actions {
   padding: 1.5rem;
   border-top: 1px solid var(--border-hairline);
+  flex-shrink: 0;
 }
 .tray-total-display {
   display: flex;
