@@ -4,7 +4,7 @@
  * Tek seferlik QR kod okutulduktan sonra arka planda otomatik mesaj atabilir.
  */
 
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = require('@whiskeysockets/baileys');
+const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, Browsers } = require('@whiskeysockets/baileys');
 const pino = require('pino');
 const QRCode = require('qrcode');
 const path = require('path');
@@ -43,7 +43,12 @@ async function startWhatsAppBot() {
       auth: state,
       logger: pino({ level: 'silent' }),
       printQRInTerminal: false,
-      browser: ['Tuzla Balık Soyak Bot', 'Chrome', '1.0.0']
+      browser: Browsers.macOS('Desktop'),
+      syncFullHistory: false,
+      markOnlineOnConnect: false,
+      generateHighQualityLinkPreview: false,
+      connectTimeoutMs: 60000,
+      keepAliveIntervalMs: 25000
     });
 
     sock.ev.on('creds.update', saveCreds);
@@ -65,6 +70,7 @@ async function startWhatsAppBot() {
       if (connection === 'close') {
         const statusCode = lastDisconnect?.error?.output?.statusCode;
         const isLoggedOut = statusCode === DisconnectReason.loggedOut || statusCode === 401;
+        const isRestartRequired = statusCode === DisconnectReason.restartRequired || statusCode === 515;
         const shouldReconnect = !isLoggedOut;
         console.log(`[WhatsApp Bot] Bağlantı kapandı (Kod: ${statusCode}). Yeniden bağlanılıyor mu: ${shouldReconnect}`);
         
@@ -84,8 +90,11 @@ async function startWhatsAppBot() {
           } catch (_) {}
           // Temizledikten sonra taze bir oturum ile QR/Kod için yeniden başlat
           setTimeout(() => startWhatsAppBot(), 1500);
+        } else if (isRestartRequired) {
+          console.log('[WhatsApp Bot] Eşleşme başarılı! Cihaz oturumu için anında yeniden bağlanılıyor...');
+          setTimeout(() => startWhatsAppBot(), 500);
         } else if (shouldReconnect) {
-          setTimeout(() => startWhatsAppBot(), 3000);
+          setTimeout(() => startWhatsAppBot(), 2000);
         }
       } else if (connection === 'open') {
         botStatus = 'connected';
