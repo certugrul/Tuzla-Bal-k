@@ -89,6 +89,12 @@ const server = http.createServer(async (req, res) => {
       try {
         const parsed = await readJsonBody(req);
         fs.writeFileSync(settingsPath, JSON.stringify(parsed, null, 2), 'utf8');
+        
+        // Eğer zamanlayıcı ayarları değiştirildiyse bekleyen rezervasyonların anket saatlerini otomatik güncelle
+        if (parsed.surveyDelayDays !== undefined || parsed.surveySendTime !== undefined) {
+          automation.reschedulePendingSurveys(parsed.surveyDelayDays, parsed.surveySendTime);
+        }
+
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
         res.end(JSON.stringify({ success: true, message: 'Ayarlar başarıyla kaydedildi' }));
       } catch (err) {
@@ -381,6 +387,35 @@ const server = http.createServer(async (req, res) => {
     } catch (err) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({ error: 'Durum güncellenemedi', details: err.message }));
+    }
+    return;
+  }
+
+  // 4.1 TEKİL REZERVASYON ANKET ZAMANINI GÜNCELLEME (/api/reservations/reschedule)
+  if (pathname === '/api/reservations/reschedule' && req.method === 'POST') {
+    try {
+      const { id, scheduled_at } = await readJsonBody(req);
+      if (!id || !scheduled_at) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'id ve scheduled_at zorunludur' }));
+        return;
+      }
+      const list = automation.loadReservations();
+      const target = list.find(r => r.id === id);
+      if (!target) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Rezervasyon bulunamadı' }));
+        return;
+      }
+
+      target.survey_scheduled_at = new Date(scheduled_at).toISOString();
+      automation.saveReservations(list);
+
+      res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+      res.end(JSON.stringify({ success: true, reservation: target }));
+    } catch (err) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Zaman güncellenemedi', details: err.message }));
     }
     return;
   }

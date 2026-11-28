@@ -50,7 +50,7 @@ function saveReservations(data) {
 
 /**
  * Dinamik Zamanlayıcı Hesabı:
- * Rezervasyon tarihinden X gün sonra (delayDays) ve belirlenen saatte (HH:mm) zaman damgası üretir
+ * Rezervasyon tarihinden X gün sonra (delayDays) ve belirlenen saatte (HH:mm) Türkiye Saati (UTC+3) ile zaman damgası üretir
  * @param {string} dateStr 'YYYY-MM-DD'
  * @param {number} [customDelayDays] İsteğe bağlı gün gecikmesi
  * @param {string} [customSendTime] İsteğe bağlı saat (Örn: '12:00')
@@ -63,27 +63,46 @@ function calculateScheduledTime(dateStr, customDelayDays, customSendTime) {
     : (settings.surveyDelayDays !== undefined ? Number(settings.surveyDelayDays) : 1);
     
   const sendTime = customSendTime || settings.surveySendTime || '12:00';
-  let [hour, minute] = sendTime.split(':').map(v => parseInt(v, 10));
+  let [hour, minute] = (sendTime || '12:00').split(':').map(v => parseInt(v, 10));
   if (isNaN(hour)) hour = 12;
   if (isNaN(minute)) minute = 0;
 
   try {
-    const parts = dateStr.split('-');
+    const parts = (dateStr || '').split('-');
     if (parts.length === 3) {
       const year = parseInt(parts[0], 10);
       const month = parseInt(parts[1], 10) - 1;
       const day = parseInt(parts[2], 10);
       
-      const target = new Date(year, month, day);
-      target.setDate(target.getDate() + delayDays);
-      target.setHours(hour, minute, 0, 0);
+      // Türkiye saati UTC+3'tür. Sunucu saatinden bağımsız UTC olarak saklarken: hour - 3
+      const target = new Date(Date.UTC(year, month, day + delayDays, hour - 3, minute, 0));
       return target.toISOString();
     }
   } catch (_) {}
   
-  const fallback = new Date(Date.now() + delayDays * 24 * 60 * 60 * 1000);
-  fallback.setHours(hour, minute, 0, 0);
-  return fallback.toISOString();
+  const now = new Date();
+  const target = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + delayDays, hour - 3, minute, 0));
+  return target.toISOString();
+}
+
+/**
+ * Bekleyen tüm anketlerin zamanlamasını yeni zamanlayıcı ayarlarına göre günceller
+ */
+function reschedulePendingSurveys(customDelayDays, customSendTime) {
+  const list = loadReservations();
+  let updated = 0;
+  list.forEach(item => {
+    if (item.survey_status === 'pending') {
+      const dateStr = item.date || (item.created_at ? item.created_at.slice(0, 10) : new Date().toISOString().slice(0, 10));
+      item.survey_scheduled_at = calculateScheduledTime(dateStr, customDelayDays, customSendTime);
+      updated++;
+    }
+  });
+  if (updated > 0) {
+    saveReservations(list);
+    console.log(`[Automation] ${updated} adet bekleyen rezervasyonun anket zamanı yeni kurala göre güncellendi.`);
+  }
+  return { updated, list };
 }
 
 /**
@@ -168,15 +187,16 @@ function startAutomationScheduler(options = {}) {
     if (isNaN(targetMinute)) targetMinute = 0;
 
     const now = new Date();
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
+    // Türkiye saatine göre saat ve dakikayı al (UTC+3)
+    const trTimeStr = now.toLocaleTimeString('en-US', { timeZone: 'Europe/Istanbul', hour12: false });
+    const [currentHour, currentMinute] = trTimeStr.split(':').map(v => parseInt(v, 10));
     const minuteKey = `${now.toISOString().slice(0, 10)}_${currentHour}:${currentMinute}`;
 
     // Ayarlanan saat ve dakikada sadece 1 kez tetiklenir
     if (currentHour === targetHour && currentMinute === targetMinute && lastCheckMinuteKey !== minuteKey) {
       lastCheckMinuteKey = minuteKey;
       const dueList = getDueSurveys();
-      console.log(`[Automation - ${now.toLocaleTimeString()}] ${sendTime} Zamanlayıcısı Tetiklendi: Gönderilmeyi bekleyen ${dueList.length} anket kuyrukta.`);
+      console.log(`[Automation - ${trTimeStr}] ${sendTime} Zamanlayıcısı Tetiklendi: Gönderilmeyi bekleyen ${dueList.length} anket kuyrukta.`);
       
       if (options.onDueSurveys) {
         options.onDueSurveys(dueList);
@@ -190,6 +210,7 @@ module.exports = {
   loadReservations,
   saveReservations,
   calculateScheduledTime,
+  reschedulePendingSurveys,
   normalizePhone,
   generateRawSurveyMessage,
   generateSurveyMessage,

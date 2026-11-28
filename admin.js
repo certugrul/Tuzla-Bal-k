@@ -1167,7 +1167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const scheduledDate = new Date(item.survey_scheduled_at);
       const scheduledFormatted = !isNaN(scheduledDate)
-        ? scheduledDate.toLocaleString('tr-TR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
+        ? scheduledDate.toLocaleString('tr-TR', { timeZone: 'Europe/Istanbul', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })
         : '-';
 
       return `
@@ -1186,8 +1186,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div style="font-size:0.78rem; color:var(--text-muted);">${escapeHtml(item.guests)} Kişi &bull; ${escapeHtml(item.area || 'Fark etmez')}</div>
           </td>
           <td>
-            <div style="color:${isDue ? '#facc15' : 'var(--text-muted)'}; font-weight:${isDue ? '600' : '400'};">
-              <i class="fa-regular fa-clock" style="font-size:0.8rem;"></i> ${scheduledFormatted}
+            <div style="color:${isDue ? '#facc15' : 'var(--text-muted)'}; font-weight:${isDue ? '600' : '400'}; display:flex; align-items:center; gap:0.4rem;">
+              <i class="fa-regular fa-clock" style="font-size:0.8rem;"></i>
+              <span>${scheduledFormatted}</span>
+              ${item.survey_status === 'pending' ? `
+                <button type="button" class="js-edit-single-schedule" data-id="${item.id}" title="Bu misafirin anket gönderim zamanını düzenle" style="background:rgba(212,175,55,0.12); border:1px solid rgba(212,175,55,0.3); color:var(--gold-primary); cursor:pointer; padding:2px 6px; font-size:0.72rem; border-radius:4px;">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+              ` : ''}
             </div>
           </td>
           <td>${statusHtml}</td>
@@ -1260,6 +1266,50 @@ document.addEventListener('DOMContentLoaded', () => {
           } catch (_) {
             alert('Silme işlemi başarısız oldu.');
           }
+        }
+      });
+    });
+
+    // Tekil anket zamanı düzenleme
+    resTableBody.querySelectorAll('.js-edit-single-schedule').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-id');
+        const target = reservationsList.find(r => r.id === id);
+        if (!target) return;
+
+        let defaultVal = '';
+        if (target.survey_scheduled_at) {
+          const d = new Date(target.survey_scheduled_at);
+          const trParts = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Europe/Istanbul',
+            year: 'numeric', month: '2-digit', day: '2-digit',
+            hour: '2-digit', minute: '2-digit', hour12: false
+          }).formatToParts(d);
+          const getPart = type => trParts.find(p => p.type === type)?.value || '';
+          defaultVal = `${getPart('year')}-${getPart('month')}-${getPart('day')} ${getPart('hour')}:${getPart('minute')}`;
+        }
+
+        const newDateTime = prompt(
+          `"${target.name}" için yeni anket zamanı girin:\n(Örnek: 2026-11-28 15:30 veya 2026-11-29 12:00)`,
+          defaultVal
+        );
+        if (!newDateTime) return;
+
+        const clean = newDateTime.trim().replace(' ', 'T');
+        try {
+          const res = await fetch('/api/reservations/reschedule', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, scheduled_at: clean })
+          });
+          if (res.ok) {
+            showToast('Anket zamanı başarıyla güncellendi!');
+            loadAndRenderReservations();
+          } else {
+            alert('Zaman güncellenemedi.');
+          }
+        } catch (err) {
+          alert('Hata: ' + err.message);
         }
       });
     });
@@ -1484,8 +1534,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       showToast(`Zamanlayıcı güncellendi: ${delayDays} gün sonra saat ${sendTime} olarak ayarlandı!`);
       
-      // Refresh table to update status
-      fetchReservations().then(renderReservationTable);
+      // Refresh table and stats with updated schedule
+      loadAndRenderReservations();
     });
   }
 
