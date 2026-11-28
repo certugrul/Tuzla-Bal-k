@@ -1473,13 +1473,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (digits.startsWith('0') && digits.length === 11) digits = digits.slice(1);
 
     if (digits.length < 10) {
-      return { valid: false, message: 'Telefon numarası eksik! Lütfen 10 haneli cep telefonu numaranızı girin (Örn: 0507 091 64 15).' };
+      return { valid: false, message: 'Telefon numarası eksik! Lütfen 10 haneli cep telefonu numaranızı girin (Örn: 05XX XXX XX XX).' };
     }
     if (digits.length > 10) {
       return { valid: false, message: 'Telefon numarası fazla hane içeriyor! Lütfen 10 haneli cep telefonu numaranızı girin.' };
     }
     if (!digits.startsWith('5')) {
-      return { valid: false, message: 'Geçersiz cep telefonu numarası! Numara 5 ile başlamalıdır (Örn: 0507 091 64 15).' };
+      return { valid: false, message: 'Geçersiz cep telefonu numarası! Numara 5 ile başlamalıdır (Örn: 05XX XXX XX XX).' };
     }
 
     return { valid: true, formatted: '0' + digits };
@@ -1512,7 +1512,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       phoneInput.style.borderColor = '';
-      const phone = phoneCheck.formatted; // 05070916415 garantili
+      const phone = phoneCheck.formatted; // 05XX XXX XX XX garantili
 
       const date = document.getElementById('newResDate').value;
       const time = document.getElementById('newResTime').value;
@@ -1859,6 +1859,33 @@ document.addEventListener('DOMContentLoaded', () => {
       } finally {
         btnSendTestMsg.disabled = false;
         btnSendTestMsg.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Gönder';
+      }
+    });
+  }
+
+  // Mevcut Botu Arşivle ve Yeni Bot Bağla
+  const btnArchiveAndNewBot = document.getElementById('btnArchiveAndNewBot');
+  if (btnArchiveAndNewBot) {
+    btnArchiveAndNewBot.addEventListener('click', async () => {
+      if (!confirm('Mevcut WhatsApp bot oturumu güvenle arşivlenecek ve yeni bir bot numarası bağlayabilmeniz için panel sıfırlanacaktır. Onaylıyor musunuz?')) return;
+      
+      btnArchiveAndNewBot.disabled = true;
+      btnArchiveAndNewBot.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Arşivleniyor...';
+
+      try {
+        const res = await fetch('/api/bot/archive-and-new', { method: 'POST' });
+        const data = await res.json();
+        if (res.ok && data.success) {
+          showToast(data.message || 'Önceki bot arşivlendi! Yeni botunuzu bağlayabilirsiniz.');
+          checkBotStatus();
+        } else {
+          alert('Arşivleme işlemi başarısız: ' + (data.error || 'Bilinmeyen hata'));
+        }
+      } catch (err) {
+        alert('Sunucu hatası: ' + err.message);
+      } finally {
+        btnArchiveAndNewBot.disabled = false;
+        btnArchiveAndNewBot.innerHTML = '<i class="fa-solid fa-box-archive"></i> Mevcut Botu Arşivle & Yeni Bot Bağla';
       }
     });
   }

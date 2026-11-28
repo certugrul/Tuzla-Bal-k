@@ -82,28 +82,23 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .brand-header {
+    .brand-header-logo {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 2rem;
-      padding: 0.5rem 1.2rem;
-      background: rgba(212, 175, 55, 0.08);
-      border: 1px solid rgba(212, 175, 55, 0.2);
-      border-radius: 50px;
+      justify-content: center;
+      margin-bottom: 1.5rem;
     }
 
-    .brand-header i {
-      color: var(--gold-primary);
-      font-size: 1.1rem;
+    .brand-logo-img {
+      max-height: 80px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 16px rgba(212, 175, 55, 0.25));
+      transition: transform 0.3s ease;
     }
 
-    .brand-header span {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      color: var(--gold-light);
+    .brand-logo-img:hover {
+      transform: scale(1.05);
     }
 
     .error-code {
@@ -201,9 +196,10 @@
   <div class="ambient-glow"></div>
 
   <div class="error-card">
-    <div class="brand-header">
-      <i class="fa-solid fa-fish-fins"></i>
-      <span>TUZLA BALIK SOYAK</span>
+    <div class="brand-header-logo">
+      <a href="/" title="Tuzla Balık Soyak Ana Sayfa">
+        <img src="/Assets/logo.png" alt="Tuzla Balık Soyak Logo" class="brand-logo-img">
+      </a>
     </div>
 
     <div class="error-code">404</div>

@@ -875,13 +875,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (digits.startsWith('0') && digits.length === 11) digits = digits.slice(1);
 
     if (digits.length < 10) {
-      return { valid: false, message: 'Telefon numarası eksik! Lütfen 10 haneli cep telefonu numaranızı giriniz (Örn: 0507 091 64 15).' };
+      return { valid: false, message: 'Telefon numarası eksik! Lütfen 10 haneli cep telefonu numaranızı giriniz (Örn: 05XX XXX XX XX).' };
     }
     if (digits.length > 10) {
       return { valid: false, message: 'Telefon numarası fazla hane içeriyor! Lütfen 10 haneli cep telefonu numaranızı giriniz.' };
     }
     if (!digits.startsWith('5')) {
-      return { valid: false, message: 'Geçersiz cep telefonu numarası! Numaranız 5 ile başlamalıdır (Örn: 0507 091 64 15).' };
+      return { valid: false, message: 'Geçersiz cep telefonu numarası! Numaranız 5 ile başlamalıdır (Örn: 05XX XXX XX XX).' };
     }
 
     return { valid: true, formatted: '0' + digits };

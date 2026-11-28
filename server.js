@@ -470,7 +470,7 @@ const server = http.createServer(async (req, res) => {
 
         if (digits.length < 10) {
           res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
-          res.end(JSON.stringify({ error: 'Telefon numarası eksik! 10 haneli cep telefonu numaranızı giriniz (Örn: 0507 091 64 15).' }));
+          res.end(JSON.stringify({ error: 'Telefon numarası eksik! 10 haneli cep telefonu numaranızı giriniz (Örn: 05XX XXX XX XX).' }));
           return;
         }
         if (digits.length > 10) {
@@ -480,11 +480,11 @@ const server = http.createServer(async (req, res) => {
         }
         if (!digits.startsWith('5')) {
           res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
-          res.end(JSON.stringify({ error: 'Geçersiz telefon numarası! Türkiye cep telefonları 5 ile başlamalıdır (Örn: 0507 091 64 15).' }));
+          res.end(JSON.stringify({ error: 'Geçersiz telefon numarası! Türkiye cep telefonları 5 ile başlamalıdır (Örn: 05XX XXX XX XX).' }));
           return;
         }
 
-        const normalizedPhone = '0' + digits; // 05070916415 (Her zaman 11 hane)
+        const normalizedPhone = '0' + digits; // 05XX XXX XX XX (Her zaman 11 hane)
 
         const dateStr = data.date || new Date().toISOString().slice(0, 10);
         const scheduledTime = automation.calculateScheduledTime(dateStr);
@@ -831,6 +831,13 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ error: err.message }));
     }
+    return;
+  }
+
+  if (pathname === '/api/bot/archive-and-new' && req.method === 'POST') {
+    const result = await whatsappBot.archiveAndResetBot();
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
+    res.end(JSON.stringify(result));
     return;
   }
 

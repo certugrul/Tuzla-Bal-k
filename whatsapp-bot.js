@@ -177,6 +177,66 @@ function getBotStatus() {
 }
 
 /**
+ * Mevcut bot oturumunu yedekler/arşivler ve yeni bot bağlanması için sıfırlar
+ */
+async function archiveAndResetBot() {
+  const backupFolder = (process.platform === 'linux' && process.env.HOME)
+    ? path.join(process.env.HOME, '.tuzla_whatsapp_backups')
+    : path.join(__dirname, '.whatsapp_auth_backups');
+
+  if (!fs.existsSync(backupFolder)) {
+    fs.mkdirSync(backupFolder, { recursive: true });
+  }
+
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const userLabel = connectedUser ? connectedUser.replace(/[^0-9]/g, '') : 'bilinmeyen_hat';
+  const targetBackup = path.join(backupFolder, `backup_${userLabel}_${timestamp}`);
+
+  // Eğer mevcut auth klasörü varsa, onu hedef yedek klasörüne kopyala
+  let backedUp = false;
+  if (fs.existsSync(AUTH_FOLDER)) {
+    try {
+      fs.cpSync(AUTH_FOLDER, targetBackup, { recursive: true });
+      backedUp = true;
+      console.log(`[WhatsApp Bot] ✅ Önceki bot oturumu (+${userLabel}) başarıyla arşivlendi: ${targetBackup}`);
+    } catch (err) {
+      console.warn('[WhatsApp Bot] Oturum yedeklenirken hata:', err.message);
+    }
+  }
+
+  // Oturumu kapat ve mevcut auth klasörünü temizle (yeni bot bağlantısına hazır hale getir)
+  try {
+    if (sock) {
+      await sock.logout();
+    }
+  } catch (_) {}
+
+  try {
+    if (fs.existsSync(AUTH_FOLDER)) {
+      fs.rmSync(AUTH_FOLDER, { recursive: true, force: true });
+    }
+  } catch (_) {}
+
+  botStatus = 'disconnected';
+  currentQR = null;
+  currentQRDataUrl = null;
+  connectedUser = null;
+  sock = null;
+  isStarting = false;
+
+  // Yeni bot bağlantısı için hemen başlat (yeni QR ve kod üretilsin)
+  setTimeout(() => startWhatsAppBot(), 600);
+
+  return {
+    success: true,
+    message: `Önceki bot bilgileri (+${userLabel}) güvenle arşivlendi. Yeni bot bağlantısı hazır.`,
+    archivedPath: targetBackup,
+    previousPhone: userLabel,
+    backedUp
+  };
+}
+
+/**
  * Oturumu Kapat / Sıfırla
  */
 async function logoutBot() {
@@ -267,5 +327,6 @@ module.exports = {
   sendTextMessage,
   getBotStatus,
   logoutBot,
+  archiveAndResetBot,
   normalizePhone
 };
