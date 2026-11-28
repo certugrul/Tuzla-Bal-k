@@ -867,12 +867,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 120);
   }
 
+  // Telefon Numarası Doğrulama ve Formatlama (05XXXXXXXXX)
+  function validateAndFormatPhone(raw) {
+    if (!raw) return { valid: false, message: 'Lütfen iletişim numaranızı yazınız.' };
+    let digits = String(raw).replace(/\D/g, '');
+    if (digits.startsWith('90') && digits.length === 12) digits = digits.slice(2);
+    if (digits.startsWith('0') && digits.length === 11) digits = digits.slice(1);
+
+    if (digits.length < 10) {
+      return { valid: false, message: 'Telefon numarası eksik! Lütfen 10 haneli cep telefonu numaranızı giriniz (Örn: 0507 091 64 15).' };
+    }
+    if (digits.length > 10) {
+      return { valid: false, message: 'Telefon numarası fazla hane içeriyor! Lütfen 10 haneli cep telefonu numaranızı giriniz.' };
+    }
+    if (!digits.startsWith('5')) {
+      return { valid: false, message: 'Geçersiz cep telefonu numarası! Numaranız 5 ile başlamalıdır (Örn: 0507 091 64 15).' };
+    }
+
+    return { valid: true, formatted: '0' + digits };
+  }
+
+  const bookPhoneInput = document.getElementById('bookPhone');
+  if (bookPhoneInput) {
+    bookPhoneInput.addEventListener('blur', () => {
+      const val = bookPhoneInput.value.trim();
+      if (!val) return;
+      const check = validateAndFormatPhone(val);
+      if (check.valid) {
+        bookPhoneInput.value = check.formatted;
+        bookPhoneInput.style.borderColor = '#10b981';
+      }
+    });
+  }
+
   // 7. Booking Form
   if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('bookName').value.trim();
-      const phone = document.getElementById('bookPhone').value.trim();
+      const phoneInput = document.getElementById('bookPhone');
+      const phoneCheck = validateAndFormatPhone(phoneInput.value.trim());
+
+      if (!phoneCheck.valid) {
+        alert('⚠️ ' + phoneCheck.message);
+        phoneInput.focus();
+        phoneInput.style.borderColor = '#ef4444';
+        return;
+      }
+      phoneInput.style.borderColor = '';
+      const phone = phoneCheck.formatted; // 05XXXXXXXXX garantili
+
       const guests = document.getElementById('bookGuests').value;
       const date = document.getElementById('bookDate').value;
       const time = document.getElementById('bookTime').value;

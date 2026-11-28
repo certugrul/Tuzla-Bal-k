@@ -142,6 +142,15 @@ async function initDatabase() {
         }
       }
 
+      // Mevcut telefon numaralarını 05XXXXXXXXX formatına otomatik normalize et
+      try {
+        await pool.query(`
+          UPDATE reservations 
+          SET phone = CONCAT('0', phone) 
+          WHERE LENGTH(phone) = 10 AND phone LIKE '5%';
+        `);
+      } catch (_) {}
+
       isDbReady = true;
       console.log(`[DB] ✅ Hostinger MySQL (${process.env.DB_NAME}) başarıyla bağlandı ve aktif!`);
     } catch (err) {

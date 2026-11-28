@@ -1454,11 +1454,55 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Telefon Numarası Doğrulama ve Formatlama (05XXXXXXXXX)
+  function validateAndFormatPhone(raw) {
+    if (!raw) return { valid: false, message: 'Telefon numarası boş bırakılamaz.' };
+    let digits = String(raw).replace(/\D/g, '');
+    if (digits.startsWith('90') && digits.length === 12) digits = digits.slice(2);
+    if (digits.startsWith('0') && digits.length === 11) digits = digits.slice(1);
+
+    if (digits.length < 10) {
+      return { valid: false, message: 'Telefon numarası eksik! Lütfen 10 haneli cep telefonu numaranızı girin (Örn: 0507 091 64 15).' };
+    }
+    if (digits.length > 10) {
+      return { valid: false, message: 'Telefon numarası fazla hane içeriyor! Lütfen 10 haneli cep telefonu numaranızı girin.' };
+    }
+    if (!digits.startsWith('5')) {
+      return { valid: false, message: 'Geçersiz cep telefonu numarası! Numara 5 ile başlamalıdır (Örn: 0507 091 64 15).' };
+    }
+
+    return { valid: true, formatted: '0' + digits };
+  }
+
+  const newResPhone = document.getElementById('newResPhone');
+  if (newResPhone) {
+    newResPhone.addEventListener('blur', () => {
+      const val = newResPhone.value.trim();
+      if (!val) return;
+      const check = validateAndFormatPhone(val);
+      if (check.valid) {
+        newResPhone.value = check.formatted;
+        newResPhone.style.borderColor = '#10b981';
+      }
+    });
+  }
+
   if (resForm) {
     resForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const name = document.getElementById('newResName').value.trim();
-      const phone = document.getElementById('newResPhone').value.trim();
+      const phoneInput = document.getElementById('newResPhone');
+      const phoneCheck = validateAndFormatPhone(phoneInput.value.trim());
+
+      if (!phoneCheck.valid) {
+        alert('⚠️ ' + phoneCheck.message);
+        phoneInput.focus();
+        phoneInput.style.borderColor = '#ef4444';
+        return;
+      }
+      phoneInput.style.borderColor = '';
+      const phone = phoneCheck.formatted; // 05070916415 garantili
+
       const date = document.getElementById('newResDate').value;
       const time = document.getElementById('newResTime').value;
       const guests = document.getElementById('newResGuests').value;
@@ -1472,12 +1516,13 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({ name, phone, date, time, guests, area, notes })
         });
         if (response.ok) {
-          showToast('Yeni rezervasyon eklendi! Yarın 12:00 anket kuyruğuna alındı.');
+          showToast(`Yeni rezervasyon eklendi (${phone})! Anket zamanlayıcısına alındı.`);
           resModal.classList.remove('open');
           resForm.reset();
           loadAndRenderReservations();
         } else {
-          alert('Rezervasyon eklenemedi.');
+          const errData = await response.json().catch(() => ({}));
+          alert('Rezervasyon eklenemedi: ' + (errData.error || 'Bilinmeyen hata'));
         }
       } catch (err) {
         alert('Hata: ' + err.message);

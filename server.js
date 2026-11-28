@@ -346,10 +346,34 @@ const server = http.createServer(async (req, res) => {
       try {
         const data = await readJsonBody(req);
         if (!data.name || !data.phone) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
           res.end(JSON.stringify({ error: 'İsim ve telefon zorunludur' }));
           return;
         }
+
+        // Telefon numarası doğrulama ve 05XXXXXXXXX formatına normalizasyon
+        let rawPhone = String(data.phone || '').trim();
+        let digits = rawPhone.replace(/\D/g, '');
+        if (digits.startsWith('90') && digits.length === 12) digits = digits.slice(2);
+        if (digits.startsWith('0') && digits.length === 11) digits = digits.slice(1);
+
+        if (digits.length < 10) {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ error: 'Telefon numarası eksik! 10 haneli cep telefonu numaranızı giriniz (Örn: 0507 091 64 15).' }));
+          return;
+        }
+        if (digits.length > 10) {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ error: 'Telefon numarası fazla hane içeriyor! Lütfen 10 haneli cep telefonu numaranızı giriniz.' }));
+          return;
+        }
+        if (!digits.startsWith('5')) {
+          res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+          res.end(JSON.stringify({ error: 'Geçersiz telefon numarası! Türkiye cep telefonları 5 ile başlamalıdır (Örn: 0507 091 64 15).' }));
+          return;
+        }
+
+        const normalizedPhone = '0' + digits; // 05070916415 (Her zaman 11 hane)
 
         const dateStr = data.date || new Date().toISOString().slice(0, 10);
         const scheduledTime = automation.calculateScheduledTime(dateStr);
@@ -357,7 +381,7 @@ const server = http.createServer(async (req, res) => {
         const newReservation = {
           id: 'res_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
           name: data.name.trim(),
-          phone: data.phone.trim(),
+          phone: normalizedPhone,
           guests: data.guests || '2',
           area: data.area || 'Fark etmez',
           date: dateStr,
